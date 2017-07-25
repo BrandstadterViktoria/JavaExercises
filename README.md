@@ -1,2 +1,2 @@
 # JavaIntermediate
-Practicing java beyond the basics
+Learning java beyond the basics
