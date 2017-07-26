@@ -1,2 +1,2 @@
 # JavaExercises
-Learning java beyond the basics
+Learning java basics and beyond
