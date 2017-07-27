@@ -1,6 +1,6 @@
 package MyCreditCard;
 
-public interface CreditCardy {
+interface CreditCardy {
 
     int getSumCVV();
 
