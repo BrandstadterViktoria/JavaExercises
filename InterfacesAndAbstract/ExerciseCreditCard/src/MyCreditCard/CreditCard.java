@@ -6,38 +6,42 @@ import java.util.stream.IntStream;
 public class CreditCard implements CreditCardy {
     private Random r = new Random();
     private String name;
-    private int codeSumCVV;
+    private int SumCVV;
     private String codeAccount;
     String CVV;
 
     public CreditCard() {
+
+
+
     }
 
     @Override
     public int getSumCVV() {
-        return cumeSumCVV(codeAccount);
+        return SumCVV;
     }
 
     @Override
     public String getNameCardholder() {
-        String NameCardholder = "BRANDSTADTER VIKTORIA";
-        int nameHolderIndex = NameCardholder.length();
-        for (int i = 0; i <= NameCardholder.length(); i++) {
-            char s = NameCardholder.charAt(r.nextInt(nameHolderIndex));
-            name = String.valueOf(s);
+        char[] charname = {'B', 'R', 'A', 'N', 'D', 'S', 'T', 'A', 'D', 'T', 'E', 'R', 'V', 'I', 'K', 'T', 'O', 'R', 'I', 'A'};
+        char[] result = new char[30];
+        for (int i = 0; i <result.length; i++) {
+            result[i] = charname[r.nextInt(charname.length)];
         }
+        String name = " ";
+        for(Character c: result)
+            name +=c.toString();
         return name;
     }
 
     @Override
     public String getCodeAccount() {
-
         String codeAccount = "12764194937465289";
-        int AccountIndex = 17;
-        for (int i = 0; i < 17; i++) {
+        int AccountIndex = codeAccount.length();
+        for (int i = 0; i < codeAccount.length(); i++) {
             char s = codeAccount.charAt(r.nextInt(AccountIndex));
             codeAccount = String.valueOf(s);
-            this.codeAccount = getCodeAccount();
+
         }
         return codeAccount;
     }
@@ -48,17 +52,16 @@ public class CreditCard implements CreditCardy {
         int[] b = new int[help.length];
         for (int i = 0; i < help.length; i++) {
             b[i] = Integer.parseInt(help[i]);
-            codeSumCVV = IntStream.of(b).sum();
+            SumCVV = IntStream.of(b).sum();
         }
-        return codeSumCVV;
+        return SumCVV;
     }
 
     private String generateStringCVV() {
         StringBuilder sb = new StringBuilder();
         sb.append("");
-        sb.append(codeSumCVV);
+        sb.append(SumCVV);
         String CVV = sb.toString();
-        this.CVV = CVV;
         return CVV;
     }
 
@@ -66,7 +69,5 @@ public class CreditCard implements CreditCardy {
     public String toString() {
         return "Name=" + getNameCardholder() + "  CC#=  " + getCodeAccount() + "  CVV=  " + CVV +
                 "  (validated)";
-
-
     }
 }
