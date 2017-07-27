@@ -11,9 +11,6 @@ public class CreditCard implements CreditCardy {
     String CVV;
 
     public CreditCard() {
-
-
-
     }
 
     @Override
@@ -25,29 +22,31 @@ public class CreditCard implements CreditCardy {
     public String getNameCardholder() {
         char[] charname = {'B', 'R', 'A', 'N', 'D', 'S', 'T', 'A', 'D', 'T', 'E', 'R', 'V', 'I', 'K', 'T', 'O', 'R', 'I', 'A'};
         char[] result = new char[30];
-        for (int i = 0; i <result.length; i++) {
+        for (int i = 0; i < result.length; i++) {
             result[i] = charname[r.nextInt(charname.length)];
         }
         String name = " ";
-        for(Character c: result)
-            name +=c.toString();
+        for (Character c : result)
+            name += c.toString();
         return name;
     }
 
     @Override
     public String getCodeAccount() {
-        String codeAccount = "12764194937465289";
-        int AccountIndex = codeAccount.length();
-        for (int i = 0; i < codeAccount.length(); i++) {
-            char s = codeAccount.charAt(r.nextInt(AccountIndex));
-            codeAccount = String.valueOf(s);
-
+        char[] gCA = {'1', '1', '2', '7', '6', '4', '1', '9', '4', '9', '3', '7', '4', '6'};
+        char[] result = new char[30];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = gCA[r.nextInt(gCA.length)];
         }
+        String codeAccount = " ";
+        for (Character c : result)
+            codeAccount += c.toString();
         return codeAccount;
     }
 
     @Override
     public int cumeSumCVV(String codeAccount) {
+        codeAccount = getCodeAccount();
         String[] help = new String[]{codeAccount};
         int[] b = new int[help.length];
         for (int i = 0; i < help.length; i++) {
