@@ -1,13 +1,12 @@
 package MyCreditCard;
 
 import java.util.Random;
-import java.util.stream.IntStream;
 
 public class CreditCard implements CreditCardy {
     private Random r = new Random();
     private String name;
     private int SumCVV;
-    private String codeAccount;
+    private String codeAccount= getCodeAccount();
     String CVV;
 
     public CreditCard() {
@@ -20,7 +19,8 @@ public class CreditCard implements CreditCardy {
 
     @Override
     public String getNameCardholder() {
-        char[] charname = {'B', 'R', 'A', 'N', 'D', 'S', 'T', 'A', 'D', 'T', 'E', 'R', 'V', 'I', 'K', 'T', 'O', 'R', 'I', 'A'};
+        char[] charname = {'B', 'R', 'A', 'N', 'D', 'S', 'T', 'A', 'D', 'T', 'E', 'R', 'V', 'I', 'K', 'T', 'O', 'R',
+                'I', 'A'};
         char[] result = new char[30];
         for (int i = 0; i < result.length; i++) {
             result[i] = charname[r.nextInt(charname.length)];
@@ -46,21 +46,16 @@ public class CreditCard implements CreditCardy {
 
     @Override
     public int cumeSumCVV(String codeAccount) {
-        codeAccount = getCodeAccount();
-        String[] help = new String[]{codeAccount};
-        int[] b = new int[help.length];
-        for (int i = 0; i < help.length; i++) {
-            b[i] = Integer.parseInt(help[i]);
-            SumCVV = IntStream.of(b).sum();
+        this.codeAccount= codeAccount;
+         for (int i = 0; i <codeAccount.length(); i++) {
+            SumCVV +=Character.getNumericValue(codeAccount.charAt(i));
         }
         return SumCVV;
     }
 
-    private String generateStringCVV() {
+    public String generateStringCVV() {
         StringBuilder sb = new StringBuilder();
-        sb.append("");
-        sb.append(SumCVV);
-        String CVV = sb.toString();
+        CVV= sb.append(SumCVV).toString();
         return CVV;
     }
 
