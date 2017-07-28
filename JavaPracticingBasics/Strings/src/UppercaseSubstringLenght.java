@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class UppercaseSubstringLenght {
@@ -12,7 +13,13 @@ public class UppercaseSubstringLenght {
         String a1 = chars[0] + A.substring(1);
         String b1 = chars[1] + B.substring(1);
         System.out.println(lenght);
+        if  (A.compareTo(B) > B.compareTo(A)){
+            System.out.println("Yes");
+        }
+        else System.out.println("NO");
         System.out.println(a1 + " " + b1);
     }
 }
+
+
 
