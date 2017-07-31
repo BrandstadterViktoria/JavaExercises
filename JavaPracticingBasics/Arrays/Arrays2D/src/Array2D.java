@@ -10,5 +10,18 @@ class Array2D {
                 arr[i][j] = in.nextInt();
             }
         }
+        int sum = 0;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                sum += sum + arr[2][2];
+
+            }
+
+            System.out.println(sum);
+        }
     }
 }
+
+
+
+
