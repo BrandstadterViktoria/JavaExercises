@@ -16,7 +16,7 @@ public class ArraySort {
             for (int j = i; j < n; j++) {
                 sum = a[j] + sum;
                 if (sum < 0) {
-                    count ++;
+                    count++;
                 }
             }
         }
