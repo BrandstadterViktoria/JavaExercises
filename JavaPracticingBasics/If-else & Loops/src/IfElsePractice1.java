@@ -8,16 +8,15 @@ public class IfElsePractice1 {
         String ans = "";
         if (n % 2 == 1) {
             ans = "Weird";
-        } else if (n < 5 && n > 2)
+        } else if (n <= 5 && n >= 2)
             ans = "Not Weird";
-        else if (n < 20 && n > 6)
+        else if (n <= 20 && n >= 6)
             ans = "Weird";
         else if (n > 20)
             ans = "Not Weird";
         {
             System.out.println(ans);
         }
-
     }
 }
 
