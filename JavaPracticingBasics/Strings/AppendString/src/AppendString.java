@@ -7,8 +7,9 @@ public class AppendString {
         String c = "- Diablo";
         String newStr = new StringBuffer(a).append(todoText).append(b).append(c).toString();
         System.out.println(newStr);
-
     }
+
+
 }
 
 
