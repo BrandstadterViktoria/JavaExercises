@@ -16,8 +16,12 @@ public class AvValCalculator {
 
     private static double AvValCalculator(List<Integer> numbers) {
         double sum =0;
-        for (Integer mark : numbers) {
-            sum += mark;
+        int numberEvens = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers[i] % 2 == 0) {
+                numberEvens++;
+            }
+            sum += numberEvens;
         }
         return sum/numbers.size();
     }
