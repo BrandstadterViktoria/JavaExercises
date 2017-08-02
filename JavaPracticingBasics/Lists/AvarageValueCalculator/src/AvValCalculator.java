@@ -14,14 +14,14 @@ public class AvValCalculator {
 
     }
 
-    private static double AvValCalculator(List<Integer> numbers) {
-        double sum =0;
+    private static int AvValCalculator(List<Integer> numbers) {
+        int sum =0;
         int numberEvens = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (numbers[i] % 2 == 0) {
-                numberEvens++;
+            if (numbers.get(i) % 2 == 0) {
+                sum += numberEvens;
             }
-            sum += numberEvens;
+            System.out.println(sum/numbers.size());
         }
         return sum/numbers.size();
     }
