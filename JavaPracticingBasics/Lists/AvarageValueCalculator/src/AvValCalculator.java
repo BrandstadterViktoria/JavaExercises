@@ -15,6 +15,10 @@ public class AvValCalculator {
     }
 
     private static double AvValCalculator(List<Integer> numbers) {
-        
+        double sum =0;
+        for (Integer mark : numbers) {
+            sum += mark;
+        }
+        return sum/numbers.size();
     }
 }
