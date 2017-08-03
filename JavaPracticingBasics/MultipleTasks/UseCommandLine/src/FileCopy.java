@@ -1,34 +1,36 @@
-import java.util.Objects;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.Files;
+import java.io.IOException;
 
 public class FileCopy {
     public static void main(String[] args) {
-        try {
-            if (Objects.equals(args[0], " ")) {
-                printUsage();
-            }
-            if (Objects.equals(args[0], "-a")) {
-                addNewTask(args[1]);
-            }
-            if (args[0].equals("-c")) {
-                checkTask(Integer.parseInt(args[1]));
-            }
-            if (args[0].equals("-r")) {
-                removeTask(Integer.parseInt(args[1]));
-            }
-        }catch (IllegalArgumentException ex){
-            argumentErrorHandling();
+
+        if (args.length == 0) {
+            printUsage();
+        }
+        else if (for(String a : args)){
+            copy();}
+
+        else if ( args.length < 2){
+            oneArg();
         }
     }
 
     public static void printUsage() {
         System.out.println(" copy [source] [destination]");
+    }
+
+    public static void copy(String source, String destination) {
+        try {
+            Files.copy(Paths.get(source), Paths.get(destination), StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void oneArg (){
+        System.out.println("No destination provided");
+    }
 }
-
-
