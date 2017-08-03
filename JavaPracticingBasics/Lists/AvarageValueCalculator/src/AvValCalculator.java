@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AvValCalculator {
+
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
         numbers.add(3);
@@ -14,15 +15,16 @@ public class AvValCalculator {
 
     }
 
-    private static int AvValCalculator(List<Integer> numbers) {
+    private static double AvValCalculator(List<Integer> numbers) {
         int sum =0;
-        int numberEvens = 0;
+        int numberOdds = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) % 2 == 0) {
-                sum += numberEvens;
+            if (numbers.get(i) % 2 == 1) {
+                sum += numberOdds;
+                numberOdds++
             }
-            System.out.println(sum/numbers.size());
+            System.out.println(sum/nnumberOdds);
         }
-        return sum/numbers.size();
+        return sum/numberOdds);
     }
 }

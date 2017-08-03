@@ -8,13 +8,14 @@ public class CopyFile {
         public static void main(String[] args) {
             if (args.length == 0) {
                 printWithoutArgument();
+
             } else if (args.length < 2){
                 printWithOneArgument();
 
             } else if (args.length == 2){
                 copy(args[1], args[2]);
             }
-            }
+        }
 
     private static void printWithoutArgument() {
         System.out.println(" copy [source] [destination]");
