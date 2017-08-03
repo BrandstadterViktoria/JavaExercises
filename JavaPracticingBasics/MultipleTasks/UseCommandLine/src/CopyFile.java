@@ -11,7 +11,7 @@ public class CopyFile {
             } else if (args.length < 2){
                 printWithOneArgument();
 
-            } else if (args.length == 3){
+            } else if (args.length == 2){
                 copy(args[1], args[2]);
             }
             }
