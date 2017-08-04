@@ -1,0 +1,15 @@
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+
+public class AvValCalculatorTest {
+    @Test
+    public void main() throws Exception {
+    }
+
+    @Test
+    public void avarageValueCalculator() throws Exception {
+    }
+
+}
