@@ -6,6 +6,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class TotalTest {
+
     @Test
     public void total() throws Exception {
         Total testTotal = new Total();
@@ -16,4 +17,13 @@ public class TotalTest {
         assertEquals(44,testTotal.total(testList));
     }
 
+    @Test
+    public void emptyListTest() throws Exception {
+        Total testTotal = new Total();
+        ArrayList <Integer> testList = new ArrayList <>();
+        testList.add(0);
+        assertEquals(0,testTotal.total(testList));
+    }
+
+    
 }
