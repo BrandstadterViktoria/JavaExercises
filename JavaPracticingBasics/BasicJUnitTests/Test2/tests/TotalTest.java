@@ -25,5 +25,11 @@ public class TotalTest {
         assertEquals(0,testTotal.total(testList));
     }
 
-    
+    @Test
+    public void withOneElement() throws Exception {
+        Total testTotal = new Total ();
+        ArrayList <Integer> testList = new ArrayList <> ();
+        testList.add(6);
+        assertEquals(6,testTotal.total(testList));
+    }
 }
