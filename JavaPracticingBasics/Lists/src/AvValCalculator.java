@@ -11,16 +11,17 @@ public class AvValCalculator {
     }
 
     private static double avarageValueCalculator(List<Integer> numberListForUse) {
-        int sum = 0;
+        int avarage = 0;
         int numberOdds = 0;
+        int sumOfOddNumbers =0;
         for (int i = 0; i < numberListForUse.size(); i++) {
             if (numberListForUse.get(i) % 2 == 1) {
                 numberOdds++;
-                sum += numberListForUse.get(i);
-
+                sumOfOddNumbers += numberListForUse.get(i);
             }
-            System.out.print(sum / numberOdds);
+            avarage = sumOfOddNumbers/numberOdds;
+            System.out.print(avarage);
         }
-        return (sum / numberOdds);
+        return (avarage);
     }
 }
