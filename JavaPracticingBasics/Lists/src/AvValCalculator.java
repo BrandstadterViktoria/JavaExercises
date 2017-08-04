@@ -10,7 +10,7 @@ public class AvValCalculator {
         }
     }
 
-    private static double avarageValueCalculator(List<Integer> numberListForUse) {
+    public int avarageValueCalculator(List<Integer> numberListForUse) {
         int avarage = 0;
         int numberOdds = 0;
         int sumOfOddNumbers =0;
