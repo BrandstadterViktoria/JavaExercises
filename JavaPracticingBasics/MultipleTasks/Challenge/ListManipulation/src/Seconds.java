@@ -10,9 +10,9 @@ public class Seconds {
         System.out.println(setListWithSecondElements(numberList));
     }
 
-    public static List<Integer> setListWithSecondElements(List<Integer> numberListForUse){
+    public static List<Integer> setListWithSecondElements(List<Integer> numberListForUse) {
         List<Integer> secondElements = new ArrayList<>();
-        for (int i = 2; i < numberListForUse.size()+2; i+=2) {
+        for (int i = 2; i < numberListForUse.size() + 2; i += 2) {
             secondElements.add(i);
         }
         return secondElements;
