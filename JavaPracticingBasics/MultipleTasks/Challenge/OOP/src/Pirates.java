@@ -5,34 +5,26 @@ public class Pirates {
 
     static class Pirate {
         String name;
-        boolean hashWoodenLeg;
-        int gold;
+        static boolean hashWoodenLeg;
+        static int gold;
 
         Pirate(String name, boolean hashWoodenLeg, int gold) {
             this.name = name;
             this.hashWoodenLeg = hashWoodenLeg;
             this.gold = gold;
+
         }
 
-        public boolean getHashWoodenLeg() {
-            return this.hashWoodenLeg;
-        }
-
-        public int getGold(){
-            return this.gold;
+        public static int getGold(){
+            return gold;
         }
 
         public String getName(){
             return this.name;
         }
 
-        static class PirateComparator implements Comparator<Pirate> {
-
-            @Override
-            public int compare(Pirate pirate1, Pirate pirate2) {
-                int pirate1
-                return 0;
-            }
+        public static boolean gethashWoodenLeg() {
+            return hashWoodenLeg;
         }
     }
         public static void main(String[] args) {
@@ -51,13 +43,15 @@ public class Pirates {
 
         }
 
-        public List<String> pirateCounter(ArrayList<Pirate> inputPirates) {
-        ArrayList <String> sortedPiratesByName = new ArrayList<>();
-            Collections.sort(inputPirates, new Pirate.PirateComparator());
-            for (Pirate sortedPirates : inputPirates){
-                sortedPiratesByName = new ArrayList<String>(Arrays.asList(sortedPirates.getName().split(",")));
-                System.out.println(sortedPirates.getName());
-        }
-        return sortedPiratesByName;
+    public static ArrayList<Pirate> pirateCounter(ArrayList<Pirate> inputPirates) {
+            ArrayList<Pirate> countedPirates = new ArrayList<>();
+           for (int i = 0; i < inputPirates.size(); i++) {
+               if (Pirate.gethashWoodenLeg() = true && Pirate.getGold() < 15) {
+                   countedPirates.add(inputPirates.get(i));
+               }
+           }
+             System.out.println(countedPirates);
+             return countedPirates;
+
     }
 }
