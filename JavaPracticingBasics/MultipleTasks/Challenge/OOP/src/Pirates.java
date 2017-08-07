@@ -46,11 +46,10 @@ public class Pirates {
     public static ArrayList<Pirate> pirateCounter(ArrayList<Pirate> inputPirates) {
             ArrayList<Pirate> countedPirates = new ArrayList<>();
            for (int i = 0; i < inputPirates.size(); i++) {
-               if (Pirate.gethashWoodenLeg() = true && Pirate.getGold() < 15) {
+               if (Pirate.gethashWoodenLeg() = true && (Pirate.getGold() < 15)) {
                    countedPirates.add(inputPirates.get(i));
                }
            }
-             System.out.println(countedPirates);
              return countedPirates;
 
     }
