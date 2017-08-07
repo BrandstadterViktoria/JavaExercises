@@ -5,22 +5,29 @@ import java.util.List;
 
 public class CountAs {
     public static void main(String[] args) {
+        String myfile = "./resources/TextFileCountAs";
+        countAsInFile(myfile);
+        }
 
-
-    }
-
-    public int countAsInFile(String myFile) {
-        int numberAs;
-        myFile = "./resources/TextFileCountAs";
+    public static int countAsInFile(String myFile) {
+        int numberAs = 0;
+        char a = 'a';
+        int index = 0;
         try {
             Path filePath = Paths.get(myFile);
             List<String> lines = Files.readAllLines(filePath);
-            
+            String myLines = lines.toString();
+            while (index < myLines.length()) {
+                if (myLines.charAt(index) == a) {
+                    numberAs++;
+                }
+                index++;
+            }
 
         } catch (Exception e) {
+
         }
+        System.out.println(numberAs);
         return numberAs;
     }
-
-
 }
