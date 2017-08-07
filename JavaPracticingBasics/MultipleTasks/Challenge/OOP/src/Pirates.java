@@ -33,7 +33,6 @@ public class Pirates {
                 countedPirates.add(inputPirates.get(i));
             }
         }
-        System.out.println(countedPirates);
         return countedPirates;
     }
 }
