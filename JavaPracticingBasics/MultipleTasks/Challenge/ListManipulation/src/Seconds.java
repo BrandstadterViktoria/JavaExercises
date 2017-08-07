@@ -12,7 +12,7 @@ public class Seconds {
 
     public static List<Integer> setListWithSecondElements(List<Integer> numberListForUse){
         List<Integer> secondElements = new ArrayList<>();
-        for (int i = 0; i < numberListForUse.size(); i+=2) {
+        for (int i = 2; i < numberListForUse.size()+2; i+=2) {
             secondElements.add(i);
         }
         return secondElements;
