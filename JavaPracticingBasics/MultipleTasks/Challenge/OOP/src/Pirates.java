@@ -4,15 +4,14 @@ import java.util.*;
 public class Pirates {
 
     static class Pirate {
-        String name;
-        static boolean hashWoodenLeg;
-        static int gold;
+        private static boolean hashWoodenLeg;
+        private static String name;
+        private static int gold;
 
-        Pirate(String name, boolean hashWoodenLeg, int gold) {
+        public Pirate(String name, boolean hashWoodenLeg, int gold) {
             this.name = name;
             this.hashWoodenLeg = hashWoodenLeg;
             this.gold = gold;
-
         }
 
         public static int getGold(){
@@ -24,7 +23,8 @@ public class Pirates {
         }
 
         public static boolean gethashWoodenLeg() {
-            return hashWoodenLeg;
+           return hashWoodenLeg;
+
         }
     }
         public static void main(String[] args) {
@@ -46,7 +46,7 @@ public class Pirates {
     public static ArrayList<Pirate> pirateCounter(ArrayList<Pirate> inputPirates) {
             ArrayList<Pirate> countedPirates = new ArrayList<>();
            for (int i = 0; i < inputPirates.size(); i++) {
-               if (Pirate.gethashWoodenLeg() = true && (Pirate.getGold() < 15)) {
+               if (Pirate.gethashWoodenLeg() && (Pirate.getGold() < 15)) {
                    countedPirates.add(inputPirates.get(i));
                }
            }
