@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -5,9 +6,9 @@ import java.util.List;
 
 public class CountAs {
     public static void main(String[] args) {
-        String myfile = "./resources/TextFileCountAs";
-        countAsInFile(myfile);
-        }
+        String myFile = "./resources/TextFileCountAs";
+        countAsInFile(myFile);
+    }
 
     public static int countAsInFile(String myFile) {
         int numberAs = 0;
@@ -25,6 +26,7 @@ public class CountAs {
             }
 
         } catch (Exception e) {
+            return 0;
 
         }
         System.out.println(numberAs);
