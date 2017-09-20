@@ -17,12 +17,19 @@ public class Anagram {
     }
 
     public static void main(String[] args) {
-        Scanner user_input = new Scanner( System.in );
-        System.out.println("What is String a?");
-        String a = user_input.next();
-        Scanner user_input1 = new Scanner(System.in);
-        System.out.println("What is String b?");
-        String b = user_input1.next();
+        String a;
+        String b;
+        Scanner user_input = new Scanner(System.in);
+        System.out.println("Give me a String a, which length is between 1 and 50?");
+        String aFirst = user_input.nextLine();
+        if(aFirst.length() >= 1 && aFirst.length() <= 50){
+            a = user_input.nextLine();
+        }
+        else {
+            System.out.println("String doesn't meet the first condition, try again");
+        }
+
+
 
 
 
