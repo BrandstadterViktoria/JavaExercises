@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Anagram {
 
@@ -16,6 +17,13 @@ public class Anagram {
     }
 
     public static void main(String[] args) {
+        Scanner user_input = new Scanner( System.in );
+        System.out.println("What is String a?");
+        String a = user_input.next();
+        Scanner user_input1 = new Scanner(System.in);
+        System.out.println("What is String b?");
+        String b = user_input1.next();
+
 
 
     }
