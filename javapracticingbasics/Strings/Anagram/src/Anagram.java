@@ -26,6 +26,15 @@ public class Anagram {
             System.out.println("String length isn't between 1 and 50, pls try again!");
             a = user_input.nextLine();
         }
+
+        Scanner user_input1 = new Scanner(System.in);
+        System.out.println("Give me the next String b, which length is between 1 and 50?");
+        b = user_input1.nextLine();
+        while (!(b.length() >= 1 && b.length() <= 50)) {
+            System.out.println("String length isn't between 1 and 50, pls try again!");
+            b = user_input1.nextLine();
+        }
+
     }
 
 }
