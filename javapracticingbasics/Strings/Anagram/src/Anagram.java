@@ -21,18 +21,11 @@ public class Anagram {
         String b;
         Scanner user_input = new Scanner(System.in);
         System.out.println("Give me a String a, which length is between 1 and 50?");
-        String aFirst = user_input.nextLine();
-        if(aFirst.length() >= 1 && aFirst.length() <= 50){
+        a = user_input.nextLine();
+        while (!(a.length() >= 1 && a.length() <= 50)) {
+            System.out.println("String length isn't between 1 and 50, pls try again!");
             a = user_input.nextLine();
         }
-        else {
-            System.out.println("String doesn't meet the first condition, try again");
-        }
-
-
-
-
-
     }
 
 }
