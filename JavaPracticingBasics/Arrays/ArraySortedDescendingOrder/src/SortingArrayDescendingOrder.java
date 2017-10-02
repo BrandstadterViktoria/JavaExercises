@@ -3,13 +3,15 @@ import java.util.*;
 public class SortingArrayDescendingOrder {
 
     public static void main(String[] args) {
-        printArray(getIntegers());
+        int[] myIntegers = getIntegers(3);
+        int[] sorted = sortIntegers(myIntegers);
+        printArray(sorted);
 
     }
 
-    public static int[] getIntegers() {
+    public static int[] getIntegers(int capacity) {
         Scanner scanner = new Scanner(System.in);
-        int[] myArray = new int[7];
+        int[] myArray = new int[capacity];
         for (int i = 0; i < myArray.length; i++) {
             myArray[i] = scanner.nextInt();
         }
@@ -17,19 +19,26 @@ public class SortingArrayDescendingOrder {
     }
 
     public static void printArray(int[] array) {
-        for (int i = 0; i <array.length ; i++) {
-            System.out.println(array);
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
         }
     }
 
     public static int[] sortIntegers(int[] array) {
-        int[] sortedArray = new int[7];
-        for (int i = 0; i < (array.length - 1); i++) {
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] < array[j + 1]) {
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+        int[] sortedArray = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            sortedArray[i] = array[i];
+        }
+        boolean flag = true;
+        int temp;
+        while (flag) {
+            flag = false;
+            for (int j = 0; j < sortedArray.length - 1; j++) {
+                if (sortedArray[j] < sortedArray[j + 1]) {
+                    temp = sortedArray[j];
+                    sortedArray[j] = sortedArray[j + 1];
+                    sortedArray[j + 1] = temp;
+                    flag = true;
                 }
             }
         }
