@@ -17,10 +17,12 @@ public class SortingArrayDescendingOrder {
     }
 
     public static void printArray(int[] array) {
-        System.out.println(array);
+        for (int i = 0; i <array.length ; i++) {
+            System.out.println(array);
+        }
     }
 
-    public static int[] sortArray(int[] array) {
+    public static int[] sortIntegers(int[] array) {
         int[] sortedArray = new int[7];
         for (int i = 0; i < (array.length - 1); i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
