@@ -12,9 +12,53 @@ public class Players implements Saver {
         this.playerValues = playerValues;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public ArrayList<String> getPlayerValues() {
+        return playerValues;
+    }
+
+    public void setPlayerValues(ArrayList<String> playerValues) {
+        this.playerValues = playerValues;
+    }
+
+    @Override
+    public String toString() {
+
+    }
+
     @Override
     public void getValues(ArrayList<String> savedValues) {
-
 
     }
 
