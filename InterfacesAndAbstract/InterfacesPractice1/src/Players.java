@@ -6,11 +6,12 @@ public class Players implements Saver {
     private String gender;
     private String userName;
     private int hitPoints;
-    private ArrayList<String> playerValues;
 
-    public Players(ArrayList<String> playerValues) {
-        this.playerValues = new ArrayList<>();
-        this.playerValues = playerValues;
+    public Players(String name, String gender, String userName, int hitPoints) {
+        this.name = name;
+        this.gender = gender;
+        this.userName = userName;
+        this.hitPoints = hitPoints;
     }
 
     public String getName() {
@@ -45,14 +46,6 @@ public class Players implements Saver {
         this.hitPoints = hitPoints;
     }
 
-    public ArrayList<String> getPlayerValues() {
-        return playerValues;
-    }
-
-    public void setPlayerValues(ArrayList<String> playerValues) {
-        this.playerValues = playerValues;
-    }
-
     @Override
     public String toString() {
         return "Players{" +
@@ -60,7 +53,6 @@ public class Players implements Saver {
                 ", gender='" + gender + '\'' +
                 ", userName='" + userName + '\'' +
                 ", hitPoints=" + hitPoints +
-                ", playerValues=" + playerValues +
                 '}';
     }
 
@@ -77,6 +69,6 @@ public class Players implements Saver {
         values.add(1,this.gender);
         values.add(2,this.userName);
         values.add(3, String.valueOf(this.hitPoints));
-        return this.playerValues;
+        return values;
     }
 }
