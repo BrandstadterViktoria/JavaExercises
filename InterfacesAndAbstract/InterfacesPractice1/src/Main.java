@@ -7,6 +7,11 @@ public class Main {
         viki.setName("Clark");
         viki.setHitPoints(89);
         saveObject(viki);
+
+        Saver beast = new Monster("Mr. Beast","male","Evil",124);
+        ((Monster)beast).setName("Myrabell");
+        ((Monster)beast).setHitPoints(456);
+        saveObject(beast);
     }
 
     public static void saveObject(Saver objectSaver) {
