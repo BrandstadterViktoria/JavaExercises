@@ -59,9 +59,9 @@ public class Players implements Saver {
     @Override
     public List<String> writeTheValues() {
         List<String> values = new ArrayList<>();
-        values.add(0,this.name);
-        values.add(1,this.gender);
-        values.add(2,this.userName);
+        values.add(0, this.name);
+        values.add(1, this.gender);
+        values.add(2, this.userName);
         values.add(3, String.valueOf(this.hitPoints));
         return values;
     }
