@@ -54,7 +54,13 @@ public class Players implements Saver {
 
     @Override
     public String toString() {
-
+        return "Players{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", userName='" + userName + '\'' +
+                ", hitPoints=" + hitPoints +
+                ", playerValues=" + playerValues +
+                '}';
     }
 
     @Override
