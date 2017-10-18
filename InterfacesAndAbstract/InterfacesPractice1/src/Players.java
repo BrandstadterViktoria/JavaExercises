@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Players implements Saver {
     private String name;
@@ -64,16 +65,16 @@ public class Players implements Saver {
     }
 
     @Override
-    public void getValues(ArrayList<String> savedValues) {
+    public void getValues(List<String> savedValues) {
+        savedValues = writeTheValues();
+
 
     }
 
     @Override
     public ArrayList<String> writeTheValues() {
-        this.playerValues.add(name);
-        this.playerValues.add(gender);
-        this.playerValues.add(userName);
-        this.playerValues.add(hitPoints);
+        List<String> values = new ArrayList<>();
+
         return this.playerValues;
     }
 }
