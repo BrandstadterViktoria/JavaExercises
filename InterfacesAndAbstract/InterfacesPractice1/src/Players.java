@@ -57,12 +57,6 @@ public class Players implements Saver {
     }
 
     @Override
-    public void getValues(List<String> savedValues) {
-        savedValues = writeTheValues();
-
-    }
-
-    @Override
     public List<String> writeTheValues() {
         List<String> values = new ArrayList<>();
         values.add(0,this.name);
