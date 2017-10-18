@@ -68,13 +68,15 @@ public class Players implements Saver {
     public void getValues(List<String> savedValues) {
         savedValues = writeTheValues();
 
-
     }
 
     @Override
-    public ArrayList<String> writeTheValues() {
+    public List<String> writeTheValues() {
         List<String> values = new ArrayList<>();
-
+        values.add(0,this.name);
+        values.add(1,this.gender);
+        values.add(2,this.userName);
+        values.add(3, String.valueOf(this.hitPoints));
         return this.playerValues;
     }
 }
