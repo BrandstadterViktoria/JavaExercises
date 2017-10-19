@@ -24,7 +24,6 @@ public class FizzBuzz {
         }
         return stringList;
 
-
     }
 }
 
