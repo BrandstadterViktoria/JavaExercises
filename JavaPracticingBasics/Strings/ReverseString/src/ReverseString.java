@@ -1,13 +1,17 @@
 
 public class ReverseString {
     public static void main(String[] args) {
-        reverseString(".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI");
+
+        String result = reverseString(".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht" +
+                " fI");
+        System.out.println(result);
     }
-    static void reverseString (String reversed){
-        char [] result;
-        for(int i=reversed.length()-1;i>=0;i--) {
-            System.out.print(reversed.charAt(i));
+    static String reverseString (String s){
+        String reversed = "";
+        for(int i = s.length() - 1; i >= 0; i--) {
+            reversed = String.valueOf(s.charAt(i));
         }
+        return reversed;
     }
 }
 
