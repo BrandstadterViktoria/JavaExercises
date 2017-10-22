@@ -1,7 +1,8 @@
+package MoveZerosAndAsc;
+
 import java.util.Arrays;
 
-public class SingleNumber {
-
+public class Order {
     public static void main(String[] args) {
         int[] test = {7, 19, 5, 0, 9, 2, 0};
         moveZeroes(test);
@@ -24,11 +25,6 @@ public class SingleNumber {
             Arrays.sort(nums, 0, nums.length - count);
 
 
-            for (int iii : nums) {
-                System.out.print(iii);
-
-            }
         }
     }
 }
-
