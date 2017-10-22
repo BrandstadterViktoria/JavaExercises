@@ -1,34 +1,26 @@
-import java.util.Arrays;
 
 public class SingleNumber {
 
     public static void main(String[] args) {
-        int[] test = {7, 19, 5, 0, 9, 2, 0};
-        moveZeroes(test);
+        int[] givenValues = {2, 3, 4, 2, 3, 4, 5, 5, 14};
+        int result = singleNumber(givenValues);
+        System.out.println(result);
 
     }
 
-    public static void moveZeroes(int[] nums) {
-        Arrays.sort(nums);
-        int temp = 0;
-        int count = 0;
-        for (int i = 0; i < nums.length / 2; i++) {
-            if (nums[i] == 0) {
-                count++;
-                temp = nums[nums.length - 1 - i];
-                nums[nums.length - 1 - i] = nums[i];
-                nums[i] = temp;
+    public static int singleNumber(int[] nums) {
+        int returnValue = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int k = 0; k < nums.length; k++) {
+                if (nums[i] != nums[k]) {
+                    returnValue = nums[i];
+                }
             }
         }
-        if (nums[nums.length - 1] == 0) {
-            Arrays.sort(nums, 0, nums.length - count);
-
-
-            for (int iii : nums) {
-                System.out.print(iii);
-
-            }
-        }
+        return returnValue;
     }
 }
+
+
+
 
