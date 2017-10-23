@@ -6,12 +6,11 @@ public class ReverseString {
 
     }
     static String reverseString (String s){
-        String reversed = "";
-        for(int i = s.length() - 1; i >= 0; i--) {
-            reversed = String.valueOf(s.charAt(i));
-            System.out.print(reversed);
-        }
-        return reversed;
+        if (s.length() < = 1){
+            return s;
+        }else{
+
+        return reverseString(s.substring(1, s.legth ))) + s.charAt(0);
     }
 }
 
