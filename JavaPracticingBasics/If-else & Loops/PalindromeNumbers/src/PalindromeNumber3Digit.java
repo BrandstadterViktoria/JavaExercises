@@ -4,22 +4,19 @@ public class PalindromeNumber3Digit {
     Find the largest palindrome made from the product of two 3-digit */
 
     public static void main(String[] args) {
-
-
     }
 
     public void palindromeFinder() {
-        int number = 0;
         for (int i = 999; i >= 500; i--) {
-            for (int j = 999; j >= 500; j--) {
-                do {
-                    number = i * j;
+            for (int j = 998; j >= 500; j--) {
+                int current = i * j;
+                if (String.valueOf(current).equals(new StringBuilder(String.valueOf(current)).reverse().toString())) {
+                    String palindrome = String.valueOf(current);
+                    System.out.println(palindrome);
+
                 }
-                while (String.valueOf(number).equals(new StringBuilder(String.valueOf(number)).reverse().toString()));
 
             }
         }
-        System.out.println(String.valueOf(number));
     }
 }
-
