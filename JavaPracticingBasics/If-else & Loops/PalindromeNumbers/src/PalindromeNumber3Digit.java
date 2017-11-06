@@ -5,15 +5,21 @@ public class PalindromeNumber3Digit {
 
     public static void main(String[] args) {
 
+
     }
 
-    public void palindromeFinder(){
-        for (int i = 100; i <= 500 ; i++) {
-            for (int j = 500; j >= 100 ; j--) {
-                int number = i * j;
+    public void palindromeFinder() {
+        int number = 0;
+        for (int i = 999; i >= 500; i--) {
+            for (int j = 999; j >= 500; j--) {
+                do {
+                    number = i * j;
+                }
+                while (String.valueOf(number).equals(new StringBuilder(String.valueOf(number)).reverse().toString()));
 
             }
-
         }
+        System.out.println(String.valueOf(number));
     }
 }
+
