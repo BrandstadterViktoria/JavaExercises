@@ -1,11 +1,9 @@
 public class EvenNumberProblems {
-
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
     challenge at educational website*/
 
     public static void main(String[] args) {
         sumfOfSquares();
-
     }
 
     public static void sumfOfSquares() {
@@ -14,17 +12,13 @@ public class EvenNumberProblems {
         int sumOfTheSquares = 0;
         int sumOfNumbersSquares;
         int sumOfNumbers = 0;
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 100; i++) {
             int square = i * i;
             sumOfTheSquares += square;
-        }
-        for (int j = 0; j <= 10; j++) {
-            sumOfNumbers += j;
+            sumOfNumbers += i;
         }
         sumOfNumbersSquares = sumOfNumbers * sumOfNumbers;
-
         int difference = sumOfNumbersSquares - sumOfTheSquares;
-
         System.out.println("Sum  of the square of the first 100 natural numbers is: " + sumOfTheSquares + "\n" +
                 "Square of the sum:  " + sumOfNumbersSquares + "\n" +
                 "and the difference is:   " + difference);
