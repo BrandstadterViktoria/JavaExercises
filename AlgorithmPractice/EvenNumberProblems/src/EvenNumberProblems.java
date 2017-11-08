@@ -3,7 +3,9 @@ public class EvenNumberProblems {
     challenge at educational website*/
 
     public static void main(String[] args) {
-        sumfOfSquares();
+
+//        sumfOfSquares();
+        greatesProductOf1000DigitNumber();
     }
 
     public static void sumfOfSquares() {
@@ -24,8 +26,10 @@ public class EvenNumberProblems {
                 "and the difference is:   " + difference);
 
     }
-    public static void greatestNumber(){
+
+    public static void greatesProductOf1000DigitNumber() {
         /* Find the greatest product of five consecutive digits in the 1000-digit number*/
+
         String my1000DigitNumber = "73167176531330624919225119674426574742355349194934 " +
                 "96983520312774506326239578318016984801869478851843 " +
                 "85861560789112949495459501737958331952853208805511 " +
@@ -46,8 +50,24 @@ public class EvenNumberProblems {
                 "84580156166097919133875499200524063689912560717606 " +
                 "05886116467109405077541002256983155200055935729725 " +
                 "71636269561882670428252483600823257530420752963450";
-        
+
+        int product = 0;
+        int temp = 0;
+        for (int i = 0; i < my1000DigitNumber.length() - 4; i++) {
+            product = my1000DigitNumber.charAt(i) + '0' *
+                    my1000DigitNumber.charAt(i + 1) + '0' *
+                    my1000DigitNumber.charAt(i + 2) + '0' *
+                    my1000DigitNumber.charAt(i + 3) + '0' *
+                    my1000DigitNumber.charAt(i + 4) + '0';
+            if (product < temp) {
+                temp = product;
+
+            }
+        }
+
+        System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + product);
     }
 }
+
 
 
