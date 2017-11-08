@@ -5,7 +5,7 @@ public class EvenNumberProblems {
     public static void main(String[] args) {
 
 //        sumfOfSquares();
-        greatesProductOf1000DigitNumber();
+        greatestProductOf1000DigitNumber();
     }
 
     public static void sumfOfSquares() {
@@ -27,7 +27,7 @@ public class EvenNumberProblems {
 
     }
 
-    public static void greatesProductOf1000DigitNumber() {
+    public static void greatestProductOf1000DigitNumber() {
         /* Find the greatest product of five consecutive digits in the 1000-digit number*/
 
         String my1000DigitNumber = "73167176531330624919225119674426574742355349194934 " +
@@ -66,6 +66,12 @@ public class EvenNumberProblems {
         }
 
         System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + product);
+    }
+
+    public static void findTheSumOfPrimes(){
+        /*Find the sum of all the primes below one million*/
+
+        
     }
 }
 
