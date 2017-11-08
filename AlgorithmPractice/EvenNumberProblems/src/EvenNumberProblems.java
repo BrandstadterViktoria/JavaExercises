@@ -5,7 +5,8 @@ public class EvenNumberProblems {
     public static void main(String[] args) {
 
 //        sumfOfSquares();
-        greatestProductOf1000DigitNumber();
+//        greatestProductOf1000DigitNumber();
+        findTheSumOfPrimes();
     }
 
     public static void sumfOfSquares() {
@@ -68,10 +69,38 @@ public class EvenNumberProblems {
         System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + product);
     }
 
-    public static void findTheSumOfPrimes(){
+    public static void findTheSumOfPrimes() {
         /*Find the sum of all the primes below one million*/
 
-        
+        int sumOfPrimes = 0;
+        long range = 1000000;
+        for (int i = 0; i <= 100; i++) {
+            if (isAPrime(i)) {
+                sumOfPrimes += i;
+            }
+        }
+        System.out.println("This is he sum of all the primes below one million:  " + sumOfPrimes);
+
+    }
+
+    public static boolean isAPrime(int prime) {
+        if (prime == 1 || prime == 3) {
+            return true;
+        }
+        if (prime == 5 || prime == 7) {
+            return true;
+        }
+        if (prime == 2){
+            return true;
+        }
+        int sqrtN = (int) Math.sqrt(prime) + 1;
+        for (int i = 2; i < sqrtN; i++) {
+            if (prime % (i - 1)  == 0) {
+                return false;
+            }
+        }
+        return true;
+
     }
 }
 
