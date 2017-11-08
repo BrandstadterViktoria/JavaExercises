@@ -95,7 +95,7 @@ public class EvenNumberProblems {
         }
         int sqrtN = (int) Math.sqrt(prime) + 1;
         for (int i = 2; i < sqrtN; i++) {
-            if (prime % (i - 1)  == 0) {
+            if (prime % i  == 0) {
                 return false;
             }
         }
