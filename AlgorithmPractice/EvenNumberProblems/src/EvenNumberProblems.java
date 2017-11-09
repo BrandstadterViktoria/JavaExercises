@@ -74,7 +74,7 @@ public class EvenNumberProblems {
 
         int sumOfPrimes = 0;
         long range = 1000000;
-        for (int i = 0; i <= 100; i++) {
+        for (int i = 0; i < 100; i++) {
             if (isAPrime(i)) {
                 sumOfPrimes += i;
             }
@@ -101,6 +101,10 @@ public class EvenNumberProblems {
         }
         return true;
 
+    }
+
+    public static void createTriangleNumberWithOver500Factors (){
+        
     }
 }
 
