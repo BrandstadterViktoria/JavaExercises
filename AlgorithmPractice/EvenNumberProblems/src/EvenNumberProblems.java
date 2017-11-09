@@ -91,12 +91,12 @@ public class EvenNumberProblems {
         if (prime == 5 || prime == 7) {
             return true;
         }
-        if (prime == 2){
+        if (prime == 2) {
             return true;
         }
         int sqrtN = (int) Math.sqrt(prime) + 1;
         for (int i = 2; i < sqrtN; i++) {
-            if (prime % i  == 0) {
+            if (prime % i == 0) {
                 return false;
             }
         }
@@ -104,39 +104,44 @@ public class EvenNumberProblems {
 
     }
 
-    public static void createTriangleNumberWithOver500Factors (){
+    public static void createTriangleNumberWithOver500Factors() {
         /*Which is the first triangle number to have over five-hundred factors?*/
         int twos = 0;
         int threes = 0;
         int fives = 0;
         int sevens = 0;
-        int triangleNumber;
-        do {
-            for (int i = 0; i < 50; i++) {
-                triangleNumber = (i * (i + 1)) / 2;
-                if(triangleNumber % 2 == 0);
-                twos = triangleNumber / 2;
-                if (triangleNumber % 3 == 0) {
-                    threes = triangleNumber / 3;
-                }
-                if (triangleNumber % 5 == 0) {
-                    fives = triangleNumber / 5;
-                }
-                if (triangleNumber % 7 == 0) {
-                    sevens = triangleNumber / 7;
-                }
+        int triangleNumber = 0;
+        int divisors = 1;
+
+        for (int i = 1; divisors <= 500; i++) {
+            triangleNumber = ((i * (i + 1)) / 2);
+            while (triangleNumber % 2 < 0) {
+                triangleNumber /= 2;
+                twos++;
             }
-        } while(((twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1)) > 500);
-
-            System.out.println(triangleNumber);
+            while (triangleNumber % 3 == 0) {
+                triangleNumber /= 3;
+                threes++;
+            }
+            while (triangleNumber % 5 == 0) {
+                triangleNumber /= 5;
+                fives++;
+            }
+            while (triangleNumber % 7 == 0) {
+                triangleNumber /= 7;
+                sevens++;
+            }
+            divisors = (twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1);
         }
 
+        System.out.println(triangleNumber);
+    }
 
-            
-        }
+
+}
         
 
-    }
+
 
 
 
