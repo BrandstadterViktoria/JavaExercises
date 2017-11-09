@@ -6,7 +6,8 @@ public class EvenNumberProblems {
 
 //        sumfOfSquares();
 //        greatestProductOf1000DigitNumber();
-        findTheSumOfPrimes();
+//        findTheSumOfPrimes();
+        createTriangleNumberWithOver500Factors();
     }
 
     public static void sumfOfSquares() {
@@ -104,9 +105,39 @@ public class EvenNumberProblems {
     }
 
     public static void createTriangleNumberWithOver500Factors (){
+        /*Which is the first triangle number to have over five-hundred factors?*/
+        int twos = 0;
+        int threes = 0;
+        int fives = 0;
+        int sevens = 0;
+        int triangleNumber;
+        do {
+            for (int i = 0; i < 50; i++) {
+                triangleNumber = (i * (i + 1)) / 2;
+                if(triangleNumber % 2 == 0);
+                twos = triangleNumber / 2;
+                if (triangleNumber % 3 == 0) {
+                    threes = triangleNumber / 3;
+                }
+                if (triangleNumber % 5 == 0) {
+                    fives = triangleNumber / 5;
+                }
+                if (triangleNumber % 7 == 0) {
+                    sevens = triangleNumber / 7;
+                }
+            }
+        } while(((twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1)) > 500);
+
+            System.out.println(triangleNumber);
+        }
+
+
+            
+        }
         
+
     }
-}
+
 
 
 
