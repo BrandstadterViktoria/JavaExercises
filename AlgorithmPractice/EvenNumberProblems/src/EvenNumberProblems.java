@@ -111,30 +111,42 @@ public class EvenNumberProblems {
         int fives = 0;
         int sevens = 0;
         int triangleNumber = 0;
-        int divisors = 1;
+        int divisors = 0;
 
-        for (int i = 1; divisors <= 500; i++) {
-            triangleNumber = ((i * (i + 1)) / 2);
-            while (triangleNumber % 2 < 0) {
-                triangleNumber /= 2;
-                twos++;
+        for (int i = 1; divisors < 502; i++) {
+            if (divisors == 500 || divisors > 500) {
+                System.out.println(triangleNumber);
+            } else {
+                divisors = 0;
+                triangleNumber = ((i * (i + 1)) / 2);
+                if (triangleNumber % 2 == 0) {
+                    while (triangleNumber % 2 == 0) {
+                        triangleNumber /= 2;
+                        twos++;
+                    }
+                }
+                if (triangleNumber % 3 == 0) {
+                    while (triangleNumber % 3 == 0) {
+                        triangleNumber /= 3;
+                        threes++;
+                    }
+                }
+                if (triangleNumber % 5 == 0) {
+                    while (triangleNumber % 5 == 0) {
+                        triangleNumber /= 5;
+                        fives++;
+                    }
+                }
+                if (triangleNumber % 7 == 0) {
+                    while (triangleNumber % 7 == 0) {
+                        triangleNumber /= 7;
+                        sevens++;
+                    }
+                }
+                divisors = (twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1);
+
             }
-            while (triangleNumber % 3 == 0) {
-                triangleNumber /= 3;
-                threes++;
-            }
-            while (triangleNumber % 5 == 0) {
-                triangleNumber /= 5;
-                fives++;
-            }
-            while (triangleNumber % 7 == 0) {
-                triangleNumber /= 7;
-                sevens++;
-            }
-            divisors = (twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1);
         }
-
-        System.out.println(triangleNumber);
     }
 
 
