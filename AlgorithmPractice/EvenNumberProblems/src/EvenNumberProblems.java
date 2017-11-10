@@ -7,7 +7,8 @@ public class EvenNumberProblems {
 //        sumfOfSquares();
 //        greatestProductOf1000DigitNumber();
 //        findTheSumOfPrimes();
-        createTriangleNumberWithOver500Factors();
+        System.out.println(-1 * createTriangleNumberWithOver500Factors());
+
     }
 
     public static void sumfOfSquares() {
@@ -104,27 +105,28 @@ public class EvenNumberProblems {
 
     }
 
-    public static void createTriangleNumberWithOver500Factors() {
+    public static int createTriangleNumberWithOver500Factors() {
         /*Which is the first triangle number to have over five-hundred factors?*/
-        int twos = 0;
-        int threes = 0;
-        int fives = 0;
-        int sevens = 0;
+        int twos;
+        int threes;
+        int fives;
+        int sevens;
         int triangleNumber = 0;
         int divisors = 0;
-        int theTriangleNumber = 0;
+        int theTriangleNumber;
 
         for (int i = 1; divisors < 502; i++) {
-            if (!(divisors == 500 || divisors > 500)) {
+            if (!(divisors == 500)) {
                 triangleNumber = ((i * (i + 1)) / 2);
                 theTriangleNumber = triangleNumber;
+                twos = 0;
+                threes = 0;
+                fives = 0;
+                sevens = 0;
                 if (triangleNumber % 2 == 0) {
                     while (triangleNumber % 2 == 0) {
                         triangleNumber /= 2;
                         twos++;
-                    }
-                    if (twos < 0) {
-                        twos = 1;
                     }
                 }
                 if (triangleNumber % 3 == 0) {
@@ -132,17 +134,11 @@ public class EvenNumberProblems {
                         triangleNumber /= 3;
                         threes++;
                     }
-                    if (threes == 0) {
-                        threes = 1;
-                    }
                 }
                 if (triangleNumber % 5 == 0) {
                     while (triangleNumber % 5 == 0) {
                         triangleNumber /= 5;
                         fives++;
-                    }
-                    if (fives == 0) {
-                        fives = 1;
                     }
                 }
                 if (triangleNumber % 7 == 0) {
@@ -150,22 +146,21 @@ public class EvenNumberProblems {
                         triangleNumber /= 7;
                         sevens++;
                     }
-                    if (sevens == 0) {
-                        sevens = 1;
-                    }
+
                 }
 
-                divisors = twos * threes * fives * sevens;
+                divisors = (twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1);
                 triangleNumber = theTriangleNumber;
 
             } else {
-                System.out.println(triangleNumber);
+                return triangleNumber;
             }
+
         }
-
-
+        return triangleNumber;
     }
 }
+
         
 
 
