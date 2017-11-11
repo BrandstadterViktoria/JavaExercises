@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Stack;
 
 public class EvenNumberProblems {
@@ -267,13 +268,17 @@ public class EvenNumberProblems {
 /*
         Work out the first 10 digits of the sum of the one-hundred 50-digit numbers defined above.
 */
-
-        int sum = 0;
-        for (int i = 0; i < largeNumber.length() - 1; i = i + 50) {
-            String number = largeNumber.substring(i, 50 + i);
-            Integer result = Integer.valueOf(number);
-            sum += result;
+        long sum = 0;
+        long rowNumber;
+        for (int i = 0; i < largeNumber.length() - 1; i += 50) {
+            String number = largeNumber.substring(i, 15 + i);
+            rowNumber = Long.valueOf(number);
+            sum += rowNumber;
         }
+
+        String solution = Long.toString(sum);
+        solution = solution.substring(0, 10);
+        System.out.println(solution);
     }
 }
 
