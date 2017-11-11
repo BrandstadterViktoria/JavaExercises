@@ -8,10 +8,10 @@ public class EvenNumberProblems {
     public static void main(String[] args) {
 
 //        sumfOfSquares();
-        greatestProductOf1000DigitNumber();
-//        findTheSumOfPrimes();
+//        greatestProductOf1000DigitNumber();
+        findTheSumOfPrimes();
 //        System.out.println(-1 * createTriangleNumberWithOver500Factors());
-        findTheFirst10Digits();
+//        findTheFirst10Digits();
 
     }
 
@@ -77,30 +77,28 @@ public class EvenNumberProblems {
     }
 
     public static void findTheSumOfPrimes() {
-        /*Find the sum of all the primes below one million*/
+        /*Find the sum of all the primes below two million*/
 
         int sumOfPrimes = 0;
-        long range = 1000000;
-        for (int i = 0; i < 100; i++) {
+        long range = 2000000;
+        for (int i = 1; i < range; i++) {
             if (isAPrime(i)) {
                 sumOfPrimes += i;
             }
         }
-        System.out.println("This is he sum of all the primes below one million:  " + sumOfPrimes);
+        System.out.println("This is he sum of all the primes below two million:  " + sumOfPrimes);
 
     }
 
     public static boolean isAPrime(int prime) {
-        if (prime == 1 || prime == 3) {
+        if (prime == 2 || prime == 3) {
             return true;
         }
         if (prime == 5 || prime == 7) {
             return true;
         }
-        if (prime == 2) {
-            return true;
-        }
-        int sqrtN = (int) Math.sqrt(prime) + 1;
+
+        int sqrtN = (int) Math.sqrt(prime);
         for (int i = 2; i < sqrtN; i++) {
             if (prime % i == 0) {
                 return false;
