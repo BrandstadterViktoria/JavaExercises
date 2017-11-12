@@ -9,7 +9,7 @@ public class EvenNumberProblems {
 
 //        sumfOfSquares();
 //        greatestProductOf1000DigitNumber();
-        findTheSumOfPrimes();
+        findTheSumOfPrimes(2000000);
 //        System.out.println(-1 * createTriangleNumberWithOver500Factors());
 //        findTheFirst10Digits();
 
@@ -62,10 +62,10 @@ public class EvenNumberProblems {
         int product = 0;
         for (int i = 0; i < my1000DigitNumber.length() - 4; i++) {
             temp = Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i+1)) )*
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i+2))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i+3))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i+4)));
+                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 1))) *
+                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 2))) *
+                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 3))) *
+                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 4)));
 
             if (temp > product) {
                 product = temp;
@@ -76,37 +76,33 @@ public class EvenNumberProblems {
         System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + product);
     }
 
-    public static void findTheSumOfPrimes() {
+    public static void findTheSumOfPrimes(int x) {
         /*Find the sum of all the primes below two million*/
 
-        int sumOfPrimes = 0;
-        long range = 2000000;
-        for (int i = 1; i < range; i++) {
-            if (isAPrime(i)) {
-                sumOfPrimes += i;
+        long sumOfPrimes = 0;
+        boolean[] isAPrime = new boolean[x];
+        for (int i = 2; i < x; i++) {
+            isAPrime[i] = true;
+        }
+
+        for (int i = 2; i < Math.sqrt(x); i++) {
+            if (!isAPrime[i]) {
+                continue;
             }
+            for (int j = i * i; j < x; j += i) {
+                isAPrime[j] = false;
+            }
+        }
+        for (int n = 2; n < x; n++) {
+            if (isAPrime[n]) {
+                sumOfPrimes += n;
+            }
+
         }
         System.out.println("This is he sum of all the primes below two million:  " + sumOfPrimes);
 
     }
 
-    public static boolean isAPrime(int prime) {
-        if (prime == 2 || prime == 3) {
-            return true;
-        }
-        if (prime == 5 || prime == 7) {
-            return true;
-        }
-
-        int sqrtN = (int) Math.sqrt(prime);
-        for (int i = 2; i < sqrtN; i++) {
-            if (prime % i == 0) {
-                return false;
-            }
-        }
-        return true;
-
-    }
 
     public static int createTriangleNumberWithOver500Factors() {
         /*Which is the first triangle number to have over five-hundred factors?*/
