@@ -1,6 +1,3 @@
-import java.math.BigInteger;
-import java.util.Stack;
-
 public class EvenNumberProblems {
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
     challenge at educational website*/
@@ -8,8 +5,8 @@ public class EvenNumberProblems {
     public static void main(String[] args) {
 
 //        sumfOfSquares();
-//        greatestProductOf1000DigitNumber();
-        findTheSumOfPrimes(2000000);
+        greatestProductOf1000DigitNumber();
+//        findTheSumOfPrimes(2000000);
 //        System.out.println(-1 * createTriangleNumberWithOver500Factors());
 //        findTheFirst10Digits();
 
@@ -35,7 +32,7 @@ public class EvenNumberProblems {
     }
 
     public static void greatestProductOf1000DigitNumber() {
-        /* Find the greatest product of five consecutive digits in the 1000-digit number*/
+        /* Find the greatest product of 13 consecutive digits in the 1000-digit number*/
 
         String my1000DigitNumber = "73167176531330624919225119674426574742355349194934" +
                 "96983520312774506326239578318016984801869478851843" +
@@ -58,23 +55,29 @@ public class EvenNumberProblems {
                 "05886116467109405077541002256983155200055935729725" +
                 "71636269561882670428252483600823257530420752963450";
 
-        int temp;
-        int product = 0;
-        for (int i = 0; i < my1000DigitNumber.length() - 4; i++) {
-            temp = Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 1))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 2))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 3))) *
-                    Integer.parseInt(String.valueOf(my1000DigitNumber.charAt(i + 4)));
 
-            if (temp > product) {
-                product = temp;
-
+        long product = 0;
+        for (int i = 0; i < my1000DigitNumber.length() - 12; i++) {
+            long temp = (Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 1))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 2))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 3))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 4))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 5))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 6))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 7))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 8))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 9))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 10))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 11))) *
+                    Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 12))));
+            if (product > temp) {
+                temp = product;
             }
         }
-
         System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + product);
     }
+
 
     public static void findTheSumOfPrimes(int x) {
         /*Find the sum of all the primes below two million*/
