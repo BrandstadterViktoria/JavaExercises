@@ -1,11 +1,15 @@
 public class FibonacciEvenNumbers {
+    /*By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.*/
     public static void main(String[] args) {
-        int sum = 0;
-        int n = 42;
-        for (int i = 1; i <= n; i++) {
-            if (fibonacci(i) % 2 == 0 && fibonacci(i) <= 1000000){
-                System.out.println(fibonacci(i));
-                sum += fibonacci(i);
+
+        int [] fibonacciNumbers = new int [4000000];
+        long sum = 0;
+        for (int i = 2; i < 4000000; i++) {
+          fibonacciNumbers[i] = fibonacci(i);
+        }
+        for (int i = 2; i <= fibonacciNumbers.length - 1 ; i++) {
+            if(fibonacciNumbers[i] % 2 == 0){
+                sum += fibonacciNumbers[i];
             }
         }
         System.out.println(sum);
