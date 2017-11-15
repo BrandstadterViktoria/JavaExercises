@@ -7,8 +7,9 @@ public class EvenNumberProblems {
 //        sumfOfSquares();
 //        greatestProductOf1000DigitNumber();
 //        findTheSumOfPrimes(2000000);
-        System.out.println(createTriangleNumberWithOver500Factors());
-//        findTheFirst10Digits();
+//        System.out.println(createTriangleNumberWithOver500Factors());
+//       findTheFirst10Digits();
+        multiplesof3and5();
 
     }
 
@@ -270,6 +271,7 @@ public class EvenNumberProblems {
         long rowNumber;
         for (int i = 0; i < largeNumber.length() - 1; i += 50) {
             String number = largeNumber.substring(i, 15 + i);
+            System.out.println(number);
             rowNumber = Long.valueOf(number);
             sum += rowNumber;
         }
@@ -277,6 +279,16 @@ public class EvenNumberProblems {
         String solution = Long.toString(sum);
         solution = solution.substring(0, 10);
         System.out.println(solution);
+    }
+
+    public static void multiplesof3and5(){
+        int sum = 0;
+        for (int i = 0; i < 1000 ; i++) {
+            if(i % 3 == 0 || i % 5 == 0){
+                sum += i;
+            }
+        }
+        System.out.println(sum);
     }
 }
 
