@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class EvenNumberProblems {
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
     challenge at educational website*/
@@ -9,7 +12,8 @@ public class EvenNumberProblems {
 //        findTheSumOfPrimes(2000000);
 //        System.out.println(createTriangleNumberWithOver500Factors());
 //       findTheFirst10Digits();
-        multiplesof3and5();
+ //       multiplesof3and5();
+        largestPrimeFactor();
 
     }
 
@@ -290,6 +294,22 @@ public class EvenNumberProblems {
         }
         System.out.println(sum);
     }
+
+    public static void largestPrimeFactor(){
+        /*What is the largest prime factor of the number  ?*/
+      BigInteger number = new BigInteger("600851475143");
+      BigDecimal thePrimeNumber = new BigDecimal(number);
+      BigDecimal divisor2 = new BigDecimal(2);
+      BigDecimal divisor3 = new BigDecimal(3);
+      BigDecimal divisor5 = new BigDecimal(5);
+      BigDecimal divisor7 = new BigDecimal(7);
+
+
+      BigDecimal result = thePrimeNumber.divide(divisor2);
+        System.out.println(result);
+    }
+
+
 }
 
 
