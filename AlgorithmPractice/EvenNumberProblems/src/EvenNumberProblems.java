@@ -1,5 +1,8 @@
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.LongStream;
 
 public class EvenNumberProblems {
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
@@ -12,7 +15,7 @@ public class EvenNumberProblems {
 //        findTheSumOfPrimes(2000000);
 //        System.out.println(createTriangleNumberWithOver500Factors());
 //       findTheFirst10Digits();
- //       multiplesof3and5();
+        //       multiplesof3and5();
         largestPrimeFactor();
 
     }
@@ -285,32 +288,53 @@ public class EvenNumberProblems {
         System.out.println(solution);
     }
 
-    public static void multiplesof3and5(){
+    public static void multiplesof3and5() {
         int sum = 0;
-        for (int i = 0; i < 1000 ; i++) {
-            if(i % 3 == 0 || i % 5 == 0){
+        for (int i = 0; i < 1000; i++) {
+            if (i % 3 == 0 || i % 5 == 0) {
                 sum += i;
             }
         }
         System.out.println(sum);
     }
 
-    public static void largestPrimeFactor(){
-        /*What is the largest prime factor of the number  ?*/
-      BigInteger number = new BigInteger("600851475143");
-      BigDecimal thePrimeNumber = new BigDecimal(number);
-      BigDecimal divisor2 = new BigDecimal(2);
-      BigDecimal divisor3 = new BigDecimal(3);
-      BigDecimal divisor5 = new BigDecimal(5);
-      BigDecimal divisor7 = new BigDecimal(7);
+    public static void largestPrimeFactor() {
 
+        long NUMBER = 600851475143L;
+        long result = 0;
+        for(int i = 2; i < NUMBER; i++) {
+            if(NUMBER % i == 0 && isPrime(NUMBER / i)) {
+                result = NUMBER / i;
+                break;
+            }
+        }
+        System.out.println("Result: " + result);
+    }
 
-      BigDecimal result = thePrimeNumber.divide(divisor2);
-        System.out.println(result);
+    private static boolean isPrime(long l) {
+        for(long n = 2, max = l / 2 ; n < max; n++) {
+            if(l % n == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
