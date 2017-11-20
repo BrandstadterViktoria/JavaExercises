@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class EvenNumberProblems {
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
     challenge at educational website*/
@@ -10,7 +13,9 @@ public class EvenNumberProblems {
 //        System.out.println(createTriangleNumberWithOver500Factors());
 //       findTheFirst10Digits();
         //       multiplesof3and5();
-        largestPrimeFactor();
+//        largestPrimeFactor();
+        PrimeFactorization(20);
+
 
     }
 
@@ -317,27 +322,43 @@ public class EvenNumberProblems {
     public static void smallestMultiple() {
         /*What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?*/
 
+        List<Integer> primeFactor = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+
+        for (int i = 1; i <= 20; i++) {
+            PrimeFactorization(i);
+
+        }
+
     }
 
-    public static void isAPrimeSmallestMultiple(int myNumbers) {
+    public static List<Integer> PrimeFactorization(int myNumbers) {
 
         boolean[] primes = new boolean[myNumbers];
+        List<Integer> primeNumbers = new ArrayList<>();
 
-        for (int i = 2; i <= myNumbers; i++) {
+        for (int i = 2; i < myNumbers ; i++) {
             primes[i] = true;
         }
 
-        for (int i = 0; i <= myNumbers; i++) {
+        for (int i = 2; i < Math.sqrt(myNumbers); i++) {
             if (!primes[i]) {
                 continue;
             }
-            for (int j = i * i; j <= myNumbers; j += i) {
-
+            for (int j = i * i; j < myNumbers; j += i) {
+                primes[j] = false;
+                
             }
 
         }
 
+        for (int i = 0; i <= primes.length - 1 ; i++) {
+            if(primes[i]){
+                primeNumbers.add(i);
+        }
     }
+
+    return primeNumbers;
 
 }
 }
