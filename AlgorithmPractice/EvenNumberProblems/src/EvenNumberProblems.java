@@ -1,9 +1,3 @@
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.LongStream;
-
 public class EvenNumberProblems {
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
     challenge at educational website*/
@@ -302,8 +296,8 @@ public class EvenNumberProblems {
 
         long NUMBER = 600851475143L;
         long result = 0;
-        for(int i = 2; i < NUMBER; i++) {
-            if(NUMBER % i == 0 && isPrime(NUMBER / i)) {
+        for (int i = 2; i < NUMBER; i++) {
+            if (NUMBER % i == 0 && isPrime(NUMBER / i)) {
                 result = NUMBER / i;
                 break;
             }
@@ -312,15 +306,40 @@ public class EvenNumberProblems {
     }
 
     private static boolean isPrime(long l) {
-        for(long n = 2, max = l / 2 ; n < max; n++) {
-            if(l % n == 0) {
+        for (long n = 2, max = l / 2; n < max; n++) {
+            if (l % n == 0) {
                 return false;
             }
         }
         return true;
     }
 
+    public static void smallestMultiple() {
+        /*What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?*/
 
+    }
+
+    public static void isAPrimeSmallestMultiple(int myNumbers) {
+
+        boolean[] primes = new boolean[myNumbers];
+
+        for (int i = 2; i <= myNumbers; i++) {
+            primes[i] = true;
+        }
+
+        for (int i = 0; i <= myNumbers; i++) {
+            if (!primes[i]) {
+                continue;
+            }
+            for (int j = i * i; j <= myNumbers; j += i) {
+
+            }
+
+        }
+
+    }
+
+}
 }
 
 
