@@ -326,7 +326,7 @@ public class EvenNumberProblems {
 
         double theMostTwos = 0;
         double theMostTrees = 0;
-        double theMostfives = 0;
+        double theMostFives = 0;
         double theMostSevens = 0;
 
         List<Integer> singleDivisors = new ArrayList<>();
@@ -361,8 +361,8 @@ public class EvenNumberProblems {
                     fives++;
                 }
             }
-            if (fives > theMostfives) {
-                theMostfives = fives;
+            if (fives > theMostFives) {
+                theMostFives = fives;
             }
             if (temp % 7 == 0) {
                 while (temp % 7 == 0) {
@@ -379,7 +379,7 @@ public class EvenNumberProblems {
             }
         }
 
-        double smallestMultiple = Math.pow(2.0, theMostTwos) * Math.pow(3, theMostTrees) * Math.pow(5, theMostfives) * Math.pow(7, theMostSevens);
+        double smallestMultiple = Math.pow(2.0, theMostTwos) * Math.pow(3, theMostTrees) * Math.pow(5, theMostFives) * Math.pow(7, theMostSevens);
         int result = (int) smallestMultiple;
         for (int j = 0; j <= singleDivisors.size() - 1; j++) {
             result *= singleDivisors.get(j);
