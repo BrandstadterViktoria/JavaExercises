@@ -393,7 +393,6 @@ public class EvenNumberProblems {
 
         int counter = 0;
         int x = 80000000;
-        int prime10001 = 0;
         boolean[] isAPrime = new boolean[x];
         for (int i = 2; i < x; i++) {
             isAPrime[i] = true;
