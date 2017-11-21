@@ -17,7 +17,6 @@ public class EvenNumberProblems {
         smallestMultiple();
 
 
-
     }
 
     public static void sumfOfSquares() {
@@ -333,7 +332,7 @@ public class EvenNumberProblems {
 
         List<Integer> singleDivisors = new ArrayList<>();
 
-        for (int i = 4; i <= 20; i ++) {
+        for (int i = 4; i <= 20; i++) {
             int twos = 0;
             int threes = 0;
             int fives = 0;
@@ -345,7 +344,7 @@ public class EvenNumberProblems {
                     twos++;
                 }
             }
-            if(twos > theMostTwos) {
+            if (twos > theMostTwos) {
                 theMostTwos = twos;
             }
             if (temp % 3 == 0) {
@@ -354,7 +353,7 @@ public class EvenNumberProblems {
                     threes++;
                 }
             }
-            if(threes > theMostTrees){
+            if (threes > theMostTrees) {
                 theMostTrees = threes;
             }
             if (temp % 5 == 0) {
@@ -363,17 +362,37 @@ public class EvenNumberProblems {
                     fives++;
                 }
             }
+            if (fives > theMostfives) {
+                theMostfives = fives;
+            }
             if (temp % 7 == 0) {
                 while (temp % 7 == 0) {
                     temp /= 7;
                     sevens++;
                 }
-            }else {
-                 if(temp >= 1){
-                 singleDivisors.add(temp);
-                 }
+            }
+            if (sevens > theMostSevens) {
+                theMostSevens = sevens;
+            } else {
+                if (!(temp == 1)) {
+                    singleDivisors.add(temp);
+                }
+            }
         }
+        int smallestMultiple = (2 ^ theMostTwos) * (3 ^ theMostTrees) * (5 ^ theMostfives) * (7 ^ theMostSevens);
+
+
+        for (int j = 0; j <= singleDivisors.size() - 1; j++) {
+           smallestMultiple *= singleDivisors.get(j);
+        }
+
+        System.out.println(smallestMultiple);
     }
+}
+
+
+
+
 
 
 //        List<Integer> primes = new ArrayList<>();
@@ -383,7 +402,7 @@ public class EvenNumberProblems {
 //
 //        }
 
-        }
+
 
 
 /*
@@ -417,7 +436,7 @@ public class EvenNumberProblems {
         return primeNumbers;
 */
 
-    }
+
 
 
 
