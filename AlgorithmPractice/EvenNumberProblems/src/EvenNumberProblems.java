@@ -14,7 +14,8 @@ public class EvenNumberProblems {
 //       findTheFirst10Digits();
         //       multiplesof3and5();
 //        largestPrimeFactor();
-        smallestMultiple();
+//        smallestMultiple();
+        defineThe10001StPrime();
 
 
     }
@@ -378,7 +379,7 @@ public class EvenNumberProblems {
             }
         }
 
-        double smallestMultiple = Math.pow(2.0 , theMostTwos) * Math.pow(3,theMostTrees) * Math.pow(5,theMostfives) * Math.pow(7, theMostSevens);
+        double smallestMultiple = Math.pow(2.0, theMostTwos) * Math.pow(3, theMostTrees) * Math.pow(5, theMostfives) * Math.pow(7, theMostSevens);
         int result = (int) smallestMultiple;
         for (int j = 0; j <= singleDivisors.size() - 1; j++) {
             result *= singleDivisors.get(j);
@@ -386,7 +387,39 @@ public class EvenNumberProblems {
 
         System.out.println(result);
     }
+
+    public static void defineThe10001StPrime() {
+//        What is the 10 001st prime number?
+
+        int counter = 0;
+        int x = 80000000;
+        int prime10001 = 0;
+        boolean[] isAPrime = new boolean[x];
+        for (int i = 2; i < x; i++) {
+            isAPrime[i] = true;
+        }
+
+        for (int i = 2; i < Math.sqrt(x); i++) {
+            if (!isAPrime[i]) {
+                continue;
+            }
+            for (int j = i * i; j < x; j += i) {
+                isAPrime[j] = false;
+            }
+        }
+
+        for (int i = 0; i < isAPrime.length; i++) {
+            if (isAPrime[i]) {
+                counter++;
+            }
+            if (isAPrime[i] && counter == 10001) {
+                System.out.println(i);
+            }
+        }
+    }
 }
+
+
 
 
 
