@@ -8,14 +8,14 @@ public class EvenNumberProblems {
     public static void main(String[] args) {
 
 //        sumfOfSquares();
-//        greatestProductOf1000DigitNumber();
+        greatestProductOf1000DigitNumber();
 //        findTheSumOfPrimes(2000000);
 //        System.out.println(createTriangleNumberWithOver500Factors());
 //       findTheFirst10Digits();
         //       multiplesof3and5();
 //        largestPrimeFactor();
 //        smallestMultiple();
-        defineThe10001StPrime();
+//        defineThe10001StPrime();
 
 
     }
@@ -64,9 +64,10 @@ public class EvenNumberProblems {
                 "71636269561882670428252483600823257530420752963450";
 
 
+        long temp = 0;
         long product = 0;
-        for (int i = 0; i < my1000DigitNumber.length() - 12; i++) {
-            long temp = (Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i))) *
+        for (int i = 0; i < my1000DigitNumber.length() - 13; i++) {
+            product = (Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i))) *
                     Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 1))) *
                     Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 2))) *
                     Long.parseLong(String.valueOf(my1000DigitNumber.charAt(i + 3))) *
@@ -83,7 +84,8 @@ public class EvenNumberProblems {
                 temp = product;
             }
         }
-        System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + product);
+
+        System.out.println("This is the greatest product of five consecutive digits in the 1000-digit number: " + temp);
     }
 
 
