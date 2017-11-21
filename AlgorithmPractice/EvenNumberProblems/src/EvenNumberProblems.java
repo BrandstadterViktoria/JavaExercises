@@ -323,8 +323,6 @@ public class EvenNumberProblems {
         /*What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
         * My notes:*/
 
-//        int [] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-
         double theMostTwos = 0;
         double theMostTrees = 0;
         double theMostfives = 0;
@@ -390,51 +388,6 @@ public class EvenNumberProblems {
     }
 }
 
-
-
-
-
-
-//        List<Integer> primes = new ArrayList<>();
-//
-//        for (int i = 4; i < 21; i++) {
-//            primes = primeFactorization(i);
-//
-//        }
-
-
-
-
-/*
-
-    public static List<Integer> primeFactorization() {
-        int myNumbers = 21;
-        boolean[] primes = new boolean[myNumbers];
-        List<Integer> primeNumbers = new ArrayList<>();
-
-        for (int i = 0; i < myNumbers; i++) {
-            primes[i] = true;
-        }
-
-
-        for (int i = 1; i < Math.sqrt(myNumbers); i++) {
-            if (!primes[i]) {
-                continue;
-            }
-            for (int j = i * i; j < myNumbers; j += i) {
-                primes[j] = false;
-            }
-        }
-        for (int i = 0; i <= primes.length - 1; i++) {
-            if (primes[i]) {
-
-                primeNumbers.add(i);
-            }
-        }
-
-        System.out.println(primeNumbers);
-        return primeNumbers;
-*/
 
 
 
