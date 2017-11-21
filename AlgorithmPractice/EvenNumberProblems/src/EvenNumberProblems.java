@@ -14,7 +14,8 @@ public class EvenNumberProblems {
 //       findTheFirst10Digits();
         //       multiplesof3and5();
 //        largestPrimeFactor();
-        PrimeFactorization(20);
+        smallestMultiple();
+
 
 
     }
@@ -320,48 +321,106 @@ public class EvenNumberProblems {
     }
 
     public static void smallestMultiple() {
-        /*What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?*/
+        /*What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+        * My notes:*/
 
-        List<Integer> primeFactor = new ArrayList<>();
-        List<Integer> temp = new ArrayList<>();
+//        int [] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
-        for (int i = 1; i <= 20; i++) {
-            PrimeFactorization(i);
+        int theMostTwos = 0;
+        int theMostTrees = 0;
+        int theMostfives = 0;
+        int theMostSevens = 0;
+
+        List<Integer> singleDivisors = new ArrayList<>();
+
+        for (int i = 4; i <= 20; i ++) {
+            int twos = 0;
+            int threes = 0;
+            int fives = 0;
+            int sevens = 0;
+            int temp = i;
+            if (temp % 2 == 0) {
+                while (temp % 2 == 0) {
+                    temp /= 2;
+                    twos++;
+                }
+            }
+            if(twos > theMostTwos) {
+                theMostTwos = twos;
+            }
+            if (temp % 3 == 0) {
+                while (temp % 3 == 0) {
+                    temp /= 3;
+                    threes++;
+                }
+            }
+            if(threes > theMostTrees){
+                theMostTrees = threes;
+            }
+            if (temp % 5 == 0) {
+                while (temp % 5 == 0) {
+                    temp /= 5;
+                    fives++;
+                }
+            }
+            if (temp % 7 == 0) {
+                while (temp % 7 == 0) {
+                    temp /= 7;
+                    sevens++;
+                }
+            }else {
+                 if(temp >= 1){
+                 singleDivisors.add(temp);
+                 }
+        }
+    }
+
+
+//        List<Integer> primes = new ArrayList<>();
+//
+//        for (int i = 4; i < 21; i++) {
+//            primes = primeFactorization(i);
+//
+//        }
 
         }
 
-    }
 
-    public static List<Integer> PrimeFactorization(int myNumbers) {
+/*
 
+    public static List<Integer> primeFactorization() {
+        int myNumbers = 21;
         boolean[] primes = new boolean[myNumbers];
         List<Integer> primeNumbers = new ArrayList<>();
 
-        for (int i = 2; i < myNumbers ; i++) {
+        for (int i = 0; i < myNumbers; i++) {
             primes[i] = true;
         }
 
-        for (int i = 2; i < Math.sqrt(myNumbers); i++) {
+
+        for (int i = 1; i < Math.sqrt(myNumbers); i++) {
             if (!primes[i]) {
                 continue;
             }
             for (int j = i * i; j < myNumbers; j += i) {
                 primes[j] = false;
-                
             }
-
         }
+        for (int i = 0; i <= primes.length - 1; i++) {
+            if (primes[i]) {
 
-        for (int i = 0; i <= primes.length - 1 ; i++) {
-            if(primes[i]){
                 primeNumbers.add(i);
+            }
         }
+
+        System.out.println(primeNumbers);
+        return primeNumbers;
+*/
+
     }
 
-    return primeNumbers;
 
-}
-}
+
 
 
 
