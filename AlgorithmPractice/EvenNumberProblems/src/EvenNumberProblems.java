@@ -325,14 +325,14 @@ public class EvenNumberProblems {
 
 //        int [] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
-        int theMostTwos = 0;
-        int theMostTrees = 0;
-        int theMostfives = 0;
-        int theMostSevens = 0;
+        double theMostTwos = 0;
+        double theMostTrees = 0;
+        double theMostfives = 0;
+        double theMostSevens = 0;
 
         List<Integer> singleDivisors = new ArrayList<>();
 
-        for (int i = 4; i <= 20; i++) {
+        for (int i = 1; i <= 20; i++) {
             int twos = 0;
             int threes = 0;
             int fives = 0;
@@ -379,14 +379,14 @@ public class EvenNumberProblems {
                 }
             }
         }
-        int smallestMultiple = (2 ^ theMostTwos) * (3 ^ theMostTrees) * (5 ^ theMostfives) * (7 ^ theMostSevens);
 
-
+        double smallestMultiple = Math.pow(2.0 , theMostTwos) * Math.pow(3,theMostTrees) * Math.pow(5,theMostfives) * Math.pow(7, theMostSevens);
+        int result = (int) smallestMultiple;
         for (int j = 0; j <= singleDivisors.size() - 1; j++) {
-           smallestMultiple *= singleDivisors.get(j);
+            result *= singleDivisors.get(j);
         }
 
-        System.out.println(smallestMultiple);
+        System.out.println(result);
     }
 }
 
