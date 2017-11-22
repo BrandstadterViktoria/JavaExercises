@@ -7,11 +7,16 @@ public class ProjectEulerProblems11_30 {
 
     public static void largestProductInAGrid_Problem11() {
 
-    /*What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally)
+    /*What is the greatest product of 4 adjacent numbers in the same direction (up, down, left, right, or diagonally)
      in the 20×20 grid?*/
 
+        int multipleUpAndDown = 0;
+        int multipleLeftAndRight = 0;
+        int multipleDiagonally = 0;
+        int temp;
+
         int [] grid = {8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
-                 49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,0,
+                49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,0,
                 81,49,31,73,55,79,14,29,93,71,40,67,53,88,30,3,49,13,36,65,
                 52,70,95,23,4,60,11,42,69,24,68,56,1,32,56,71,37,2,36,91,
                 22,31,16,71,51,67,63,89,41,92,36,54,22,40,40,28,66,33,13,80,
@@ -31,8 +36,25 @@ public class ProjectEulerProblems11_30 {
                 20,73,35,29,78,31,90,1,74,31,49,71,48,86,81,16,23,57,5,54,
                 1,70,54,71,83,51,54,69,16,92,33,48,61,43,52,1,89,19,67,48};
 
-        
-
+        for (int i = 0; i < grid.length - 60 ; i++) {
+            temp = grid[i] * grid[i+20] * grid[i+40] * grid[i+60];
+            if(temp > multipleUpAndDown){
+                multipleUpAndDown = temp;
+            }
+        }
+        for (int i = 0; i < grid.length - 3 ; i++) {
+            temp = grid[i] * grid[i+1] *grid[i+2] * grid[i+3];
+            if(temp > multipleLeftAndRight){
+                multipleLeftAndRight = temp;
+            }
+        }
+        for (int i = 0; i < grid.length - 63; i++) {
+            temp = grid[i] * grid[i+21] * grid[i+42]* grid[i+63];
+            if(temp > multipleDiagonally){
+                multipleDiagonally = temp;
+            }
+        }
+        System.out.println("diagonally:  " + multipleDiagonally + "  left and right:  " +  multipleLeftAndRight + "  up and down" + multipleUpAndDown);
     }
 }
 
