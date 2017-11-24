@@ -8,11 +8,10 @@ public class EvenNumberProblems {
     public static void main(String[] args) {
 
 //        sumfOfSquares();
-        greatestProductOf1000DigitNumber();
+ //       greatestProductOf1000DigitNumber();
 //        findTheSumOfPrimes(2000000);
-//        System.out.println(createTriangleNumberWithOver500Factors());
-//       findTheFirst10Digits();
-        //       multiplesof3and5();
+//        findTheFirst10Digits();
+//        multiplesof3and5();
 //        largestPrimeFactor();
 //        smallestMultiple();
 //        defineThe10001StPrime();
@@ -116,61 +115,6 @@ public class EvenNumberProblems {
 
     }
 
-
-    public static long createTriangleNumberWithOver500Factors() {
-        /*Which is the first triangle number to have over five-hundred factors?*/
-        int twos;
-        int threes;
-        int fives;
-        int sevens;
-        long triangleNumber = 0;
-        int divisors = 0;
-        long theTriangleNumber;
-
-        for (int i = 1; divisors < 502; i++) {
-            if (!(divisors == 500)) {
-                triangleNumber = ((i * (i + 1)) / 2);
-                theTriangleNumber = triangleNumber;
-                twos = 0;
-                threes = 0;
-                fives = 0;
-                sevens = 0;
-                if (triangleNumber % 2 == 0) {
-                    while (triangleNumber % 2 == 0) {
-                        triangleNumber /= 2;
-                        twos++;
-                    }
-                }
-                if (triangleNumber % 3 == 0) {
-                    while (triangleNumber % 3 == 0) {
-                        triangleNumber /= 3;
-                        threes++;
-                    }
-                }
-                if (triangleNumber % 5 == 0) {
-                    while (triangleNumber % 5 == 0) {
-                        triangleNumber /= 5;
-                        fives++;
-                    }
-                }
-                if (triangleNumber % 7 == 0) {
-                    while (triangleNumber % 7 == 0) {
-                        triangleNumber /= 7;
-                        sevens++;
-                    }
-
-                }
-
-                divisors = (twos + 1) * (threes + 1) * (fives + 1) * (sevens + 1);
-                triangleNumber = theTriangleNumber;
-
-            } else {
-                return triangleNumber;
-            }
-
-        }
-        return triangleNumber;
-    }
 
     public static void findTheFirst10Digits() {
         String largeNumber = "37107287533902102798797998220837590246510135740250" +
