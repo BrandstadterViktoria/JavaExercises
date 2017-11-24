@@ -54,7 +54,12 @@ public class ProjectEulerProblems11_30 {
                 multipleDiagonally = temp;
             }
         }
-        System.out.println("diagonally:  " + multipleDiagonally + "  left and right:  " +  multipleLeftAndRight + "  up and down" + multipleUpAndDown);
+        System.out.println("diagonally:  " + multipleDiagonally + "  left and right:  " +  multipleLeftAndRight
+                + "  up and down " + multipleUpAndDown);
+    }
+
+    public static void highlyDivisibleTriangularNumber_Problem12(){
+        
     }
 }
 
