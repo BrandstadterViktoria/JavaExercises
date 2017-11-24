@@ -64,10 +64,11 @@ public class ProjectEulerProblems11_30 {
     public static void highlyDivisibleTriangularNumber_Problem12() {
         /*What is the value of the first triangle number to have over five hundred divisors?*/
 
+        final long startTime = System.nanoTime();
         int triangleNumber;
         int result = 0;
         List<Integer> divisors = new ArrayList<>();
-        for (int i = 1; divisors.size() <= 50; i++) {
+        for (int i = 1; divisors.size() < 400; i++) {
             triangleNumber = (i * (i + 1)) / 2;
             result = triangleNumber;
             divisors.clear();
