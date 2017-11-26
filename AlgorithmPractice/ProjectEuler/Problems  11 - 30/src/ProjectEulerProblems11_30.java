@@ -85,16 +85,18 @@ public class ProjectEulerProblems11_30
 
     public static void longestCollatzSequence_Problem14() {
 
-        int counterEvenNumbers = 0;
-        int counterOddNumbers = 0;
+        int counterEvenNumbers;
+        int counterOddNumbers;
         int nextNumber;
         int terms;
         int temp = 0;
         int startingPoint = 0;
 
-        for (int j = 5; j > 2; j--) {
+        for (int j = 1000; j < 1000000 ; j++) {
             nextNumber = j;
-            while (nextNumber >= 2) {
+            counterEvenNumbers = 0;
+            counterOddNumbers = 0;
+            while (nextNumber != 1) {
                 int i = nextNumber;
                 if (nextNumber % 2 == 0) {
                     nextNumber = i / 2;
