@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectEulerProblems11_30 {
+public class ProjectEulerProblems11_30
+/*Problem_13 solved in an other class*/ {
 
     public static void main(String[] args) {
 //        largestProductInAGrid_Problem11();
-        highlyDivisibleTriangularNumber_Problem12();
+// highlyDivisibleTriangularNumber_Problem12();
+        longestCollatzSequence();
     }
 
     public static void largestProductInAGrid_Problem11() {
@@ -79,6 +81,35 @@ public class ProjectEulerProblems11_30 {
             }
         }
         System.out.println(result);
+    }
+
+    public static void longestCollatzSequence() {
+
+        int counterEvenNumbers = 0;
+        int counterOddNumbers = 0;
+        int nextNumber;
+        int terms;
+        int temp = 0;
+
+        for (int j = 6; j > 2; j--) {
+            nextNumber = j;
+            while (nextNumber >= 2) {
+                int i = nextNumber;
+                if (nextNumber % 2 == 0) {
+                    nextNumber = i / 2;
+                    counterEvenNumbers++;
+                }
+                else if (!(nextNumber % 2 == 0)) {
+                    nextNumber = 3 * i + 1;
+                    counterOddNumbers++;
+                }
+            }
+            terms = counterEvenNumbers + counterOddNumbers;
+            if(terms > temp);
+            temp = terms;
+        }
+
+        System.out.println(temp);
     }
 }
 
