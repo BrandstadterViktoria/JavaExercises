@@ -7,23 +7,28 @@ public class ProjectEulerProblems11_30
     public static void main(String[] args) {
 //        largestProductInAGrid_Problem11();
 // highlyDivisibleTriangularNumber_Problem12();
-        longestCollatzSequence_Problem14();
+//      longestCollatzSequence_Problem14();
+        specialPythagoreanTriplet_Problem9();
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
         /*A Pythagorean triplet is a set of three natural numbers, a < b < c, for which, a2 + b2 = c2
         There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc. */
 
-        for (double a = 10, b = 11, c = 12; (a + b + c) < 1000; b++, c++) {
-            while ((a * a) + (b * b) == c * c) {
+        for (double a = 20, b = 21, c = 22; (a + b + c) < 1000; b++, c++) {
+            double temp = c* c;
+            double temp2 = b *b;
+            double temp3 = a * a;
+            while (!(a * a + b * b == c * c)) {
                 a++;
             }
-            if(a + b + c == 1000){
-                double product = a * b * c;
-                System.out.println(product);
+                if (a + b + c == 1000) {
+                    double product = a * b * c;
+                    System.out.println(product);
+                }
             }
         }
-    }
+
 
     public static void largestProductInAGrid_Problem11() {
 
