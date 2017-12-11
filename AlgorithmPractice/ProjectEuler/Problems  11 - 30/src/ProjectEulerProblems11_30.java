@@ -116,8 +116,12 @@ public class ProjectEulerProblems11_30
         System.out.println(startingPoint);
     }
 
+    public static void specialPythagoreanTriplet(){
+        
+    }
 
-    
+
+
 }
 
 
