@@ -10,6 +10,11 @@ public class ProjectEulerProblems11_30
         longestCollatzSequence_Problem14();
     }
 
+    public static void specialPythagoreanTriplet_Problem9(){
+        
+
+    }
+
     public static void largestProductInAGrid_Problem11() {
 
     /*What is the greatest product of 4 adjacent numbers in the same direction (up, down, left, right, or diagonally)
@@ -116,9 +121,7 @@ public class ProjectEulerProblems11_30
         System.out.println(startingPoint);
     }
 
-    public static void specialPythagoreanTriplet(){
-        
-    }
+
 
 
 
