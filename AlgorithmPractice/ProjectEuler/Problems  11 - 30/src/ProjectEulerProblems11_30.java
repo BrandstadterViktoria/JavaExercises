@@ -1,3 +1,5 @@
+
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,8 @@ public class ProjectEulerProblems11_30
 //        largestProductInAGrid_Problem11();
 // highlyDivisibleTriangularNumber_Problem12();
 //      longestCollatzSequence_Problem14();
-        specialPythagoreanTriplet_Problem9();
+//        specialPythagoreanTriplet_Problem9();
+        powerDigitSum_16();
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
@@ -144,10 +147,28 @@ public class ProjectEulerProblems11_30
             }
         }
 
+
         System.out.println(startingPoint);
     }
 
+    public static void powerDigitSum_16() {
+        /*215 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26. What is the sum of the digits of the number
+         21000?*/
+
+        long result = 0;
+        BigInteger number = BigInteger.valueOf(2).pow(1000);
+        List<Integer> listOfDigits = new ArrayList<>();
+        String numbers = number.toString();
+        for (int i = 0; i < numbers.length(); i++) {
+            result += Integer.parseInt(String.valueOf(numbers.charAt(i)));
+        }
+        System.out.println(result);
+    }
 
 }
+
+
+
+
 
 
