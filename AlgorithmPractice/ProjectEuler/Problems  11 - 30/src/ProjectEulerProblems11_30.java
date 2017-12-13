@@ -1,6 +1,7 @@
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ProjectEulerProblems11_30
@@ -163,6 +164,38 @@ public class ProjectEulerProblems11_30
             result += Integer.parseInt(String.valueOf(numbers.charAt(i)));
         }
         System.out.println(result);
+    }
+
+    public static void numberLetterCounts(){
+        HashMap<String, Integer> hm = new HashMap<>();
+        hm.put("one",1);
+        hm.put("two", 2);
+        hm.put("three",3);
+        hm.put("four",4);
+        hm.put("five",5);
+        hm.put("six", 6);
+        hm.put("seven",7);
+        hm.put("eight",8);
+        hm.put("nine",9);
+        hm.put("ten", 10);
+        hm.put("eleven",11);
+        hm.put("twelve",12);
+        hm.put("thirteen", 13);
+        hm.put("fourteen",14);
+        hm.put("fifteen",15);
+        hm.put("teen",16);
+        hm.put("twenty",20);
+        hm.put("thirty", 30);
+        hm.put("forty", 40);
+        hm.put("fifty", 50);
+        hm.put("sixty", 60);
+        hm.put("seventy", 70);
+        hm.put("eighty", 80);
+        hm.put("ninety",90);
+        hm.put("hundred", 100);
+    
+
+
     }
 
 }
