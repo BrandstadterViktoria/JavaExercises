@@ -11,36 +11,23 @@ public class ProjectEulerProblems11_30
 // highlyDivisibleTriangularNumber_Problem12();
 // longestCollatzSequence_Problem14();
         specialPythagoreanTriplet_Problem9();
- //       powerDigitSum_16();
+        //       powerDigitSum_16();
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
         /*A Pythagorean triplet is a set of three natural numbers, a < b < c, for which, a2 + b2 = c2
         There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc. */
-
+        int result = 0;
         for (int a = 1; a <= 1000; a++) {
-            int b = a + 1;
-            int c = b + 1;
-            int product;
-            if ((a * a + b * b == c * c) && (a + b + c == 1000)) {
-                product = a * b * c;
-                System.out.println(product);
-            } else {
-                b++;
-                c++;
-                while (!(a * a + b * b == c * c) && b < (1001 - (a + c))) {
-                    while (!(a * a + b * b == c * c) && c < (1001 - (a + b))) {
-                        c++;
-                    }
-                    b++;
-                    c = b + 1;
+            for (int b = 2; b <= 1000; b++) {
+                int c = 1000 - a - b;
+                if (a * a + b * b == c * c) {
+                    result = a * b* c;
                 }
             }
-            if (a + b + c == 1000) {
-                product = a * b * c;
-                System.out.println(product);
-            }
         }
+
+        System.out.println(result);
     }
 
 
@@ -130,11 +117,11 @@ public class ProjectEulerProblems11_30
                     nextNumber = nextNumber / 2;
                     chainSize++;
                 } else if (!(nextNumber % 2 == 0)) {
-                    nextNumber = 3 * nextNumber+ 1;
+                    nextNumber = 3 * nextNumber + 1;
                     chainSize++;
                 }
             }
-            chainSize ++;
+            chainSize++;
             if (chainSize > max) {
                 max = chainSize;
                 result = j;
