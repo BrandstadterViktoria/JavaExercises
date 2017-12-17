@@ -9,16 +9,16 @@ public class ProjectEulerProblems11_30
     public static void main(String[] args) {
 //        largestProductInAGrid_Problem11();
 // highlyDivisibleTriangularNumber_Problem12();
-//      longestCollatzSequence_Problem14();
-//        specialPythagoreanTriplet_Problem9();
-        powerDigitSum_16();
+// longestCollatzSequence_Problem14();
+        specialPythagoreanTriplet_Problem9();
+ //       powerDigitSum_16();
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
         /*A Pythagorean triplet is a set of three natural numbers, a < b < c, for which, a2 + b2 = c2
         There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc. */
 
-        for (int a = 20; a <= 100; a++) {
+        for (int a = 1; a <= 1000; a++) {
             int b = a + 1;
             int c = b + 1;
             int product;
@@ -104,7 +104,7 @@ public class ProjectEulerProblems11_30
         int triangleNumber;
         int result = 0;
         List<Integer> divisors = new ArrayList<>();
-        for (int i = 1; divisors.size() < 400; i++) {
+        for (int i = 1; divisors.size() < 201; i++) {
             triangleNumber = (i * (i + 1)) / 2;
             result = triangleNumber;
             divisors.clear();
@@ -118,37 +118,30 @@ public class ProjectEulerProblems11_30
     }
 
     public static void longestCollatzSequence_Problem14() {
-
-        int counterEvenNumbers;
-        int counterOddNumbers;
-        int nextNumber;
-        int terms;
-        int temp = 0;
-        int startingPoint = 0;
-
-        for (int j = 1000; j < 1000000; j++) {
+        long nextNumber;
+        int chainSize;
+        int max = 0;
+        long result = 0;
+        for (long j = 1000; j < 1000000; j++) {
             nextNumber = j;
-            counterEvenNumbers = 0;
-            counterOddNumbers = 0;
+            chainSize = 0;
             while (nextNumber != 1) {
-                int i = nextNumber;
                 if (nextNumber % 2 == 0) {
-                    nextNumber = i / 2;
-                    counterEvenNumbers++;
+                    nextNumber = nextNumber / 2;
+                    chainSize++;
                 } else if (!(nextNumber % 2 == 0)) {
-                    nextNumber = 3 * i + 1;
-                    counterOddNumbers++;
+                    nextNumber = 3 * nextNumber+ 1;
+                    chainSize++;
                 }
             }
-            terms = counterEvenNumbers + counterOddNumbers;
-            if (terms > temp) {
-                temp = terms;
-                startingPoint = j;
+            chainSize ++;
+            if (chainSize > max) {
+                max = chainSize;
+                result = j;
             }
         }
 
-
-        System.out.println(startingPoint);
+        System.out.println(result);
     }
 
     public static void powerDigitSum_16() {
