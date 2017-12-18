@@ -173,7 +173,6 @@ public class ProjectEulerProblems11_30
         hm.put("eighty", 80);
         hm.put("ninety",90);
         hm.put("hundred", 100);
-    
 
 
     }
