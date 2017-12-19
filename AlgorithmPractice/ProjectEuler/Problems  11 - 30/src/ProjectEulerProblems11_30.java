@@ -23,7 +23,7 @@ public class ProjectEulerProblems11_30
             for (int b = 2; b <= 1000; b++) {
                 int c = 1000 - a - b;
                 if (a * a + b * b == c * c) {
-                    result = a * b* c;
+                    result = a * b * c;
                 }
             }
         }
@@ -146,33 +146,43 @@ public class ProjectEulerProblems11_30
         System.out.println(result);
     }
 
-    public static void numberLetterCounts(){
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("one",1);
-        hm.put("two", 2);
-        hm.put("three",3);
-        hm.put("four",4);
-        hm.put("five",5);
-        hm.put("six", 6);
-        hm.put("seven",7);
-        hm.put("eight",8);
-        hm.put("nine",9);
-        hm.put("ten", 10);
-        hm.put("eleven",11);
-        hm.put("twelve",12);
-        hm.put("thirteen", 13);
-        hm.put("fourteen",14);
-        hm.put("fifteen",15);
-        hm.put("teen",16);
-        hm.put("twenty",20);
-        hm.put("thirty", 30);
-        hm.put("forty", 40);
-        hm.put("fifty", 50);
-        hm.put("sixty", 60);
-        hm.put("seventy", 70);
-        hm.put("eighty", 80);
-        hm.put("ninety",90);
-        hm.put("hundred", 100);
+    public static void numberLetterCounts() {
+        HashMap<Integer, String> hm = new HashMap<>();
+        hm.put( 1,"one");
+        hm.put( 2,"two");
+        hm.put(3,"three");
+        hm.put(4,"four" );
+        hm.put( 5,"five");
+        hm.put(6,"six")
+        hm.put(7,"seven");
+        hm.put( 8,"eight");
+        hm.put( 9,"nine");
+        hm.put(10, "ten");
+        hm.put(11,"eleven");
+        hm.put(12,"twelve");
+        hm.put(13,"thirteen");
+        hm.put(14,"fourteen");
+        hm.put(15,"fifteen");
+        hm.put(16,"teen");
+        hm.put(20,"twenty");
+        hm.put(30,"thirty");
+        hm.put( 40,"forty");
+        hm.put(50,"fifty");
+        hm.put(60,"sixty");
+        hm.put(70, "seventy");
+        hm.put(80,"eighty");
+        hm.put(90, "ninety");
+        hm.put( 100,"hundred");
+
+        // and
+        hm.put(101,"and");
+        hm.put(1000, "thousand");
+
+        for (int i = 0; i < 10000 ; i++) {
+            if( i <= 10){
+                hm.get(1);
+            }
+        }
 
 
     }
