@@ -2,7 +2,6 @@
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.*;
 
 public class ProjectEulerProblems11_30 {
@@ -13,8 +12,9 @@ public class ProjectEulerProblems11_30 {
 // longestCollatzSequence_Problem14();
 //        specialPythagoreanTriplet_Problem9();
         //       powerDigitSum_16();
- //       numberLetterCounts();
-        countingSundays();
+        //       numberLetterCounts();
+  //      countingSundays();
+        factorialDigitSum();
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
@@ -223,12 +223,12 @@ public class ProjectEulerProblems11_30 {
             cal.setTime(startDate);
             Calendar calEnd = new GregorianCalendar();
             calEnd.setTime(endDate);
-           while (cal.before(calEnd)) {
+            while (cal.before(calEnd)) {
                 if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                    numberOfSundays ++;
+                    numberOfSundays++;
                 }
-               cal.add(Calendar.MONTH, 1);
-           }
+                cal.add(Calendar.MONTH, 1);
+            }
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -237,8 +237,26 @@ public class ProjectEulerProblems11_30 {
         System.out.println(numberOfSundays);
     }
 
-    public static void factorialDigitSum(){
-        
+    public static void factorialDigitSum() {
+        int sumOfDigits = 1;
+        long factroialOf100 = 1L;
+        for (long i = 2; i < 100; i++) {
+            factroialOf100 *= i;
+        }
+        List<Integer> digitsOfFactorial = new ArrayList<>();
+        String factorial = String.valueOf(factroialOf100);
+        char[] digits = factorial.toCharArray();
+        for (int i = 0; i < digits.length; i++) {
+            digitsOfFactorial.add(i);
+        }
+
+        for (int digit :digitsOfFactorial ) {
+            System.out.println(digit);
+
+        }
+
+
+
     }
 }
 
