@@ -147,36 +147,37 @@ public class ProjectEulerProblems11_30
     }
 
     public static void numberLetterCounts() {
-        HashMap<Integer, String> hm = new HashMap<>();
-        hm.put( 1,"one");
-        hm.put( 2,"two");
-        hm.put(3,"three");
-        hm.put(4,"four" );
-        hm.put( 5,"five");
-        hm.put(6,"six")
-        hm.put(7,"seven");
-        hm.put( 8,"eight");
-        hm.put( 9,"nine");
-        hm.put(10, "ten");
-        hm.put(11,"eleven");
-        hm.put(12,"twelve");
-        hm.put(13,"thirteen");
-        hm.put(14,"fourteen");
-        hm.put(15,"fifteen");
-        hm.put(16,"teen");
-        hm.put(20,"twenty");
-        hm.put(30,"thirty");
-        hm.put( 40,"forty");
-        hm.put(50,"fifty");
-        hm.put(60,"sixty");
-        hm.put(70, "seventy");
-        hm.put(80,"eighty");
-        hm.put(90, "ninety");
-        hm.put( 100,"hundred");
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        hm.put( 1,3); //"one");
+        hm.put( 2,3) ; //"two");
+        hm.put(3, 5); //"three");
+        hm.put(4,4); //"four" );
+        hm.put( 5, 4); //"five");
+        hm.put(6,3); //"six")
+        hm.put(7,5) ; //"seven");
+        hm.put( 8,5);//"eight");
+        hm.put( 9,4); //"nine");
+        hm.put(10, 3) ;//"ten");
+        hm.put(11,6); //"eleven");
+        hm.put(12,6);//"twelve");
+        hm.put(13,8);//"thirteen");
+        hm.put(14,8);//"fourteen");
+        hm.put(15,7);//"fifteen");
+        //"teen");
+        hm.put(16,4);
+        hm.put(20,6);//"twenty");
+        hm.put(30,6);//"thirty");
+        hm.put( 40,5);//"forty");
+        hm.put(50,5);//"fifty");
+        hm.put(60,5);//"sixty");
+        hm.put(70, 7);//seventy");
+        hm.put(80,6);//"eighty");
+        hm.put(90, 6);//"ninety");
+        hm.put( 100,7);//"hundred");
 
         // and
-        hm.put(101,"and");
-        hm.put(1000, "thousand");
+        hm.put(101,3);//"and");
+        hm.put(1000,8);// "thousand");
 
         for (int i = 0; i < 10000 ; i++) {
             if( i <= 10){
