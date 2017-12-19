@@ -1,10 +1,11 @@
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.util.*;
 
-public class ProjectEulerProblems11_30  {
+public class ProjectEulerProblems11_30 {
 
     public static void main(String[] args) {
 //        largestProductInAGrid_Problem11();
@@ -12,7 +13,8 @@ public class ProjectEulerProblems11_30  {
 // longestCollatzSequence_Problem14();
 //        specialPythagoreanTriplet_Problem9();
         //       powerDigitSum_16();
-        numberLetterCounts();
+ //       numberLetterCounts();
+        countingSundays();
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
@@ -148,36 +150,36 @@ public class ProjectEulerProblems11_30  {
 
     public static void numberLetterCounts() {
         HashMap<Integer, Integer> hm = new HashMap<>();
-        hm.put( 1,3); //"one");
-        hm.put( 2,3) ; //"two");
+        hm.put(1, 3); //"one");
+        hm.put(2, 3); //"two");
         hm.put(3, 5); //"three");
-        hm.put(4,4); //"four" );
-        hm.put( 5, 4); //"five");
-        hm.put(6,3); //"six")
-        hm.put(7,5) ; //"seven");
-        hm.put( 8,5);//"eight");
-        hm.put( 9,4); //"nine");
-        hm.put(10, 3) ;//"ten");
-        hm.put(11,6); //"eleven");
-        hm.put(12,6);//"twelve");
-        hm.put(13,8);//"thirteen");
-        hm.put(14,8);//"fourteen");
-        hm.put(15,7);//"fifteen");
+        hm.put(4, 4); //"four" );
+        hm.put(5, 4); //"five");
+        hm.put(6, 3); //"six")
+        hm.put(7, 5); //"seven");
+        hm.put(8, 5);//"eight");
+        hm.put(9, 4); //"nine");
+        hm.put(10, 3);//"ten");
+        hm.put(11, 6); //"eleven");
+        hm.put(12, 6);//"twelve");
+        hm.put(13, 8);//"thirteen");
+        hm.put(14, 8);//"fourteen");
+        hm.put(15, 7);//"fifteen");
         //"teen");
-        hm.put(16,4);
-        hm.put(20,6);//"twenty");
-        hm.put(30,6);//"thirty");
-        hm.put( 40,5);//"forty");
-        hm.put(50,5);//"fifty");
-        hm.put(60,5);//"sixty");
+        hm.put(16, 4);
+        hm.put(20, 6);//"twenty");
+        hm.put(30, 6);//"thirty");
+        hm.put(40, 5);//"forty");
+        hm.put(50, 5);//"fifty");
+        hm.put(60, 5);//"sixty");
         hm.put(70, 7);//seventy");
-        hm.put(80,6);//"eighty");
+        hm.put(80, 6);//"eighty");
         hm.put(90, 6);//"ninety");
-        hm.put( 100,7);//"hundred");
+        hm.put(100, 7);//"hundred");
 
         // and
-        hm.put(101,3);//"and");
-        hm.put(1000,8);// "thousand");
+        hm.put(101, 3);//"and");
+        hm.put(1000, 8);// "thousand");
 
         int numberLetters1_10;
         int numberLetters_11_20;
@@ -186,19 +188,19 @@ public class ProjectEulerProblems11_30  {
         int numberOfAnds;
         int result;
 
-        numberLetters1_10 = hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8)+
+        numberLetters1_10 = hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8) +
                 hm.get(9) + hm.get(10);
 
-        numberLetters_11_20 = hm.get(11) + hm.get(12) + hm.get(13) + hm.get(14) + hm.get(15) + 4 *(hm.get(16)) + hm.get(6)
-                + hm.get(7) + hm.get(8)+ hm.get(9) + hm.get(20);
+        numberLetters_11_20 = hm.get(11) + hm.get(12) + hm.get(13) + hm.get(14) + hm.get(15) + 4 * (hm.get(16)) + hm.get(6)
+                + hm.get(7) + hm.get(8) + hm.get(9) + hm.get(20);
 
 
-        numberLetters_21_99 = 9 * hm.get(20) + 10 * (hm.get(30) + hm.get(40) + hm.get(50)+ hm.get(60) + hm.get(70) +hm.get(80)
-        + hm.get(90)) + 8 * (hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8)+
+        numberLetters_21_99 = 9 * hm.get(20) + 10 * (hm.get(30) + hm.get(40) + hm.get(50) + hm.get(60) + hm.get(70) + hm.get(80)
+                + hm.get(90)) + 8 * (hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8) +
                 hm.get(9));
 
-        numberLetters100_1000_WthOutAnds = 9 *(numberLetters1_10 + numberLetters_11_20 + numberLetters_21_99) + 899 * hm.get(100) +
-                100 * (hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8)+
+        numberLetters100_1000_WthOutAnds = 9 * (numberLetters1_10 + numberLetters_11_20 + numberLetters_21_99) + 899 * hm.get(100) +
+                100 * (hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8) +
                         hm.get(9)) + hm.get(1) + hm.get(1000);
 
         numberOfAnds = 898 * hm.get(101);
@@ -210,12 +212,30 @@ public class ProjectEulerProblems11_30  {
 
     }
 
-    public static void  countingSundays(){
+    public static void countingSundays() {
         /*How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?*/
+        int numberOfSundays = 0;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date startDate = format.parse("1901-01-01");
+            Date endDate = format.parse("2000-12-31");
+            Calendar cal = new GregorianCalendar();
+            cal.setTime(startDate);
+            Calendar calEnd = new GregorianCalendar();
+            calEnd.setTime(endDate);
+           while (cal.before(calEnd)) {
+                cal.add(Calendar.DATE, 1);
+                numberOfSundays = cal.get(Calendar.DAY_OF_WEEK);
+                if (numberOfSundays == Calendar.SUNDAY) {
+                    numberOfSundays ++;
+                }
+            }System.out.println(numberOfSundays);
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
     }
-
 }
 
 
