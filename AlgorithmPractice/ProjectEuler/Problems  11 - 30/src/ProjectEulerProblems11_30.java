@@ -190,8 +190,8 @@ public class ProjectEulerProblems11_30
         numberLetters1_10 = hm.get(1) + hm.get(2) + hm.get(3) + hm.get(4) + hm.get(5) + hm.get(6) + hm.get(7) + hm.get(8)+
                 hm.get(9) + hm.get(10);
 
-        numberLetters_11_20 = hm.get(11) + hm.get(12) + hm.get(13) + hm.get(14) + hm.get(15) + 4 *(hm.get(16)) + hm.get(7) + hm.get(8)+
-                hm.get(9) + hm.get(20);
+        numberLetters_11_20 = hm.get(11) + hm.get(12) + hm.get(13) + hm.get(14) + hm.get(15) + 4 *(hm.get(16)) + hm.get(6)
+                + hm.get(7) + hm.get(8)+ hm.get(9) + hm.get(20);
 
 
         numberLetters_21_99 = 9 * hm.get(20) + 10 * (hm.get(30) + hm.get(40) + hm.get(50)+ hm.get(60) + hm.get(70) +hm.get(80)
@@ -204,7 +204,7 @@ public class ProjectEulerProblems11_30
 
         numberOfAnds = 898 * hm.get(101);
 
-        result = numberLetters1_10 + numberLetters_11_20 + numberLetters_11_20 + numberLetters_21_99 + numberLetters100_1000_WthOutAnds
+        result = numberLetters1_10 + numberLetters_11_20 + numberLetters_21_99 + numberLetters100_1000_WthOutAnds
                 + numberOfAnds;
 
         System.out.println(result);
