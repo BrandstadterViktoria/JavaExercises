@@ -236,6 +236,10 @@ public class ProjectEulerProblems11_30 {
 
         System.out.println(numberOfSundays);
     }
+
+    public static void factorialDigitSum(){
+        
+    }
 }
 
 
