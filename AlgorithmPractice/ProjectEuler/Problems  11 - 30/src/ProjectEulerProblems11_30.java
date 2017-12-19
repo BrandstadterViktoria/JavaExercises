@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ProjectEulerProblems11_30
-/*Problem_13 solved in an other class*/ {
+public class ProjectEulerProblems11_30  {
 
     public static void main(String[] args) {
 //        largestProductInAGrid_Problem11();
@@ -208,6 +207,12 @@ public class ProjectEulerProblems11_30
                 + numberOfAnds;
 
         System.out.println(result);
+
+    }
+
+    public static void  countingSundays(){
+        /*How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?*/
+
 
     }
 
