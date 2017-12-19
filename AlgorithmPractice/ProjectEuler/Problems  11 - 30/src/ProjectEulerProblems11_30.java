@@ -224,17 +224,17 @@ public class ProjectEulerProblems11_30 {
             Calendar calEnd = new GregorianCalendar();
             calEnd.setTime(endDate);
            while (cal.before(calEnd)) {
-                cal.add(Calendar.DATE, 1);
-                numberOfSundays = cal.get(Calendar.DAY_OF_WEEK);
-                if (numberOfSundays == Calendar.SUNDAY) {
+                if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                     numberOfSundays ++;
                 }
-            }System.out.println(numberOfSundays);
+               cal.add(Calendar.MONTH, 1);
+           }
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+        System.out.println(numberOfSundays);
     }
 }
 
