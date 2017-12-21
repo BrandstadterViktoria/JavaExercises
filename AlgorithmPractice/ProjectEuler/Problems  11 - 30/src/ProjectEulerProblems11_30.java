@@ -236,7 +236,7 @@ public class ProjectEulerProblems11_30 {
         System.out.println(numberOfSundays);
     }
 
-    public static void factorialDigitSum() {
+    public static void factorialDigitSum_Problem20() {
         int sumOfDigits = 0;
         BigInteger factroialOf100 = new BigInteger("1");
         for (int i = 1; i < 100; i++) {
