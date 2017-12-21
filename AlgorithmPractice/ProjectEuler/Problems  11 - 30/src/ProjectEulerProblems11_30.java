@@ -1,4 +1,3 @@
-
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -238,24 +237,25 @@ public class ProjectEulerProblems11_30 {
     }
 
     public static void factorialDigitSum() {
-        int sumOfDigits = 1;
+        int sumOfDigits = 0;
         BigInteger factroialOf100 = new BigInteger("1");
-        for (int i = 2; i < 100; i++) {
-            factroialOf100 = factroialOf100.multiply(new BigInteger(i + ""));
-            System.out.println("the " + i + " loop:   " + factroialOf100.toString());
+        for (int i = 1; i < 100; i++) {
+            factroialOf100 = factroialOf100.multiply( new BigInteger(i + ""));
+        }
+
+        String digits = factroialOf100.toString();
+        for(int i = 0; i < digits.length(); i++) {
+            int digit = (int) (digits.charAt(i) - '0');
+            sumOfDigits = sumOfDigits + digit;
+
+        }
+        System.out.println(sumOfDigits);
 
 
         }
-        List<Integer> digitsOfFactorial = new ArrayList<>();
-        String factorial = String.valueOf(factroialOf100);
-        char[] digits = factorial.toCharArray();
-        for (int i = 0; i < digits.length; i++) {
-            digitsOfFactorial.add(i);
         }
 
 
-        }
-    }
 
 
 
