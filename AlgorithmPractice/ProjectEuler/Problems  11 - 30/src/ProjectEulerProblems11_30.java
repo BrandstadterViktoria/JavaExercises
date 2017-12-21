@@ -239,9 +239,12 @@ public class ProjectEulerProblems11_30 {
 
     public static void factorialDigitSum() {
         int sumOfDigits = 1;
-        long factroialOf100 = 1L;
-        for (long i = 2; i < 100; i++) {
-            factroialOf100 *= i;
+        BigInteger factroialOf100 = new BigInteger("1");
+        for (int i = 2; i < 100; i++) {
+            factroialOf100 = factroialOf100.multiply(new BigInteger(i + ""));
+            System.out.println("the " + i + " loop:   " + factroialOf100.toString());
+
+
         }
         List<Integer> digitsOfFactorial = new ArrayList<>();
         String factorial = String.valueOf(factroialOf100);
@@ -250,15 +253,10 @@ public class ProjectEulerProblems11_30 {
             digitsOfFactorial.add(i);
         }
 
-        for (int digit :digitsOfFactorial ) {
-            System.out.println(digit);
 
         }
-
-
-
     }
-}
+
 
 
 
