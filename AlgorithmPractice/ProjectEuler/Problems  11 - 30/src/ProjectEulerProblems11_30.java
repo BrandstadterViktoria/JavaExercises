@@ -12,8 +12,10 @@ public class ProjectEulerProblems11_30 {
 //        specialPythagoreanTriplet_Problem9();
         //       powerDigitSum_16();
         //       numberLetterCounts();
-  //      countingSundays();
-        factorialDigitSum();
+        //      countingSundays();
+        // factorialDigitSum_Problem20();
+        amicableNumbers_Problem21();
+
     }
 
     public static void specialPythagoreanTriplet_Problem9() {
@@ -240,20 +242,51 @@ public class ProjectEulerProblems11_30 {
         int sumOfDigits = 0;
         BigInteger factroialOf100 = new BigInteger("1");
         for (int i = 1; i < 100; i++) {
-            factroialOf100 = factroialOf100.multiply( new BigInteger(i + ""));
+            factroialOf100 = factroialOf100.multiply(new BigInteger(i + ""));
         }
 
         String digits = factroialOf100.toString();
-        for(int i = 0; i < digits.length(); i++) {
+        for (int i = 0; i < digits.length(); i++) {
             int digit = (int) (digits.charAt(i) - '0');
             sumOfDigits = sumOfDigits + digit;
 
         }
         System.out.println(sumOfDigits);
 
+    }
 
+
+    public static void amicableNumbers_Problem21() {
+        /*Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
+        If d(a) = b and d(b) = a, where a ≠ b, then a and b are an amicable pair and each of a and b are called amicable numbers.
+        Evaluate the sum of all the amicable numbers under 10000.*/
+
+        // int sumOfDivisorsNumber1;
+        int result = 0;
+        for (int i = 220; i < 10000; i++) {
+            int sumOfDivisorsNumber1 = countDivisorsSum(i);
+            if (i == countDivisorsSum(sumOfDivisorsNumber1)) {
+                result += (i + sumOfDivisorsNumber1);
+            }
         }
+
+        System.out.println(result);
+    }
+
+    public static int countDivisorsSum(int input) {
+        int maxD = (int) Math.sqrt(input);
+        int sum = 1;
+        for (int i = 2; i <= maxD; i++) {
+            if (input % i == 0) {
+                sum += i;
+                int d = input / i;
+                if (d != i)
+                    sum += d;
+            }
         }
+        return sum;
+    }
+}
 
 
 
