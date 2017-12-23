@@ -7,7 +7,7 @@ public class EmployeeNode {
     private EmployeeNode previous;
 
     public EmployeeNode(Employee employee) {
-        this.employee = employee;        
+        this.employee = employee;
     }
 
     public Employee getEmployee() {
@@ -21,6 +21,7 @@ public class EmployeeNode {
     public EmployeeNode getNext() {
         return next;
     }
+
 
     public void setNext(EmployeeNode next) {
         this.next = next;
