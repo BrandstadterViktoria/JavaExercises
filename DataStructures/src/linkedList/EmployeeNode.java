@@ -34,4 +34,8 @@ public class EmployeeNode {
     public void setPrevious(EmployeeNode previous) {
         this.previous = previous;
     }
+
+    public String toString(){
+
+    }
 }
