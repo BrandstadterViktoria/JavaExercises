@@ -28,6 +28,20 @@ public class Stack {
 
      return stack[top -1];
     }
+
+    public boolean isItAPalindrome(char [] characters) {
+        for (int i = 0; i < characters.length -1  ; i ++) {
+            if (characters[i] == stack[top - 1]) {
+                top--;
+            } else {
+                return false;
+
+            }
+        }
+        return true;
+    }
+
+
     public String getWord() {
         return word;
     }
@@ -54,7 +68,7 @@ public class Stack {
 
 
     }
-}
+
 
 
 

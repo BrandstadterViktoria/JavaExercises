@@ -15,17 +15,12 @@ public  class Main {
         list.addtoTheFront(Bonie);
         list.print();*/
 
-        Stack palindrome = new Stack("alla");
+        Stack palindrome = new Stack("erttr");
         for (char character : palindrome.getWord().toCharArray()) {
             palindrome.push(character);
         }
-
         palindrome.print();
-    }
-    public boolean isItAPalindrome(){
-        for (int i = 0; i < ; i++) {
-            
-        }
+        System.out.println(palindrome.isItAPalindrome(palindrome.getWord().toCharArray()));
     }
 
 }
