@@ -1,3 +1,4 @@
+/*
 package linkedList;
 
 public class EmployeeNode {
@@ -39,3 +40,4 @@ public class EmployeeNode {
 
     }
 }
+*/
