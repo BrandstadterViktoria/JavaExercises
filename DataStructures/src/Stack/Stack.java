@@ -17,6 +17,13 @@ public class Stack {
 
     }
 
+    public void print() {
+        for (int i = top - 1; i >= 0; i--) {
+            System.out.println(stack[i]);
+
+        }
+    }
+
     public String getWord() {
         return word;
     }
@@ -41,11 +48,7 @@ public class Stack {
         this.stack = stack;
     }
 
-    public void print(){
-        for (int i = top -1; i >= 0 ; i--) {
-            System.out.println(stack[i]);
 
-        }
     }
 }
 
