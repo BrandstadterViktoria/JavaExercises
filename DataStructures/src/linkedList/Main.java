@@ -15,7 +15,7 @@ public  class Main {
         list.addtoTheFront(Bonie);
         list.print();*/
 
-        Stack palindrome = new Stack("erttr");
+        Stack palindrome = new Stack(" e tte ");
         for (char character : palindrome.getWord().toCharArray()) {
             palindrome.push(character);
         }

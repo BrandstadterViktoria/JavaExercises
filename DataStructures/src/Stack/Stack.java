@@ -5,15 +5,15 @@ public class Stack {
 
     private String word;
     private int top;
-    private char [] stack;
+    private char[] stack;
 
-    public Stack(String word){
+    public Stack(String word) {
         this.word = word;
         stack = new char[word.length()];
     }
 
-    public void push(char chaarcterOfTheWord){
-       stack[top ++] = chaarcterOfTheWord;
+    public void push(char chaarcterOfTheWord) {
+        stack[top++] = chaarcterOfTheWord;
 
     }
 
@@ -26,11 +26,11 @@ public class Stack {
 
     public Character peek() {
 
-     return stack[top -1];
+        return stack[top - 1];
     }
 
-    public boolean isItAPalindrome(char [] characters) {
-        for (int i = 0; i < characters.length -1  ; i ++) {
+    public boolean isItAPalindrome(char[] characters) {
+        for (int i = 0; i < characters.length - 1; i++) {
             if (characters[i] == stack[top - 1]) {
                 top--;
             } else {
@@ -45,29 +45,9 @@ public class Stack {
     public String getWord() {
         return word;
     }
-
-    public void setWord(String word) {
-        this.word = word;
-    }
-
-    public int getTop() {
-        return top;
-    }
-
-    public void setTop(int top) {
-        this.top = top;
-    }
-
-    public char[] getStack() {
-        return stack;
-    }
-
-    public void setStack(char[] stack) {
-        this.stack = stack;
-    }
+}
 
 
-    }
 
 
 
