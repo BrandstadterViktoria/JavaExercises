@@ -24,6 +24,10 @@ public class Stack {
         }
     }
 
+    public Character peek() {
+
+     return stack[top -1];
+    }
     public String getWord() {
         return word;
     }

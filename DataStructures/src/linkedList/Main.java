@@ -22,6 +22,10 @@ public  class Main {
 
         palindrome.print();
     }
-
+    public boolean isItAPalindrome(){
+        for (int i = 0; i < ; i++) {
+            
+        }
+    }
 
 }
