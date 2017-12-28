@@ -21,6 +21,8 @@ public  class Main {
         }
         palindrome.print();
         System.out.println(palindrome.isItAPalindrome(palindrome.getWord().toCharArray()));
+
+
     }
 
 }

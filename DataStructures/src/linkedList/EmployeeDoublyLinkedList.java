@@ -1,4 +1,3 @@
-/*
 package linkedList;
 
 public class EmployeeDoublyLinkedList {
@@ -23,11 +22,8 @@ public class EmployeeDoublyLinkedList {
             System.out.println(current);
 
         }
-        current.getNext(current)
-
     }
 
     }
 
 
-*/
