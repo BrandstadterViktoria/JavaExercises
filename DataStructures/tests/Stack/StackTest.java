@@ -1,5 +1,6 @@
 package Stack;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class StackTest {
@@ -9,6 +10,7 @@ public class StackTest {
         for (char character : test1.getWord().toCharArray()) {
             test1.push(character);
         }
+        Assert.assertTrue(test1.isItAPalindrome(test1.getWord().toCharArray()));
     }
 
     @Test
@@ -17,6 +19,7 @@ public class StackTest {
             for (char character : test2.getWord().toCharArray()) {
                 test2.push(character);
         }
+        Assert.assertTrue(test2.isItAPalindrome(test2.getWord().toCharArray()));
     }
 
     @Test
@@ -25,6 +28,7 @@ public class StackTest {
         for (char character : test3.getWord().toCharArray()) {
             test3.push(character);
         }
+        Assert.assertTrue(test3.isItAPalindrome(test3.getWord().toCharArray()));
 
     }
     @Test
@@ -33,6 +37,7 @@ public class StackTest {
         for (char character : test4.getWord().toCharArray()) {
             test4.push(character);
         }
+        Assert.assertFalse(test4.isItAPalindrome(test4.getWord().toCharArray()));
     }
     @Test
     public void isItAPalindrome_test5() throws Exception {
@@ -40,6 +45,7 @@ public class StackTest {
         for (char character : test5.getWord().toCharArray()) {
             test5.push(character);
         }
+        Assert.assertTrue(test5.isItAPalindrome(test5.getWord().toCharArray()));
     }
 
 }
