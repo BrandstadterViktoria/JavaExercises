@@ -15,12 +15,12 @@ public  class Main {
         list.addtoTheFront(Bonie);
         list.print();*/
 
-        Stack palindrome = new Stack(" e tte ");
+        Stack palindrome = new Stack("I did, did I?");
         for (char character : palindrome.getWord().toCharArray()) {
             palindrome.push(character);
         }
         palindrome.print();
-        System.out.println(palindrome.isItAPalindrome(palindrome.getWord().toCharArray()));
+        System.out.println(palindrome.isItAPalindrome(palindrome.getWord()));
 
 
     }
