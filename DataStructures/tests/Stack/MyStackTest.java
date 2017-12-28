@@ -3,10 +3,10 @@ package Stack;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class StackTest {
+public class MyStackTest {
     @Test
     public void isItAPalindrome_test1() throws Exception {
-        Stack test1 = new Stack("abccba");
+        MyStack test1 = new MyStack("abccba");
         for (char character : test1.getWord().toCharArray()) {
             test1.push(character);
         }
@@ -15,7 +15,7 @@ public class StackTest {
 
     @Test
     public void isItAPalindrome_test2() throws Exception {
-        Stack test2 = new Stack("Was it a car or a cat I saw?");
+        MyStack test2 = new MyStack("Was it a car or a cat I saw?");
         for (char character : test2.getWord().toCharArray()) {
             test2.push(character);
         }
@@ -24,7 +24,7 @@ public class StackTest {
 
     @Test
     public void isItAPalindrome_test3() throws Exception {
-        Stack test3 = new Stack("I did, did I?");
+        MyStack test3 = new MyStack("I did, did I?");
         for (char character : test3.getWord().toCharArray()) {
             test3.push(character);
         }
@@ -34,7 +34,7 @@ public class StackTest {
 
     @Test
     public void isItAPalindrome_test4() throws Exception {
-        Stack test4 = new Stack("hello");
+        MyStack test4 = new MyStack("hello");
         for (char character : test4.getWord().toCharArray()) {
             test4.push(character);
         }
@@ -43,7 +43,7 @@ public class StackTest {
 
     @Test
     public void isItAPalindrome_test5() throws Exception {
-        Stack test5 = new Stack("Don't nod");
+        MyStack test5 = new MyStack("Don't nod");
         for (char character : test5.getWord().toCharArray()) {
             test5.push(character);
         }

@@ -1,23 +1,23 @@
 package Stack;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Stack {
+public class MyStack {
     /*Implementation of a palindrome decider in stack*/
 
     private String word;
     private int top;
     private char[] stack;
 
-    public Stack(String word) {
+    public MyStack(String word) {
         Pattern pattern = Pattern.compile("[^a-z A-Z]");
         Matcher matcher = pattern.matcher(word);
         word = matcher.replaceAll("").toLowerCase().replaceAll("\\s+", "");
         this.word = word;
         stack = new char[word.length()];
-
     }
+
+
 
     public void push(char chaarcterOfTheWord) {
         stack[top++] = chaarcterOfTheWord;

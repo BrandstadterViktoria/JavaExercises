@@ -1,6 +1,6 @@
 package linkedList;
 
-import Stack.Stack;
+import Stack.MyStack;
 
 public  class Main {
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public  class Main {
         list.addtoTheFront(Bonie);
         list.print();*/
 
-        Stack palindrome = new Stack("I did, did I?");
+        MyStack palindrome = new MyStack("I did, did I?");
         for (char character : palindrome.getWord().toCharArray()) {
             palindrome.push(character);
         }
