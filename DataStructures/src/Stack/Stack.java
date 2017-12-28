@@ -13,7 +13,7 @@ public class Stack {
     public Stack(String word) {
         Pattern pattern = Pattern.compile("[^a-z A-Z]");
         Matcher matcher = pattern.matcher(word);
-        word = matcher.replaceAll("").toLowerCase().replaceAll("\\s+","");
+        word = matcher.replaceAll("").toLowerCase().replaceAll("\\s+", "");
         this.word = word;
         stack = new char[word.length()];
 
@@ -40,7 +40,7 @@ public class Stack {
         Pattern pattern = Pattern.compile("[^a-z A-Z]");
         Matcher matcher = pattern.matcher(input);
         String string = matcher.replaceAll("");
-        char [] characters = string.trim().toLowerCase().toCharArray();
+        char[] characters = string.trim().toLowerCase().toCharArray();
         for (int i = 0; i < characters.length - 1; i++) {
             if (characters[i] == stack[top - 1]) {
                 top--;
