@@ -14,7 +14,8 @@ public class ProjectEulerProblems11_30 {
         //       numberLetterCounts();
         //      countingSundays();
         // factorialDigitSum_Problem20();
-        amicableNumbers_Problem21();
+//        amicableNumbers_Problem21();
+        nonAbundantSums_Problem23();
 
     }
 
@@ -264,7 +265,7 @@ public class ProjectEulerProblems11_30 {
         int sumOfDivisorsOfNumbers;
         int result = 0;
         for (int i = 220; i < 10000; i++) {
-             sumOfDivisorsOfNumbers = countDivisorsSum(i);
+            sumOfDivisorsOfNumbers = countDivisorsSum(i);
             if (countDivisorsSum(sumOfDivisorsOfNumbers) == i && i != sumOfDivisorsOfNumbers) {
                 result += i;
             }
@@ -273,7 +274,7 @@ public class ProjectEulerProblems11_30 {
         System.out.println(result);
     }
 
-    public static int countDivisorsSum(int input) {
+    public static int countDivisorsSum(long input) {
         int sum = 0;
         for (int i = 1; i < input; i++) {
             if (input % i == 0) {
@@ -282,6 +283,39 @@ public class ProjectEulerProblems11_30 {
         }
         return sum;
     }
+
+    public static void nonAbundantSums_Problem23() {
+       /*Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.*/
+
+
+        long result;
+        long sumofAllNumbers = 0;
+        List<Long> abundantNumbers = new ArrayList<>();
+        for (long i = 24; i < 28123; i++) {
+            sumofAllNumbers += i;
+            if (countDivisorsSum(i) > i) {
+                abundantNumbers.add(i);
+            }
+        }
+
+        result = sumofAllNumbers - sumOfTwoAbundantNumbers(abundantNumbers);
+        System.out.println(result);
+
+    }
+
+    public static Long sumOfTwoAbundantNumbers(List<Long> abundantNumbers) {
+
+        long sumOfAbundantNumbers;
+        long tempSum = 0;
+        for (long number1 : abundantNumbers) {
+            tempSum += number1;
+        }
+        sumOfAbundantNumbers = 2 * abundantNumbers.size() * tempSum;
+
+        return sumOfAbundantNumbers;
+}
+
+
 }
 
 
