@@ -261,12 +261,12 @@ public class ProjectEulerProblems11_30 {
         If d(a) = b and d(b) = a, where a ≠ b, then a and b are an amicable pair and each of a and b are called amicable numbers.
         Evaluate the sum of all the amicable numbers under 10000.*/
 
-        // int sumOfDivisorsNumber1;
+        int sumOfDivisorsOfNumbers;
         int result = 0;
         for (int i = 220; i < 10000; i++) {
-            int sumOfDivisorsNumber1 = countDivisorsSum(i);
-            if (i == countDivisorsSum(sumOfDivisorsNumber1)) {
-                result += (i + sumOfDivisorsNumber1);
+             sumOfDivisorsOfNumbers = countDivisorsSum(i);
+            if (countDivisorsSum(sumOfDivisorsOfNumbers) == i && i != sumOfDivisorsOfNumbers) {
+                result += i;
             }
         }
 
@@ -274,14 +274,10 @@ public class ProjectEulerProblems11_30 {
     }
 
     public static int countDivisorsSum(int input) {
-        int maxD = (int) Math.sqrt(input);
-        int sum = 1;
-        for (int i = 2; i <= maxD; i++) {
+        int sum = 0;
+        for (int i = 1; i < input; i++) {
             if (input % i == 0) {
                 sum += i;
-                int d = input / i;
-                if (d != i)
-                    sum += d;
             }
         }
         return sum;
