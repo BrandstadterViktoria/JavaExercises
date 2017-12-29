@@ -1,4 +1,4 @@
-package linkedList;
+package Main;
 
 import Stack.MyStack;
 
