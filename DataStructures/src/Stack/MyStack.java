@@ -32,7 +32,6 @@ public class MyStack {
     }
 
     public Character peek() {
-
         return stack[top - 1];
     }
 

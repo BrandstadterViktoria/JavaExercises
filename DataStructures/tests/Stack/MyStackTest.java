@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class MyStackTest {
+
     @Test
     public void isItAPalindrome_test1() throws Exception {
         MyStack test1 = new MyStack("abccba");
