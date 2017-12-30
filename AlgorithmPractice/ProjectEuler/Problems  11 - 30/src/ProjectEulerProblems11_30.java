@@ -286,36 +286,25 @@ public class ProjectEulerProblems11_30 {
 
     public static void nonAbundantSums_Problem23() {
        /*Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.*/
-
-
-        long result;
-        long sumofAllNumbers = 0;
-        List<Long> abundantNumbers = new ArrayList<>();
-        for (long i = 24; i < 28123; i++) {
-            sumofAllNumbers += i;
+        long result = 0;
+        Set<Long> abundantNumbers = new HashSet<>();
+        for (long i = 1; i < 28124; i++) {
             if (countDivisorsSum(i) > i) {
                 abundantNumbers.add(i);
             }
         }
 
-        result = sumofAllNumbers - sumOfTwoAbundantNumbers(abundantNumbers);
+        for (long sum = 24; sum < 28124; sum++)
+            for (long number1 : abundantNumbers) {
+              if (sum > number1 && abundantNumbers.contains(sum - number1)) {
+                  break;
+                }else{
+                    result += sum;
+              }
+            }
         System.out.println(result);
 
     }
-
-    public static Long sumOfTwoAbundantNumbers(List<Long> abundantNumbers) {
-
-        long sumOfAbundantNumbers;
-        long tempSum = 0;
-        for (long number1 : abundantNumbers) {
-            tempSum += number1;
-        }
-        sumOfAbundantNumbers = 2 * abundantNumbers.size() * tempSum;
-
-        return sumOfAbundantNumbers;
-}
-
-
 }
 
 
