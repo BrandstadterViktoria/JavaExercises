@@ -293,7 +293,6 @@ public class ProjectEulerProblems11_30 {
                 abundantNumbers.add(i);
             }
         }
-
         for (long sum = 24; sum < 28124; sum++)
             for (long number1 : abundantNumbers) {
               if (sum > number1 && abundantNumbers.contains(sum - number1)) {
