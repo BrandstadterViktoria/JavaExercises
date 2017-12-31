@@ -15,7 +15,8 @@ public class ProjectEulerProblems11_30 {
         //      countingSundays();
         // factorialDigitSum_Problem20();
 //        amicableNumbers_Problem21();
-        nonAbundantSums_Problem23();
+//        nonAbundantSums_Problem23();
+        lexicographic_permutations_Problem24();
 
     }
 
@@ -295,23 +296,27 @@ public class ProjectEulerProblems11_30 {
         }
         for (long sum = 24; sum < 28124; sum++)
             for (long number1 : abundantNumbers) {
-              if (sum > number1 && abundantNumbers.contains(sum - number1)) {
-                  break;
-                }else{
+                if (sum > number1 && abundantNumbers.contains(sum - number1)) {
+                    break;
+                } else {
                     result += sum;
-              }
+                }
             }
         System.out.println(result);
 
     }
 
-    public static void lexicographic_permutations_Problem24(){
-        
+    public static void l1000digitFibonacciNumber_Problem25() {
 
-    }
+
+
+
+
+
 
 }
 
+}
 
 
 
