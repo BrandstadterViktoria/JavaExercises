@@ -16,7 +16,7 @@ public class ProjectEulerProblems11_30 {
         // factorialDigitSum_Problem20();
 //        amicableNumbers_Problem21();
 //        nonAbundantSums_Problem23();
-        lexicographic_permutations_Problem24();
+        the1000digitFibonacciNumber_Problem25();
 
     }
 
@@ -306,14 +306,16 @@ public class ProjectEulerProblems11_30 {
 
     }
 
-    public static void l1000digitFibonacciNumber_Problem25() {
-
-
-
-
-
-
-
+    public static void the1000digitFibonacciNumber_Problem25() {
+        BigInteger number1 = new BigInteger("1");
+        BigInteger fibonacci = new BigInteger("0");
+        BigInteger temp = new BigInteger("0");
+        BigInteger maximum = BigInteger.valueOf(10).pow(100);
+        while (!fibonacci.equals(maximum)) {
+            fibonacci = number1.add(temp);
+            number1 = fibonacci;
+            temp = fibonacci.subtract(temp);
+        }
 }
 
 }
