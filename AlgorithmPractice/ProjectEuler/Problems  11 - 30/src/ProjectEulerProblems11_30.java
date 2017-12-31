@@ -307,6 +307,7 @@ public class ProjectEulerProblems11_30 {
     }
 
     public static void the1000digitFibonacciNumber_Problem25() {
+        int counter = 0;
         BigInteger number1 = new BigInteger("1");
         BigInteger fibonacci = new BigInteger("0");
         BigInteger temp = new BigInteger("0");
@@ -315,7 +316,9 @@ public class ProjectEulerProblems11_30 {
             fibonacci = number1.add(temp);
             number1 = fibonacci;
             temp = fibonacci.subtract(temp);
+            counter++;
         }
+        System.out.println(counter);
 }
 
 }
