@@ -304,6 +304,12 @@ public class ProjectEulerProblems11_30 {
         System.out.println(result);
 
     }
+
+    public static void lexicographic_permutations_Problem24(){
+        
+
+    }
+
 }
 
 
