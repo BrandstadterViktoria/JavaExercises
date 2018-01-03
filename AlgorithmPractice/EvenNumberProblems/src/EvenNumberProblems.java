@@ -362,6 +362,10 @@ public class EvenNumberProblems {
             }
         }
     }
+
+    public static void perfectNumber_LeetCode507(){
+        
+    }
 }
 
 
