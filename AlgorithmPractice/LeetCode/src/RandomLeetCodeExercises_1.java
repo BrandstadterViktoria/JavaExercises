@@ -4,7 +4,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        
+
 
     }
 
