@@ -9,7 +9,7 @@ public class EmployeeDoublyLinkedList {
     public EmployeeDoublyLinkedList() {
     }
 
-    public void addtoTheFront(Employee employee) {
+    public void addToTheFront(Employee employee) {
         EmployeeNode newNode = new EmployeeNode(employee);
 
         if (head == null) {
@@ -48,6 +48,17 @@ public class EmployeeDoublyLinkedList {
     }
 
     public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
+
+        EmployeeNode newNode = new EmployeeNode(newEmployee);
+        EmployeeNode existingNode = head.getNext();
+        if(size == 1){
+            tail.setNext(newNode);
+        }else{
+            existingNode.setNext(newNode);
+            newNode.setPrevious(existingNode);
+            newNode.setNext(tail);
+
+        }
 
 
         return false;

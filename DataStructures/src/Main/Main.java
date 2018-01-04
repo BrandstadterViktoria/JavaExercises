@@ -9,8 +9,8 @@ public  class Main {
         Employee Jackie = new Employee("Jackie",45);
         Employee Bonie = new Employee("Bonie",67);
         EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
-        list.addtoTheFront(Mary);
-        list.addtoTheFront(Jackie);
+        list.addToTheFront(Mary);
+        list.addToTheFront(Jackie);
         list.print();
 
         /*MyStack palindrome = new MyStack("I did, did I?");
