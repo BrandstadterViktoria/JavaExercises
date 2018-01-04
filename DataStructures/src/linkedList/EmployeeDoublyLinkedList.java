@@ -60,6 +60,13 @@ public class EmployeeDoublyLinkedList {
         newNode.setNext(current);
         current.setPrevious(newNode);
 
+        if (head == current) {
+            head = newNode;
+        }
+        else {
+            newNode.getPrevious().setNext(newNode);
+        }
+
 
         size++;
 
