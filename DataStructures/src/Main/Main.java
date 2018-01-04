@@ -13,6 +13,9 @@ public  class Main {
         list.addToTheFront(Jackie);
         list.print();
 
+        list.addBefore(Bonie,Mary);
+        list.print();
+
 
 
         /*MyStack palindrome = new MyStack("I did, did I?");

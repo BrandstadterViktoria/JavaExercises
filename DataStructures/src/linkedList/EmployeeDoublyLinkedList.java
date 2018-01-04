@@ -38,10 +38,9 @@ public class EmployeeDoublyLinkedList {
 
     public void print() {
         EmployeeNode current = head;
-        System.out.println("HEAD -->");
         while (current != null) {
-            System.out.println(current);
-            System.out.println("<=>");
+            System.out.print(current);
+            System.out.print("<=>");
             current = current.getNext();
         }
         System.out.println("null");
@@ -57,9 +56,10 @@ public class EmployeeDoublyLinkedList {
             current = current.getNext();
         }
         EmployeeNode newNode = new EmployeeNode(newEmployee);
-        current.setPrevious(newNode);
         newNode.setPrevious(current.getPrevious());
         newNode.setNext(current);
+        current.setPrevious(newNode);
+
 
         size++;
 
