@@ -35,5 +35,9 @@ public class EmployeeNode {
         this.previous = previous;
     }
 
+    public String toString() {
+        return employee.toString();
+    }
+
 
 }
