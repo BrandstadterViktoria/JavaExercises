@@ -14,7 +14,7 @@ public class EmployeeDoublyLinkedList {
 
         if (head == null) {
             tail = newNode;
-        }else {
+        } else {
             head.setPrevious(newNode);
             newNode.setNext(head);
         }
@@ -26,7 +26,7 @@ public class EmployeeDoublyLinkedList {
     public void addToTheEnd(Employee employee) {
         EmployeeNode newNode = new EmployeeNode(employee);
 
-        if(tail == null){
+        if (tail == null) {
             head = newNode;
         } else {
             tail.setNext(newNode);
@@ -48,20 +48,23 @@ public class EmployeeDoublyLinkedList {
     }
 
     public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
-
-        EmployeeNode newNode = new EmployeeNode(newEmployee);
-        EmployeeNode existingNode = head.getNext();
-        if(size == 1){
-            tail.setNext(newNode);
-        }else{
-            existingNode.setNext(newNode);
-            newNode.setPrevious(existingNode);
-            newNode.setNext(tail);
-
+        if (head == null) {
+            return false;
         }
 
+        EmployeeNode current = head;
+        while ((current.getEmployee().getName() != existingEmployee.getName())) {
+            current = current.getNext();
+        }
+        EmployeeNode newNode = new EmployeeNode(newEmployee);
+        current.setPrevious(newNode);
+        newNode.setPrevious(current.getPrevious());
+        newNode.setNext(current);
 
-        return false;
+        size++;
+
+
+        return true;
     }
 
 }

@@ -13,6 +13,8 @@ public  class Main {
         list.addToTheFront(Jackie);
         list.print();
 
+
+
         /*MyStack palindrome = new MyStack("I did, did I?");
         for (char character : palindrome.getWord().toCharArray()) {
             palindrome.push(character);
