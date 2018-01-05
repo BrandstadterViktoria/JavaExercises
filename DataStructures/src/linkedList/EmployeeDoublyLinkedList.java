@@ -2,15 +2,15 @@ package linkedList;
 
 public class EmployeeDoublyLinkedList {
 
-    private EmployeeNode head;
-    private EmployeeNode tail;
+    private EmployeeNodeDoublyLinkedList head;
+    private EmployeeNodeDoublyLinkedList tail;
     private int size;
 
     public EmployeeDoublyLinkedList() {
     }
 
     public void addToTheFront(Employee employee) {
-        EmployeeNode newNode = new EmployeeNode(employee);
+        EmployeeNodeDoublyLinkedList newNode = new EmployeeNodeDoublyLinkedList(employee);
 
         if (head == null) {
             tail = newNode;
@@ -24,7 +24,7 @@ public class EmployeeDoublyLinkedList {
     }
 
     public void addToTheEnd(Employee employee) {
-        EmployeeNode newNode = new EmployeeNode(employee);
+        EmployeeNodeDoublyLinkedList newNode = new EmployeeNodeDoublyLinkedList(employee);
 
         if (tail == null) {
             head = newNode;
@@ -37,7 +37,7 @@ public class EmployeeDoublyLinkedList {
     }
 
     public void print() {
-        EmployeeNode current = head;
+        EmployeeNodeDoublyLinkedList current = head;
         while (current != null) {
             System.out.print(current);
             System.out.print("<=>");
@@ -51,11 +51,11 @@ public class EmployeeDoublyLinkedList {
             return false;
         }
 
-        EmployeeNode current = head;
+        EmployeeNodeDoublyLinkedList current = head;
         while ((current.getEmployee().getName() != existingEmployee.getName())) {
             current = current.getNext();
         }
-        EmployeeNode newNode = new EmployeeNode(newEmployee);
+        EmployeeNodeDoublyLinkedList newNode = new EmployeeNodeDoublyLinkedList(newEmployee);
         newNode.setPrevious(current.getPrevious());
         newNode.setNext(current);
         current.setPrevious(newNode);

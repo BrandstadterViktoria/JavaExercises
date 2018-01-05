@@ -1,12 +1,12 @@
 package linkedList;
 
-public class EmployeeNode {
+public class EmployeeNodeDoublyLinkedList {
 
     private Employee employee;
-    private EmployeeNode next;
-    private EmployeeNode previous;
+    private EmployeeNodeDoublyLinkedList next;
+    private EmployeeNodeDoublyLinkedList previous;
 
-    public EmployeeNode(Employee employee) {
+    public EmployeeNodeDoublyLinkedList(Employee employee) {
         this.employee = employee;
     }
 
@@ -18,20 +18,20 @@ public class EmployeeNode {
         this.employee = employee;
     }
 
-    public EmployeeNode getNext() {
+    public EmployeeNodeDoublyLinkedList getNext() {
         return next;
     }
 
 
-    public void setNext(EmployeeNode next) {
+    public void setNext(EmployeeNodeDoublyLinkedList next) {
         this.next = next;
     }
 
-    public EmployeeNode getPrevious() {
+    public EmployeeNodeDoublyLinkedList getPrevious() {
         return previous;
     }
 
-    public void setPrevious(EmployeeNode previous) {
+    public void setPrevious(EmployeeNodeDoublyLinkedList previous) {
         this.previous = previous;
     }
 
