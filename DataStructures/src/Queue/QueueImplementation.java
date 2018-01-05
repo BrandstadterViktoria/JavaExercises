@@ -10,8 +10,8 @@ public class QueueImplementation {
     public static boolean checkForPalindrome(String string) {
         Pattern pattern = Pattern.compile("[^a-z A-Z]");
         Matcher matcher = pattern.matcher(string);
-        String string2 = matcher.replaceAll("");
-        char[] characters = string2.trim().toLowerCase().toCharArray();
+        string = matcher.replaceAll("").toLowerCase().replaceAll("\\s+", "");
+        char[] characters = string.toCharArray();
 
         Deque<Character> palindrome = new LinkedList<>();
             for (int i = 0; i < characters.length / 2; i++) {
