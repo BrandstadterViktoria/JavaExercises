@@ -1,6 +1,7 @@
 package Main;
 import linkedList.Employee;
 import linkedList.EmployeeDoublyLinkedList;
+import linkedList.IntegerSinglyLinkedList;
 
 public  class Main {
     public static void main(String[] args) {
@@ -15,6 +16,9 @@ public  class Main {
 
         list.addBefore(Bonie,Mary);
         list.print();*/
+
+        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        list.addToTheList(4);
 
 
 

@@ -9,43 +9,45 @@ public class IntegerSinglyLinkedList {
     public IntegerSinglyLinkedList() {
     }
 
-    public void addToTheList(Integer newNumber){
+    public void addToTheList(Integer newNumber) {
         IntegerNodeSinglyLinkedList newNode = new IntegerNodeSinglyLinkedList(newNumber);
 
-        if(head == null){
+        if (head == null) {
             head = newNode;
         }
-        if(size == 1){
+        if (size == 1) {
             head.setNext(newNode);
             newNode.setNext(null);
-        }
-        else{
+        } else {
             IntegerNodeSinglyLinkedList current = head;
-            while (current.getNext() != null){
+            while (current.getNext() != null) {
                 current = current.getNext();
             }
             current.setNext(newNode);
             newNode.setNext(null);
         }
+        size++;
     }
 
-    public void addToTheListInSortedOrder(Integer newNumber, Integer existingNumber ){
+    public void addToTheListInSortedOrder(Integer newNumber) {
 
         IntegerNodeSinglyLinkedList newNode = new IntegerNodeSinglyLinkedList(newNumber);
-        IntegerNodeSinglyLinkedList current = head;
 
-        while(current.getNumber() != existingNumber){
-            current = current.getNext();
+        if (size == 1 || newNode.getNumber() < head.getNumber()) {
+            newNode.setNext(head);
+            head.setNext(null);
+            newNode = head;
+
+        } else {
+            IntegerNodeSinglyLinkedList current = head;
+            while (newNode.getNumber() > current.getNumber()) {
+                current = current.getNext();
+            }
+            newNode.setNext(current);
+
+
+
+            size++;
         }
 
-        if(head == null){
-            head = newNode;
-        }else{
-
-            newNode.setNext(head.getNext());
-            head.setNext(newNode);
-        }
-        size ++;
     }
-
-}
