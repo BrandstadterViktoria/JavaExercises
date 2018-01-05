@@ -2,18 +2,18 @@ package linkedList;
 
 public class IntegerNodeSinglyLinkedList {
 
-    private Integer next;
+    private IntegerNodeSinglyLinkedList next;
     private Integer number;
 
-    public IntegerNodeSinglyLinkedList(Integer next) {
-        this.next = next;
+    public IntegerNodeSinglyLinkedList(Integer number) {
+        this.number = number;
     }
 
-    public Integer getNext() {
+    public IntegerNodeSinglyLinkedList getNext() {
         return next;
     }
 
-    public void setNext(Integer next) {
+    public void setNext(IntegerNodeSinglyLinkedList next) {
         this.next = next;
     }
 
