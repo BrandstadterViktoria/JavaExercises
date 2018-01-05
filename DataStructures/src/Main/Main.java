@@ -1,7 +1,6 @@
 package Main;
-import linkedList.Employee;
-import linkedList.EmployeeDoublyLinkedList;
-import linkedList.IntegerSinglyLinkedList;
+
+import static Queue.QueueImplementation.checkForPalindrome;
 
 public  class Main {
     public static void main(String[] args) {
@@ -16,16 +15,13 @@ public  class Main {
 
         list.addBefore(Bonie,Mary);
         list.print();*/
-
+/*
         IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
         list.addToTheListInSortedOrder(4);
         list.addToTheListInSortedOrder(2);
         list.addToTheListInSortedOrder(1);
         list.addToTheListInSortedOrder(5);
-        list.print();
-
-
-
+        list.print();*/
 
         /*MyStack palindrome = new MyStack("I did, did I?");
         for (char character : palindrome.getWord().toCharArray()) {
@@ -34,6 +30,18 @@ public  class Main {
         palindrome.print();
         System.out.println(palindrome.isItAPalindrome(palindrome.getWord()));*/
 
+        // should return true
+        System.out.println(checkForPalindrome("abccba"));
+        // should return true
+        System.out.println(checkForPalindrome("Was it a car or a cat I saw?"));
+        // should return true
+        System.out.println(checkForPalindrome("I did, did I?"));
+        // should return false
+        System.out.println(checkForPalindrome("hello"));
+        // should return true
+        System.out.println(checkForPalindrome("Don't nod"));
     }
 
-}
+    }
+
+
