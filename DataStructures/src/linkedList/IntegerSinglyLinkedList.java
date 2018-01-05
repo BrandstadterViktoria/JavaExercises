@@ -9,45 +9,37 @@ public class IntegerSinglyLinkedList {
     public IntegerSinglyLinkedList() {
     }
 
-    public void addToTheList(Integer newNumber) {
-        IntegerNodeSinglyLinkedList newNode = new IntegerNodeSinglyLinkedList(newNumber);
-
-        if (head == null) {
-            head = newNode;
-        }
-        if (size == 1) {
-            head.setNext(newNode);
-            newNode.setNext(null);
-        } else {
-            IntegerNodeSinglyLinkedList current = head;
-            while (current.getNext() != null) {
-                current = current.getNext();
-            }
-            current.setNext(newNode);
-            newNode.setNext(null);
-        }
-        size++;
-    }
 
     public void addToTheListInSortedOrder(Integer newNumber) {
 
         IntegerNodeSinglyLinkedList newNode = new IntegerNodeSinglyLinkedList(newNumber);
 
-        if (size == 1 || newNode.getNumber() < head.getNumber()) {
+        if (head == null || newNode.getNumber() <= head.getNumber()) {
             newNode.setNext(head);
-            head.setNext(null);
-            newNode = head;
-
-        } else {
-            IntegerNodeSinglyLinkedList current = head;
-            while (newNode.getNumber() > current.getNumber()) {
-                current = current.getNext();
-            }
-            newNode.setNext(current);
-
-
-
-            size++;
+            head = newNode;
         }
 
+        IntegerNodeSinglyLinkedList current = head.getNext();
+        IntegerNodeSinglyLinkedList previous = head;
+        while (current != null && current.getNumber() < newNumber) {
+            previous = current;
+            current = current.getNext();
+        }
+        newNode.setNext(current);
+        previous.setNext(newNode);
+
+        size++;
     }
+
+    public void print() {
+        IntegerNodeSinglyLinkedList current = head;
+        System.out.println("HEAD");
+        while (current.getNext() != null) {
+            System.out.println(current);
+            System.out.println("=>");
+            current = current.getNext();
+        }
+    }
+}
+
+

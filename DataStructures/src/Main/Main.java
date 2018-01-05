@@ -18,9 +18,11 @@ public  class Main {
         list.print();*/
 
         IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
-        list.addToTheList(4);
-
-
+        list.addToTheListInSortedOrder(4);
+        list.addToTheListInSortedOrder(2);
+        list.addToTheListInSortedOrder(1);
+        list.addToTheListInSortedOrder(5);
+        list.print();
 
 
 
