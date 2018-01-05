@@ -5,7 +5,7 @@ import linkedList.EmployeeDoublyLinkedList;
 public  class Main {
     public static void main(String[] args) {
 
-        Employee Mary = new Employee("Mary",56);
+        /*Employee Mary = new Employee("Mary",56);
         Employee Jackie = new Employee("Jackie",45);
         Employee Bonie = new Employee("Bonie",67);
         EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
@@ -14,7 +14,10 @@ public  class Main {
         list.print();
 
         list.addBefore(Bonie,Mary);
-        list.print();
+        list.print();*/
+
+
+
 
 
 
