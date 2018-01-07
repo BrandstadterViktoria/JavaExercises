@@ -8,6 +8,7 @@ public class MyStack {
     private String word;
     private int top;
     private char[] stack;
+    private int [] intStack;
 
     public MyStack(String word) {
         Pattern pattern = Pattern.compile("[^a-z A-Z]");
@@ -17,7 +18,9 @@ public class MyStack {
         stack = new char[word.length()];
     }
 
+    public MyStack(){
 
+    }
 
     public void push(char chaarcterOfTheWord) {
         stack[top++] = chaarcterOfTheWord;

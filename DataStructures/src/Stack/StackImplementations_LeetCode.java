@@ -34,4 +34,11 @@ public class StackImplementations_LeetCode {
         }
         return nums1;
     }
+
+    public static int getMin_LeetCode155(){
+        int minimum = 0;
+
+
+        return minimum;
+    }
 }
