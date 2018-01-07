@@ -14,7 +14,7 @@ public class StackImplementations_LeetCode {
             System.out.println(result[i]);
         }*/
 
-        MyStack minStack = new MyStack();
+        MyStack minStack = new MyStack(4);
         minStack.push(-2);
         minStack.push(0);
         minStack.push(-3);

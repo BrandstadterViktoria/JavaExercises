@@ -20,7 +20,8 @@ public class MyStack {
         stack = new char[word.length()];
     }
 
-    public MyStack(){
+    public MyStack(int capacity){
+        intStack = new Integer[capacity];
 
     }
 
@@ -38,6 +39,7 @@ public class MyStack {
             throw new EmptyStackException();
         }
         Integer toPop = intStack[--top];
+        intStack[top] = null;
         return toPop;
     }
 
