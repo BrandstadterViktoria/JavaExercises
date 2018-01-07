@@ -58,6 +58,13 @@ public class MyStack {
         return word;
     }
 
+    public int getMin(){
+        int min = 0;
+
+
+        return min;
+    }
+
 }
 
 
