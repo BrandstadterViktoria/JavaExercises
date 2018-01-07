@@ -17,9 +17,13 @@ public class Tree {
         }
     }
 
-    public TreeNode get(){
-        if()
+    public TreeNode get(int value) {
+        if (root != null) {
+            return root.get(value);
+        }
+        return null;
     }
+
 
     public int min() {
         if (root == null) {
@@ -38,5 +42,5 @@ public class Tree {
     }
 
     }
-}
+
 
