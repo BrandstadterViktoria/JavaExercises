@@ -6,14 +6,24 @@ import java.util.Stack;
 public class StackImplementations_LeetCode {
 
     public static void main(String[] args) {
-        int[] nums1 = {4, 1, 2};
+        /*int[] nums1 = {4, 1, 2};
         int[] nums2 = {1, 3, 4, 2};
         int[] result = nextGreaterElement(nums1, nums2);
 
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
+        }*/
 
-        }
+        MyStack minStack = new MyStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(getMin(minStack));   //--> Returns -3.
+        minStack.pop();
+        System.out.println(minStack.peek());      //-> Returns 0.
+        System.out.println(getMin(minStack));   //--> Returns -2.
+
+
 
     }
 
@@ -34,6 +44,20 @@ public class StackImplementations_LeetCode {
         }
         return nums1;
     }
+
+    public static int getMin(MyStack minstack) {
+
+        if (minstack.isEmpty()) {
+            return Integer.MIN_VALUE;
+        } else {
+            Integer last = minstack.pop();
+            Integer next = getMin(minstack);
+            minstack.push(last);
+            if (last > next) {
+                return last;
+            } else {
+                return next;
+            }
+        }
+    }
 }
-
-

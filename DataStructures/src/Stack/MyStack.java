@@ -1,4 +1,6 @@
 package Stack;
+
+import java.util.EmptyStackException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,7 +10,7 @@ public class MyStack {
     private String word;
     private int top;
     private char[] stack;
-    private int [] intStack;
+    private Integer [] intStack;
 
     public MyStack(String word) {
         Pattern pattern = Pattern.compile("[^a-z A-Z]");
@@ -26,6 +28,22 @@ public class MyStack {
         stack[top++] = chaarcterOfTheWord;
 
     }
+    public void push(int number) {
+        intStack[top++] = number;
+
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        Integer toPop = intStack[--top];
+        return toPop;
+    }
+
+    public boolean isEmpty() {
+        return top == 0;
+    }
 
     public void print() {
         for (int i = top - 1; i >= 0; i--) {
@@ -34,8 +52,8 @@ public class MyStack {
         }
     }
 
-    public Character peek() {
-        return stack[top - 1];
+    public int peek() {
+        return intStack[top - 1];
     }
 
     public boolean isItAPalindrome(String input) {
@@ -58,12 +76,7 @@ public class MyStack {
         return word;
     }
 
-    public int getMin(){
-        int min = 0;
 
-
-        return min;
-    }
 
 }
 
