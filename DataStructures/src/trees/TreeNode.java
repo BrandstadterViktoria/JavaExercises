@@ -47,7 +47,30 @@ public class TreeNode {
         return null;
     }
 
+    public int min(){
+        if(leftChild == null){
+            return data;
+        }else{
+            return leftChild.min();
+        }
+    }
 
+    public void traverseInOrder(){
+        if(leftChild != null){
+            leftChild.traverseInOrder();
+            System.out.printf(" ");
+        }if(rightChild !=null){
+            rightChild.traverseInOrder();
+        }
+    }
+
+    public int max(){
+        if(rightChild == null){
+            return data;
+        }else{
+            return rightChild.max();
+        }
+    }
         public int getData () {
             return data;
         }
@@ -70,4 +93,9 @@ public class TreeNode {
         public void setRightChild (TreeNode rightChild){
             this.rightChild = rightChild;
         }
+
+    @Override
+    public String toString() {
+        return "data=" + data;
     }
+}
