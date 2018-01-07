@@ -4,35 +4,39 @@ public class Tree {
 
     private TreeNode root;
 
-    public void insert(int value){
-     if(root == null){
-         root = new TreeNode(value);
-     }else{
-         root.insert(value);
-     }
-     }
-
-     public int min(){
-        if(root == null){
-            return Integer.MIN_VALUE;
-        }else{
-            return root.min();
+    public void insert(int value) {
+        if (root == null) {
+            root = new TreeNode(value);
+        } else {
+            root.insert(value);
         }
-     }
-     public int max(){
+    }
+    public void traversInorder(){
         if(root == null){
-            return Integer.MAX_VALUE;
-        }else{
-            return root.max();
+            root.traverseInOrder();
         }
-     }
-
-    public TreeNode getRoot() {
-        return root;
     }
 
-    public void setRoot(TreeNode root) {
-        this.root = root;
+    public TreeNode get(){
+        if()
+    }
+
+    public int min() {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        } else {
+            return root.min();
+        }
+    }
+
+    public int max() {
+        if (root == null) {
+            return Integer.MAX_VALUE;
+        } else {
+            return root.max();
+        }
+    }
+
     }
 }
 

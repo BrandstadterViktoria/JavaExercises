@@ -93,8 +93,6 @@ public class TreeNode {
         public void setRightChild (TreeNode rightChild){
             this.rightChild = rightChild;
         }
-
-    @Override
     public String toString() {
         return "data=" + data;
     }
