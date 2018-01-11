@@ -17,6 +17,15 @@ public class Tree {
         }
     }
 
+    public void traversPreOrder(){
+        if(root == null){
+            root.getData();
+            root.traversPreOrder();
+        }
+
+
+    }
+
     public TreeNode get(int value) {
         if (root != null) {
             return root.get(value);

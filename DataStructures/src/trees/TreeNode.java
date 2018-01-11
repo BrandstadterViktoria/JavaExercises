@@ -41,7 +41,6 @@ public class TreeNode {
             if (rightChild != null) {
                 return rightChild;
             }
-
         }
 
         return null;
