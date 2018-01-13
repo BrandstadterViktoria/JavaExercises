@@ -23,8 +23,6 @@ public class StackImplementations_LeetCode {
         System.out.println(minStack.peek());      //-> Returns 0.
         System.out.println(getMin(minStack));   //--> Returns -2.
 
-
-
     }
 
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
