@@ -33,7 +33,7 @@ public class SortAndSearchAlgorithmPractice {
 
         }
         for (int i = 0; i < sortedArrayA.length ; i++) {
-            System.out.println(i);
+            System.out.println(sortedArrayA[i]);
         }
 
     }
