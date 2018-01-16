@@ -10,30 +10,30 @@ public class SortAndSearchAlgorithmPractice {
 
  }
 
-    public static void mergeSortedOrder(int[] sortedArrayA, int[] sortedArrayB) {
+    public static void mergeSortedOrder(int[] nums1, int[] nums2) {
 
     /*You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B.
     Write a method to merge B into A in sorted order.*/
 
-        int indexOfMerged = sortedArrayA.length - 1;
-        int lastIndexofA = sortedArrayA.length - sortedArrayB.length - 1;
-        int lastIndexOfB = sortedArrayB.length - 1;
+        int indexOfMerged = nums1.length - 1;
+        int lastIndexofA = nums1.length - nums2.length - 1;
+        int lastIndexOfB = nums2.length - 1;
 
         while (lastIndexOfB >= 0) {
 
-            if (lastIndexofA >= 0 && sortedArrayA[lastIndexofA] > sortedArrayB[lastIndexOfB]) {
-                sortedArrayA[indexOfMerged] = sortedArrayA[lastIndexofA];
+            if (lastIndexofA >= 0 && nums1[lastIndexofA] > nums2[lastIndexOfB]) {
+                nums1[indexOfMerged] = nums1[lastIndexofA];
                 lastIndexofA--;
             } else {
-                sortedArrayA[indexOfMerged] = sortedArrayB[lastIndexOfB];
+                nums1[indexOfMerged] = nums2[lastIndexOfB];
                 lastIndexOfB--;
 
             }
             indexOfMerged--;
 
         }
-        for (int i = 0; i < sortedArrayA.length ; i++) {
-            System.out.println(sortedArrayA[i]);
+        for (int i = 0; i < nums1.length ; i++) {
+            System.out.println(nums1[i]);
         }
 
     }
