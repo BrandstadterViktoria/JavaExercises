@@ -14,18 +14,18 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
-        int result = 0;
         HashMap<Integer, Integer> mapOfNumbers1 = new HashMap<>();
         for (int i = 0; i <= numbers1.length - 1; i++) {
             mapOfNumbers1.put(numbers1[i], (mapOfNumbers1.containsKey(numbers1[i]) ? 0 : 1));
         }
-        for (int key : mapOfNumbers1.keySet()){
+        for (int key : mapOfNumbers1.keySet()) {
             int value = mapOfNumbers1.get(key);
-            if(value == 1){
-             result = key;
+            if (value == 1) {
+                return key;
             }
-            }
-            return result ;
+        }
+
+        return -1;
     }
 }
 
