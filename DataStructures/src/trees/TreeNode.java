@@ -3,8 +3,8 @@ package trees;
 public class TreeNode {
 
     private int data;
-    private TreeNode leftChild;
-    private TreeNode rightChild;
+    private TreeNode left;
+    private TreeNode right;
 
     public TreeNode(int data) {
         this.data = data;
@@ -16,15 +16,15 @@ public class TreeNode {
             return;
         }
         if (value < data) {
-            if (leftChild == null) {
-                leftChild = new TreeNode(value);
+            if (left == null) {
+                left = new TreeNode(value);
             } else {
-                leftChild.insert(value);
+                left.insert(value);
             }
-            if (rightChild == null) {
-                rightChild = new TreeNode(value);
+            if (right == null) {
+                right = new TreeNode(value);
             } else {
-                rightChild.insert(value);
+                right.insert(value);
             }
         }
     }
@@ -34,12 +34,12 @@ public class TreeNode {
             return this;
         }
         if (value < data) {
-            if (leftChild != null) {
-                return leftChild;
+            if (left != null) {
+                return left;
             }
         } else {
-            if (rightChild != null) {
-                return rightChild;
+            if (right != null) {
+                return right;
             }
         }
 
@@ -47,27 +47,27 @@ public class TreeNode {
     }
 
     public int min(){
-        if(leftChild == null){
+        if(left == null){
             return data;
         }else{
-            return leftChild.min();
+            return left.min();
         }
     }
 
     public void traverseInOrder(){
-        if(leftChild != null){
-            leftChild.traverseInOrder();
+        if(left != null){
+            left.traverseInOrder();
             System.out.printf(" ");
-        }if(rightChild !=null){
-            rightChild.traverseInOrder();
+        }if(right !=null){
+            right.traverseInOrder();
         }
     }
 
     public int max(){
-        if(rightChild == null){
+        if(right == null){
             return data;
         }else{
-            return rightChild.max();
+            return right.max();
         }
     }
         public int getData () {
@@ -77,20 +77,20 @@ public class TreeNode {
             this.data = data;
         }
 
-        public TreeNode getLeftChild () {
-            return leftChild;
+        public TreeNode getLeft() {
+            return left;
         }
 
-        public void setLeftChild (TreeNode leftChild){
-            this.leftChild = leftChild;
+        public void setLeft(TreeNode left){
+            this.left = left;
         }
 
-        public TreeNode getRightChild () {
-            return rightChild;
+        public TreeNode getRight() {
+            return right;
         }
 
-        public void setRightChild (TreeNode rightChild){
-            this.rightChild = rightChild;
+        public void setRight(TreeNode right){
+            this.right = right;
         }
     public String toString() {
         return "data=" + data;
