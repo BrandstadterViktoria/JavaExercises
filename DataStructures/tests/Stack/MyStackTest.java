@@ -1,3 +1,4 @@
+/*
 package Stack;
 
 import org.junit.Assert;
@@ -51,4 +52,4 @@ public class MyStackTest {
         Assert.assertTrue(test5.isItAPalindrome(test5.getWord()));
     }
 
-}
+}*/

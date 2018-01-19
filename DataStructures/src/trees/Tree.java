@@ -11,21 +11,22 @@ public class Tree {
             root.insert(value);
         }
     }
-    public void traversInorder(){
-        if(root == null){
+
+    public void traversInorder() {
+        if (root == null) {
             root.traverseInOrder();
         }
     }
 
 
-    public void traversPreOrder(){
-        if(root == null){
-            root.getData();
-            root.traversPreOrder();
-        }
-
-
-    }
+//    public void traversPreOrder() {
+//        if (root == null) {
+//            root.getData();
+//            root.traversPreOrder();
+//        }
+//
+//
+//    }
 
     public TreeNode get(int value) {
         if (root != null) {
@@ -51,6 +52,23 @@ public class Tree {
         }
     }
 
+    public int maxDepth_LC104(TreeNode root) {
+        int height;
+        if (root.getData() == 0) {
+            return 0;
+        }
+        int left = maxDepth_LC104(root.getLeft());
+        int right = maxDepth_LC104(root.getRight());
+        if (left > right) {
+            height = 1 + left;
+        } else {
+            height = 1 + right;
+        }
+        return height;
     }
+}
+
+
+
 
 

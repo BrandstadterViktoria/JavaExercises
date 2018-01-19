@@ -12,7 +12,7 @@ public class TreeNode {
 
 
     public void insert(int value) {
-        if (data == value) {
+        if (value == data) {
             return;
         }
         if (value < data) {
@@ -21,7 +21,9 @@ public class TreeNode {
             } else {
                 left.insert(value);
             }
-            if (right == null) {
+        }
+        else{
+            if(right == null) {
                 right = new TreeNode(value);
             } else {
                 right.insert(value);

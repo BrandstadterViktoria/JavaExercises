@@ -3,22 +3,21 @@ package trees;
 public class LeetCodeExcercisesForTrees {
     public static void main(String[] args) {
 
+        Tree intTree = new Tree();
+        intTree.insert(25);
+        intTree.insert(20);
+        intTree.insert(15);
+        intTree.insert(27);
+        intTree.insert(30);
+        intTree.insert(29);
+        intTree.insert(26);
+        intTree.insert(22);
+
+        intTree.traversInorder();
+        System.out.println();
 
     }
 
-    public int maxDepth_LC104(TreeNode root) {
-        int height = 0;
-        if(root.getData() == 0){
-            return 0;
-        }
-        int left = maxDepth_LC104(root.getLeft());
-        int right = maxDepth_LC104(root.getRight());
-        if(left > right){
-            height = 1 + left;
-        }else{
-            height = 1 + right;
-        }
-        return height;
-    }
+
 }
 
