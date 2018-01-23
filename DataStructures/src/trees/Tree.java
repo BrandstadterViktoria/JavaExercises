@@ -67,6 +67,22 @@ public class Tree {
             return height;
         }
     }
+
+    public int minDepth_LC111 (TreeNode root){
+        int height;
+        if(root == null) {
+            return 0;
+        }else{
+            int left = minDepth_LC111(root.getLeft());
+            int right = minDepth_LC111(root.getRight());
+            if (left < right) {
+                height = left + 1;
+            }else{
+                height = right + 1;
+            }
+            return height;
+        }
+    }
 }
 
 
