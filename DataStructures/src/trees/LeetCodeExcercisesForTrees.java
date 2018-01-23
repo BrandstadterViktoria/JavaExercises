@@ -14,7 +14,7 @@ public class LeetCodeExcercisesForTrees {
         intTree.insert(22);
 
         intTree.traversInorder();
-        System.out.println();
+        System.out.println(intTree.maxDepth_LC104(intTree.get(25)));
 
     }
 

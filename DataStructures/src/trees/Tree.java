@@ -54,17 +54,18 @@ public class Tree {
 
     public int maxDepth_LC104(TreeNode root) {
         int height;
-        if (root.getData() == 0) {
+        if (root == null) {
             return 0;
-        }
-        int left = maxDepth_LC104(root.getLeft());
-        int right = maxDepth_LC104(root.getRight());
-        if (left > right) {
-            height = 1 + left;
         } else {
-            height = 1 + right;
+            int left = maxDepth_LC104(root.getLeft());
+            int right = maxDepth_LC104(root.getRight());
+            if (left > right) {
+                height = 1 + left;
+            } else {
+                height = 1 + right;
+            }
+            return height;
         }
-        return height;
     }
 }
 
