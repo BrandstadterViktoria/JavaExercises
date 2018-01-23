@@ -69,15 +69,15 @@ public class Tree {
     }
 
     public int minDepth_LC111 (TreeNode root){
-        int height;
+        int height = 0;
         if(root == null) {
             return 0;
         }else{
             int left = minDepth_LC111(root.getLeft());
             int right = minDepth_LC111(root.getRight());
-            if (left < right) {
+            if (left < right || root.getRight() == null ) {
                 height = left + 1;
-            }else{
+            }else if(right < left || root.getLeft() == null){
                 height = right + 1;
             }
             return height;
