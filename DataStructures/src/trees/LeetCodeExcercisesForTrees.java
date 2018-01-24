@@ -16,8 +16,9 @@ public class LeetCodeExcercisesForTrees {
 /*
         intTree.traversInorder();
 */
-        System.out.println(intTree.get(20));
-        System.out.println(intTree.get(122));
+       /* System.out.println(intTree.get(20));
+        System.out.println(intTree.get(122));*/
+        intTree.traverLevelorder();
 
     }
 

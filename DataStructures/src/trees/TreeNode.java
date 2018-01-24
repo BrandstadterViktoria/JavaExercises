@@ -21,9 +21,8 @@ public class TreeNode {
             } else {
                 left.insert(value);
             }
-        }
-        else{
-            if(right == null) {
+        } else {
+            if (right == null) {
                 right = new TreeNode(value);
             } else {
                 right.insert(value);
@@ -47,70 +46,79 @@ public class TreeNode {
         return null;
     }
 
-    public int min(){
-        if(left == null){
+    public int min() {
+        if (left == null) {
             return data;
-        }else{
+        } else {
             return left.min();
         }
     }
 
-    public void traverseInOrder(){
-        if(left != null) {
+    public void traverseInOrder() {
+        if (left != null) {
             left.traverseInOrder();
         }
 
-        System.out.print( + data +",    ");
+        System.out.print(+data + ",    ");
 
-        if(right != null){
+        if (right != null) {
             right.traverseInOrder();
         }
     }
 
-    public void traverseLevelOrder_LC102(){
-        if(left != null && right != null){
-            left.traverseLevelOrder_LC102();
+    public void traverseLevelOrder_LC102(TreeNode root) {
+        if (left != null && right != null) {
+            left.traverseLevelOrder_LC102(root);
+            right.traverseLevelOrder_LC102(root);
         }
-        if(left != null && right != null){
-            System.out.println(left.data + " ," + right.data );
+        if (left != null && right != null) {
         }
-        if(left != null && right == null){
+        if (left != null && right != null) {
+            System.out.println(left.data + " ," + right.data);
+        }
+        if (left != null && right == null) {
             System.out.println(data);
         }
-        if(left == null && right != null){
+        if (left == null && right != null) {
             System.out.println(data);
+        } else if (right != null) {
+
         }
+
     }
 
-    public int max(){
-        if(right == null){
+    public int max() {
+        if (right == null) {
             return data;
-        }else{
+        } else {
             return right.max();
         }
     }
-        public int getData () {
-            return data;
-        }
-        public void setData (int data){
-            this.data = data;
-        }
 
-        public TreeNode getLeft() {
-            return left;
-        }
+    public int getData() {
+        return data;
+    }
 
-        public void setLeft(TreeNode left){
-            this.left = left;
-        }
+    public void setData(int data) {
+        this.data = data;
+    }
 
-        public TreeNode getRight() {
-            return right;
-        }
+    public TreeNode getLeft() {
+        return left;
+    }
 
-        public void setRight(TreeNode right){
-            this.right = right;
-        }
+    public void setLeft(TreeNode left) {
+        this.left = left;
+    }
+
+    public TreeNode getRight() {
+        return right;
+    }
+
+    public void setRight(TreeNode right) {
+        this.right = right;
+    }
+
     public String toString() {
         return "data=" + data;
     }
