@@ -20,6 +20,7 @@ public class Tree {
 
     public void traverLevelorder(){
         if(root != null){
+            System.out.println(root.getData());
             root.traverseLevelOrder_LC102(root);
         }
     }

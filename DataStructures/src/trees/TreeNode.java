@@ -67,24 +67,19 @@ public class TreeNode {
     }
 
     public void traverseLevelOrder_LC102(TreeNode root) {
-        if (left != null && right != null) {
-            left.traverseLevelOrder_LC102(root);
-            right.traverseLevelOrder_LC102(root);
-        }
-        if (left != null && right != null) {
-        }
-        if (left != null && right != null) {
-            System.out.println(left.data + " ," + right.data);
+        if (left == null && right != null) {
+            System.out.println(data);
         }
         if (left != null && right == null) {
             System.out.println(data);
         }
-        if (left == null && right != null) {
-            System.out.println(data);
-        } else if (right != null) {
-
+        if (left != null && right != null) {
+            System.out.println(left.data + " ," + right.data);
         }
-
+        if (left != null && right != null) {
+            left.traverseLevelOrder_LC102(root);
+            right.traverseLevelOrder_LC102(root);
+        }
     }
 
     public int max() {
