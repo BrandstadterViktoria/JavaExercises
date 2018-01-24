@@ -13,7 +13,7 @@ public class Tree {
     }
 
     public void traversInorder() {
-        if (root == null) {
+        if (root != null) {
             root.traverseInOrder();
         }
     }

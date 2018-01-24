@@ -58,10 +58,13 @@ public class TreeNode {
     }
 
     public void traverseInOrder(){
-        if(left != null){
+        if(left != null) {
             left.traverseInOrder();
-            System.out.printf(" ");
-        }if(right !=null){
+        }
+
+        System.out.print( + data +",    ");
+
+        if(right != null){
             right.traverseInOrder();
         }
     }
