@@ -18,7 +18,6 @@ public class Tree {
         }
     }
 
-
 //    public void traversPreOrder() {
 //        if (root == null) {
 //            root.getData();
