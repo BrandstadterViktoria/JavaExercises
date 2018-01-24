@@ -11,7 +11,6 @@ public class TreeNode {
 
     }
 
-
     public void insert(int value) {
         if (value == data) {
             return;
@@ -38,14 +37,13 @@ public class TreeNode {
         }
         if (value < data) {
             if (left != null) {
-                return left;
+                return left.get(value);
             }
         } else {
             if (right != null) {
-                return right;
+                return right.get(value);
             }
         }
-
         return null;
     }
 
