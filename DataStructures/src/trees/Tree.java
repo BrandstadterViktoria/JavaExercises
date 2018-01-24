@@ -72,15 +72,17 @@ public class Tree {
         int height = 0;
         if(root == null) {
             return 0;
+        }
+        if(root.getLeft() == null && root.getRight() == null){
+            return 1;
+        }
+        if(root.getLeft() == null){
+            return minDepth_LC111(root.getRight()) + 1;
+        }
+        if(root.getRight() == null){
+            return minDepth_LC111(root.getLeft()) + 1;
         }else{
-            int left = minDepth_LC111(root.getLeft());
-            int right = minDepth_LC111(root.getRight());
-            if (left < right || root.getRight() == null ) {
-                height = left + 1;
-            }else if(right < left || root.getLeft() == null){
-                height = right + 1;
-            }
-            return height;
+            return Math.min((minDepth_LC111(root.getLeft())),(minDepth_LC111(root.getRight())));
         }
     }
 }

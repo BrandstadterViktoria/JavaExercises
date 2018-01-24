@@ -13,12 +13,12 @@ public class LeetCodeExcercisesForTrees {
         intTree.insert(26);
         intTree.insert(22);*/
 
-        intTree.insert(2);
         intTree.insert(1);
+        intTree.insert(2);
 
         intTree.traversInorder();
-        System.out.println(intTree.maxDepth_LC104(intTree.get(2)));
-        System.out.println(intTree.minDepth_LC111(intTree.get(2)));
+        System.out.println(intTree.maxDepth_LC104(intTree.get(1)));
+        System.out.println(intTree.minDepth_LC111(intTree.get(1)));
 
     }
 
