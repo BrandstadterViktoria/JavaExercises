@@ -62,7 +62,7 @@ public class StackImplementations_LeetCode {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < theWord.length ; i++) {
             reverseTheWord.push(theWord[i]);
-            if(Character.isWhitespace(theWord[i])){
+            if(Character.isWhitespace(theWord[i]) || i == theWord.length -1){
                 while (!reverseTheWord.isEmpty()){
                     result.append(reverseTheWord.pop());
                 }
