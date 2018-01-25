@@ -1,7 +1,5 @@
 package Stack;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class StackImplementations_LeetCode {
 
@@ -14,15 +12,15 @@ public class StackImplementations_LeetCode {
             System.out.println(result[i]);
         }*/
 
-        MyStack minStack = new MyStack(4);
+    /*    MyStack minStack = new MyStack(4);
         minStack.push(-2);
         minStack.push(0);
         minStack.push(-3);
         System.out.println(getMin(minStack));   //--> Returns -3.
         minStack.pop();
         System.out.println(minStack.peek());      //-> Returns 0.
-        System.out.println(getMin(minStack));   //--> Returns -2.
-
+        System.out.println(getMin(minStack));   //--> Returns -2.*/
+        System.out.println(reverseWords_LC557("Let's take LeetCode contest"));
     }
 
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
@@ -57,5 +55,20 @@ public class StackImplementations_LeetCode {
                 return next;
             }
         }
+    }
+    public static String reverseWords_LC557 (String s){
+        char [] theWord = s.toCharArray();
+        Stack reverseTheWord = new Stack();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < theWord.length ; i++) {
+            reverseTheWord.push(theWord[i]);
+            if(Character.isWhitespace(theWord[i])){
+                while (!reverseTheWord.isEmpty()){
+                    result.append(reverseTheWord.pop());
+                }
+            }
+        }
+        return result.toString();
+
     }
 }
