@@ -58,11 +58,14 @@ public class StackImplementations_LeetCode {
     }
     public static String reverseWords_LC557 (String s){
         char [] theWord = s.toCharArray();
-        Stack reverseTheWord = new Stack();
+        Stack<Character> reverseTheWord = new Stack<>();
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < theWord.length ; i++) {
-            reverseTheWord.push(theWord[i]);
+            if(!Character.isWhitespace(theWord[i])) {
+                reverseTheWord.push(theWord[i]);
+            }
             if(Character.isWhitespace(theWord[i]) || i == theWord.length -1){
+                reverseTheWord.push(' ');
                 while (!reverseTheWord.isEmpty()){
                     result.append(reverseTheWord.pop());
                 }
