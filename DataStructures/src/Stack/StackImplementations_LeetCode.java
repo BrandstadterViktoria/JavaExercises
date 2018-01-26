@@ -20,7 +20,8 @@ public class StackImplementations_LeetCode {
         minStack.pop();
         System.out.println(minStack.peek());      //-> Returns 0.
         System.out.println(getMin(minStack));   //--> Returns -2.*/
-        System.out.println(reverseWords_LC557("Let's take LeetCode contest"));
+       // System.out.println(reverseWords_LC557("Let's take LeetCode contest"));
+        System.out.println(reverseStr_LC541_reverseStringII("abcdefg", 2));
     }
 
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
@@ -75,11 +76,29 @@ public class StackImplementations_LeetCode {
 
     }
 
-    public String reverseStr(String s, int k){
-
-        
-
-        return
+    public static String reverseStr_LC541_reverseStringII(String s, int k){
+        int indexNumber = -1;
+        char [] theWord = s.toCharArray();
+        Deque<Character> reverseTheWord = new ArrayDeque<>();
+        for (int i = 0; i < theWord.length ; i++) {
+            reverseTheWord.push(theWord[i]);
+            if(i == k){
+                reverseTheWord.pop();
+                while (!reverseTheWord.isEmpty()){
+                    theWord[indexNumber + 1] = reverseTheWord.pop();
+                    indexNumber += 1;
+                }
+            }
+            indexNumber = i - k;
+            if((i % (2 * k)) == k && i > k){
+                reverseTheWord.pollFirst();
+                while (indexNumber < i ){
+                    theWord[indexNumber] = reverseTheWord.poll();
+                    indexNumber += 1;
+                }
+            }
+        }
+            return new String(theWord);
     }
 
 }
