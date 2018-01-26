@@ -71,7 +71,7 @@ public class StackImplementations_LeetCode {
                 }
             }
         }
-        return result.toString().substring(1);
+        return result.toString().trim();
 
     }
 }
