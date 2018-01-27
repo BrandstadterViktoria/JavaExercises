@@ -31,7 +31,6 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static List<Integer> findDuplicates_LC442(int[] nums) {
-        /* Input:[4,3,2,7,8,2,3,1], Output: [2,3]*/
         List<Integer> duplicates = new ArrayList<>();
         Arrays.sort(nums);
         int current;
@@ -55,6 +54,14 @@ public class RandomLeetCodeExercises_1 {
 
         }
         return duplicates;
+    }
+
+    public static  int[] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
+        /*Input: [1,2,1,2,6,7,5,1], k= 2
+          Output: [0, 3, 5]*/
+
+
+
     }
 }
 
