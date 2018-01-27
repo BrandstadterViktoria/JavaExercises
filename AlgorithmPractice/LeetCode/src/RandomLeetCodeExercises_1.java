@@ -8,7 +8,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {1,1};
+        int[] numbers = {1};
         int[] numbers1 = {1, 0, 1};
 //        System.out.println(singleNumber_LC136(numbers));
         System.out.println(findDuplicates(numbers));
@@ -37,26 +37,25 @@ public class RandomLeetCodeExercises_1 {
         int current;
         int previous;
         for (int i = 0; i < nums.length; i++) {
-            if (nums.length == 2) {
-                current = nums[0];
-                previous = nums[1];
-                if (previous == current) {
-                    if (!duplicates.contains(nums[i])) {
-                        duplicates.add(nums[i]);
-                    }
-                }
-            }
-            if (i == 0) {
-                continue;
-            } else {
-                previous = nums[i - 1];
+//            if (nums.length == 2) {
+//                current = nums[0];
+//                previous = nums[1];
+//                if (previous == current) {
+//                    if (!duplicates.contains(nums[i])) {
+//                        duplicates.add(nums[i]);
+//                    }
+//                }
+//            }
+//            if (i == 0) {
+//                continue;
+//            } else {
+                previous = nums[i == 1 || i == 0 ? 0 : i - 1 ];
                 current = nums[i];
                 if (previous == current) {
                     if (!duplicates.contains(nums[i])) {
                         duplicates.add(nums[i]);
                     }
                 }
-            }
             if(i == nums.length -1 && (nums[nums.length - 1] == nums[nums.length - 2])){
                    if(!duplicates.contains(nums[i])){
                        duplicates.add(nums[i]);
