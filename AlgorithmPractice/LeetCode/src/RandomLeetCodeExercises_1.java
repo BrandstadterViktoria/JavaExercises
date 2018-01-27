@@ -8,10 +8,10 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {4,3,2,7,8,2,3,1};
+        int[] numbers = {4, 3, 2, 7, 8, 2, 3, 1};
         int[] numbers1 = {1, 0, 1};
 //        System.out.println(singleNumber_LC136(numbers));
-        System.out.println(findDuplicates(numbers));
+        System.out.println(findDuplicates_LC442(numbers));
 
     }
 
@@ -30,38 +30,26 @@ public class RandomLeetCodeExercises_1 {
         return -1;
     }
 
-    public static List<Integer> findDuplicates(int[] nums) {
+    public static List<Integer> findDuplicates_LC442(int[] nums) {
         /* Input:[4,3,2,7,8,2,3,1], Output: [2,3]*/
         List<Integer> duplicates = new ArrayList<>();
         Arrays.sort(nums);
         int current;
         int previous;
-        if(nums.length < 2){
+        if (nums.length < 2) {
             return duplicates;
         }
         for (int i = 0; i < nums.length; i++) {
-//            if (nums.length == 2) {
-//                current = nums[0];
-//                previous = nums[1];
-//                if (previous == current) {
-//                    if (!duplicates.contains(nums[i])) {
-//                        duplicates.add(nums[i]);
-//                    }
-//                }
-//            }
-//            if (i == 0) {
-//                continue;
-//            } else {
-                previous = nums[i == 0 ? 0 : i - 1 ];
-                current = nums[i == 0 ? i + 1 : i];
-                if (previous == current) {
-                    if (!duplicates.contains(nums[i])) {
-                        duplicates.add(nums[i]);
-                    }
+            previous = nums[i == 0 ? 0 : i - 1];
+            current = nums[i == 0 ? i + 1 : i];
+            if (previous == current) {
+                if (!duplicates.contains(nums[i])) {
+                    duplicates.add(nums[i]);
                 }
-            if(i == nums.length -1 && (nums[nums.length - 1] == nums[nums.length - 2])){
-                   if(!duplicates.contains(nums[i])){
-                       duplicates.add(nums[i]);
+            }
+            if (i == nums.length - 1 && (nums[nums.length - 1] == nums[nums.length - 2])) {
+                if (!duplicates.contains(nums[i])) {
+                    duplicates.add(nums[i]);
                 }
             }
 
