@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class RandomLeetCodeExercises_1 {
 
@@ -85,6 +86,7 @@ public class RandomLeetCodeExercises_1 {
             return children;
         }
 
+
         public int[] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
           Output: [0, 3, 5]*/
@@ -95,10 +97,12 @@ public class RandomLeetCodeExercises_1 {
                 children.add(new Node(nums[i]));
                 dataParent += nums[i];
                 if (i % k == 0) {
+                    parents.add(dataParent);
+                    children.forEach(child -> child.equals(trees.forEach(tree -> parent.getChildren().get()));
                     parent = new Node(dataParent);
                     parent.addChildren(children);
-                    trees.add(parent);
-                    parents.add(dataParent);
+
+
                     children.clear();
                 }
             }
