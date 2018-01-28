@@ -73,25 +73,37 @@ public class RandomLeetCodeExercises_1 {
             this.children.add(child);
             return child;
         }
+
         private void setParent(Node parent) {
             this.parent = parent;
         }
+        public void addChildren(List<Node> children) {
+            children.forEach(each -> each.setParent(this));
+            this.children.addAll(children);
+        }
 
-        public  int[] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
+        public int[] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
           Output: [0, 3, 5]*/
+        List<Integer> parents = new ArrayList<>();
+        List<>
+            int dataParent = 0;
+            for (int i = 0; i < nums.length; i++) {
+                children.add(new Node(nums[i]));
+                dataParent += nums[i];
+                if (i % k == 0) {
+                    children.add(new Node(dataParent));
+                    parent = new Node(dataParent);
 
-            for (int i = 0; i < nums.length ; i++) {
-            children.add(new Node(nums[i]));
-                if(i % k == 0){
 
+                    parents.add(dataParent);
+                    children.clear();
                 }
             }
 
 
-
+        }
     }
-}
 
 
 
