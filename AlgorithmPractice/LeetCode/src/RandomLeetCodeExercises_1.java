@@ -85,7 +85,7 @@ public class RandomLeetCodeExercises_1 {
         public List<Node> getChildren() {
             return children;
         }
-
+      
 
         public int[] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
