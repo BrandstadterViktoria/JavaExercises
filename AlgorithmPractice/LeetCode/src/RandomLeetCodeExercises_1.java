@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class RandomLeetCodeExercises_1 {
 
@@ -12,8 +11,9 @@ public class RandomLeetCodeExercises_1 {
         int[] numbers = {4, 3, 2, 7, 8, 2, 3, 1};
         int[] numbers1 = {1, 0, 1};
 //        System.out.println(singleNumber_LC136(numbers));
-        System.out.println(findDuplicates_LC442(numbers));
-
+//        System.out.println(findDuplicates_LC442(numbers));
+        Node test = new Node();
+       test.maxSumOfThreeSubarrays_LC689(numbers,2);
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -57,16 +57,16 @@ public class RandomLeetCodeExercises_1 {
         return duplicates;
     }
 
-    public class Node {
-
+    public static class Node {
         private int data;
-
         private List<Node> children = new ArrayList<>();
-
         private Node parent;
 
         public Node(int data) {
             this.data = data;
+        }
+        private Node(){
+
         }
 
         public Node addChild(Node child) {
@@ -78,34 +78,54 @@ public class RandomLeetCodeExercises_1 {
         private void setParent(Node parent) {
             this.parent = parent;
         }
+
         public void addChildren(List<Node> children) {
             children.forEach(each -> each.setParent(this));
             this.children.addAll(children);
         }
-        public List<Node> getChildren() {
-            return children;
-        }
-      
 
-        public int[] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
+        public Node getParent() {
+            return parent;
+        }
+
+        public int getData() {
+            return data;
+        }
+
+        public void maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
+        4, 3, 2, 7, 8, 2, 3, 1
           Output: [0, 3, 5]*/
-        List<Integer> parents = new ArrayList<>();
+//        List<Integer> parents = new ArrayList<>();
+        int[] indexNumbers = new int[nums.length];
         List<Node> trees = new ArrayList<>();
         int dataParent = 0;
-            for (int i = 0; i < nums.length; i++) {
+            for (int i = 0; i < nums.length -k ; i++) {
                 children.add(new Node(nums[i]));
                 dataParent += nums[i];
-                if (i % k == 0) {
-                    parents.add(dataParent);
-                    children.forEach(child -> child.equals(trees.forEach(tree -> parent.getChildren().get()));
+                if ((i + 1) % k == 0) {
+//                    parents.add(dataParent);
                     parent = new Node(dataParent);
                     parent.addChildren(children);
-
-
+                    trees.add(parent);
                     children.clear();
+                    dataParent = 0;
                 }
             }
+            for (int i = 0; i < trees.size() -1; i++) {
+                if(i == 0){
+                 continue;
+                }
+               if(trees.get(i).getParent().getData() > trees.get(i - 1).getParent().getData()){
+
+               }
+
+            }
+
+
+            }
+
+
 
 
         }
