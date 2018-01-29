@@ -111,7 +111,6 @@ public class RandomLeetCodeExercises_1 {
                 dataParent += nums[i];
                 if ((i + 1) % k == 0 && dataParents.size() + 1 <= 3) {
                     dataParents.add(dataParent);
-                    indexNumbersParents[index] = dataParent;
                     parent = new Node(dataParent);
                     parent.addChildren(children);
                     trees.add(parent);
@@ -121,7 +120,6 @@ public class RandomLeetCodeExercises_1 {
                 else if ((i + 1) % k == 0 && dataParents.size() + 1 > 3 && dataParent > dataParents.stream().min(Integer::compare).get()) {
                         dataParents.remove(dataParents.stream().min(Integer::compare).get());
                         dataParents.add(dataParent);
-                        indexNumbersParents[index] = dataParent;
                         parent = new Node(dataParent);
                         parent.addChildren(children);
                         trees.add(parent);
@@ -130,7 +128,6 @@ public class RandomLeetCodeExercises_1 {
                 }
                 else if ((i + 1) % k == 0 && dataParents.size() +1 > 3 && dataParent < dataParents.stream().min(Integer::compare).get()) {
                             dataParents.remove(dataParent);
-                            indexNumbersParents[index] = dataParent;
                             parent = new Node(dataParent);
                             parent.addChildren(children);
                             trees.add(parent);
