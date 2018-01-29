@@ -92,6 +92,9 @@ public class RandomLeetCodeExercises_1 {
         public int getData() {
             return data;
         }
+        public List <Node> getChildren() {
+            return children;
+        }
 
         public void maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
@@ -113,13 +116,18 @@ public class RandomLeetCodeExercises_1 {
                     dataParent = 0;
                 }
             }
-            for (int i = 0; i < trees.size() - 1; i++) {
-                if (i == 0) {
-                    continue;
-                }
-                if (trees.get(i).getParent().getData() > trees.get(i - 1).getParent().getData()) {
+            Arrays.sort(indexNumbers);
+            for (int i = 0; i < trees.size() -1 ; i++) {
+                trees.get(i).getParent().getData() ==  indexNumbers[indexNumbers.length -1] ||
+                trees.get(i).getParent().getData() == indexNumbers[indexNumbers.length -2] ||
+                trees.get(i).getParent().getData() == indexNumbers[indexNumbers.length - 3] ? trees.get(i).
 
-                }
+
+            }
+
+            }
+
+        }
 
             }
 
