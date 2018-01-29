@@ -13,7 +13,7 @@ public class RandomLeetCodeExercises_1 {
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
         Node test = new Node();
-       test.maxSumOfThreeSubarrays_LC689(numbers,2);
+        test.maxSumOfThreeSubarrays_LC689(numbers, 2);
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -65,7 +65,8 @@ public class RandomLeetCodeExercises_1 {
         public Node(int data) {
             this.data = data;
         }
-        private Node(){
+
+        private Node() {
 
         }
 
@@ -97,14 +98,14 @@ public class RandomLeetCodeExercises_1 {
         4, 3, 2, 7, 8, 2, 3, 1
           Output: [0, 3, 5]*/
 //        List<Integer> parents = new ArrayList<>();
-        int[] indexNumbers = new int[nums.length];
-        List<Node> trees = new ArrayList<>();
-        int dataParent = 0;
-            for (int i = 0; i < nums.length -k ; i++) {
+            int[] indexNumbers = new int[nums.length];
+            List<Node> trees = new ArrayList<>();
+            int dataParent = 0;
+            for (int i = 0, index = 0; i < nums.length - k; i++, index++) {
                 children.add(new Node(nums[i]));
                 dataParent += nums[i];
                 if ((i + 1) % k == 0) {
-//                    parents.add(dataParent);
+                    indexNumbers[index] = dataParent;
                     parent = new Node(dataParent);
                     parent.addChildren(children);
                     trees.add(parent);
@@ -112,24 +113,22 @@ public class RandomLeetCodeExercises_1 {
                     dataParent = 0;
                 }
             }
-            for (int i = 0; i < trees.size() -1; i++) {
-                if(i == 0){
-                 continue;
+            for (int i = 0; i < trees.size() - 1; i++) {
+                if (i == 0) {
+                    continue;
                 }
-               if(trees.get(i).getParent().getData() > trees.get(i - 1).getParent().getData()){
+                if (trees.get(i).getParent().getData() > trees.get(i - 1).getParent().getData()) {
 
-               }
-
-            }
-
+                }
 
             }
-
-
 
 
         }
+
+
     }
+}
 
 
 
