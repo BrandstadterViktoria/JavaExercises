@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RandomLeetCodeExercises_1 {
 
@@ -119,14 +120,17 @@ public class RandomLeetCodeExercises_1 {
             }
             Arrays.sort(indexNumbersParents);
             for (int i = 0; i < trees.size() -1 ; i++) {
-                if(trees.get(i).getParent().getData() ==  indexNumbersParents[indexNumbersParents.length -1] ||
-                trees.get(i).getParent().getData() == indexNumbersParents[indexNumbersParents.length -2] ||
-                trees.get(i).getParent().getData() == indexNumbersParents[indexNumbersParents.length - 3] )
+                if(trees.get(i).getData() ==  indexNumbersParents[indexNumbersParents.length -1] ||
+                trees.get(i).getData() == indexNumbersParents[indexNumbersParents.length -2] ||
+                trees.get(i).getData() == indexNumbersParents[indexNumbersParents.length - 3] )
                 {
-                 trees. forEach(tree -> getChildren().forEach((Node node) -> biggestChildren.add(node.getData())));
+                 biggestChildren = trees.get(i).getChildren().stream()
+                                                     .map (Node :: getData)
+                                                     .collect(Collectors.toList());
+
                 }
-
-
+            }
+            for (int i = 0; i < nums. length - 1 ; i += k) {
 
             }
 
@@ -137,11 +141,8 @@ public class RandomLeetCodeExercises_1 {
             }
 
 
-        }
 
 
-    }
-}
 
 
 
