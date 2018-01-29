@@ -1,8 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RandomLeetCodeExercises_1 {
@@ -103,12 +100,16 @@ public class RandomLeetCodeExercises_1 {
           Output: [0, 3, 5]*/
 //        List<Integer> parents = new ArrayList<>();
             int[] indexNumbersParents = new int[nums.length];
-            List<Integer> biggestChildren = new ArrayList<>();
+            List<Integer> dataParents = new ArrayList<>();
+            List <Integer> currentBiggestChildren = new ArrayList<>();
             List<Node> trees = new ArrayList<>();
             int dataParent = 0;
-            for (int i = 0, index = 0; i < nums.length - k; i++, index++) {
+            for (int i = 0, index = 0; i < nums.length ; i++, index++) {
                 children.add(new Node(nums[i]));
                 dataParent += nums[i];
+                dataParents.add(dataParent);
+                if(dataParent < dataParents.stream().min(Comparator.comparing(Integer))
+ )
                 if ((i + 1) % k == 0) {
                     indexNumbersParents[index] = dataParent;
                     parent = new Node(dataParent);
@@ -124,11 +125,14 @@ public class RandomLeetCodeExercises_1 {
                 trees.get(i).getData() == indexNumbersParents[indexNumbersParents.length -2] ||
                 trees.get(i).getData() == indexNumbersParents[indexNumbersParents.length - 3] )
                 {
-                 biggestChildren = trees.get(i).getChildren().stream()
+                 currentBiggestChildren = trees.get(i).getChildren().stream()
                                                      .map (Node :: getData)
                                                      .collect(Collectors.toList());
 
+                }else{
+
                 }
+                biggestChildren.addAll(currentBiggestChildren);
             }
             for (int i = 0; i < nums. length - 1 ; i += k) {
 
