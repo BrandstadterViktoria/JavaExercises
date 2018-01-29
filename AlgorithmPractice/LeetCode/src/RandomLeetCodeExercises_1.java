@@ -101,14 +101,15 @@ public class RandomLeetCodeExercises_1 {
         4, 3, 2, 7, 8, 2, 3, 1
           Output: [0, 3, 5]*/
 //        List<Integer> parents = new ArrayList<>();
-            int[] indexNumbers = new int[nums.length];
+            int[] indexNumbersParents = new int[nums.length];
+            List<Integer> biggestChildren = new ArrayList<>();
             List<Node> trees = new ArrayList<>();
             int dataParent = 0;
             for (int i = 0, index = 0; i < nums.length - k; i++, index++) {
                 children.add(new Node(nums[i]));
                 dataParent += nums[i];
                 if ((i + 1) % k == 0) {
-                    indexNumbers[index] = dataParent;
+                    indexNumbersParents[index] = dataParent;
                     parent = new Node(dataParent);
                     parent.addChildren(children);
                     trees.add(parent);
@@ -116,11 +117,15 @@ public class RandomLeetCodeExercises_1 {
                     dataParent = 0;
                 }
             }
-            Arrays.sort(indexNumbers);
+            Arrays.sort(indexNumbersParents);
             for (int i = 0; i < trees.size() -1 ; i++) {
-                trees.get(i).getParent().getData() ==  indexNumbers[indexNumbers.length -1] ||
-                trees.get(i).getParent().getData() == indexNumbers[indexNumbers.length -2] ||
-                trees.get(i).getParent().getData() == indexNumbers[indexNumbers.length - 3] ? trees.get(i).
+                if(trees.get(i).getParent().getData() ==  indexNumbersParents[indexNumbersParents.length -1] ||
+                trees.get(i).getParent().getData() == indexNumbersParents[indexNumbersParents.length -2] ||
+                trees.get(i).getParent().getData() == indexNumbersParents[indexNumbersParents.length - 3] )
+                {
+                 trees. forEach(tree -> getChildren().forEach((Node node) -> biggestChildren.add(node.getData())));
+                }
+
 
 
             }
