@@ -99,40 +99,31 @@ public class RandomLeetCodeExercises_1 {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
         4, 3, 2, 7, 8, 2, 3, 1
           Output: [0, 3, 5]*/
-//        List<Integer> parents = new ArrayList<>();
-            //  if(  {
-            int[] indexNumbersParents = new int[nums.length];
+            int[] indexNumbers = new int[nums.length];
+            List<Integer> indexNumber = new ArrayList<>();
             List<Integer> dataParents = new ArrayList<>();
-            List<Integer> currentBiggestChildren = new ArrayList<>();
             List<Node> trees = new ArrayList<>();
             int dataParent = 0;
             for (int i = 0, index = 0; i < nums.length; i++, index++) {
                 children.add(new Node(nums[i]));
                 dataParent += nums[i];
-                if ((i + 1) % k == 0 && dataParents.size() + 1 <= 3) {
+                if ((i + 1) % k == 0 ) {
                     dataParents.add(dataParent);
+                    indexNumbers[i] = i - k;
+                    if (dataParents.size() > 3 && dataParent > dataParents.stream().min(Integer::compare).get()) {
+                        dataParents.remove(dataParents.stream().min(Integer::compare).get());
+
+                    }
                     parent = new Node(dataParent);
                     parent.addChildren(children);
                     trees.add(parent);
                     children.clear();
                     dataParent = 0;
+
                 }
-                else if ((i + 1) % k == 0 && dataParents.size() + 1 > 3 && dataParent > dataParents.stream().min(Integer::compare).get()) {
-                        dataParents.remove(dataParents.stream().min(Integer::compare).get());
-                        dataParents.add(dataParent);
-                        parent = new Node(dataParent);
-                        parent.addChildren(children);
-                        trees.add(parent);
-                        children.clear();
-                        dataParent = 0;
-                }
-                else if ((i + 1) % k == 0 && dataParents.size() +1 > 3 && dataParent < dataParents.stream().min(Integer::compare).get()) {
-                            dataParents.remove(dataParent);
-                            parent = new Node(dataParent);
-                            parent.addChildren(children);
-                            trees.add(parent);
-                            children.clear();
-                            dataParent = 0;
+                if ((i + 1) % k == 0 && dataParents.size() > 3 && dataParent < dataParents.stream().min(Integer::compare).get()) {
+                            dataParents.remove(dataParents.size() -1);
+                            indexNumbers[i] = 0;
                         }
                     }
                 }
@@ -141,25 +132,6 @@ public class RandomLeetCodeExercises_1 {
 
 
 
-
-//            Arrays.sort(indexNumbersParents);
-//            for (int i = 0; i < trees.size() -1 ; i++) {
-//                if(trees.get(i).getData() ==  indexNumbersParents[indexNumbersParents.length -1] ||
-//                trees.get(i).getData() == indexNumbersParents[indexNumbersParents.length -2] ||
-//                trees.get(i).getData() == indexNumbersParents[indexNumbersParents.length - 3] )
-//                {
-//                 currentBiggestChildren = trees.get(i).getChildren().stream()
-//                                                     .map (Node :: getData)
-//                                                     .collect(Collectors.toList());
-//
-//                }else{
-//
-//                }
-//                biggestChildren.addAll(currentBiggestChildren);
-//            }
-//            for (int i = 0; i < nums. length - 1 ; i += k) {
-//
-//            }
 
 
 
