@@ -10,8 +10,11 @@ public class RandomLeetCodeExercises_1 {
         int[] numbers1 = {1, 0, 1};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
-        Node test = new Node();
-        test.maxSumOfThreeSubarrays_LC689(numbers, 2);
+
+        int [] result = maxSumOfThreeSubarrays_LC689(numbers, 2);
+        for (int i = 0; i < result.length ; i++) {
+            System.out.println(result[i]);
+        }
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -54,52 +57,10 @@ public class RandomLeetCodeExercises_1 {
         }
         return duplicates;
     }
-
-    public static class Node {
-        private int data;
-        private List<Node> children = new ArrayList<>();
-        private Node parent;
-
-        public Node(int data) {
-            this.data = data;
-        }
-
-        private Node() {
-
-        }
-
-        public Node addChild(Node child) {
-            child.setParent(this);
-            this.children.add(child);
-            return child;
-        }
-
-        private void setParent(Node parent) {
-            this.parent = parent;
-        }
-
-        public void addChildren(List<Node> children) {
-            children.forEach(each -> each.setParent(this));
-            this.children.addAll(children);
-        }
-
-        public Node getParent() {
-            return parent;
-        }
-
-        public int getData() {
-            return data;
-        }
-
-        public List<Node> getChildren() {
-            return children;
-        }
-
-        public void maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
+        public static int [] maxSumOfThreeSubarrays_LC689(int[] nums, int k) {
         /*Input: [1,2,1,2,6,7,5,1], k= 2
         4, 3, 2, 7, 8, 2, 3, 1
           Output: [0, 3, 5]*/
-            int[] indexNumbers = new int[nums.length];
             TreeMap<Integer, Integer> sumsAndIndexnumbers = new TreeMap<>();
             int sumOfSubarrays = 0;
             for (int i = 0, index = 0; i < nums.length; i++, index++) {
@@ -110,13 +71,14 @@ public class RandomLeetCodeExercises_1 {
                         sumsAndIndexnumbers.remove(sumsAndIndexnumbers.firstKey());
                     }
                     sumOfSubarrays = 0;
-
                 }
-
             }
+            Collection<Integer> values = sumsAndIndexnumbers.values();
+            int[] indexNumbers = values.stream().mapToInt(i->i).toArray();
+            return indexNumbers;
         }
     }
-}
+
 
 
 
