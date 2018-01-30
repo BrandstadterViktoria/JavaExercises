@@ -100,35 +100,23 @@ public class RandomLeetCodeExercises_1 {
         4, 3, 2, 7, 8, 2, 3, 1
           Output: [0, 3, 5]*/
             int[] indexNumbers = new int[nums.length];
-            List<Integer> indexNumber = new ArrayList<>();
-            List<Integer> dataParents = new ArrayList<>();
-            List<Node> trees = new ArrayList<>();
-            int dataParent = 0;
+            TreeMap<Integer, Integer> sumsAndIndexnumbers = new TreeMap<>();
+            int sumOfSubarrays = 0;
             for (int i = 0, index = 0; i < nums.length; i++, index++) {
-                children.add(new Node(nums[i]));
-                dataParent += nums[i];
-                if ((i + 1) % k == 0 ) {
-                    dataParents.add(dataParent);
-                    indexNumbers[i] = i - k;
-                    if (dataParents.size() > 3 && dataParent > dataParents.stream().min(Integer::compare).get()) {
-                        dataParents.remove(dataParents.stream().min(Integer::compare).get());
-
+                sumOfSubarrays += nums[i];
+                if ((i + 1) % k == 0) {
+                    sumsAndIndexnumbers.put(sumOfSubarrays, (i + 1 - k));
+                    if (sumsAndIndexnumbers.size() > 3 && sumOfSubarrays == sumsAndIndexnumbers.firstKey()) {
+                        sumsAndIndexnumbers.remove(sumsAndIndexnumbers.firstKey());
                     }
-                    parent = new Node(dataParent);
-                    parent.addChildren(children);
-                    trees.add(parent);
-                    children.clear();
-                    dataParent = 0;
+                    sumOfSubarrays = 0;
 
                 }
-                if ((i + 1) % k == 0 && dataParents.size() > 3 && dataParent < dataParents.stream().min(Integer::compare).get()) {
-                            dataParents.remove(dataParents.size() -1);
-                            indexNumbers[i] = 0;
-                        }
-                    }
-                }
+
             }
         }
+    }
+}
 
 
 
