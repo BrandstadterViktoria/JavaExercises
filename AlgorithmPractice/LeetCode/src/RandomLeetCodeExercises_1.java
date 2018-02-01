@@ -10,11 +10,12 @@ public class RandomLeetCodeExercises_1 {
         int[] numbers1 = {1, 0, 1};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
-
-        int[] result = maxSumOfThreeSubarrays_LC689(numbers, 2);
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i]);
-        }
+//
+//        int[] result = maxSumOfThreeSubarrays_LC689(numbers, 2);
+//        for (int i = 0; i < result.length; i++) {
+//            System.out.println(result[i]);
+//        }
+        System.out.println(detectCapitalUse("Leetcode"));
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -94,6 +95,9 @@ public class RandomLeetCodeExercises_1 {
             }
         }
         return counter;
+    }
+    public static boolean detectCapitalUse(String word){
+        return word.matches("([A-Z][a-zA-Z]*\\\\s*)*") || word.matches("[A-Z ]+" )|| word.matches("[a-z]+");
     }
 }
 
