@@ -15,7 +15,7 @@ public class RandomLeetCodeExercises_1 {
 //        for (int i = 0; i < result.length; i++) {
 //            System.out.println(result[i]);
 //        }
-        System.out.println(detectCapitalUse("Leetcode"));
+        System.out.println(detectCapitalUse("LeetCode"));
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -97,7 +97,7 @@ public class RandomLeetCodeExercises_1 {
         return counter;
     }
     public static boolean detectCapitalUse(String word){
-        return word.matches("([A-Z][a-zA-Z]*\\\\s*)*") || word.matches("[A-Z ]+" )|| word.matches("[a-z]+");
+        return word.matches("([A-Z][a-z]*\\s*)") || word.matches("[A-Z ]+" )|| word.matches("[a-z]+");
     }
 }
 
