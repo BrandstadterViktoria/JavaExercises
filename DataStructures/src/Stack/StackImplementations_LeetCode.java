@@ -42,21 +42,7 @@ public class StackImplementations_LeetCode {
         return nums1;
     }
 
-    public static int getMin(MyStack minstack) {
 
-        if (minstack.isEmpty()) {
-            return Integer.MIN_VALUE;
-        } else {
-            Integer last = minstack.pop();
-            Integer next = getMin(minstack);
-            minstack.push(last);
-            if (last > next) {
-                return last;
-            } else {
-                return next;
-            }
-        }
-    }
     public static String reverseWords_LC557 (String s){
         char [] theWord = s.toCharArray();
         Stack<Character> reverseTheWord = new Stack<>();
