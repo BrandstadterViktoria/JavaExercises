@@ -1,5 +1,7 @@
 package Main;
 
+import Stack.MinStack;
+
 import static Queue.QueueImplementation.checkForPalindrome;
 
 public  class Main {
@@ -31,7 +33,7 @@ public  class Main {
         System.out.println(palindrome.isItAPalindrome(palindrome.getWord()));*/
 
         // should return true
-        System.out.println(checkForPalindrome("abccba"));
+        /*System.out.println(checkForPalindrome("abccba"));
         // should return true
         System.out.println(checkForPalindrome("Was it a car or a cat I saw?"));
         // should return true
@@ -39,7 +41,16 @@ public  class Main {
         // should return false
         System.out.println(checkForPalindrome("hello"));
         // should return true
-        System.out.println(checkForPalindrome("Don't nod"));
+        System.out.println(checkForPalindrome("Don't nod"));*/
+
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println("This is minimum:     " + minStack.getMin());  // --> Returns -3.
+        minStack.pop();
+        System.out.println("This is top after remove     " + minStack.top());     // --> Returns 0.
+        System.out.println("This is minimum after remove:     " + minStack.getMin());   //--> Returns -2.
     }
 
     }
