@@ -11,15 +11,6 @@ public class StackImplementations_LeetCode {
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
         }*/
-
-    /*    MyStack minStack = new MyStack(4);
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        System.out.println(getMin(minStack));   //--> Returns -3.
-        minStack.pop();
-        System.out.println(minStack.peek());      //-> Returns 0.
-        System.out.println(getMin(minStack));   //--> Returns -2.*/
        // System.out.println(reverseWords_LC557("Let's take LeetCode contest"));
         System.out.println(reverseStr_LC541_reverseStringII("abcdefg", 2));
     }
