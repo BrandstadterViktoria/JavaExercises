@@ -36,7 +36,7 @@ public class MinStack {
     }
 
     public int getMin() {
-        int min = arrayForStack[top];
+        int min = arrayForStack[0];
         return min;
     }
 
