@@ -9,8 +9,8 @@ public class MinStack {
     }
 
     public void push(int x) {
-         if(top == 0 || arrayActualLength > 0 && x > arrayForStack[arrayActualLength -1]){
-             arrayForStack[top] = x;
+         if(arrayActualLength == 0 || arrayActualLength > 0 && x > arrayForStack[arrayActualLength -1]){
+             arrayForStack[arrayActualLength] = x;
              arrayActualLength ++;
          }
         else if ((arrayActualLength > 0 && x <= arrayForStack[arrayActualLength -1])) {
