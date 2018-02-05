@@ -28,10 +28,30 @@ public class RegexPractice {
         String challenge6b = "abcd.135";
         String challenge6c = "f5.12a";
 
-        String regExp6 = "(^[a-z]+[.]+\\d+\\w+)";
+        String regExp6 = "^[a-z]+[.]+\\d+\\w+";
+
         System.out.println(challenge6a.matches(regExp6));
         System.out.println(challenge6b.matches(regExp6));
         System.out.println(challenge6c.matches(regExp6));
+
+        String challenge8 = "abcd.135uvqz.7tzik.999";
+        Pattern pattern8 = Pattern.compile("(\\d+)");
+        Matcher matcher8 = pattern8.matcher(challenge8);
+        while(matcher8.find()){
+            System.out.println("Occurence:   " + matcher8.group());
+        }
+
+        String challenge9 = "abcd.135\tuvqz.7\tzik.999\n";
+        Pattern pattern9 = Pattern.compile("(\\d+)\\s");
+        Matcher matcher9 = pattern9.matcher(challenge9);
+        int counter = 0;
+        while(matcher9.find()){
+            counter ++;
+            System.out.println("Occurence:   " + matcher9.group());
+            System.out.println("Occurence" + counter + ": starts with   " + matcher9.start(1) + " ends with= " + (matcher9.end(1)- 1));
+        }
+
+
 
 
     }
