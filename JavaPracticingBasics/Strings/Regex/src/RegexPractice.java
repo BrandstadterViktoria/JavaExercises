@@ -28,7 +28,7 @@ public class RegexPractice {
         String challenge6b = "abcd.135";
         String challenge6c = "f5.12a";
 
-        String regExp6 = "(^[a-z]+[.]+[0-9]*)";
+        String regExp6 = "(^[a-z]+[.]+\\d+\\w+)";
         System.out.println(challenge6a.matches(regExp6));
         System.out.println(challenge6b.matches(regExp6));
         System.out.println(challenge6c.matches(regExp6));
