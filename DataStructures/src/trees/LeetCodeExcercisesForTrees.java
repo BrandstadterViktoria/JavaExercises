@@ -13,12 +13,7 @@ public class LeetCodeExcercisesForTrees {
         intTree.insert(26);
         intTree.insert(22);
 
-/*
-        intTree.traversInorder();
-*/
-       /* System.out.println(intTree.get(20));
-        System.out.println(intTree.get(122));*/
-        intTree.traverLevelorder();
+
 
     }
 

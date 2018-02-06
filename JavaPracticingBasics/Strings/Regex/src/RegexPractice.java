@@ -51,10 +51,10 @@ public class RegexPractice {
             System.out.println("Occurence" + counter + ": starts with   " + matcher9.start(1) + " ends with= " + (matcher9.end(1)- 1));
         }
 
-
-
+        String uSZIPCode = "11111-1111";
+        String uSZIPCode5Digits = "5-0-0-3-4";
+        System.out.println(uSZIPCode.matches("^\\d{5}-\\d{4}$"));
+        System.out.println(uSZIPCode5Digits.matches("^[0-9]-[0-9]-[0-9]-[0-9]-[0-9]$"));
 
     }
-
-
 }
