@@ -6,7 +6,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {1, 2, 1, 2, 6, 7, 5, 1};
+        int[] numbers = {1, 2, 6, 7, 5, 12};
         int[] numbers1 = {1, 4, 3, 2};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
@@ -16,7 +16,12 @@ public class RandomLeetCodeExercises_1 {
 //            System.out.println(result[i]);
 //        }
         //       System.out.println(detectCapitalUse("LeetCode"));
-        System.out.println(arrayPairSum(numbers1));
+ //       System.out.println(arrayPairSum(numbers1));
+        String [] result = findRelativeRanks_LC506(numbers);
+        for (int i = 0; i < result.length -1 ; i++) {
+            System.out.println(result[i]);
+        }
+
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -114,7 +119,7 @@ public class RandomLeetCodeExercises_1 {
         return sum;
     }
 
-    public String[] findRelativeRanks_LC506(int[] nums) {
+    public static String[] findRelativeRanks_LC506(int[] nums) {
         /*Given scores of N athletes, find their relative ranks and the people with the top three highest scores,
         who will be awarded medals: "Gold Medal", "Silver Medal" and "Bronze Medal".*/
 
@@ -124,10 +129,10 @@ public class RandomLeetCodeExercises_1 {
             if (i == nums.length - 1) {
                 ranks[rankPosition] = "Gold Medal";
             }
-            if (i == nums.length - 2) {
+            else if (i == nums.length - 2) {
                 ranks[rankPosition] = "Silver Medal";
             }
-            if (i == nums.length - 3) {
+            else if (i == nums.length - 3) {
                 ranks[rankPosition] = "Bronze Medal";
             } else {
                 ranks[rankPosition] = String.valueOf(nums[i]);
