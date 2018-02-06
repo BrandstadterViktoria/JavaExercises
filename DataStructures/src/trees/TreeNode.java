@@ -82,6 +82,22 @@ public class TreeNode {
         }
     }
 
+    public TreeNode lowestCommonAncestor_LC236(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null){
+            return null;
+        }
+        if(root == p || root == q){
+            return root;
+        }
+       left.traverseInOrder();
+        right.traverseInOrder();
+        if(left != null && right != null){
+            return root;
+        }else return (left != null ? left : right);
+
+    }
+
+
     public int max() {
         if (right == null) {
             return data;
