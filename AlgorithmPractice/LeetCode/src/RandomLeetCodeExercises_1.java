@@ -113,6 +113,28 @@ public class RandomLeetCodeExercises_1 {
             }
         return sum;
     }
+
+    public String[] findRelativeRanks_LC506(int[] nums) {
+        /*Given scores of N athletes, find their relative ranks and the people with the top three highest scores,
+        who will be awarded medals: "Gold Medal", "Silver Medal" and "Bronze Medal".*/
+
+        String[] ranks = new String[nums.length];
+        Arrays.sort(nums);
+        for (int i = nums.length - 1, rankPosition = 0; i > 0; i--, rankPosition++) {
+            if (i == nums.length - 1) {
+                ranks[rankPosition] = "Gold Medal";
+            }
+            if (i == nums.length - 2) {
+                ranks[rankPosition] = "Silver Medal";
+            }
+            if (i == nums.length - 3) {
+                ranks[rankPosition] = "Bronze Medal";
+            } else {
+                ranks[rankPosition] = String.valueOf(nums[i]);
+            }
+        }
+        return ranks;
+    }
 }
 
 
