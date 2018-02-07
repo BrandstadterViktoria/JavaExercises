@@ -17,10 +17,11 @@ public class RandomLeetCodeExercises_1 {
 //        }
         //       System.out.println(detectCapitalUse("LeetCode"));
  //       System.out.println(arrayPairSum(numbers1));
-        String [] result = findRelativeRanks_LC506(numbers);
+        /*String [] result = findRelativeRanks_LC506(numbers);
         for (int i = 0; i <= result.length -1 ; i++) {
             System.out.println(result[i]);
-        }
+        }*/
+        System.out.println( hammingDistance(34,3));
 
     }
 
@@ -140,6 +141,26 @@ public class RandomLeetCodeExercises_1 {
         }
         return ranks;
     }
+
+    public static int hammingDistance(int x, int y) {
+        String binaryX = Integer.toBinaryString(x);
+        String binaryY = Integer.toBinaryString(y);
+        String bigger = Math.max(binaryX.length(),binaryY.length()) == (binaryX.length()) ? binaryX : binaryY;
+        int minLength = Math.min(binaryX.length(),binaryY.length());
+        int difference = 0;
+        for (int i = 0; i < minLength -1; i++) {
+            if(binaryX.charAt(i) != binaryY.charAt(i)) {
+                difference++;
+            }
+        }
+        for (int i = minLength; i < bigger.length() -1; i++) {
+            if(bigger.charAt(i) == 1){
+                difference ++;
+            }
+        }
+        return difference;
+    }
+
 }
 
 
