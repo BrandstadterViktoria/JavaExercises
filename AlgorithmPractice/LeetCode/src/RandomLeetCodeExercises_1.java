@@ -159,7 +159,7 @@ public class RandomLeetCodeExercises_1 {
                 primes.add(i);
             }
         }
-        
+
         for (int i = L; i <= R; i++) {
             if (primes.contains(Integer.bitCount(i))) {
                 countPrimeSetBits++;
@@ -167,6 +167,10 @@ public class RandomLeetCodeExercises_1 {
         }
         return countPrimeSetBits;
     }
+    public static boolean hasAlternatingBits_693LC(int n){
+
+    }
+
 }
 
 
