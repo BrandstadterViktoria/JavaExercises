@@ -6,7 +6,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {5,4,3,2,1};
+        int[] numbers = {5, 4, 3, 2, 1};
         int[] numbers1 = {1, 4, 3, 2};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
@@ -16,12 +16,13 @@ public class RandomLeetCodeExercises_1 {
 //            System.out.println(result[i]);
 //        }
         //       System.out.println(detectCapitalUse("LeetCode"));
- //       System.out.println(arrayPairSum(numbers1));
+        //       System.out.println(arrayPairSum(numbers1));
         /*String [] result = findRelativeRanks_LC506(numbers);
         for (int i = 0; i <= result.length -1 ; i++) {
             System.out.println(result[i]);
         }*/
-        System.out.println( hammingDistance(1,4));
+//        System.out.println( hammingDistance(1,4));
+        System.out.println(countPrimeSetBits_762LC(10, 15));
 
     }
 
@@ -126,14 +127,12 @@ public class RandomLeetCodeExercises_1 {
 
         String[] ranks = new String[nums.length];
         Arrays.sort(nums);
-        for (int i = 0, rankPosition = 0; i <= nums.length -1; i++, rankPosition++) {
+        for (int i = 0, rankPosition = 0; i <= nums.length - 1; i++, rankPosition++) {
             if (i == 0) {
                 ranks[rankPosition] = "Gold Medal";
-            }
-            else if (i == 1) {
+            } else if (i == 1) {
                 ranks[rankPosition] = "Silver Medal";
-            }
-            else if (i == 2) {
+            } else if (i == 2) {
                 ranks[rankPosition] = "Bronze Medal";
             } else {
                 ranks[rankPosition] = String.valueOf(nums[i]);
@@ -143,8 +142,31 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static int hammingDistance(int x, int y) {
-     return Integer.bitCount( x ^ y);
-     }
+        return Integer.bitCount(x ^ y);
+    }
+
+    public static int countPrimeSetBits_762LC(int L, int R) {
+        int countPrimeSetBits = 0;
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= 50; i++) {
+            int counter = 0;
+            for (int j = i; j >= 1; j--) {
+                if (i % j == 0) {
+                    counter++;
+                }
+            }
+            if (counter == 2) {
+                primes.add(i);
+            }
+        }
+        
+        for (int i = L; i <= R; i++) {
+            if (primes.contains(Integer.bitCount(i))) {
+                countPrimeSetBits++;
+            }
+        }
+        return countPrimeSetBits;
+    }
 }
 
 
