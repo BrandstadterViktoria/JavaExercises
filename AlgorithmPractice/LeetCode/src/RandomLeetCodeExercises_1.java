@@ -23,7 +23,7 @@ public class RandomLeetCodeExercises_1 {
         }*/
 //        System.out.println( hammingDistance(1,4));
 //        System.out.println(countPrimeSetBits_762LC(10, 15));
-        System.out.println(hasAlternatingBits_693LC(5));
+        System.out.println(hasAlternatingBits_693LC(6));
 
     }
 
@@ -170,6 +170,9 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static boolean hasAlternatingBits_693LC(int n) {
+        if(n == 1){
+            return true;
+        }
         boolean hasAlternatingBits = false;
         for (int i = 0; i <= Integer.toBinaryString(n).toCharArray().length - 2; i++) {
             if (Integer.toBinaryString(n).toCharArray()[i + 1] != Integer.toBinaryString(n).toCharArray()[i]) {
@@ -178,6 +181,7 @@ public class RandomLeetCodeExercises_1 {
 
             } else {
                 hasAlternatingBits = false;
+                break;
             }
         }
         return hasAlternatingBits;
