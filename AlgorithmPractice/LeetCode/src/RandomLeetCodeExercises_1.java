@@ -186,6 +186,9 @@ public class RandomLeetCodeExercises_1 {
         }
         return hasAlternatingBits;
     }
+    public static String toHex(int num) {
+        
+    }
 
 }
 
