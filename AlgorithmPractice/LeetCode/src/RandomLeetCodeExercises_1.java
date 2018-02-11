@@ -24,7 +24,8 @@ public class RandomLeetCodeExercises_1 {
 //        System.out.println( hammingDistance(1,4));
 //        System.out.println(countPrimeSetBits_762LC(10, 15));
 // System.out.println(hasAlternatingBits_693LC(6));
-        System.out.println(toHex(26));
+        System.out.println(toHexNaturalNumbers(54734));
+// System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
 
     }
 
@@ -171,7 +172,7 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static boolean hasAlternatingBits_693LC(int n) {
-        if(n == 1){
+        if (n == 1) {
             return true;
         }
         boolean hasAlternatingBits = false;
@@ -187,7 +188,8 @@ public class RandomLeetCodeExercises_1 {
         }
         return hasAlternatingBits;
     }
-    public static String toHex(int num) {
+
+    public static String toHexNaturalNumbers(int num) {
         StringBuilder hexaDecimalNumber = new StringBuilder();
         HashMap<Integer, Character> hexaLetters = new HashMap<>();
         for (int i = 10, alphabet = 0; i <= 15; i++, alphabet++) {
@@ -196,22 +198,17 @@ public class RandomLeetCodeExercises_1 {
         int remainder = 1;
         while (remainder != 0) {
             remainder = num % 16;
-            if (remainder >= 10 && remainder <= 15) {
-                hexaDecimalNumber.append(hexaLetters.get(remainder));
-                num = num / 16;
-                if((num / 16) < 1){
+           hexaDecimalNumber = ((remainder >= 10) && (remainder <= 15)) ? (hexaDecimalNumber.append(hexaLetters.get(remainder))) : (hexaDecimalNumber.append(remainder));
+            num = num / 16;
+                if ((num / 16) < 1) {
                     hexaDecimalNumber.append(num);
                     break;
                 }
-            } else {
-                hexaDecimalNumber.append(remainder);
-            }
         }
+
         hexaDecimalNumber.reverse();
         return hexaDecimalNumber.toString();
-
-    }git
-
+    }
 }
 
 
