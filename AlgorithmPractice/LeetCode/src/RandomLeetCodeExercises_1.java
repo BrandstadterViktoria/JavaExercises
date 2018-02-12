@@ -1,4 +1,5 @@
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -24,8 +25,10 @@ public class RandomLeetCodeExercises_1 {
         }*/
 //        System.out.println( hammingDistance(1,4));
 //        System.out.println(countPrimeSetBits_762LC(10, 15));
-// System.out.println(hasAlternatingBits_693LC(6));//System.out.println(toHexNaturalNumbers(54734));
-        System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
+// System.out.println(hasAlternatingBits_693LC(6));
+// System.out.println(toHexNaturalNumbers(54734));
+// System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
+        System.out.println(findComplement(20161211));
 
     }
 
@@ -189,14 +192,19 @@ public class RandomLeetCodeExercises_1 {
         return hasAlternatingBits;
     }
 
+    public static int findComplement(int num) {
+        int complement = num >>> 1;
+        String binary = Integer.toBinaryString(complement);
+        return Integer.parseInt(binary);
+    }
+
     public static String toHexNaturalNumbers(int num) {
         StringBuilder hexaDecimalNumber = new StringBuilder();
         HashMap<Integer, Character> hexaLetters = new HashMap<>();
         for (int i = 10, alphabet = 0; i <= 15; i++, alphabet++) {
             hexaLetters.put(i, ((char) ('a' + alphabet)));
         }
-        int remainder = 1;
-        while (remainder != 0) {
+        int remainder = 1;        while (remainder != 0) {
             remainder = num % 16;
             hexaDecimalNumber = ((remainder >= 10) && (remainder <= 15)) ? (hexaDecimalNumber.append(hexaLetters.get(remainder))) : (hexaDecimalNumber.append(remainder));
             num = num / 16;
