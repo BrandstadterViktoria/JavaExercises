@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 
 public class RandomLeetCodeExercises_1 {
@@ -23,9 +24,8 @@ public class RandomLeetCodeExercises_1 {
         }*/
 //        System.out.println( hammingDistance(1,4));
 //        System.out.println(countPrimeSetBits_762LC(10, 15));
-// System.out.println(hasAlternatingBits_693LC(6));
-        System.out.println(toHexNaturalNumbers(54734));
-// System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
+// System.out.println(hasAlternatingBits_693LC(6));//System.out.println(toHexNaturalNumbers(54734));
+        System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
 
     }
 
@@ -198,17 +198,33 @@ public class RandomLeetCodeExercises_1 {
         int remainder = 1;
         while (remainder != 0) {
             remainder = num % 16;
-           hexaDecimalNumber = ((remainder >= 10) && (remainder <= 15)) ? (hexaDecimalNumber.append(hexaLetters.get(remainder))) : (hexaDecimalNumber.append(remainder));
+            hexaDecimalNumber = ((remainder >= 10) && (remainder <= 15)) ? (hexaDecimalNumber.append(hexaLetters.get(remainder))) : (hexaDecimalNumber.append(remainder));
             num = num / 16;
-                if ((num / 16) < 1) {
-                    hexaDecimalNumber.append(num);
-                    break;
-                }
+            if ((num / 16) < 1) {
+                hexaDecimalNumber.append(num);
+                break;
+            }
         }
-
         hexaDecimalNumber.reverse();
         return hexaDecimalNumber.toString();
     }
+
+    public static int repeatedStringMatch(String A, String B) {
+//        For example, with A = "abcd" and B = "cdabcdab".
+        StringBuilder sb = new StringBuilder(A);
+        int counter = 1;
+        HashMap<String, Integer> mapStringA = new HashMap<String, Integer>();
+        for (int i = 0; i < A.length(); i++) {
+            while (i + B.length() > sb.length()) {
+                sb.append(A);
+                counter++;
+            }
+
+            if (!mapStringA.containsKey(sb.toString().substring(i, i + B.length())))
+                mapStringA.put(sb.toString().substring(i, i + B.length()), counter);
+        }
+        return mapStringA.getOrDefault(B, -1);
+}
 }
 
 
