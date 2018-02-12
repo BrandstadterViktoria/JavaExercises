@@ -193,9 +193,7 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static int findComplement(int num) {
-        int complement = num >>> 1;
-        String binary = Integer.toBinaryString(complement);
-        return Integer.parseInt(binary);
+         return ~num + (Integer.highestOneBit(num) << 1);
     }
 
     public static String toHexNaturalNumbers(int num) {
