@@ -200,33 +200,29 @@ public class RandomLeetCodeExercises_1 {
     public static String addBinary(String a, String b) {
         int sumOfBits;
         int plusBit = 0;
-        String binary = "";
+        StringBuilder binary = new StringBuilder();
         int k = b.length() -1;
-        int indexOfBinaryString = 0;
         int z =  a.length() -1;
         while (z >= 0 || k >= 0) {
             sumOfBits = (a.charAt(z) - '0') + (b.charAt(k) - '0') + plusBit;
             if(sumOfBits <= 1){
                 plusBit = 0;
                 if(a.charAt(z) == '0' && b.charAt(k) == '0') {
-                    binary.toCharArray()[indexOfBinaryString] = '0';
-                    indexOfBinaryString ++;
+                    binary.append('0');
                 }
                 if(a.charAt(z) == '1' && b.charAt(k) == '0' || a.charAt(z) == '0' && b.charAt(k) == '1'){
-                    binary.toCharArray()[indexOfBinaryString] = '1';
-                    indexOfBinaryString ++;
+                    binary.append('1');
                 }
             }
             if (sumOfBits > 1){
                 plusBit = 0;
-                binary.toCharArray()[indexOfBinaryString] = '0';
-                indexOfBinaryString ++;
+                binary.append('0');
                 plusBit ++;
             }
             z --; k --;
 
         }
-        return new StringBuilder(binary).reverse().toString();
+        return binary.reverse().toString();
     }
 
     public static String toHexNaturalNumbers(int num) {
