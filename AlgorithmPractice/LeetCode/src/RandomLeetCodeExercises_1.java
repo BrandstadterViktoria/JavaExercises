@@ -203,24 +203,27 @@ public class RandomLeetCodeExercises_1 {
         String binary = "";
         int k = b.length() -1;
         int indexOfBinaryString = 0;
-        int i =  a.length() -1;
-        while (a.length() >= 0 || k >= 0 || i == 1) {
-            sumOfBits = a.charAt(i) - '0' + b.charAt(i) - '0' + plusBit;
+        int z =  a.length() -1;
+        while (z >= 0 || k >= 0) {
+            sumOfBits = (a.charAt(z) - '0') + (b.charAt(k) - '0') + plusBit;
             if(sumOfBits <= 1){
                 plusBit = 0;
-                if(a.charAt(i) == '0' && b.charAt(i) == '0') {
+                if(a.charAt(z) == '0' && b.charAt(k) == '0') {
                     binary.toCharArray()[indexOfBinaryString] = '0';
+                    indexOfBinaryString ++;
                 }
-                if(a.charAt(i) == '1' && b.charAt(i) == '0' || a.charAt(i) == '0' && b.charAt(i) == '1'){
+                if(a.charAt(z) == '1' && b.charAt(k) == '0' || a.charAt(z) == '0' && b.charAt(k) == '1'){
                     binary.toCharArray()[indexOfBinaryString] = '1';
+                    indexOfBinaryString ++;
                 }
             }
             if (sumOfBits > 1){
                 plusBit = 0;
                 binary.toCharArray()[indexOfBinaryString] = '0';
+                indexOfBinaryString ++;
                 plusBit ++;
             }
-            i --; k --;
+            z --; k --;
 
         }
         return new StringBuilder(binary).reverse().toString();
