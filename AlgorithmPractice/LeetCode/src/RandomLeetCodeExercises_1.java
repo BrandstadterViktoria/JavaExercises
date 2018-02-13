@@ -28,7 +28,8 @@ public class RandomLeetCodeExercises_1 {
 // System.out.println(hasAlternatingBits_693LC(6));
 // System.out.println(toHexNaturalNumbers(54734));
 // System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
-        System.out.println(findComplement(20161211));
+//        System.out.println(findComplement(20161211));
+        System.out.println(addBinary("1100011","10001"));
 
     }
 
@@ -193,7 +194,36 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static int findComplement(int num) {
-         return ~num + (Integer.highestOneBit(num) << 1);
+        return ~num + (Integer.highestOneBit(num) << 1);
+    }
+
+    public static String addBinary(String a, String b) {
+        int sumOfBits;
+        int plusBit = 0;
+        String binary = "";
+        int k = b.length() -1;
+        int indexOfBinaryString = 0;
+        int i =  a.length() -1;
+        while (a.length() >= 0 || k >= 0 || i == 1) {
+            sumOfBits = a.charAt(i) - '0' + b.charAt(i) - '0' + plusBit;
+            if(sumOfBits <= 1){
+                plusBit = 0;
+                if(a.charAt(i) == '0' && b.charAt(i) == '0') {
+                    binary.toCharArray()[indexOfBinaryString] = '0';
+                }
+                if(a.charAt(i) == '1' && b.charAt(i) == '0' || a.charAt(i) == '0' && b.charAt(i) == '1'){
+                    binary.toCharArray()[indexOfBinaryString] = '1';
+                }
+            }
+            if (sumOfBits > 1){
+                plusBit = 0;
+                binary.toCharArray()[indexOfBinaryString] = '0';
+                plusBit ++;
+            }
+            i --; k --;
+
+        }
+        return new StringBuilder(binary).reverse().toString();
     }
 
     public static String toHexNaturalNumbers(int num) {
@@ -202,7 +232,8 @@ public class RandomLeetCodeExercises_1 {
         for (int i = 10, alphabet = 0; i <= 15; i++, alphabet++) {
             hexaLetters.put(i, ((char) ('a' + alphabet)));
         }
-        int remainder = 1;        while (remainder != 0) {
+        int remainder = 1;
+        while (remainder != 0) {
             remainder = num % 16;
             hexaDecimalNumber = ((remainder >= 10) && (remainder <= 15)) ? (hexaDecimalNumber.append(hexaLetters.get(remainder))) : (hexaDecimalNumber.append(remainder));
             num = num / 16;
@@ -219,7 +250,7 @@ public class RandomLeetCodeExercises_1 {
 //        For example, with A = "abcd" and B = "cdabcdab".
         StringBuilder sb = new StringBuilder(A);
         int counter = 1;
-        HashMap<String, Integer> mapStringA = new HashMap<String, Integer>();
+        HashMap<String, Integer> mapStringA = new HashMap<>();
         for (int i = 0; i < A.length(); i++) {
             while (i + B.length() > sb.length()) {
                 sb.append(A);
@@ -230,7 +261,7 @@ public class RandomLeetCodeExercises_1 {
                 mapStringA.put(sb.toString().substring(i, i + B.length()), counter);
         }
         return mapStringA.getOrDefault(B, -1);
-}
+    }
 }
 
 
