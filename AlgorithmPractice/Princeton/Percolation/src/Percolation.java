@@ -3,9 +3,11 @@ import edu.princeton.cs.algs4.*;
 
 public class Percolation {
 
+    public boolean isBlocked [] [];
+
     public Percolation(int n) {
 
-        boolean isBlocked[][] = new boolean[n][n];
+        this.isBlocked  = new boolean[n][n];
         int rows = (int) (Math.ceil(1.0 / n));
         int columns = (int) (Math.ceil(1.0 / n));
 
@@ -23,6 +25,7 @@ public class Percolation {
     }
     // is site (row, col) open?
     public boolean isOpen(int row, int col){
+        return isBlocked [row][col];
 
     }
     // is site (row, col) full?
@@ -36,7 +39,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        
+
     }
 
 
