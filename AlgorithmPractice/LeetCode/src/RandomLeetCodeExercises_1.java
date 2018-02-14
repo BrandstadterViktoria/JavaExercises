@@ -29,7 +29,7 @@ public class RandomLeetCodeExercises_1 {
 // System.out.println(toHexNaturalNumbers(54734));
 // System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
 //        System.out.println(findComplement(20161211));
-        System.out.println(addBinary("1100011","10001"));
+        System.out.println(addBinary("110010", "10111"));
 
     }
 
@@ -198,35 +198,27 @@ public class RandomLeetCodeExercises_1 {
     }
 
     public static String addBinary(String a, String b) {
+        int aBinary = a.length() - 1;
+        int bBinary = b.length() - 1;
+        int carry = 0;
         int sumOfBits;
-        int plusBit = 0;
-        StringBuilder binary = new StringBuilder();
-        StringBuilder stringA = new StringBuilder();
-        stringA.append(a);
-        int k = b.length() -1;
-        int z =  a.length() -1;
-        while (z <= 0 || k <= 0) {
-            sumOfBits = (stringA.charAt(z) - '0') + (b.charAt(k) - '0') + plusBit;
-            if(sumOfBits <= 1){
-                stringA.setCharAt(z, (char) (plusBit + '0'));
-                if(stringA.charAt(z) == '0' && b.charAt(k) == '0') {
-                    binary.append('0');
+        StringBuilder result = new StringBuilder();
+        while (aBinary >= 0 || bBinary >= 0 || carry == 1) {
+                sumOfBits = (a.charAt(aBinary) - '0') + (b.charAt(bBinary) - '0') + carry;
+                if (sumOfBits <= 1) {
+                    result.append(a.toCharArray()[aBinary] == '0' && b.toCharArray()[bBinary] == '0' && carry == 0 ? '0' : '1');
+                    carry = 0;
                 }
-                if(stringA.charAt(z) == '1' && b.charAt(k) == '0' || stringA.charAt(z) == '0' && b.charAt(k) == '1'){
-                    binary.append('1');
+                if (sumOfBits > 1) {
+                    carry = 0;
+                    result.append('0');
+                    carry++;
                 }
-                plusBit = 0;
+                aBinary--;
+                bBinary--;
             }
-            if (sumOfBits > 1){
-                plusBit = 0;
-                binary.append('0');
-                plusBit ++;
-            }
-            z --; k --;
-        }
-        binary.reverse();
-        binary = z > 0 ? binary.insert(0,a.substring(0,z)) : binary.insert(0,b.substring(0,k));
-        return binary.toString();
+        return result.reverse().toString();
+
     }
 
     public static String toHexNaturalNumbers(int num) {
