@@ -201,18 +201,21 @@ public class RandomLeetCodeExercises_1 {
         int sumOfBits;
         int plusBit = 0;
         StringBuilder binary = new StringBuilder();
+        StringBuilder stringA = new StringBuilder();
+        stringA.append(a);
         int k = b.length() -1;
         int z =  a.length() -1;
-        while (z >= 0 || k >= 0) {
-            sumOfBits = (a.charAt(z) - '0') + (b.charAt(k) - '0') + plusBit;
+        while (z <= 0 || k <= 0) {
+            sumOfBits = (stringA.charAt(z) - '0') + (b.charAt(k) - '0') + plusBit;
             if(sumOfBits <= 1){
-                plusBit = 0;
-                if(a.charAt(z) == '0' && b.charAt(k) == '0') {
+                stringA.setCharAt(z, (char) (plusBit + '0'));
+                if(stringA.charAt(z) == '0' && b.charAt(k) == '0') {
                     binary.append('0');
                 }
-                if(a.charAt(z) == '1' && b.charAt(k) == '0' || a.charAt(z) == '0' && b.charAt(k) == '1'){
+                if(stringA.charAt(z) == '1' && b.charAt(k) == '0' || stringA.charAt(z) == '0' && b.charAt(k) == '1'){
                     binary.append('1');
                 }
+                plusBit = 0;
             }
             if (sumOfBits > 1){
                 plusBit = 0;
@@ -220,9 +223,10 @@ public class RandomLeetCodeExercises_1 {
                 plusBit ++;
             }
             z --; k --;
-
         }
-        return binary.reverse().toString();
+        binary.reverse();
+        binary = z > 0 ? binary.insert(0,a.substring(0,z)) : binary.insert(0,b.substring(0,k));
+        return binary.toString();
     }
 
     public static String toHexNaturalNumbers(int num) {
