@@ -41,7 +41,6 @@ public class Percolation {
                 weightedQuickUnionUF.union(nodeInt(row, col), nodeInt(row, col + 1));
             }
         }
-
     }
 
     // is site (row, col) open?
@@ -51,6 +50,16 @@ public class Percolation {
     }
     // is site (row, col) full?
     public boolean isFull(int row, int col) {
+        boolean isFull = false;
+        for (int i = 0; i < size ; i++) {
+            if(isOpen(0,i)){
+               isFull = weightedQuickUnionUF.connected(nodeInt(0,i),nodeInt(row, col));
+               if(isFull){
+                   break;
+               }
+            }
+        }        
+        return isFull;
 
     }
     // number of open sites
