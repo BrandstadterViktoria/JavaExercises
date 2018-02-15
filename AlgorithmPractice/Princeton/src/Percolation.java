@@ -1,5 +1,7 @@
 
-import edu.princeton.cs.algs4.*;
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdStats;
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
 
@@ -11,7 +13,7 @@ public class Percolation {
         int rows = (int) (Math.ceil(1.0 / n));
         int columns = (int) (Math.ceil(1.0 / n));
 
-        Queue<Point2D>[][] grid = (Queue<Point2D>[][]) new Queue[rows + 2][columns + 2];
+        QuPoint2Deue<>[][] grid = (Queue<Point2D>[][]) new Queue[rows + 2][columns + 2];
         for (int i = 0; i <= rows + 1; i++) {
             for (int j = 0; j <= columns + 1; j++) {
                 grid[i][j] = new Queue<>();
