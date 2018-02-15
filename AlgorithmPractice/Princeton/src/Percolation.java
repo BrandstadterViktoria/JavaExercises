@@ -6,6 +6,7 @@ public class Percolation {
     public boolean theGrid [] [];
     public int size;
     public WeightedQuickUnionUF weightedQuickUnionUF;
+    public int counterForOpenSites;
 
     public Percolation(int n) {
         weightedQuickUnionUF = new WeightedQuickUnionUF(n *n);
@@ -28,6 +29,7 @@ public class Percolation {
          col = uniform(size);
         if(!isOpen(row, col)){
             theGrid[row][col] = true;
+            this.counterForOpenSites ++;
             if(isOpen(row -1,col)){
                 weightedQuickUnionUF.union( nodeInt(row, col), nodeInt(row -1, col));
             }
@@ -51,24 +53,32 @@ public class Percolation {
     // is site (row, col) full?
     public boolean isFull(int row, int col) {
         boolean isFull = false;
-        for (int i = 0; i < size ; i++) {
+        for (int i = 0; i <= size ; i++) {
             if(isOpen(0,i)){
                isFull = weightedQuickUnionUF.connected(nodeInt(0,i),nodeInt(row, col));
                if(isFull){
                    break;
                }
             }
-        }        
+        }
         return isFull;
 
     }
     // number of open sites
-    public int numberOfOpenSites()  {
-
+    public int numberOfOpenSites() {
+        return counterForOpenSites;
     }
 
     // does the system percolate?
     public boolean percolates() {
+        for (int i = size; i <= i + size ; i++) {
+            if(isOpen(size,i)){
+                if(isFull(size,i)){
+                    return true;
+                }
+            }
+        }
+        return false;
 
     }
 
