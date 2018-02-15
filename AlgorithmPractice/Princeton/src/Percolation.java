@@ -26,14 +26,20 @@ public class Percolation {
     public void open(int row, int col){
          row = uniform(size);
          col = uniform(size);
-        if(isOpen(row, col)){
-            if(isOpen(row -1,col){
-                weightedQuickUnionUF.union( [row][col],[row -1][col]);
-
+        if(!isOpen(row, col)){
+            theGrid[row][col] = true;
+            if(isOpen(row -1,col)){
+                weightedQuickUnionUF.union( nodeInt(row, col), nodeInt(row -1, col));
             }
-
-
-
+            if(isOpen(row + 1,col)){
+                weightedQuickUnionUF.union(nodeInt(row, col), nodeInt(row + 1, col));
+            }
+            if(isOpen(row, col -1)){
+                weightedQuickUnionUF.union(nodeInt(row,col),nodeInt(row,col -1));
+            }
+            if(isOpen(row, col + 1)){
+                weightedQuickUnionUF.union(nodeInt(row, col), nodeInt(row, col + 1));
+            }
         }
 
     }
