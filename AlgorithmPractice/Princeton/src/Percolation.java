@@ -71,7 +71,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        for (int i = size; i <= i + size ; i++) {
+        for (int i = 0; i <= size ; i++) {
             if(isOpen(size,i)){
                 if(isFull(size,i)){
                     return true;
