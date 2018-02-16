@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
+import edu.princeton.cs.algs4.Stopwatch;
 
 class PercolationStats {
 
@@ -45,19 +46,25 @@ class PercolationStats {
     }// sample standard deviation of percolation threshold
 
     public double confidenceLo() {
+        return mean() - (1.96 * stddev() / Math.sqrt(experiments.length));
 
     }// low  endpoint of 95% confidence interval
 
     public double confidenceHi() {
+        return mean() + (1.96 * stddev() / Math.sqrt(experiments.length));
 
 
     }// high endpoint of 95% confidence interval
 
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
-        int T = Integer.parseInt(args[1]);
+        int arg1 = Integer.parseInt(args[0]);
+        int arg2 = Integer.parseInt(args[1]);
+
+        Stopwatch sw = new Stopwatch();
+
+        PercolationStats perStat = new PercolationStats(arg1, arg2);
 
 
     }// test client (described below)
 }
-}
+
