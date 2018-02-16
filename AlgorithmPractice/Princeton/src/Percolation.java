@@ -3,12 +3,12 @@ import static edu.princeton.cs.algs4.StdRandom.uniform;
 
 public class Percolation {
 
-    public boolean theGrid [] [];
-    public int size;
-    public WeightedQuickUnionUF weightedQuickUnionUF;
-    public int counterForOpenSites;
+    private boolean theGrid [] [];
+    private int size;
+    private WeightedQuickUnionUF weightedQuickUnionUF;
+    private int counterForOpenSites;
 
-    public Percolation(int n) {
+        Percolation(int n) {
         weightedQuickUnionUF = new WeightedQuickUnionUF(n *n);
         this.size = n;
         this.theGrid  = new boolean[n][n];
@@ -19,7 +19,7 @@ public class Percolation {
         }
 
     }
-    public int nodeInt(int row, int col){
+    private int nodeInt(int row, int col){
        return row * size - size + col;
     }
 
