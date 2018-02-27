@@ -60,7 +60,12 @@ public class PercolationStats {
 
         Stopwatch sw = new Stopwatch();
 
-        PercolationStats perStat = new PercolationStats(arg1, arg2);
+        PercolationStats ps = new PercolationStats(arg1, arg2);
+
+        String confidence = ps.confidenceLo() + ", " + ps.confidenceHi();
+        edu.princeton.cs.algs4.StdOut.println("mean                    = " + ps.mean());
+        edu.princeton.cs.algs4.StdOut.println("stddev                  = " + ps.stddev());
+        edu.princeton.cs.algs4.StdOut.println("95% confidence interval = " + confidence);
 
 
     }// test client (described below)

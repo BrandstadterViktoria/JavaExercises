@@ -30,18 +30,25 @@ public class Percolation {
         }
         if (!isOpen(row, col)) {
             theGrid[row -1][col - 1] = true;
+            if(row == 1){
+             weightedQuickUnionUF.union(0, nodeInt(row, col));
+              }
+              if(row== size){
+               weightedQuickUnionUF.union(size *size +1 , nodeInt(row, col));
+}
+
             this.counterForOpenSites++;
             if (row >= 2 && isOpen(row -1, col)){
-                weightedQuickUnionUF.union(nodeInt(row, col) -1, nodeInt(row - 1, col)-1);
+                weightedQuickUnionUF.union(nodeInt(row, col), nodeInt(row - 1, col));
             }
             if (row <= size - 1 && isOpen( row + 1, col)) {
-                weightedQuickUnionUF.union(nodeInt(row, col)-1, nodeInt( row + 1, col)-1);
+                weightedQuickUnionUF.union(nodeInt(row, col), nodeInt( row + 1, col));
             }
             if (col >= 2 && isOpen(row, col - 1)) {
-                weightedQuickUnionUF.union(nodeInt(row, col)-1, nodeInt(row, col - 1)-1);
+                weightedQuickUnionUF.union(nodeInt(row, col), nodeInt(row, col - 1));
             }
             if (col <= size - 1 && isOpen(row, col + 1)) {
-                weightedQuickUnionUF.union(nodeInt(row, col)-1, nodeInt(row, col + 1)-1);
+                weightedQuickUnionUF.union(nodeInt(row, col), nodeInt(row, col + 1));
             }
         }
     }
