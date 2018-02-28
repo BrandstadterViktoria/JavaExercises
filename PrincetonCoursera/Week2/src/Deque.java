@@ -2,6 +2,7 @@
 Write a generic data type for a deque and a randomized queue. The goal of this assignment is to implement elementary data structures using arrays and linked lists, and to introduce you to generics and iterators.*/
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
     private Node first;
@@ -39,6 +40,7 @@ public class Deque<Item> implements Iterable<Item> {
     // return the number of items on the deque
 
     public void addFirst(Item item) {
+        if(item == null) {throw  new IllegalArgumentException("Invalid item.");}
         Node newNode = new Node(item);
         if (isEmpty()) {
             first = newNode;
@@ -58,6 +60,7 @@ public class Deque<Item> implements Iterable<Item> {
     // add the item to the front
 
     public void addLast(Item item) {
+        if(item == null) {throw  new IllegalArgumentException("Invalid item.");}
         Node newNode = new Node(item);
         Node oldLast = last;
         last = newNode;
@@ -75,6 +78,7 @@ public class Deque<Item> implements Iterable<Item> {
     // add the item to the end
 
     public Item removeFirst() {
+        if(isEmpty()){throw new NoSuchElementException("Dequeue is empty");}
         Item removeFirstItem = first.item;
         first.next.previous = null;
         first = first.next;
@@ -84,6 +88,7 @@ public class Deque<Item> implements Iterable<Item> {
     // remove and return the item from the front
 
     public Item removeLast() {
+        if(isEmpty()){throw new NoSuchElementException("Dequeue is empty");}
         Item dequedItem = last.item;
         last = last.previous;
         last.next = null;
@@ -93,8 +98,27 @@ public class Deque<Item> implements Iterable<Item> {
     // remove and return the item from the end
 
     public Iterator<Item> iterator() {
-        return null;
+        return new ListIterator();
+    }
 
+    private class ListIterator implements Iterator<Item> {
+        private Node current = first;
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            /* not supported */
+            throw new UnsupportedOperationException("UnsupportedOperation");
+        }
+
+        public Item next() {
+            if(!hasNext()){throw new NoSuchElementException("No next element");}
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
     }
     // return an iterator over items in order from front to end
 
