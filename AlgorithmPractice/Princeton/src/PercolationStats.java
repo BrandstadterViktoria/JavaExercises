@@ -2,18 +2,16 @@ import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.Stopwatch;
 
-class PercolationStats {
+public class PercolationStats {
 
     private double[] experiments;
 
     public PercolationStats(int n, int trials) {
 
-        try {
-            if (n <= 0 || trials <= 0) ;
+        if (n <= 0 || trials <= 0) {
             throw new IllegalArgumentException(" n and trial must be greater than null");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Caught an IllegalArgumentException");
         }
+
         experiments = new double[trials];
         // out = new StringBuilder(n+"\n");
         Percolation per;
@@ -62,7 +60,12 @@ class PercolationStats {
 
         Stopwatch sw = new Stopwatch();
 
-        PercolationStats perStat = new PercolationStats(arg1, arg2);
+        PercolationStats ps = new PercolationStats(arg1, arg2);
+
+        String confidence = ps.confidenceLo() + ", " + ps.confidenceHi();
+        edu.princeton.cs.algs4.StdOut.println("mean                    = " + ps.mean());
+        edu.princeton.cs.algs4.StdOut.println("stddev                  = " + ps.stddev());
+        edu.princeton.cs.algs4.StdOut.println("95% confidence interval = " + confidence);
 
 
     }// test client (described below)
