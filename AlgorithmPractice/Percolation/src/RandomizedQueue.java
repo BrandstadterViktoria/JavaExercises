@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.StdRandom;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -62,17 +63,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return an independent iterator over items in random order
     public Iterator<Item> iterator() {
-
         return new RandomOrderIterator();
     }
 
     private class RandomOrderIterator implements Iterator<Item> {
-        private int i = size();
-        private int index = 0;
+        private int i = N;
 
         public RandomOrderIterator() {
 
-            this.index = StdRandom.uniform((N - 1));
         }
 
         public boolean hasNext() {
@@ -88,7 +86,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             if (isEmpty()) {
                 throw new NoSuchElementException("Queue is empty");
             }
-            return s[index];
+            return s[StdRandom.uniform(N)];
         }
     }
 

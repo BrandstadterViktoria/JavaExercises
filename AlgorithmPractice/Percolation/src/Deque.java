@@ -9,6 +9,7 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
     private Node last;
     private int size;
 
+    // construct an empty deque
     public Deque() {
 
     }
@@ -28,17 +29,17 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         }
     }
 
-    // construct an empty deque
+    // is the deque empty?
     public boolean isEmpty() {
         return first == null;
     }
 
-    // is the deque empty?
+    // return the number of items on the deque
     public int size() {
         return size;
     }
-    // return the number of items on the deque
 
+    // add the item to the front
     public void addFirst(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("Invalid item.");
@@ -59,8 +60,8 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
             }
         }
     }
-    // add the item to the front
 
+    // add the item to the end
     public void addLast(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("Invalid item.");
@@ -79,8 +80,8 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
             oldLast.next = last;
         }
     }
-    // add the item to the end
 
+    // remove and return the item from the front
     public Item removeFirst() {
         if (isEmpty()) {
             throw new NoSuchElementException("Dequeue is empty");
@@ -91,8 +92,8 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         size--;
         return removeFirstItem;
     }
-    // remove and return the item from the front
 
+    // remove and return the item from the end
     public Item removeLast() {
         if (isEmpty()) {
             throw new NoSuchElementException("Dequeue is empty");
@@ -103,8 +104,8 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         size--;
         return dequedItem;
     }
-    // remove and return the item from the end
 
+    // return an iterator over items in order from front to end
     public Iterator<Item> iterator() {
         return new ListIterator();
     }
@@ -130,7 +131,6 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
             return item;
         }
     }
-    // return an iterator over items in order from front to end
 
     private void print() {
         Node current = first;
