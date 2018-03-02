@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.ST;
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
@@ -6,6 +7,7 @@ import java.util.NoSuchElementException;
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] s;
     private int N = 0;
+    private int size = 0;
 
     // construct an empty randomized queue
     public RandomizedQueue() {
@@ -19,7 +21,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return the number of items on the randomized queue
     public int size() {
-        return s.length;
+        return this.size;
     }
 
     // add the item
@@ -32,6 +34,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
         s[N] = item;
         N++;
+        size++;
     }
 
     private void resize(int capacity) {
@@ -46,10 +49,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        RandomOrderIterator r = new RandomOrderIterator();
-        Item dequeue = s[r.index];
-        s[r.index] = null;
+        int index = StdRandom.uniform(0,N);
+        Item dequeue = s[index];
+        s[index] = s[N-1];
+        s[index] = null;
         N--;
+        size--;
+        if (N > 0 && N == s.length / 4) {
+            resize(s.length / 2);
+        }
         return dequeue;
     }
 
@@ -58,7 +66,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        return iterator().next();
+        return s[StdRandom.uniform(N)];
     }
 
     // return an independent iterator over items in random order
@@ -68,13 +76,22 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class RandomOrderIterator implements Iterator<Item> {
         private int i = N;
+        private Item[] itemsIterator;
 
         public RandomOrderIterator() {
+            createCopy();
+            StdRandom.shuffle(itemsIterator);
+        }
 
+        private void createCopy(){
+            itemsIterator = (Item[]) new Object[N];
+            for (int i = 0; i < N; i++) {
+                itemsIterator[i] = s[i];
+            }
         }
 
         public boolean hasNext() {
-            return i > 0;
+            return i < N;
         }
 
         public void remove() {
@@ -83,10 +100,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
 
         public Item next() {
-            if (isEmpty()) {
+            if (!hasNext()) {
                 throw new NoSuchElementException("Queue is empty");
             }
-            return s[StdRandom.uniform(N)];
+
+            return itemsIterator[i++];
         }
     }
 
@@ -101,7 +119,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
 }
-// unit testing (optional)
+
 
 
 
