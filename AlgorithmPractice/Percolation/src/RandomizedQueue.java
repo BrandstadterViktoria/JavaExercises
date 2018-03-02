@@ -52,7 +52,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         int index = StdRandom.uniform(0,N);
         Item dequeue = s[index];
         s[index] = s[N-1];
-        s[index] = null;
+        s[N-1] = null;
         N--;
         size--;
         if (N > 0 && N == s.length / 4) {
@@ -66,7 +66,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        return s[StdRandom.uniform(N)];
+        return s[StdRandom.uniform(0,N)];
     }
 
     // return an independent iterator over items in random order
