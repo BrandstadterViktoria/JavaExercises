@@ -19,8 +19,7 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         Node next;
         Node previous;
 
-        private Node(Item item) {
-            this.item = item;
+        private Node() {
         }
 
         @Override
@@ -44,9 +43,11 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         if (item == null) {
             throw new IllegalArgumentException("Invalid item.");
         }
-        Node newNode = new Node(item);
+        Node newNode = new Node();
+        newNode.item = item;
         if (isEmpty()) {
             first = newNode;
+            last = first;
             size++;
 
         } else {
@@ -55,9 +56,6 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
             first.next = oldFirst;
             oldFirst.previous = first;
             size++;
-            if (size == 2) {
-                last = first.next;
-            }
         }
     }
 
@@ -66,15 +64,17 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         if (item == null) {
             throw new IllegalArgumentException("Invalid item.");
         }
-        Node newNode = new Node(item);
-        Node oldLast = last;
-        last = newNode;
-        newNode.previous = oldLast;
-        last.next = null;
-        if (size > 0) {
-            oldLast.next = last;
-        } else {
+        Node newNode = new Node();
+        newNode.item = item;
+        if (isEmpty()) {
+            last = newNode;
             first = last;
+        } else {
+            Node oldLast = last;
+            last = newNode;
+            newNode.previous = oldLast;
+            oldLast.next = last;
+            last.next = null;
         }
         size++;
     }
@@ -86,13 +86,8 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
             throw new NoSuchElementException("Dequeue is empty");
         }
         Item removeFirstItem = first.item;
-        if (size > 1) {
-            first = first.next;
-            first.next.previous = null;
-        } else {
-            first = null;
-            last = null;
-        }
+        first = first.next;
+        first.previous = null;
         size--;
         return removeFirstItem;
     }
@@ -136,27 +131,16 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         }
     }
 
-    private void print() {
-        Node current = first;
-        while ((current != null)) {
-            System.out.print(current);
-            System.out.print("  -->  ");
-            current = current.next;
-        }
-    }
-
-
     public static void main(String[] args) {
         Deque<String> test = new Deque<>();
         test.addFirst("egy");
         test.addFirst("kettő");
         test.addLast("nulla");
         test.addFirst("három");
-        test.print();
         test.removeFirst();
         test.removeLast();
-        test.print();
+
     }
-    // unit testing (optional)
+
 }
 

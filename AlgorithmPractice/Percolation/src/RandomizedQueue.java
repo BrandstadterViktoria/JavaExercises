@@ -75,19 +75,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private class RandomOrderIterator implements Iterator<Item> {
-        private int i = N;
+        private int i;
         private Item[] itemsIterator;
 
         public RandomOrderIterator() {
-            createCopy();
-            StdRandom.shuffle(itemsIterator);
-        }
-
-        private void createCopy(){
-            itemsIterator = (Item[]) new Object[N];
+            this.itemsIterator = (Item[]) new Object[N];
             for (int i = 0; i < N; i++) {
                 itemsIterator[i] = s[i];
             }
+            StdRandom.shuffle(itemsIterator);
         }
 
         public boolean hasNext() {
@@ -109,12 +105,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
 
     public static void main(String[] args) {
-
         RandomizedQueue<String> test = new RandomizedQueue<>();
         test.enqueue("egy");
         test.enqueue("kettő");
         test.enqueue("három");
-        test.dequeue();
+        for (String piece: test) {
+            System.out.println(piece);
+        }
+
+
     }
 
 }
