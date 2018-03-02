@@ -10,7 +10,7 @@ public class Permutation {
             q.enqueue(s);
         }
         int k = Integer.parseInt(args[0]);
-        for (int i = 0; i <= k; i++) {
+        for (int i = 0; i < k; i++) {
             StdOut.print(q.dequeue());
         }
     }

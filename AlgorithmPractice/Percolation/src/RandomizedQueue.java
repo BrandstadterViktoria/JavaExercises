@@ -1,4 +1,4 @@
-import edu.princeton.cs.algs4.ST;
+
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
@@ -7,7 +7,6 @@ import java.util.NoSuchElementException;
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] s;
     private int N = 0;
-    private int size = 0;
 
     // construct an empty randomized queue
     public RandomizedQueue() {
@@ -21,7 +20,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return the number of items on the randomized queue
     public int size() {
-        return this.size;
+        return N;
     }
 
     // add the item
@@ -32,15 +31,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (N == s.length) {
             resize(2 * s.length);
         }
-        s[N] = item;
-        N++;
-        size++;
+        s[N++] = item;
     }
 
     private void resize(int capacity) {
         Item[] copy = (Item[]) new Object[capacity];
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < N; i++) {
             copy[i] = s[i];
+        }
         s = copy;
     }
 
@@ -49,12 +47,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        int index = StdRandom.uniform(0,N);
-        Item dequeue = s[index];
-        s[index] = s[N-1];
-        s[N-1] = null;
-        N--;
-        size--;
+        Item dequeue = s[--N];
+        s[N] = null;
         if (N > 0 && N == s.length / 4) {
             resize(s.length / 2);
         }
@@ -66,7 +60,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        return s[StdRandom.uniform(0,N)];
+        return s[StdRandom.uniform(N)];
     }
 
     // return an independent iterator over items in random order
