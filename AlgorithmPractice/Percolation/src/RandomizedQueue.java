@@ -6,36 +6,41 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] s;
     private int N = 0;
 
+    // construct an empty randomized queue
     public RandomizedQueue() {
         s = (Item[]) new Object[1];
     }
 
-    // construct an empty randomized queue
+    // is the randomized queue empty?
     public boolean isEmpty() {
         return N == 0;
     }
 
-    // is the randomized queue empty?
+    // return the number of items on the randomized queue
     public int size() {
         return s.length;
     }
 
-    // return the number of items on the randomized queue
+    // add the item
     public void enqueue(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("Illegal item");
         }
         if (N == s.length) {
-            Item[] copy = (Item[]) new Object[2 * s.length];
-            for (int i = 0; i < N; i++)
-                copy[i] = s[i];
-            s = copy;
+            resize(2 * s.length);
         }
         s[N] = item;
         N++;
     }
 
-    // add the item
+    private void resize(int capacity) {
+        Item[] copy = (Item[]) new Object[capacity];
+        for (int i = 0; i < N; i++)
+            copy[i] = s[i];
+        s = copy;
+    }
+
+    // remove and return a random item
     public Item dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
@@ -47,15 +52,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return dequeue;
     }
 
-    // remove and return a random item
+    // return a random item (but do not remove it)
     public Item sample() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
         return iterator().next();
     }
-    // return a random item (but do not remove it)
 
+    // return an independent iterator over items in random order
     public Iterator<Item> iterator() {
 
         return new RandomOrderIterator();
@@ -87,7 +92,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
     }
 
-// return an independent iterator over items in random order
 
     public static void main(String[] args) {
 
