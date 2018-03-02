@@ -103,7 +103,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             if (!hasNext()) {
                 throw new NoSuchElementException("Queue is empty");
             }
-
             return itemsIterator[i++];
         }
     }

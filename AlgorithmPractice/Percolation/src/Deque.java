@@ -70,16 +70,15 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
         Node oldLast = last;
         last = newNode;
         newNode.previous = oldLast;
-        oldLast.next = last;
         last.next = null;
-        size++;
-        if (isEmpty()) {
-            first = last;
-            size++;
-        } else {
+        if (size > 0) {
             oldLast.next = last;
+        } else {
+            first = last;
         }
+        size++;
     }
+
 
     // remove and return the item from the front
     public Item removeFirst() {
@@ -87,8 +86,13 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
             throw new NoSuchElementException("Dequeue is empty");
         }
         Item removeFirstItem = first.item;
-        first.next.previous = null;
-        first = first.next;
+        if (size > 1) {
+            first = first.next;
+            first.next.previous = null;
+        } else {
+            first = null;
+            last = null;
+        }
         size--;
         return removeFirstItem;
     }
