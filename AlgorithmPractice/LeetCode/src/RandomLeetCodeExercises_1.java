@@ -38,7 +38,7 @@ public class RandomLeetCodeExercises_1 {
         String[] l = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
         String[] k = {"KFC", "Shogun", "Burger King"};
 
-        findRestaurant(l, k);
+        findRestaurant_LC599(l, k);
 
     }
 
@@ -308,7 +308,7 @@ public class RandomLeetCodeExercises_1 {
 
     }
 
-    public static String[] findRestaurant(String[] list1, String[] list2) {
+    public static String[] findRestaurant_LC599(String[] list1, String[] list2) {
         /*Find out common interest between list of Strings, with the least list index sum. If there is a choice tie between answers,
          output all of them with no order requirement. You could assume there always exists an answer. */
         List<String> answer = new ArrayList<>();
@@ -325,6 +325,7 @@ public class RandomLeetCodeExercises_1 {
                     answer.add(list2[i]);
                 } else if (indexSum < smallerIndex) {
                     smallerIndex = indexSum;
+                    answer.clear();
                     answer.add(list2[i]);
                 }
             }
