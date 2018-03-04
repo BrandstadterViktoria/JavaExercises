@@ -29,7 +29,11 @@ public class RandomLeetCodeExercises_1 {
 // System.out.println(toHexNaturalNumbers(54734));
 // System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
 //        System.out.println(findComplement(20161211));
-        System.out.println(addBinary("110010", "10111"));
+//        System.out.println(addBinary("110010", "10111"));
+        for (int c : selfDividingNumbers_LC728(1, 22)) {
+            System.out.println(c);
+
+        }
 
     }
 
@@ -204,19 +208,19 @@ public class RandomLeetCodeExercises_1 {
         int sumOfBits;
         StringBuilder result = new StringBuilder();
         while (aBinary >= 0 || bBinary >= 0 || carry == 1) {
-                sumOfBits = (a.charAt(aBinary) - '0') + (b.charAt(bBinary) - '0') + carry;
-                if (sumOfBits <= 1) {
-                    result.append(a.toCharArray()[aBinary] == '0' && b.toCharArray()[bBinary] == '0' && carry == 0 ? '0' : '1');
-                    carry = 0;
-                }
-                if (sumOfBits > 1) {
-                    carry = 0;
-                    result.append('0');
-                    carry++;
-                }
-                aBinary--;
-                bBinary--;
+            sumOfBits = (a.charAt(aBinary) - '0') + (b.charAt(bBinary) - '0') + carry;
+            if (sumOfBits <= 1) {
+                result.append(a.toCharArray()[aBinary] == '0' && b.toCharArray()[bBinary] == '0' && carry == 0 ? '0' : '1');
+                carry = 0;
             }
+            if (sumOfBits > 1) {
+                carry = 0;
+                result.append('0');
+                carry++;
+            }
+            aBinary--;
+            bBinary--;
+        }
         return result.reverse().toString();
 
     }
@@ -256,6 +260,29 @@ public class RandomLeetCodeExercises_1 {
                 mapStringA.put(sb.toString().substring(i, i + B.length()), counter);
         }
         return mapStringA.getOrDefault(B, -1);
+    }
+
+    public static List<Integer> selfDividingNumbers_LC728(int left, int right) {
+        /*A self-dividing number is a number that is divisible by every digit it contains.
+         * Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible. */
+        List<Integer> result = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            int counter = 0;
+            for (char digit : ("" + i).toCharArray()) {
+                if ( digit != '0' && i % Character.getNumericValue(digit) == 0) {
+                    counter++;
+                }
+                if (counter == ("" + i).toCharArray().length) {
+                    result.add(i);
+                }
+                 else if (digit != '0' && i % Character.getNumericValue(digit) != 0) {
+                    break;
+                }
+
+            }
+        }
+        return result;
+
     }
 }
 
