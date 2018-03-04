@@ -8,7 +8,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {1,1,0,1,1,1};
+        int[] numbers = {1, 1, 0, 1, 1, 1};
         int[] numbers1 = {1, 4, 3, 2};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
@@ -30,10 +30,16 @@ public class RandomLeetCodeExercises_1 {
 // System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
 //        System.out.println(findComplement(20161211));
 //        System.out.println(addBinary("110010", "10111"));
- //       for (int c : selfDividingNumbers_LC728(1, 22)) {
-   //         System.out.println(c);
+        //       for (int c : selfDividingNumbers_LC728(1, 22)) {
+        //         System.out.println(c);
 
-        System.out.println(findMaxConsecutiveOnes_LC485(numbers));
+        //     System.out.println(findMaxConsecutiveOnes_LC485(numbers));
+
+        String[] l = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
+        String[] k = {"KFC", "Shogun", "Burger King"};
+
+        findRestaurant(l, k);
+
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -293,13 +299,39 @@ public class RandomLeetCodeExercises_1 {
             } else if (nums[i] == 0) {
                 counter = 0;
             }
-            if( temp < counter ){
+            if (temp < counter) {
                 temp = counter;
             }
 
         }
         return temp;
 
+    }
+
+    public static String[] findRestaurant(String[] list1, String[] list2) {
+        /*Find out common interest between list of Strings, with the least list index sum. If there is a choice tie between answers,
+         output all of them with no order requirement. You could assume there always exists an answer. */
+        List<String> answer = new ArrayList<>();
+        int indexSum;
+        int smallerIndex = (list1.length - 1) + (list2.length - 1);
+        HashMap<String, Integer> firstList = new HashMap<>();
+        for (int i = 0; i < list1.length; i++) {
+            firstList.put(list1[i], i);
+        }
+        for (int i = 0; i < list2.length; i++) {
+            if (firstList.containsKey(list2[i])) {
+                indexSum = firstList.get(list2[i]) + i;
+                if (indexSum == smallerIndex) {
+                    answer.add(list2[i]);
+                } else if (indexSum < smallerIndex) {
+                    smallerIndex = indexSum;
+                    answer.add(list2[i]);
+                }
+            }
+        }
+        String[] stockArr = new String[answer.size()];
+        stockArr = answer.toArray(stockArr);
+        return stockArr;
     }
 }
 
