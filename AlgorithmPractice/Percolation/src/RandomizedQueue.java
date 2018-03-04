@@ -99,13 +99,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
 
     public static void main(String[] args) {
-        RandomizedQueue<String> test = new RandomizedQueue<>();
-        test.enqueue("egy");
-        test.enqueue("kettő");
-        test.enqueue("három");
-        for (String piece: test) {
-            System.out.println(piece);
-        }
 
 
     }

@@ -132,13 +132,7 @@ Write a generic data type for a deque and a randomized queue. The goal of this a
     }
 
     public static void main(String[] args) {
-        Deque<String> test = new Deque<>();
-        test.addFirst("egy");
-        test.addFirst("kettő");
-        test.addLast("nulla");
-        test.addFirst("három");
-        test.removeFirst();
-        test.removeLast();
+      
 
     }
 
