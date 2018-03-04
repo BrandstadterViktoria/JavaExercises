@@ -8,7 +8,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {5, 4, 3, 2, 1};
+        int[] numbers = {1,1,0,1,1,1};
         int[] numbers1 = {1, 4, 3, 2};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
@@ -30,11 +30,10 @@ public class RandomLeetCodeExercises_1 {
 // System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
 //        System.out.println(findComplement(20161211));
 //        System.out.println(addBinary("110010", "10111"));
-        for (int c : selfDividingNumbers_LC728(1, 22)) {
-            System.out.println(c);
+ //       for (int c : selfDividingNumbers_LC728(1, 22)) {
+   //         System.out.println(c);
 
-        }
-
+        System.out.println(findMaxConsecutiveOnes_LC485(numbers));
     }
 
     public static int singleNumber_LC136(int[] numbers1) {
@@ -269,19 +268,37 @@ public class RandomLeetCodeExercises_1 {
         for (int i = left; i <= right; i++) {
             int counter = 0;
             for (char digit : ("" + i).toCharArray()) {
-                if ( digit != '0' && i % Character.getNumericValue(digit) == 0) {
+                if (digit != '0' && i % Character.getNumericValue(digit) == 0) {
                     counter++;
                 }
                 if (counter == ("" + i).toCharArray().length) {
                     result.add(i);
-                }
-                 else if (digit != '0' && i % Character.getNumericValue(digit) != 0) {
+                } else if (digit != '0' && i % Character.getNumericValue(digit) != 0) {
                     break;
                 }
 
             }
         }
         return result;
+
+    }
+
+    public static int findMaxConsecutiveOnes_LC485(int[] nums) {
+        /*Given a binary array, find the maximum number of consecutive 1s in this array.*/
+        int counter = 0;
+        int temp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                counter++;
+            } else if (nums[i] == 0) {
+                counter = 0;
+            }
+            if( temp < counter ){
+                temp = counter;
+            }
+
+        }
+        return temp;
 
     }
 }
