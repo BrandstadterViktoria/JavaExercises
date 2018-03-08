@@ -1,3 +1,5 @@
+package Week1_Percolation;
+
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 import static edu.princeton.cs.algs4.StdRandom.uniform;

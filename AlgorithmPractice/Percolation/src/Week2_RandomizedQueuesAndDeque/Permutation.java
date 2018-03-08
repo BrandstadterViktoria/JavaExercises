@@ -1,3 +1,6 @@
+package Week2_RandomizedQueuesAndDeque;
+
+import Week2_RandomizedQueuesAndDeque.RandomizedQueue;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
