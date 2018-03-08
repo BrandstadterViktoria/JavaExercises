@@ -7,8 +7,6 @@ public class Point implements Comparable<Point> {
     private final int x;
     private final int y;
     private double currentSlope;
-    public static final Comparator<Point> comparator = new CompareSlope();
-
 
     // constructs the point (x, y)
     public Point(int x, int y) {
@@ -34,7 +32,6 @@ public class Point implements Comparable<Point> {
     }
 
     // compare two points by y-coordinates, breaking ties by x-coordinates
-    //breaking ties ---> dont understand
     public int compareTo(Point that) {
         int x0 = this.x;
         int y0 = this.y;
@@ -127,3 +124,4 @@ public class Point implements Comparable<Point> {
 
         }
     }
+}
