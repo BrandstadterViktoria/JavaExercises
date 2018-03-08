@@ -1,18 +1,13 @@
 import edu.princeton.cs.algs4.StdDraw;
 
 import java.util.Comparator;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
 
 public class Point implements Comparable<Point> {
 
     private final int x;
     private final int y;
     private double currentSlope;
-    public static final Comparator<Point> compareSlope = new CompareSlope();
-
+    public static final Comparator<Point> comparator = new CompareSlope();
 
 
     // constructs the point (x, y)
@@ -98,61 +93,37 @@ public class Point implements Comparable<Point> {
         return currentSlope;
     }
 
-        /**
-         * Compares two points by the slope they make with this point.
-         * The slope is defined as in the slopeTo() method.
-         *
-         * @return the Comparator that defines this ordering on points
-         */
+    /**
+     * Compares two points by the slope they make with this point.
+     * The slope is defined as in the slopeTo() method.
+     *
+     * @return the Comparator that defines this ordering on points
+     */
 
-        public Comparator <Point> slopeOrder() {
-            Comparator<Point> comparator = new CompareSlope();
+    public Comparator<Point> slopeOrder() {
+        Comparator<Point> comparator = new CompareSlope();
 
-            return comparator;
-        }
+        return comparator;
+    }
 
     private static class CompareSlope implements Comparator<Point> {
 
-
         @Override
         public int compare(Point point, Point t1) {
-            return 0;
-        }
 
-        @Override
-        public Comparator<Point> reversed() {
-            return null;
-        }
+            int comparison = 0;
+            if (point.currentSlope < t1.currentSlope) {
+                comparison = 1;
+            }
 
-        @Override
-        public Comparator<Point> thenComparing(Comparator<? super Point> comparator) {
-            return null;
-        }
+            if (t1.currentSlope > point.currentSlope) {
+                comparison = -1;
+            }
 
-        @Override
-        public <U> Comparator<Point> thenComparing(Function<? super Point, ? extends U> function, Comparator<? super U> comparator) {
-            return null;
-        }
+            if (point.currentSlope == t1.currentSlope) {
+                comparison = 0;
+            }
+            return comparison;
 
-        @Override
-        public <U extends Comparable<? super U>> Comparator<Point> thenComparing(Function<? super Point, ? extends U> function) {
-            return null;
-        }
-
-        @Override
-        public Comparator<Point> thenComparingInt(ToIntFunction<? super Point> toIntFunction) {
-            return null;
-        }
-
-        @Override
-        public Comparator<Point> thenComparingLong(ToLongFunction<? super Point> toLongFunction) {
-            return null;
-        }
-
-        @Override
-        public Comparator<Point> thenComparingDouble(ToDoubleFunction<? super Point> toDoubleFunction) {
-            return null;
         }
     }
-    }
-}
