@@ -1,12 +1,12 @@
 import java.util.Arrays;
 
-public class FastColliniarPoints {
+public class FastCollinearPoints {
 
-    int size;
-    LineSegment[] lineSegments;
+    private int size;
+    private final LineSegment[] lineSegments;
 
     // finds all line segments containing 4 or more points
-    public FastColliniarPoints(Point[] points) {
+    public FastCollinearPoints(Point[] points) {
         if (points == null) {
             throw new IllegalArgumentException("Illegal points");
         }
@@ -22,13 +22,15 @@ public class FastColliniarPoints {
                 }
             }
         }
-        Point[] copy = Arrays.copyOf(points, points.length);
-        for (int i = 0; i < points.length; i++) {
+        this.lineSegments = new LineSegment[points.length -1];
+        Point[] copy = Arrays.copyOf(points, points.length -1);
+        for (int i = 0; i < copy.length; i++) {
             Arrays.sort(copy, points[i].slopeOrder());
-            for (int j = 1; j < copy.length; j++) {
-                if (copy[i].slopeTo(copy[j]) == copy[i].slopeTo(copy[j + 1]) &&
-                        copy[i].slopeTo(copy[j + 1]) == copy[i].slopeTo(copy[j + 2])) {
-                    lineSegments[size++] = new LineSegment(points[i], copy[j + 2]);
+            for (int j = 1; j < copy.length -2; j++) {
+                if (points[i].slopeTo(copy[j]) == points[i].slopeTo(copy[j + 1]) &&
+                        points[i].slopeTo(copy[j + 1]) == points[i].slopeTo(copy[j + 2])) {
+                    lineSegments[i] = new LineSegment(points[i], copy[j + 2]);
+                    size++;
 
                 }
             }
