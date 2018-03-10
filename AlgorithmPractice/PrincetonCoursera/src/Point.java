@@ -32,19 +32,38 @@ public class Point implements Comparable<Point> {
     }
 
     // compare two points by y-coordinates, breaking ties by x-coordinates
+    //The compareTo() method should compare points by their y-coordinates, breaking ties by their x-coordinates. Formally,
+    // the invoking point (x0, y0) is less than the argument point (x1, y1) if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
+
+    /**
+     * Compares two points by y-coordinate, breaking ties by x-coordinate.
+     * Formally, the invoking point (x0, y0) is less than the argument point
+     * (x1, y1) if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
+     *
+     * @param that the other point
+     * @return the value <tt>0</tt> if this point is equal to the argument
+     * point (x0 = x1 and y0 = y1);
+     * a negative integer if this point is less than the argument
+     * point; and a positive integer if this point is greater than the
+     * argument point
+     */
     public int compareTo(Point that) {
         int x0 = this.x;
         int y0 = this.y;
         int x1 = that.x;
         int y1 = that.y;
 
+        int diff;
         if (x0 == x1 && y0 == y1) {
-            return 0;
-        } else if (y0 < y1 || y0 == y1 && x0 < x1) {
-            return -1;
-        } else {
-            return 1;
+            diff = 0;
         }
+        //invoking point is less than the argument point
+        if (y0 < y1 || y0 == y1 && x0 < x1) {
+            diff = -1;
+        } else {
+            diff = 1;
+        }
+        return diff;
 
     }
 
@@ -67,22 +86,22 @@ public class Point implements Comparable<Point> {
         int y1 = that.y;
 
         //horizontal line
-        if (x0 == x1 && y0 != y1) {
+        if (y0 == y1 && x0 != x1) {
             currentSlope = 0.0;
             this.currentSlope = currentSlope;
         }
 
         //vertical line
-        if (y0 == y1 && x0 != x1) {
+        if (x0 == x1 && y0 != y1) {
             currentSlope = Double.POSITIVE_INFINITY;
             this.currentSlope = currentSlope;
         }
 
         //if (x0, y0) and (x1, y1) are equal.
-        if (compareTo(that) == 0) {
+        if (this.compareTo(that) == 0) {
             currentSlope = Double.NEGATIVE_INFINITY;
         } else {
-            currentSlope = (y1 - y0) / (x1 - x0);
+            currentSlope = ((double) (y1 - y0)) / (x1 - x0);
             this.currentSlope = currentSlope;
         }
 
@@ -103,7 +122,7 @@ public class Point implements Comparable<Point> {
         return comparator;
     }
 
-    private static class CompareSlope implements Comparator<Point> {
+    private class CompareSlope implements Comparator<Point> {
 
         @Override
         public int compare(Point point, Point t1) {
