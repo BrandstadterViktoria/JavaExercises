@@ -110,16 +110,18 @@ public class Point implements Comparable<Point> {
 
             int comparison = 0;
             if (point.currentSlope < t1.currentSlope) {
-                comparison = 1;
-            }
-
-            if (t1.currentSlope > point.currentSlope) {
                 comparison = -1;
             }
 
             if (point.currentSlope == t1.currentSlope) {
                 comparison = 0;
             }
+
+            if (point.currentSlope > t1.currentSlope) {
+                comparison = 1;
+            }
+
+
             return comparison;
 
         }
