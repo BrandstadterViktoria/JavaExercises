@@ -1,10 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class BruteCollinearPoints {
 
-    Point[] points;
     int size = 0;
+    LineSegment[] lineSegments;
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
@@ -23,21 +22,16 @@ public class BruteCollinearPoints {
                 }
             }
         }
-        this.points = new Point[points.length];
-    }
+        Point [] copy = Arrays.copyOf(points,points.length);
+        Arrays.sort(copy);
 
-    public int numberOfSegments() {
-        return size;
-    }
-
-    public LineSegment[] segments() {
-        LineSegment[] lineSegments = new LineSegment[points.length - 1];
-        for (int i = 0; i < points.length - 3; i++) {
-            for (int j = i + 1; j < points.length - 2; j++) {
-                for (int k = j + 1; k < points.length - 1; k++) {
-                    for (int l = k + 1; l < points.length; l++) {
-                        if (points[i].slopeTo(points[j]) == points[j].slopeTo(points[k]) && points[j].slopeTo(points[k]) == points[k].slopeTo(points[l])) {
-                            lineSegments[size++] = new LineSegment(points[i], points[l]);
+        this.lineSegments = new LineSegment[copy.length - 1];
+        for (int i = 0; i < copy.length - 3; i++) {
+            for (int j = i + 1; j < copy.length - 2; j++) {
+                for (int k = j + 1; k < copy.length - 1; k++) {
+                    for (int l = k + 1; l < copy.length; l++) {
+                        if (copy[i].slopeTo(copy[j]) == copy[j].slopeTo(copy[k]) && copy[j].slopeTo(copy[k]) == copy[k].slopeTo(copy[l])) {
+                            lineSegments[size++] = new LineSegment(copy[i], copy[l]);
                         }
                     }
 
@@ -45,7 +39,14 @@ public class BruteCollinearPoints {
 
             }
         }
+    }
 
-        return lineSegments;
+    public int numberOfSegments() {
+        return size;
+    }
+
+    public LineSegment[] segments() {
+
+        return Arrays.copyOf(lineSegments, size);
     }
 }
