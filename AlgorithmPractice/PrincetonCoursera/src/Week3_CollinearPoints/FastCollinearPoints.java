@@ -1,3 +1,5 @@
+package Week3_CollinearPoints;
+
 import java.util.Arrays;
 
 public class FastCollinearPoints {
