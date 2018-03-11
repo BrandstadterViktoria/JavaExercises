@@ -30,22 +30,6 @@ public class Point implements Comparable<Point> {
 
     }
 
-    // compare two points by y-coordinates, breaking ties by x-coordinates
-    //The compareTo() method should compare points by their y-coordinates, breaking ties by their x-coordinates. Formally,
-    // the invoking point (x0, y0) is less than the argument point (x1, y1) if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
-
-    /**
-     * Compares two points by y-coordinate, breaking ties by x-coordinate.
-     * Formally, the invoking point (x0, y0) is less than the argument point
-     * (x1, y1) if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
-     *
-     * @param that the other point
-     * @return the value <tt>0</tt> if this point is equal to the argument
-     * point (x0 = x1 and y0 = y1);
-     * a negative integer if this point is less than the argument
-     * point; and a positive integer if this point is greater than the
-     * argument point
-     */
     public int compareTo(Point that) {
         int x0 = this.x;
         int y0 = this.y;
@@ -66,17 +50,6 @@ public class Point implements Comparable<Point> {
 
     }
 
-    /**
-     * Returns the slope between this point and the specified point.
-     * Formally, if the two points are (x0, y0) and (x1, y1), then the slope
-     * is (y1 - y0) / (x1 - x0). For completeness, the slope is defined to be
-     * +0.0 if the line segment connecting the two points is horizontal;
-     * Double.POSITIVE_INFINITY if the line segment is vertical;
-     * and Double.NEGATIVE_INFINITY if (x0, y0) and (x1, y1) are equal.
-     *
-     * @param that the other point
-     * @return the slope between this point and the specified point
-     */
     public double slopeTo(Point that) {
         int x0 = this.x;
         int y0 = this.y;
@@ -85,7 +58,7 @@ public class Point implements Comparable<Point> {
 
         //horizontal line
         if (y0 == y1 && x0 != x1) {
-            return  +0.0;
+            return +0.0;
 
         }
 
@@ -103,12 +76,6 @@ public class Point implements Comparable<Point> {
         return ((double) (y1 - y0)) / (x1 - x0);
     }
 
-    /**
-     * Compares two points by the slope they make with this point.
-     * The slope is defined as in the slopeTo() method.
-     *
-     * @return the Comparator that defines this ordering on points
-     */
 
     public Comparator<Point> slopeOrder() {
         Comparator<Point> comparator = new CompareSlope();
@@ -116,12 +83,6 @@ public class Point implements Comparable<Point> {
         return comparator;
     }
 
-
-    //The slopeOrder() method should return a comparator that compares its two argument points by the slopes they make
-    // with the invoking point (x0, y0).
-    // Formally, the point (x1, y1) is less than the point (x2, y2) if and only if the slope (y1 − y0) / (x1 − x0)
-    // is less than the slope (y2 − y0) / (x2 − x0).
-    // Treat horizontal, vertical, and degenerate line segments as in the slopeTo() method.
     private class CompareSlope implements Comparator<Point> {
 
         @Override
