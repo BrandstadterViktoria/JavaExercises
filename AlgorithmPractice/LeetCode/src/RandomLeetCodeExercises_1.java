@@ -8,7 +8,7 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {-1, 0, 1, 2, -1, -4};
+        int[] numbers = {-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0};
         int[] numbers1 = {1, 4, 3, 2};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
@@ -36,7 +36,7 @@ public class RandomLeetCodeExercises_1 {
         //     System.out.println(findMaxConsecutiveOnes_LC485(numbers));
 
 //        String[] l = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
- //       String[] k = {"KFC", "Shogun", "Burger King"};
+        //       String[] k = {"KFC", "Shogun", "Burger King"};
 //        findRestaurant_LC599(l, k);
         threeSum(numbers);
 
@@ -337,24 +337,23 @@ public class RandomLeetCodeExercises_1 {
 
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> threeSums = new ArrayList<>();
-
+        Stack<Integer> stackTriplet = new Stack<>();
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 for (int k = j + 1; k < nums.length; k++) {
-                    if (nums[i] + nums[j] + nums[k] == 0 && !threeSums.contains(nums[i]) && !threeSums.contains(nums[j]) && !threeSums.contains(nums[k])) {
-                        List<Integer> triplets = new ArrayList<>();
-                        triplets.add(nums[i]);
-                        triplets.add(nums[j]);
-                        triplets.add(nums[k]);
-                        threeSums.add(triplets);
-                    }
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                        stackTriplet.push(nums[i]);
+                        stackTriplet.push(nums[j]);
+                        stackTriplet.push(nums[k]);
 
+
+
+                    }
                 }
 
             }
 
         }
-
         return threeSums;
     }
 }
