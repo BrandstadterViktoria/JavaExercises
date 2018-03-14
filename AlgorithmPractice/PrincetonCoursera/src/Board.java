@@ -7,7 +7,6 @@ public class Board {
 
     private final int[] blockArray;
     private final int dimension;
-    private Stack<Board> boardStack;
     private final int[][] blocks;
 
     // (where blocks[i][j] = block in row i, column j)
@@ -76,9 +75,7 @@ public class Board {
         while (toSwap1 == toSwap2) {
           toSwap2 = StdRandom.uniform(1, 9);
         }
-        int temp = arrayOfTwinBoard[toSwap1];
-        arrayOfTwinBoard[toSwap1] = arrayOfTwinBoard[toSwap2];
-        arrayOfTwinBoard[toSwap2] = temp;
+        arrayOfTwinBoard = swap(toSwap1,toSwap2);
 
         int[][] twinBoard = new int[dimension()][dimension()];
         for (int row = 0; row < dimension(); row++) {
@@ -106,12 +103,73 @@ public class Board {
     }
     // all neighboring boards
     public Iterable<Board> neighbors() {
-        int indexOfZero = 0;
-        for (int i = 0; i < blockArray.length ; i++) {
-            if (blockArray[i] == 0){
-                indexOfZero = i;
-            }
+        Stack<Board> boardStack = new Stack<>();
+        if (blockArray[0] == 0){
+            Board n0 = newBoardFrom1DArray(swap(0, 1));
+            Board n1 = newBoardFrom1DArray(swap(0,3));
+            boardStack.push(n0);
+            boardStack.push(n1);
         }
+        if (blockArray[1] == 0){
+            Board n0 = newBoardFrom1DArray(swap(1, 0));
+            Board n1 = newBoardFrom1DArray(swap(1,2));
+            Board n2 = newBoardFrom1DArray(swap(1,4));
+            boardStack.push(n0);
+            boardStack.push(n1);
+            boardStack.push(n2);
+        }
+        if (blockArray[2] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(2, 1));
+            Board n1 = newBoardFrom1DArray(swap(2,5));
+            boardStack.push(n0);
+            boardStack.push(n1);
+        }
+        if (blockArray[3] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(3, 0));
+            Board n1 = newBoardFrom1DArray(swap(3, 4));
+            Board n2 = newBoardFrom1DArray(swap(3, 6));
+            boardStack.push(n0);
+            boardStack.push(n1);
+            boardStack.push(n2);
+        }
+        if (blockArray[4] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(4, 1));
+            Board n1 = newBoardFrom1DArray(swap(4, 3));
+            Board n2 = newBoardFrom1DArray(swap(4, 5));
+            Board n3 = newBoardFrom1DArray(swap(4, 7));
+            boardStack.push(n0);
+            boardStack.push(n1);
+            boardStack.push(n2);
+            boardStack.push(n3);
+        }
+        if (blockArray[5] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(5, 2));
+            Board n1 = newBoardFrom1DArray(swap(5, 4));
+            Board n2 = newBoardFrom1DArray(swap(5, 8));
+            boardStack.push(n0);
+            boardStack.push(n1);
+            boardStack.push(n2);
+        }
+        if (blockArray[6] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(6, 3));
+            Board n1 = newBoardFrom1DArray(swap(6, 7));
+            boardStack.push(n0);
+            boardStack.push(n1);
+        }
+        if (blockArray[7] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(7, 4));
+            Board n1 = newBoardFrom1DArray(swap(7,8));
+            boardStack.push(n0);
+            boardStack.push(n1);
+        }
+        if (blockArray[8] == 0) {
+            Board n0 = newBoardFrom1DArray(swap(8, 5));
+            Board n1 = newBoardFrom1DArray(swap(8, 7));
+            boardStack.push(n0);
+            boardStack.push(n1);
+        }
+
+
 
         return boardStack;
     }
@@ -124,8 +182,23 @@ public class Board {
     public int[] getBlockArray() {
         return blockArray;
     }
+    private int [] swap(int toSwap, int goalIndexForSwap){
+        int [] swapped = this.blockArray;
+        int temp = swapped[goalIndexForSwap];
+        swapped[goalIndexForSwap] = 0;
+        swapped[toSwap] = temp;
+        return swapped;
+    }
 
-    // unit tests (not graded)
+    private Board newBoardFrom1DArray(int [] arrayToConvert) {
+        int[][] newBoard = new int[dimension()][dimension()];
+        for (int row = 0; row < dimension(); row++) {
+            for (int col = 0; col < dimension(); col++) {
+                newBoard[row][col] = arrayToConvert[col + row * dimension()];
+            }
+        }
+        return new Board(newBoard);
+    }
 
     public static void main(String[] args) {
 
