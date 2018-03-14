@@ -1,10 +1,12 @@
+import edu.princeton.cs.algs4.StdRandom;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
 
     private final int[] blockArray;
-    private final int [] [] blocks;
+    private final int[][] blocks;
     private final int dimension;
     private int moves = 0;
 
@@ -49,22 +51,41 @@ public class Board {
 
     }
 
-
-   // is this board the goal board?
-   public boolean isGoal() {
-       boolean isGoal = false;
-       for (int i = 1; i <= blockArray.length ; i++) {
-           if (i == blockArray[i - 1]) {
-               isGoal = true;
-           }
-       }
-       return isGoal;
-   }
+    // is this board the goal board?
+    public boolean isGoal() {
+        boolean isGoal = false;
+        for (int i = 1; i <= blockArray.length; i++) {
+            if (i == blockArray[i - 1]) {
+                isGoal = true;
+            }
+        }
+        return isGoal;
+    }
 
 
     // a board that is obtained by exchanging any pair of blocks
     public Board twin() {
-//    }
+        int[] arrayOfTwinBoard = this.blockArray;
+        int toSwap1 =StdRandom.uniform(0, 9);
+        while (arrayOfTwinBoard[toSwap1] != 0){
+            StdRandom.uniform(0, 9);
+        }
+        int toSwap2 =  StdRandom.uniform(0, 9);
+        while (toSwap1 != toSwap2 && arrayOfTwinBoard[toSwap2] != 0) {
+            StdRandom.uniform(0, 9);
+        }
+        int temp = arrayOfTwinBoard[toSwap1];
+        arrayOfTwinBoard[toSwap1]= arrayOfTwinBoard[toSwap2];
+        arrayOfTwinBoard[toSwap2] = temp;
+
+        int [] [] twinBoard = new int[dimension()][dimension()];
+        for (int row = 0; row < dimension(); row++) {
+            for (int col = 0; col < dimension(); col++) {
+                twinBoard[row] [col] =  arrayOfTwinBoard[col + row * dimension()];
+            }
+        }
+        return new Board(twinBoard);
+    }
 //
 //    // does this board equal y?
 //    public boolean equals(Object y) {
