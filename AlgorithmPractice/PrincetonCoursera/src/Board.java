@@ -46,10 +46,10 @@ public class Board {
     }
 
     // sum of Manhattan distances between blocks and goal
- /*   public int manhattan() {
+    public int manhattan() {
 
 
-    }*/
+    }
 
     // is this board the goal board?
     public boolean isGoal() {
@@ -69,21 +69,13 @@ public class Board {
 
     // a board that is obtained by exchanging any pair of blocks
     public Board twin() {
-        int[] arrayOfTwinBoard = this.blockArray;
         int toSwap1 = StdRandom.uniform(1, 9);
         int toSwap2 = StdRandom.uniform(1, 9);
         while (toSwap1 == toSwap2) {
           toSwap2 = StdRandom.uniform(1, 9);
         }
-        arrayOfTwinBoard = swap(toSwap1,toSwap2);
-
-        int[][] twinBoard = new int[dimension()][dimension()];
-        for (int row = 0; row < dimension(); row++) {
-            for (int col = 0; col < dimension(); col++) {
-                twinBoard[row][col] = arrayOfTwinBoard[col + row * dimension()];
-            }
-        }
-        return new Board(twinBoard);
+        int[] arrayOfTwinBoard = swap(toSwap1,toSwap2);
+        return newBoardFrom1DArray(arrayOfTwinBoard);
     }
 
     // does this board equal y?
@@ -104,71 +96,6 @@ public class Board {
     // all neighboring boards
     public Iterable<Board> neighbors() {
         Stack<Board> boardStack = new Stack<>();
-        if (blockArray[0] == 0){
-            Board n0 = newBoardFrom1DArray(swap(0, 1));
-            Board n1 = newBoardFrom1DArray(swap(0,3));
-            boardStack.push(n0);
-            boardStack.push(n1);
-        }
-        if (blockArray[1] == 0){
-            Board n0 = newBoardFrom1DArray(swap(1, 0));
-            Board n1 = newBoardFrom1DArray(swap(1,2));
-            Board n2 = newBoardFrom1DArray(swap(1,4));
-            boardStack.push(n0);
-            boardStack.push(n1);
-            boardStack.push(n2);
-        }
-        if (blockArray[2] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(2, 1));
-            Board n1 = newBoardFrom1DArray(swap(2,5));
-            boardStack.push(n0);
-            boardStack.push(n1);
-        }
-        if (blockArray[3] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(3, 0));
-            Board n1 = newBoardFrom1DArray(swap(3, 4));
-            Board n2 = newBoardFrom1DArray(swap(3, 6));
-            boardStack.push(n0);
-            boardStack.push(n1);
-            boardStack.push(n2);
-        }
-        if (blockArray[4] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(4, 1));
-            Board n1 = newBoardFrom1DArray(swap(4, 3));
-            Board n2 = newBoardFrom1DArray(swap(4, 5));
-            Board n3 = newBoardFrom1DArray(swap(4, 7));
-            boardStack.push(n0);
-            boardStack.push(n1);
-            boardStack.push(n2);
-            boardStack.push(n3);
-        }
-        if (blockArray[5] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(5, 2));
-            Board n1 = newBoardFrom1DArray(swap(5, 4));
-            Board n2 = newBoardFrom1DArray(swap(5, 8));
-            boardStack.push(n0);
-            boardStack.push(n1);
-            boardStack.push(n2);
-        }
-        if (blockArray[6] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(6, 3));
-            Board n1 = newBoardFrom1DArray(swap(6, 7));
-            boardStack.push(n0);
-            boardStack.push(n1);
-        }
-        if (blockArray[7] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(7, 4));
-            Board n1 = newBoardFrom1DArray(swap(7,8));
-            boardStack.push(n0);
-            boardStack.push(n1);
-        }
-        if (blockArray[8] == 0) {
-            Board n0 = newBoardFrom1DArray(swap(8, 5));
-            Board n1 = newBoardFrom1DArray(swap(8, 7));
-            boardStack.push(n0);
-            boardStack.push(n1);
-        }
-
 
 
         return boardStack;
