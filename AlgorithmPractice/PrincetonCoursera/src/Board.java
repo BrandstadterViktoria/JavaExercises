@@ -71,13 +71,10 @@ public class Board {
     // a board that is obtained by exchanging any pair of blocks
     public Board twin() {
         int[] arrayOfTwinBoard = this.blockArray;
-        int toSwap1 = StdRandom.uniform(0, 9);
-        while (arrayOfTwinBoard[toSwap1] == 0) {
-            StdRandom.uniform(0, 9);
-        }
-        int toSwap2 = StdRandom.uniform(0, 9);
-        while (toSwap1 != toSwap2 && arrayOfTwinBoard[toSwap2] == 0) {
-            StdRandom.uniform(0, 9);
+        int toSwap1 = StdRandom.uniform(1, 9);
+        int toSwap2 = StdRandom.uniform(1, 9);
+        while (toSwap1 == toSwap2) {
+          toSwap2 = StdRandom.uniform(1, 9);
         }
         int temp = arrayOfTwinBoard[toSwap1];
         arrayOfTwinBoard[toSwap1] = arrayOfTwinBoard[toSwap2];
@@ -109,6 +106,12 @@ public class Board {
     }
     // all neighboring boards
     public Iterable<Board> neighbors() {
+        int indexOfZero = 0;
+        for (int i = 0; i < blockArray.length ; i++) {
+            if (blockArray[i] == 0){
+                indexOfZero = i;
+            }
+        }
 
         return boardStack;
     }
@@ -128,16 +131,16 @@ public class Board {
 
         //testing the constructor
         int[][] blocks = new int[][]{
-                {1, 5, 2},
-                {4, 0, 6},
+                {0, 5, 2},
+                {4, 1, 6},
                 {3, 7, 8}
         };
 
         Board board = new Board(blocks);
-//        for (int n : board.twin().getBlockArray()) {
-//            System.out.println(n);
-//        }
-        System.out.println(board.isGoal());
+        for (int n : board.twin().getBlockArray()) {
+            System.out.println(n);
+        }
+//        System.out.println(board.isGoal());
 
     }
 }
