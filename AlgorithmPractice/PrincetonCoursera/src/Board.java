@@ -33,22 +33,38 @@ public class Board {
 
     // number of blocks out of place
     public int hamming() {
-        int diff = 0;
-        int hamming;
+        int hamming = 0;
         for (int i = 1; i <= 8; i++) {
             if (blockArray[i] != i) {
-                diff++;
+                hamming++;
             }
         }
-        int moves = 0;
-        hamming = moves + diff;
         return hamming;
     }
 
     // sum of Manhattan distances between blocks and goal
     public int manhattan() {
-
-
+    int manhattan = 0;
+    List<Integer> goalCoordinates = new ArrayList<>();
+        for (int i = 0; i < blocks.length; i++) {
+            for (int j = 0; j < blocks[i].length; j++) {
+                goalCoordinates.add(i);
+                goalCoordinates.add(j);
+            }
+        }
+        int row = -1;
+        int col;
+        for (int i = 1, cor = 0; i <= blockArray.length ; i++, cor += 2) {
+            if (blockArray[i -1] == i) {
+                for (int k = 0; k < i -1; k += 3) {
+                    row++;
+                }
+                col = (i -1) - row;
+                int currentManhattan = row - goalCoordinates.get(cor) + col - goalCoordinates.get(cor + 1);
+                manhattan += currentManhattan;
+            }
+        }
+        return manhattan;
     }
 
     // is this board the goal board?
@@ -131,16 +147,18 @@ public class Board {
 
         //testing the constructor
         int[][] blocks = new int[][]{
-                {0, 5, 2},
-                {4, 1, 6},
-                {3, 7, 8}
+                {8, 1, 3},
+                {4, 0, 2},
+                {7, 6, 5}
         };
 
         Board board = new Board(blocks);
-        for (int n : board.twin().getBlockArray()) {
-            System.out.println(n);
-        }
+//        for (int n : board.twin().getBlockArray()) {
+//            System.out.println(n);
+  //      }
 //        System.out.println(board.isGoal());
+        System.out.println(board.manhattan());
+
 
     }
 }
