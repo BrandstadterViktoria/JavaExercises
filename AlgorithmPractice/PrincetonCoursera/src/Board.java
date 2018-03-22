@@ -54,14 +54,20 @@ public class Board {
         }
         int row = -1;
         int col;
-        for (int i = 1, cor = 0; i <= blockArray.length ; i++, cor += 2) {
-            if (blockArray[i -1] == i) {
-                for (int k = 0; k < i -1; k += 3) {
+        int currentElementOfBlockArray = 1;
+        int goalCoordinate = 0;
+        for (int i = 1; currentElementOfBlockArray < 9 ; i++) {
+            if (blockArray[i -1] == currentElementOfBlockArray) {
+                currentElementOfBlockArray++;
+                for (int k = 0; k <= i - 1; k += 3) {
                     row++;
                 }
-                col = (i -1) - row;
-                int currentManhattan = row - goalCoordinates.get(cor) + col - goalCoordinates.get(cor + 1);
+                col = (i - 1) - (row * dimension());
+                int currentManhattan = Math.abs(row - goalCoordinates.get(goalCoordinate)) + Math.abs(col - goalCoordinates.get(goalCoordinate + 1));
+                goalCoordinate += 2;
                 manhattan += currentManhattan;
+                i = 0;
+                row = -1;
             }
         }
         return manhattan;
@@ -158,7 +164,6 @@ public class Board {
   //      }
 //        System.out.println(board.isGoal());
         System.out.println(board.manhattan());
-
 
     }
 }
