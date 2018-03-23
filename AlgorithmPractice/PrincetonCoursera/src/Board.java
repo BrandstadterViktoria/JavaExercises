@@ -62,7 +62,7 @@ public class Board {
                 for (int k = 0; k <= i - 1; k += 3) {
                     row++;
                 }
-                col = (i - 1) - (row * dimension());
+                col = (i - 1) - (row * dimension);
                 int currentManhattan = Math.abs(row - goalCoordinates.get(goalCoordinate)) + Math.abs(col - goalCoordinates.get(goalCoordinate + 1));
                 goalCoordinate += 2;
                 manhattan += currentManhattan;
