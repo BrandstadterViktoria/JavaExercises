@@ -122,11 +122,18 @@ public class Board {
 
         return boardStack;
     }
-//
-//    // string representation of this board (in the output format specified below)
-//    public String toString() {
-//    }
 
+   public String toString() {
+       StringBuilder s = new StringBuilder();
+       s.append(dimension + "\n");
+       for (int i = 0; i < dimension; i++) {
+           for (int j = 0; j < dimension; j++) {
+               s.append(String.format("%2d ", blocks[i][j]));
+           }
+           s.append("\n");
+       }       return s.toString();
+
+   }
 
     public int[] getBlockArray() {
         return blockArray;
