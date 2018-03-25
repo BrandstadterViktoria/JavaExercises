@@ -1,18 +1,20 @@
 import edu.princeton.cs.algs4.MinPQ;
-
 import java.util.Comparator;
 import java.util.Stack;
 
 public class Solver {
 
-    private SearchNode next;
+    private MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
+    private int movesSolver = 0;
+    private Stack<Board> solutionBoardStack = new Stack<>();
+
 
     public class SearchNode {
         Board boardNode;
         int moves;
         int priority;
         SearchNode predecessor;
-        SearchNode next;
+
 
         public SearchNode(Board boardNode, SearchNode predecessor) {
             this.boardNode = boardNode;
@@ -20,7 +22,8 @@ public class Solver {
             this.moves = ++predecessor.moves;
             priority = boardNode.manhattan() + moves;
         }
-        public SearchNode(Board boardNode){
+
+        public SearchNode(Board boardNode) {
             this.boardNode = boardNode;
         }
     }
@@ -30,47 +33,64 @@ public class Solver {
         if (initial == null) {
             throw new IllegalArgumentException();
         }
-        int[][] goal2DArray = new int[initial.dimension()][initial.dimension()];
-        for (int row = 0; row < initial.dimension(); row++) {
-            for (int col = 0; col < initial.dimension(); col++) {
-                goal2DArray[row][col] = col + row * initial.dimension() + 1;
-            }
-        }
-        SearchNode goalNode = new SearchNode(new Board(goal2DArray));
-        MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
+        MinPQ<SearchNode> priorityQueTwin = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
         SearchNode initialNode = new SearchNode(initial);
-        this.next = initialNode;
-        while (next.boardNode != goalNode.boardNode) {
+        SearchNode initialTwin = new SearchNode(initial.twin());
+        SearchNode next = initialNode;
+        SearchNode nextTwin = initialTwin;
+        while (!next.boardNode.isGoal() || !nextTwin.boardNode.isGoal()) {
             Stack<Board> stackOfBoards = new Stack<>();
             for (Board neighbor : next.boardNode.neighbors()) {
                 stackOfBoards.push(neighbor);
             }
-            while (!stackOfBoards.isEmpty()){
-                SearchNode newNode = new SearchNode(stackOfBoards.pop(),next);
-                if (!newNode.boardNode.equals(newNode.predecessor)) {
+            while (!stackOfBoards.isEmpty()) {
+                SearchNode newNode = new SearchNode(stackOfBoards.pop(), next);
+                if (!newNode.boardNode.equals(newNode.predecessor.boardNode)) {
                     priorityQue.insert(newNode);
-                } else {
-                    continue;
                 }
             }
+            stackOfBoards.push(priorityQue.delMin().boardNode);
             next = priorityQue.delMin();
-        }
+            movesSolver++;
 
+            Stack<Board> stackOfTwinBoards = new Stack<>();
+            for (Board neighbor : nextTwin.boardNode.neighbors()) {
+                stackOfTwinBoards.push(neighbor);
+            }
+            while (!stackOfTwinBoards.isEmpty()) {
+                SearchNode newNode = new SearchNode(stackOfTwinBoards.pop(), next);
+                if (!newNode.boardNode.equals(newNode.predecessor.boardNode)) {
+                    priorityQueTwin.insert(newNode);
+                }
+            }
+            nextTwin = priorityQueTwin.delMin();
+
+        }
     }
 
     // is the initial board solvable?
     public boolean isSolvable() {
+        priorityQue.min().boardNode.isGoal();
+        return true;
 
     }
 
     // min number of moves to solve initial board; -1 if unsolvable
     public int moves() {
-
+        if (!isSolvable()) {
+            return -1;
+        } else {
+            return movesSolver;
+        }
     }
 
     // sequence of boards in a shortest solution; null if unsolvable
     public Iterable<Board> solution() {
-
+        if (!isSolvable()) {
+            return null;
+        } else {
+            return solutionBoardStack;
+        }
     }
 
     // solve a slider puzzle (given below)
@@ -78,3 +98,4 @@ public class Solver {
 
     }
 }
+
