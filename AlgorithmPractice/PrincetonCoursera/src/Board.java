@@ -23,7 +23,7 @@ public class Board {
                 list.add(blocks[i][j]);
                 goalCoordinates.add(i);
                 goalCoordinates.add(j);
-                if (blocks[i][j] == 0){
+                if (blocks[i][j] == 0) {
                     this.blankPositionRow = i;
                     this.blankPositionCol = j;
                 }
@@ -125,16 +125,16 @@ public class Board {
     public Iterable<Board> neighbors() {
         int blankIndex = blankPositionCol + blankPositionRow * dimension;
         Stack<Board> neighbors = new Stack<>();
-        if (blankPositionRow >= 0) {           ;
+        if (blankPositionRow != dimension -1 && blankPositionRow >= 0) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex + dimension)));
         }
-        if (blankPositionRow <= dimension) {
+        if (blankPositionRow != 0 && blankPositionRow <= dimension -1) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex - dimension)));
         }
-        if (blankPositionCol >= 0) {
+        if (blankPositionCol != dimension - 1 && blankPositionCol >= 0) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex + 1)));
         }
-        if (blankPositionCol <= dimension) {
+        if (blankPositionCol != 0 && blankPositionCol <= dimension -1) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex - 1)));
         }
 
@@ -181,8 +181,8 @@ public class Board {
 
         //testing the constructor
         int[][] blocks = new int[][]{
-                {8, 0, 3},
-                {4, 1, 2},
+                {8, 1, 3},
+                {0, 4, 2},
                 {7, 6, 5}
         };
 
