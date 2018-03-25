@@ -125,16 +125,16 @@ public class Board {
     public Iterable<Board> neighbors() {
         int blankIndex = blankPositionCol + blankPositionRow * dimension;
         Stack<Board> neighbors = new Stack<>();
-        if (blankPositionRow != dimension -1 && blankPositionRow >= 0) {
+        if (blankPositionRow != dimension - 1 && blankPositionRow >= 0) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex + dimension)));
         }
-        if (blankPositionRow != 0 && blankPositionRow <= dimension -1) {
+        if (blankPositionRow != 0 && blankPositionRow <= dimension - 1) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex - dimension)));
         }
         if (blankPositionCol != dimension - 1 && blankPositionCol >= 0) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex + 1)));
         }
-        if (blankPositionCol != 0 && blankPositionCol <= dimension -1) {
+        if (blankPositionCol != 0 && blankPositionCol <= dimension - 1) {
             neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex - 1)));
         }
 
