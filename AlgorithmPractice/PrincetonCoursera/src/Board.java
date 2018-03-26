@@ -2,6 +2,7 @@ import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Board {
@@ -106,15 +107,13 @@ public class Board {
     }
 
     // does this board equal y?
-    public boolean equals(Object y) {
+    public boolean equals(Board board) {
         boolean equals = false;
-        if (y == this) {
+        if (Arrays.equals(board.getBlockArray(), this.getBlockArray())) {
             equals = true;
         }
-        if (y == null) {
-            equals = false;
-        }
-        if (y.getClass() != this.getClass()) {
+
+        if (board.getClass() != this.getClass()) {
             equals = false;
         }
 

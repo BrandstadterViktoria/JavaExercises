@@ -35,13 +35,13 @@ public class Solver {
             throw new IllegalArgumentException();
         }
         MinPQ<SearchNode> priorityQueTwin = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
-        SearchNode initialNode = new SearchNode(initial);
+        SearchNode initialNode = new SearchNode(initial, null);
         SearchNode next = initialNode;
         solutionBoardStack.push(initial);
         while (!next.board.isGoal()) {
             moves++;
             for (Board neighbor : next.board.neighbors()) {
-                if (!solutionBoardStack.contains(neighbor)) {
+                if ((next.predecessor == null) || !next.predecessor.board.equals(neighbor)) {
                     SearchNode newSearchNode = new SearchNode(neighbor, next);
                     priorityQue.insert(newSearchNode);
                 }
