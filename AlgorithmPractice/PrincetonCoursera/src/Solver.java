@@ -23,9 +23,6 @@ public class Solver {
             priority = board.manhattan() + moves;
         }
 
-        public SearchNode(Board board) {
-            this.board = board;
-        }
     }
 
     // find a solution to the initial board (using the A* algorithm)
@@ -33,13 +30,11 @@ public class Solver {
         if (initial == null) {
             throw new IllegalArgumentException();
         }
-        MinPQ<SearchNode> priorityQueTwin = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
+        MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
         SearchNode initialNode = new SearchNode(initial, null);
         SearchNode next = initialNode;
-        solutionBoardStack.push(initial);
         while (!next.board.isGoal()) {
-         MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
-            moves++;
+        moves++;
             for (Board neighbor : next.board.neighbors()) {
                 if ((next.predecessor == null) || !next.predecessor.board.equals(neighbor)) {
                     SearchNode newSearchNode = new SearchNode(neighbor, next);
@@ -47,7 +42,11 @@ public class Solver {
                 }
             }
             next = priorityQue.delMin();
+        }
+
+        while (next != null) {
             solutionBoardStack.push(next.board);
+            next = next.predecessor;
         }
 
     }
@@ -64,7 +63,7 @@ public class Solver {
 //        if (!isSolvable()) {
 //            return -1;
 //        } else {
-            return moves;
+            return solutionBoardStack.size();
         }
 
 
