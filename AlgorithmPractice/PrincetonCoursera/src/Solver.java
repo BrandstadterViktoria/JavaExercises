@@ -7,7 +7,6 @@ import java.util.Stack;
 
 public class Solver {
 
-    private MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
     private int moves = 0;
     private Stack<Board> solutionBoardStack = new Stack<>();
 
@@ -39,6 +38,7 @@ public class Solver {
         SearchNode next = initialNode;
         solutionBoardStack.push(initial);
         while (!next.board.isGoal()) {
+         MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
             moves++;
             for (Board neighbor : next.board.neighbors()) {
                 if ((next.predecessor == null) || !next.predecessor.board.equals(neighbor)) {
@@ -53,29 +53,29 @@ public class Solver {
     }
 
     // is the initial board solvable?
-    public boolean isSolvable() {
-        priorityQue.min().board.isGoal();
-        return true;
+//    public boolean isSolvable() {
+//        priorityQue.min().board.isGoal();
+//        return true;
 
-    }
+
 
     // min number of moves to solve initial board; -1 if unsolvable
     public int moves() {
-        if (!isSolvable()) {
-            return -1;
-        } else {
+//        if (!isSolvable()) {
+//            return -1;
+//        } else {
             return moves;
         }
-    }
+
 
     // sequence of boards in a shortest solution; null if unsolvable
     public Iterable<Board> solution() {
-        if (!isSolvable()) {
-            return null;
-        } else {
+//        if (!isSolvable()) {
+//            return null;
+//        } else {
             return solutionBoardStack;
         }
-    }
+
 
     // solve a slider puzzle (given below)
     public static void main(String[] args) {
@@ -93,14 +93,14 @@ public class Solver {
         Solver solver = new Solver(initial);
 
         // print solution to standard output
-        if (!solver.isSolvable())
-            StdOut.println("No solution possible");
-        else {
+//        if (!solver.isSolvable())
+//            StdOut.println("No solution possible");
+//        else {
             StdOut.println("Minimum number of moves = " + solver.moves());
             for (Board board : solver.solution())
                 StdOut.println(board);
 
         }
     }
-}
+
 
