@@ -14,7 +14,7 @@ public class Board {
     private int blankPositionRow = 0;
     private int blankPositionCol = 0;
 
-    // (where blocks[i][j] = block in row i, column j)
+
     public Board(int[][] blocks) {
         this.blocks = blocks;
         List<Integer> list = new ArrayList<>();
@@ -57,13 +57,11 @@ public class Board {
         }
     }
 
-    // board dimension n
     public int dimension() {
         return dimension;
 
     }
 
-    // number of blocks out of place
     public int hamming() {
         int hamming = 0;
         for (int i = 1; i <= dimension - 1; i++) {
@@ -74,12 +72,12 @@ public class Board {
         return hamming;
     }
 
-    // sum of Manhattan distances between blocks and goal
+
     public int manhattan() {
         return this.manhattan;
     }
 
-    // is this board the goal board?
+
     public boolean isGoal() {
         boolean isGoal = false;
         for (int i = 1; i < blockArray.length; i++) {
@@ -95,7 +93,6 @@ public class Board {
     }
 
 
-    // a board that is obtained by exchanging any pair of blocks
     public Board twin() {
         int toSwap1 = StdRandom.uniform(1, 9);
         int toSwap2 = StdRandom.uniform(1, 9);
@@ -106,7 +103,7 @@ public class Board {
         return newBoardFrom1DArray(arrayOfTwinBoard);
     }
 
-    // does this board equal y?
+
     public boolean equals(Board board) {
         boolean equals = false;
         if (Arrays.equals(board.getBlockArray(), this.getBlockArray())) {
@@ -120,7 +117,6 @@ public class Board {
         return equals;
     }
 
-    // all neighboring boards
     public Iterable<Board> neighbors() {
         int blankIndex = blankPositionCol + blankPositionRow * dimension;
         Stack<Board> neighbors = new Stack<>();
@@ -177,25 +173,6 @@ public class Board {
     }
 
     public static void main(String[] args) {
-
-        //testing the constructor
-        int[][] blocks = new int[][]{
-                {8, 1, 3},
-                {0, 4, 2},
-                {7, 6, 5}
-        };
-
-        Board board = new Board(blocks);
-        //       for (int n : board.twin().getBlockArray()) {
-        //          System.out.println(n);
-        //           }
-//        System.out.println(board.isGoal());
-//        System.out.println(board.manhattan());
-
-        for (Board boards : board.neighbors()) {
-            System.out.println(boards);
-        }
-
 
     }
 }
