@@ -17,7 +17,7 @@ public class Solver {
         SearchNode predecessor;
 
 
-        public SearchNode(Board board, SearchNode predecessor) {
+        private SearchNode(Board board, SearchNode predecessor) {
             this.board = board;
             this.predecessor = predecessor;
             priority = board.manhattan() + moves;
@@ -32,7 +32,7 @@ public class Solver {
         MinPQ<SearchNode> priorityQueTwin = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
         SearchNode current = new SearchNode(initial, null);
         SearchNode currentTwin = new SearchNode(initial.twin(),null);
-        while (!current.board.isGoal()) {
+        while (!current.board.isGoal() || currentTwin.board.isGoal()) {
             moves++;
             for (Board neighbor : current.board.neighbors()) {
                 if ((current.predecessor == null) || !current.predecessor.board.equals(neighbor)) {
@@ -41,22 +41,20 @@ public class Solver {
                 }
             }
             current = priorityQue.delMin();
-        }
 
-        while (current != null) {
-            solutionBoardStack.push(current.board);
-            current = current.predecessor;
-        }
-
-        while (!currentTwin.board.isGoal()) {
-            moves++;
             for (Board neighbor : currentTwin.board.neighbors()) {
                 if ((currentTwin.predecessor == null) || !currentTwin.predecessor.board.equals(neighbor)) {
                     SearchNode newSearchNode = new SearchNode(neighbor, currentTwin);
                     priorityQueTwin.insert(newSearchNode);
                 }
             }
+
             currentTwin = priorityQueTwin.delMin();
+        }
+
+        while (current != null) {
+            solutionBoardStack.push(current.board);
+            current = current.predecessor;
         }
     }
 
@@ -82,6 +80,7 @@ public class Solver {
             return solutionBoardStack;
         }
     }
+
 
     public static void main(String[] args) {
         // create initial board from file

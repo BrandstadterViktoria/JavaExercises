@@ -104,13 +104,13 @@ public class Board {
     }
 
 
-    public boolean equals(Board board) {
+    public boolean equals(Object y) {
         boolean equals = false;
-        if (Arrays.equals(board.getBlockArray(), this.getBlockArray())) {
+        if (Arrays.equals(((Board) y).getBlockArray(), this.getBlockArray())) {
             equals = true;
         }
 
-        if (board.getClass() != this.getClass()) {
+        if (y.getClass() != this.getClass()) {
             equals = false;
         }
 
@@ -149,7 +149,7 @@ public class Board {
 
     }
 
-    public int[] getBlockArray() {
+    private int[] getBlockArray() {
         return blockArray;
     }
 
