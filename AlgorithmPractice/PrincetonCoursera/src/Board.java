@@ -1,6 +1,5 @@
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdRandom;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,10 +12,14 @@ public class Board {
     private int manhattan = 0;
     private int blankPositionRow = 0;
     private int blankPositionCol = 0;
+    private boolean done = false;
+    private int [][] twinArray;
 
 
     public Board(int[][] blocks) {
         this.blocks = blocks;
+        this.dimension = blocks.length;
+        this.twinArray = new int[dimension][dimension];
         List<Integer> list = new ArrayList<>();
         List<Integer> goalCoordinates = new ArrayList<>();
         for (int i = 0; i < blocks.length; i++) {
@@ -31,11 +34,9 @@ public class Board {
             }
         }
         this.blockArray = new int[list.size()];
-
         for (int i = 0; i < blockArray.length; i++) {
             blockArray[i] = list.get(i);
         }
-        this.dimension = blocks.length;
 
         int row = -1;
         int col;
@@ -55,6 +56,7 @@ public class Board {
                 row = -1;
             }
         }
+
     }
 
     public int dimension() {
@@ -64,8 +66,8 @@ public class Board {
 
     public int hamming() {
         int hamming = 0;
-        for (int i = 1; i <= dimension - 1; i++) {
-            if (blockArray[i] != i) {
+        for (int i = 1; i <= dimension * dimension - 1; i++) {
+            if (blockArray[i - 1] != i) {
                 hamming++;
             }
         }
@@ -94,43 +96,41 @@ public class Board {
 
 
     public Board twin() {
-        int toSwap1 = StdRandom.uniform(1, 9);
-        int toSwap2 = StdRandom.uniform(1, 9);
-        while (toSwap1 == toSwap2) {
-            toSwap2 = StdRandom.uniform(1, 9);
-        }
-        int[] arrayOfTwinBoard = swap(toSwap1, toSwap2);
-        return newBoardFrom1DArray(arrayOfTwinBoard);
+       while (!done) {
+           int toSwap1 = StdRandom.uniform(1, dimension * dimension);
+           int toSwap2 = StdRandom.uniform(1, dimension * dimension);
+           while (toSwap1 == toSwap2) {
+               toSwap2 = StdRandom.uniform(1, dimension * dimension);
+           }
+           int[] arrayOfTwinBoard = swap(toSwap1, toSwap2);
+           this.twinArray = to2DArrayConverter(arrayOfTwinBoard);
+           done = true;
+           break;
+       }
+        return new Board(twinArray);
     }
 
-
     public boolean equals(Object y) {
-        boolean equals = false;
-        if (Arrays.equals(((Board) y).getBlockArray(), this.getBlockArray())) {
-            equals = true;
-        }
-
-        if (y.getClass() != this.getClass()) {
-            equals = false;
-        }
-
-        return equals;
+        if (y == this) return true;
+        if (y == null) return false;
+        if (y.getClass() != this.getClass()) return false;
+        return (Arrays.equals(((Board) y).getBlockArray(), this.getBlockArray()));
     }
 
     public Iterable<Board> neighbors() {
         int blankIndex = blankPositionCol + blankPositionRow * dimension;
         Stack<Board> neighbors = new Stack<>();
         if (blankPositionRow != dimension - 1 && blankPositionRow >= 0) {
-            neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex + dimension)));
+            neighbors.push(new Board(to2DArrayConverter(swap(blankIndex, blankIndex + dimension))));
         }
         if (blankPositionRow != 0 && blankPositionRow <= dimension - 1) {
-            neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex - dimension)));
+            neighbors.push(new Board(to2DArrayConverter(swap(blankIndex, blankIndex - dimension))));
         }
         if (blankPositionCol != dimension - 1 && blankPositionCol >= 0) {
-            neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex + 1)));
+            neighbors.push(new Board(to2DArrayConverter(swap(blankIndex, blankIndex + 1))));
         }
         if (blankPositionCol != 0 && blankPositionCol <= dimension - 1) {
-            neighbors.push(newBoardFrom1DArray(swap(blankIndex, blankIndex - 1)));
+            neighbors.push(new Board(to2DArrayConverter(swap(blankIndex, blankIndex - 1))));
         }
 
         return neighbors;
@@ -162,17 +162,29 @@ public class Board {
     }
 
 
-    private Board newBoardFrom1DArray(int[] arrayToConvert) {
-        int[][] newBoard = new int[dimension()][dimension()];
+    private int[][] to2DArrayConverter(int[] arrayToConvert) {
+        int[][] new2DArray = new int[dimension()][dimension()];
         for (int row = 0; row < dimension(); row++) {
             for (int col = 0; col < dimension(); col++) {
-                newBoard[row][col] = arrayToConvert[col + row * dimension()];
+                new2DArray[row][col] = arrayToConvert[col + row * dimension()];
             }
         }
-        return new Board(newBoard);
+        return new2DArray;
     }
 
     public static void main(String[] args) {
+        // empty method intentionally
+
+        int[][] table = {{2, 8, 3, 4}, {1, 10, 6, 0}, {5, 9, 7, 12}, {13, 14, 11, 15}};
+
+        Board tester = new Board(table);
+        System.out.println(tester.twin());
+        System.out.println(tester.twin());
+        System.out.println(tester.twin());
+        System.out.println(tester.twin());
+        System.out.println(tester.twin());
+        System.out.println(tester.twin());
+
 
     }
 }

@@ -11,7 +11,7 @@ public class Solver {
     private Stack<Board> solutionBoardStack = new Stack<>();
     private MinPQ<SearchNode> priorityQue = new MinPQ<>(Comparator.comparingInt(searchNode -> searchNode.priority));
 
-    public class SearchNode {
+    private class SearchNode {
         Board board;
         int priority;
         SearchNode predecessor;
@@ -69,7 +69,7 @@ public class Solver {
         if (!isSolvable()) {
             return -1;
         } else {
-            return solutionBoardStack.size();
+            return solutionBoardStack.size() -1;
         }
     }
 
@@ -102,9 +102,8 @@ public class Solver {
             StdOut.println("Minimum number of moves = " + solver.moves());
             for (Board board : solver.solution())
                 StdOut.println(board);
-
-
         }
+
     }
 }
 
