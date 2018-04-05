@@ -1,9 +1,9 @@
+package Week4_8puzzle;
+
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdRandom;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Board {
 
