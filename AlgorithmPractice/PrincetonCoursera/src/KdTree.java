@@ -51,9 +51,11 @@ public class KdTree {
     public  void insert(Point2D p) {
         if (root == null) {
             root = new Node(p.x(), p.y());
+            size++;
         }
         else {
             root.insertNode(p.x(), p.y());
+            size++;
         }
     }
 
