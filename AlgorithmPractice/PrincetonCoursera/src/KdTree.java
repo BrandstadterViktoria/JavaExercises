@@ -2,18 +2,22 @@ import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.StdDraw;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class KdTree {
 
     private int size;
     private Node root;
     private int level;
-    private PointSET points = new PointSET();
+    private List<Node> points = new ArrayList<>();
 
     private class Node {
         private RectHV rectHV;
         private Point2D p;
         private Node left;
         private Node right;
+        private boolean red;
 
 
         public Node(Point2D p) {
@@ -28,7 +32,9 @@ public class KdTree {
                 if (toInsert.y() < p.y()) {
                     if (left == null) {
                         left = new Node(toInsert);
-                        left.rectHV = new RectHV(rectHV.xmin(),rectHV.ymin(),rectHV.xmax(),p.y());
+                        left.rectHV = new RectHV(rectHV.xmin(), rectHV.ymin(), rectHV.xmax(), p.y());
+                        left.red = false;
+                        points.add(left);
                     } else {
                         level++;
                         left.insertNode(toInsert);
@@ -36,7 +42,9 @@ public class KdTree {
                 } else {
                     if (right == null) {
                         right = new Node(toInsert);
-                        right.rectHV = new RectHV(rectHV.xmin(),p.y(),rectHV.xmax(),rectHV.ymax());
+                        right.rectHV = new RectHV(rectHV.xmin(), p.y(), rectHV.xmax(), rectHV.ymax());
+                        right.red = false;
+                        points.add(right);
                     } else {
                         level++;
                         right.insertNode(toInsert);
@@ -47,7 +55,9 @@ public class KdTree {
                 if (toInsert.x() < p.x()) {
                     if (left == null) {
                         left = new Node(toInsert);
-                        left.rectHV = new RectHV(rectHV.xmin(),rectHV.ymin(),p.x(),rectHV.ymax());
+                        left.rectHV = new RectHV(rectHV.xmin(), rectHV.ymin(), p.x(), rectHV.ymax());
+                        left.red = true;
+                        points.add(left);
 
                     } else {
                         level++;
@@ -56,7 +66,9 @@ public class KdTree {
                 } else {
                     if (right == null) {
                         right = new Node(toInsert);
-                        right.rectHV = new RectHV(p.x(),rectHV.ymin(),rectHV.xmax(),rectHV.ymax());
+                        right.rectHV = new RectHV(p.x(), rectHV.ymin(), rectHV.xmax(), rectHV.ymax());
+                        right.red = true;
+                        points.add(right);
 
                     } else {
                         level++;
@@ -97,13 +109,12 @@ public class KdTree {
     public void insert(Point2D p) {
         if (root == null) {
             root = new Node(p);
-            points.insert(p);
-            root.rectHV = new RectHV(0.0,0.0,1.0,1.0);
+            points.add(root);
+            root.rectHV = new RectHV(0.0, 0.0, 1.0, 1.0);
             level = 1;
             size++;
         } else {
             root.insertNode(p);
-            points.insert(p);
             level = 1;
             size++;
         }
@@ -123,18 +134,28 @@ public class KdTree {
         }
         return doesContain;
     }
-    // draw all points to standard draw
-    //Use StdDraw.setPenColor(StdDraw.BLACK) and StdDraw.setPenRadius(0.01) before before drawing the points;
-    // use StdDraw.setPenColor(StdDraw.RED) or StdDraw.setPenColor(StdDraw.BLUE) and StdDraw.setPenRadius()
-    // before drawing the splitting lines.
-    /*public void draw () {
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.setPenRadius(0.01);
-        points.draw();
-        StdDraw.line();
+
+    public void draw() {
+        for (Node n : points) {
+            StdDraw.setPenColor(StdDraw.BLACK);
+            StdDraw.setPenRadius(0.01);
+            n.p.draw();
+            if (n.red) {
+                StdDraw.setPenColor(StdDraw.RED);
+                StdDraw.setPenRadius();
+                StdDraw.line(n.p.x(), n.rectHV.ymax(), n.p.x(), n.rectHV.ymin());
+            } else {
+                StdDraw.setPenColor(StdDraw.BLUE);
+                StdDraw.setPenRadius();
+                StdDraw.line(n.rectHV.xmin(), n.p.y(), n.rectHV.xmax(), n.p.y());
+            }
+        }
+
+    }
 
 
-    }*/
+
+
            /* // all points that are inside the rectangle (or on the boundary)
             public Iterable<Point2D> range (RectHV rect){
 
