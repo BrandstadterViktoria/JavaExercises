@@ -28,7 +28,6 @@ public class PointSET {
 
     // does the set contain point p?
     public boolean contains(Point2D p) {
-        if (pointSet.isEmpty()) throw new IllegalArgumentException("Set is empty");
         if (p == null) throw new IllegalArgumentException("Point doesn't exist");
         return pointSet.contains(p);
 
@@ -43,7 +42,7 @@ public class PointSET {
 
     // all points that are inside the rectangle (or on the boundary)
     public Iterable<Point2D> range(RectHV rect) {
-        if (pointSet.isEmpty()) throw new IllegalArgumentException("Set is empty");
+        if (rect == null) throw new IllegalArgumentException("Rect doesn't exist");
         SET<Point2D> containedPointSet = new SET<>();
         for (Point2D point: pointSet) {
             if (rect.contains(point)) {
@@ -58,7 +57,6 @@ public class PointSET {
     public Point2D nearest(Point2D p) {
         double temp = 1000;
         Point2D nearest = null;
-        if (pointSet.isEmpty()) throw new IllegalArgumentException("Set is empty");
         if (p == null) throw new IllegalArgumentException("Point doesn't exist");
         for (Point2D point : pointSet) {
             if (point != p) {

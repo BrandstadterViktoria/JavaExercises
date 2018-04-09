@@ -153,9 +153,6 @@ public class KdTree {
 
     }
 
-
-
-
            /* // all points that are inside the rectangle (or on the boundary)
             public Iterable<Point2D> range (RectHV rect){
 
