@@ -1,36 +1,36 @@
 package trees;
 
-public class TreeNode {
+public class PracticeTreeNode {
 
     private int data;
-    private TreeNode left;
-    private TreeNode right;
+    private PracticeTreeNode left;
+    private PracticeTreeNode right;
 
-    public TreeNode(int data) {
+    public PracticeTreeNode(int data) {
         this.data = data;
 
     }
 
-    public void insert(int value) {
+    public void insert2(int value) {
         if (value == data) {
             return;
         }
         if (value < data) {
             if (left == null) {
-                left = new TreeNode(value);
+                left = new PracticeTreeNode(value);
             } else {
-                left.insert(value);
+                left.insert2(value);
             }
         } else {
             if (right == null) {
-                right = new TreeNode(value);
+                right = new PracticeTreeNode(value);
             } else {
-                right.insert(value);
+                right.insert2(value);
             }
         }
     }
 
-    public TreeNode get(int value) {
+    public PracticeTreeNode get(int value) {
         if (data == value) {
             return this;
         }
@@ -66,7 +66,7 @@ public class TreeNode {
         }
     }
 
-    public void traverseLevelOrder_LC102(TreeNode root) {
+    public void traverseLevelOrder_LC102(PracticeTreeNode root) {
         if (left == null && right != null) {
             System.out.println(data);
         }
@@ -80,21 +80,6 @@ public class TreeNode {
             left.traverseLevelOrder_LC102(root);
             right.traverseLevelOrder_LC102(root);
         }
-    }
-
-    public TreeNode lowestCommonAncestor_LC236(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null){
-            return null;
-        }
-        if(root == p || root == q){
-            return root;
-        }
-       left.traverseInOrder();
-        right.traverseInOrder();
-        if(left != null && right != null){
-            return root;
-        }else return (left != null ? left : right);
-
     }
 
 
@@ -114,19 +99,19 @@ public class TreeNode {
         this.data = data;
     }
 
-    public TreeNode getLeft() {
+    public PracticeTreeNode getLeft() {
         return left;
     }
 
-    public void setLeft(TreeNode left) {
+    public void setLeft(PracticeTreeNode left) {
         this.left = left;
     }
 
-    public TreeNode getRight() {
+    public PracticeTreeNode getRight() {
         return right;
     }
 
-    public void setRight(TreeNode right) {
+    public void setRight(PracticeTreeNode right) {
         this.right = right;
     }
 

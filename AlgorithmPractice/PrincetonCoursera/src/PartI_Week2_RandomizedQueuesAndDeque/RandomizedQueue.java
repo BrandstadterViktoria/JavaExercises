@@ -1,4 +1,4 @@
-package Week2_RandomizedQueuesAndDeque;
+package PartI_Week2_RandomizedQueuesAndDeque;
 
 import edu.princeton.cs.algs4.StdRandom;
 

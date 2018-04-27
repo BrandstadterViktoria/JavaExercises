@@ -1,14 +1,14 @@
 package trees;
 
-public class Tree {
+public class PracticeTree {
 
-    private TreeNode root;
+    private PracticeTreeNode root;
 
     public void insert(int value) {
         if (root == null) {
-            root = new TreeNode(value);
+            root = new PracticeTreeNode(value);
         } else {
-            root.insert(value);
+            root.insert2(value);
         }
     }
 
@@ -34,7 +34,7 @@ public class Tree {
 //
 //    }
 
-    public TreeNode get(int value) {
+    public PracticeTreeNode get(int value) {
         if (root != null) {
             return root.get(value);
         }
@@ -58,7 +58,7 @@ public class Tree {
         }
     }
 
-    public int maxDepth_LC104(TreeNode root) {
+    public int maxDepth_LC104(PracticeTreeNode root) {
         int height;
         if (root == null) {
             return 0;
@@ -74,7 +74,7 @@ public class Tree {
         }
     }
 
-    public int minDepth_LC111 (TreeNode root){
+    public int minDepth_LC111 (PracticeTreeNode root){
         if(root == null) {
             return 0;
         }

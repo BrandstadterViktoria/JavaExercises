@@ -1,10 +1,9 @@
+package PartI_Week5_KdTree;
 
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdDraw;
-import org.w3c.dom.css.Rect;
-
 import java.util.ArrayList;
 import java.util.List;
 

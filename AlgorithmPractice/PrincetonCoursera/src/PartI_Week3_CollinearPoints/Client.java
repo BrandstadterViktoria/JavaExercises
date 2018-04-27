@@ -1,4 +1,4 @@
-package Week3_CollinearPoints;
+package PartI_Week3_CollinearPoints;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
