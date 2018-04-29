@@ -1,11 +1,11 @@
 package trees;
 
+
 public class LeetCodeExcercisesForTrees {
     public static void main(String[] args) {
         Tree tree1 = new Tree();
         tree1.insertInTree(1);
-        tree1.insertInTree(2);
-        tree1.insertInTree(3);
+
 
 
         Tree tree2 = new Tree();
@@ -13,7 +13,7 @@ public class LeetCodeExcercisesForTrees {
         tree2.insertInTree(2);
         tree2.insertInTree(3);
 
-        System.out.println(isSameTree(tree1.root, tree2.root));
+        System.out.println(isSymmetric(tree1.root));
 
 
     }
@@ -47,6 +47,7 @@ public class LeetCodeExcercisesForTrees {
                 }
             }
         }
+
     }
 
     public static class Tree {
@@ -71,8 +72,40 @@ public class LeetCodeExcercisesForTrees {
         if (p == null || q == null || p.val != q.val) {
             return false;
         }
-        
-        return (isSameTree(p.left,q.left) && isSameTree(p.right,q.right));
+
+        return (isSameTree(p.left, q.left) && isSameTree(p.right, q.right));
+    }
+
+    public static boolean isSymmetric(TreeNode root) {
+        /*LC 101*/
+
+        if (root == null) {
+            return true;
+        }
+        if (root.left == null || root.right == null) {
+            return false;
+        }
+
+        return isSymmetricNode (root.left,root.right);
+
+    }
+
+    private static boolean isSymmetricNode (TreeNode node1, TreeNode node2) {
+
+        if (null == node1 && null == node2)
+            return true;
+        if (null == node1 && null != node2)
+            return false;
+        if (null != node1 && null == node2)
+            return false;
+
+        if (node1.val != node2.val) {
+            return false;
+        }
+
+        return isSymmetricNode(node1.left, node2.right) && isSymmetricNode(node1.right, node2.left);
+
+
     }
 }
 
