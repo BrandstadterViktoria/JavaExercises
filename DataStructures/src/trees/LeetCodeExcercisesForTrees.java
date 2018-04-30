@@ -144,7 +144,6 @@ public class LeetCodeExcercisesForTrees {
     public static List<List<Integer>> levelOrderBottom(TreeNode root) {
         /*LC 107*/
 
-
         Deque<TreeNode> deque = new LinkedList<>();
         List<List<Integer>> list = new ArrayList<>();
         if (root == null) {
@@ -152,27 +151,23 @@ public class LeetCodeExcercisesForTrees {
         }
         TreeNode temp = root;
         deque.add(temp);
-
         while (!deque.isEmpty()) {
-            temp = deque.poll();
+            int n = deque.size();
             List<Integer> level = new ArrayList<>();
-            if (temp.left != null) {
-                deque.add(temp.left);
-                level.add(temp.left.val);
+            for (int i = 0; i < n; i++) {
+                temp = deque.poll();
+                level.add(temp.val);
+                if (temp.left != null) {
+                    deque.add(temp.left);
+                }
+                if (temp.right != null) {
+                    deque.add(temp.right);
+                }
             }
-            if (temp.right != null) {
-                deque.add(temp.right);
-                level.add(temp.right.val);
-            }
-            if (!level.isEmpty()) {
-                list.add(level);
-            }
+            list.add(level);
+
         }
         Collections.reverse(list);
-        List<Integer> rootVal = new ArrayList<>();
-        rootVal.add(root.val);
-        list.add(rootVal);
-
         return list;
 
     }
