@@ -1,10 +1,7 @@
 package trees;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class LeetCodeExcercisesForTrees {
     public static void main(String[] args) {
@@ -13,19 +10,23 @@ public class LeetCodeExcercisesForTrees {
         tree1.insertInTree(0);
         tree1.insertInTree(1);
 
-        Tree tree2 = new Tree();
-        tree2.insertInTree(3);
-        tree2.insertInTree(9);
-        tree2.insertInTree(5);
-        tree2.insertInTree(0);
-        tree2.insertInTree(2);
-        tree2.insertInTree(4);
-        tree2.insertInTree(6);
+        Tree treeZ = new Tree();
 
-        List<Double> test = averageOfLevels(tree2.root);
+        Tree tree2 = new Tree();
+        tree2.insertInTree(1);
+        tree2.insertInTree(2);
+        tree2.insertInTree(3);
+        tree2.insertInTree(4);
+        tree2.insertInTree(0);
+        tree2.insertInTree(0);
+        tree2.insertInTree(5);
+
+        List<List<Integer>> test = levelOrderBottom(tree2.root);
 
         for (int i = 0; i < test.size(); i++) {
-            System.out.println(test.get(i));
+            for (int j = 0; j < test.get(i).size(); j++) {
+                System.out.print(test.get(i).get(j));
+            }
         }
 
     }
@@ -140,6 +141,41 @@ public class LeetCodeExcercisesForTrees {
 
     }
 
+    public static List<List<Integer>> levelOrderBottom(TreeNode root) {
+        /*LC 107*/
+
+
+        Deque<TreeNode> deque = new LinkedList<>();
+        List<List<Integer>> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        TreeNode temp = root;
+        deque.add(temp);
+
+        while (!deque.isEmpty()) {
+            temp = deque.poll();
+            List<Integer> level = new ArrayList<>();
+            if (temp.left != null) {
+                deque.add(temp.left);
+                level.add(temp.left.val);
+            }
+            if (temp.right != null) {
+                deque.add(temp.right);
+                level.add(temp.right.val);
+            }
+            if (!level.isEmpty()) {
+                list.add(level);
+            }
+        }
+        Collections.reverse(list);
+        List<Integer> rootVal = new ArrayList<>();
+        rootVal.add(root.val);
+        list.add(rootVal);
+
+        return list;
+
+    }
 }
 
 
