@@ -10,13 +10,17 @@ public class LeetCodeExcercisesForTrees {
     public static void main(String[] args) {
         Tree tree1 = new Tree();
         tree1.insertInTree(1);
+        tree1.insertInTree(0);
+        tree1.insertInTree(1);
 
         Tree tree2 = new Tree();
         tree2.insertInTree(3);
         tree2.insertInTree(9);
-        tree2.insertInTree(20);
-        tree2.insertInTree(15);
-        tree2.insertInTree(7);
+        tree2.insertInTree(5);
+        tree2.insertInTree(0);
+        tree2.insertInTree(2);
+        tree2.insertInTree(4);
+        tree2.insertInTree(6);
 
         List<Double> test = averageOfLevels(tree2.root);
 
@@ -36,9 +40,6 @@ public class LeetCodeExcercisesForTrees {
         }
 
         public void insert(int value) {
-            if (value == val) {
-                return;
-            }
             if (left == null) {
                 left = new TreeNode(value);
             } else if (right == null) {
@@ -117,28 +118,27 @@ public class LeetCodeExcercisesForTrees {
         List<Double> avarageOfLevels = new ArrayList<>();
         TreeNode temp = root;
         queue.add(temp);
-        avarageOfLevels.add((double) root.val);
 
         while (!queue.isEmpty()) {
-            double avarage = 0;
-            temp = queue.poll();
-            if (temp.left != null) {
-                queue.add(temp.left);
-                avarage = (double) temp.left.val;
-            }
+            double avarage = 0.0;
+            int n = queue.size();
+            for (int i = 0; i < n; i++) {
+                temp = queue.poll();
+                avarage += temp.val;
+                if (temp.left != null) {
+                    queue.add(temp.left);
 
-            if (temp.right != null) {
-                queue.add(temp.right);
-                avarage += (double) temp.right.val;
-                avarage /= 2;
-                avarageOfLevels.add(avarage);
+                }
+                if (temp.right != null) {
+                    queue.add(temp.right);
+                }
             }
+            avarageOfLevels.add(avarage / n);
         }
 
         return avarageOfLevels;
 
     }
-
 
 }
 
