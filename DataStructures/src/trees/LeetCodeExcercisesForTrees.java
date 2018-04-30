@@ -1,20 +1,28 @@
 package trees;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class LeetCodeExcercisesForTrees {
     public static void main(String[] args) {
         Tree tree1 = new Tree();
         tree1.insertInTree(1);
 
-
-
         Tree tree2 = new Tree();
-        tree2.insertInTree(1);
-        tree2.insertInTree(2);
         tree2.insertInTree(3);
+        tree2.insertInTree(9);
+        tree2.insertInTree(20);
+        tree2.insertInTree(15);
+        tree2.insertInTree(7);
 
-        System.out.println(isSymmetric(tree1.root));
+        List<Double> test = averageOfLevels(tree2.root);
 
+        for (int i = 0; i < test.size(); i++) {
+            System.out.println(test.get(i));
+        }
 
     }
 
@@ -31,24 +39,19 @@ public class LeetCodeExcercisesForTrees {
             if (value == val) {
                 return;
             }
+            if (left == null) {
+                left = new TreeNode(value);
+            } else if (right == null) {
+                right = new TreeNode(value);
 
-            if (value < val) {
-                if (left == null) {
-                    left = new TreeNode(value);
-                } else {
-                    left.insert(value);
-                }
-
-            } else {
-                if (right == null) {
-                    right = new TreeNode(value);
-                } else {
-                    right.insert(value);
-                }
+            } else if (left != null) {
+                left.insert(value);
+            } else if (right != null) {
+                right.insert(value);
             }
         }
-
     }
+
 
     public static class Tree {
         TreeNode root;
@@ -60,6 +63,7 @@ public class LeetCodeExcercisesForTrees {
                 root.insert(value);
             }
         }
+
     }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -86,11 +90,11 @@ public class LeetCodeExcercisesForTrees {
             return false;
         }
 
-        return isSymmetricNode (root.left,root.right);
+        return isSymmetricNode(root.left, root.right);
 
     }
 
-    private static boolean isSymmetricNode (TreeNode node1, TreeNode node2) {
+    private static boolean isSymmetricNode(TreeNode node1, TreeNode node2) {
 
         if (null == node1 && null == node2)
             return true;
@@ -104,9 +108,38 @@ public class LeetCodeExcercisesForTrees {
         }
 
         return isSymmetricNode(node1.left, node2.right) && isSymmetricNode(node1.right, node2.left);
+    }
 
+    public static List<Double> averageOfLevels(TreeNode root) {
+        /*LC 637*/
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<Double> avarageOfLevels = new ArrayList<>();
+        TreeNode temp = root;
+        queue.add(temp);
+        avarageOfLevels.add((double) root.val);
+
+        while (!queue.isEmpty()) {
+            double avarage = 0;
+            temp = queue.poll();
+            if (temp.left != null) {
+                queue.add(temp.left);
+                avarage = (double) temp.left.val;
+            }
+
+            if (temp.right != null) {
+                queue.add(temp.right);
+                avarage += (double) temp.right.val;
+                avarage /= 2;
+                avarageOfLevels.add(avarage);
+            }
+        }
+
+        return avarageOfLevels;
 
     }
+
+
 }
 
 
