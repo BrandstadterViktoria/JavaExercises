@@ -21,7 +21,7 @@ public class LeetCodeExcercisesForTrees {
         tree2.insertInTree(0);
         tree2.insertInTree(5);
 
-        List<List<Integer>> test = levelOrderBottom(tree2.root);
+        List<List<Integer>> test = levelOrder(tree2.root);
 
         for (int i = 0; i < test.size(); i++) {
             for (int j = 0; j < test.get(i).size(); j++) {
@@ -169,6 +169,35 @@ public class LeetCodeExcercisesForTrees {
         }
         Collections.reverse(list);
         return list;
+
+    }
+
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+        /*LC102*/
+
+        List<List<Integer>> lists = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root == null) {
+            return lists;
+        }
+
+        TreeNode temp = root;
+        queue.add(temp);
+        while (!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < queue.size(); i++) {
+                temp = queue.poll();
+                level.add(temp.val);
+                if (temp.left != null) {
+                    queue.add(temp.left);
+                }
+                if (temp.right != null) {
+                    queue.add(temp.right);
+                }
+            }
+            lists.add(level);
+        }
+        return lists;
 
     }
 }
