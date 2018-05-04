@@ -1,10 +1,8 @@
 package trees;
 
-
 import java.util.*;
 
-
-public class LeetCodeExcercisesForTrees {
+public class LeetCodeBinaryTreeProblems {
     public static void main(String[] args) {
         Tree tree1 = new Tree();
         tree1.insertInTree(1);
@@ -22,7 +20,7 @@ public class LeetCodeExcercisesForTrees {
         tree2.insertInTree(0);
         tree2.insertInTree(9);
 
-        List<Integer> test = largestValues(tree2.root);
+        List<String> test = binaryTreePaths(tree2.root);
 
         for (int i = 0; i < test.size(); i++) {
             System.out.print(test.get(i));
@@ -39,7 +37,7 @@ public class LeetCodeExcercisesForTrees {
         }
 
         public void insert(int value) {
-            if(value == 0) {
+            if (value == 0) {
 
             }
             if (left == null) {
@@ -203,7 +201,7 @@ public class LeetCodeExcercisesForTrees {
 
         List<Integer> largestValues = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
-        if (root == null ) {
+        if (root == null) {
             return Collections.emptyList();
         }
         TreeNode node = root;
@@ -211,7 +209,7 @@ public class LeetCodeExcercisesForTrees {
         while (!queue.isEmpty()) {
             List<Integer> list = new ArrayList<>();
             int n = queue.size();
-            for (int i = 0; i < n ; i++) {
+            for (int i = 0; i < n; i++) {
                 node = queue.poll();
                 list.add(node.val);
                 if (node.left != null) {
@@ -227,6 +225,22 @@ public class LeetCodeExcercisesForTrees {
         }
         return largestValues;
     }
+
+    public static List<String> binaryTreePaths(TreeNode root) {
+    /*LC 515 Given a binary tree, return all root-to-leaf paths.*/
+        List<String> paths = new ArrayList<>();
+        if (root == null) {
+            return Collections.emptyList();
+        }
+        binaryTreePaths(root.left);
+        binaryTreePaths(root.right);
+        paths.add(String.valueOf(root.val));
+        paths.add("-->");
+        return paths;
+
+    }
+
+
 }
 
 
