@@ -181,7 +181,8 @@ public class LeetCodeExcercisesForTrees {
         queue.add(temp);
         while (!queue.isEmpty()) {
             List<Integer> level = new ArrayList<>();
-            for (int i = 0; i < queue.size(); i++) {
+            int n = queue.size();
+            for (int i = 0; i < n; i++) {
                 temp = queue.poll();
                 level.add(temp.val);
                 if (temp.left != null) {
