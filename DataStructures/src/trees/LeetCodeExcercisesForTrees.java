@@ -3,6 +3,7 @@ package trees;
 
 import java.util.*;
 
+
 public class LeetCodeExcercisesForTrees {
     public static void main(String[] args) {
         Tree tree1 = new Tree();
@@ -14,21 +15,18 @@ public class LeetCodeExcercisesForTrees {
 
         Tree tree2 = new Tree();
         tree2.insertInTree(1);
-        tree2.insertInTree(2);
         tree2.insertInTree(3);
-        tree2.insertInTree(4);
-        tree2.insertInTree(0);
-        tree2.insertInTree(0);
+        tree2.insertInTree(2);
         tree2.insertInTree(5);
+        tree2.insertInTree(3);
+        tree2.insertInTree(0);
+        tree2.insertInTree(9);
 
-        List<List<Integer>> test = levelOrder(tree2.root);
+        List<Integer> test = largestValues(tree2.root);
 
         for (int i = 0; i < test.size(); i++) {
-            for (int j = 0; j < test.get(i).size(); j++) {
-                System.out.print(test.get(i).get(j));
-            }
+            System.out.print(test.get(i));
         }
-
     }
 
     public static class TreeNode {
@@ -41,19 +39,19 @@ public class LeetCodeExcercisesForTrees {
         }
 
         public void insert(int value) {
+            if(value == 0) {
+
+            }
             if (left == null) {
                 left = new TreeNode(value);
             } else if (right == null) {
                 right = new TreeNode(value);
 
-            } else if (left != null) {
+            } else {
                 left.insert(value);
-            } else if (right != null) {
-                right.insert(value);
             }
         }
     }
-
 
     public static class Tree {
         TreeNode root;
@@ -65,7 +63,6 @@ public class LeetCodeExcercisesForTrees {
                 root.insert(value);
             }
         }
-
     }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -128,7 +125,6 @@ public class LeetCodeExcercisesForTrees {
                 avarage += temp.val;
                 if (temp.left != null) {
                     queue.add(temp.left);
-
                 }
                 if (temp.right != null) {
                     queue.add(temp.right);
@@ -199,6 +195,36 @@ public class LeetCodeExcercisesForTrees {
         }
         return lists;
 
+    }
+
+    public static List<Integer> largestValues(TreeNode root) {
+        /*LC 515, You need to find the largest value in each row of a binary tree.*/
+
+        List<Integer> largestValues = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root == null ) {
+            return Collections.emptyList();
+        }
+        TreeNode node = root;
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            int n = queue.size();
+            for (int i = 0; i < n ; i++) {
+                node = queue.poll();
+                list.add(node.val);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            Collections.sort(list);
+            Collections.reverse(list);
+            largestValues.add(list.get(0));
+        }
+        return largestValues;
     }
 }
 

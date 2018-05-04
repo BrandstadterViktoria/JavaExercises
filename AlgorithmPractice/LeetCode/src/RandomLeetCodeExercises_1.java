@@ -356,7 +356,16 @@ public class RandomLeetCodeExercises_1 {
         }
         return threeSums;
     }
+    public List<Double> averageOfLevels_LC637(TreeNode root) {
+//        Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+        List<Double> avareges = new ArrayList<>();
+
+
+
+    }
 }
+
+
 
 
 
