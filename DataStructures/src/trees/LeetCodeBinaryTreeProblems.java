@@ -6,8 +6,9 @@ public class LeetCodeBinaryTreeProblems {
     public static void main(String[] args) {
         Tree tree1 = new Tree();
         tree1.insertInTree(1);
-        tree1.insertInTree(0);
-        tree1.insertInTree(1);
+        tree1.insertInTree(2);
+        tree1.insertInTree(3);
+        tree1.insertInTree(5);
 
         Tree treeZ = new Tree();
 
@@ -20,7 +21,7 @@ public class LeetCodeBinaryTreeProblems {
         tree2.insertInTree(0);
         tree2.insertInTree(9);
 
-        List<String> test = binaryTreePaths(tree2.root);
+        List<String> test = binaryTreePaths(tree1.root);
 
         for (int i = 0; i < test.size(); i++) {
             System.out.print(test.get(i));
@@ -227,20 +228,34 @@ public class LeetCodeBinaryTreeProblems {
     }
 
     public static List<String> binaryTreePaths(TreeNode root) {
-    /*LC 515 Given a binary tree, return all root-to-leaf paths.*/
+        /*LC 257 Given a binary tree, return all root-to-leaf paths.*/
         List<String> paths = new ArrayList<>();
+        StringBuilder str = new StringBuilder();
         if (root == null) {
             return Collections.emptyList();
+        } else {
+            paths.add(binaryTreepathshelperLeft(root, str));
+            paths.add(binaryTreepathshelperRight(root, str));
+            return paths;
         }
-        binaryTreePaths(root.left);
-        binaryTreePaths(root.right);
-        paths.add(String.valueOf(root.val));
-        paths.add("-->");
-        return paths;
-
     }
 
-
+    private static String binaryTreepathshelperLeft(TreeNode node, StringBuilder str) {
+        if (node != null) {
+            str.append(String.valueOf(node.val));
+            str.append("-->");
+            binaryTreepathshelperLeft(node.left, str);
+        }
+        return str.toString();
+    }
+    private static String binaryTreepathshelperRight(TreeNode node, StringBuilder str) {
+        if (node != null) {
+            str.append(String.valueOf(node.val));
+            str.append("-->");
+            binaryTreepathshelperLeft(node.right, str);
+        }
+        return str.toString();
+    }
 }
 
 
