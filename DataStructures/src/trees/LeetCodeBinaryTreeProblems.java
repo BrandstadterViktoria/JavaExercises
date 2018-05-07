@@ -256,6 +256,28 @@ public class LeetCodeBinaryTreeProblems {
         binaryTreepathshelper(node.right, str, paths);
         str.delete(sBlength, str.length());
     }
+
+    public static boolean isBalanced(TreeNode root) {
+        if(root == null) {
+            return true;
+        }
+       return isBalancedHelper(root.left) == isBalancedHelper(root.right);
+
+    }
+    private static int isBalancedHelper(TreeNode node) {
+        int height = 0;
+        int left = isBalancedHelper(node.left);
+        int right = isBalancedHelper(node.right);
+        if (left > right) {
+            height = 1 + left;
+        } else {
+            height = 1 + right;
+        }
+
+        return height;
+    }
+
+
 }
 
 
