@@ -234,27 +234,27 @@ public class LeetCodeBinaryTreeProblems {
         if (root == null) {
             return Collections.emptyList();
         } else {
-            paths.add(binaryTreepathshelperLeft(root, str));
-            paths.add(binaryTreepathshelperRight(root, str));
+            binaryTreepathshelper(root, str, paths);
             return paths;
         }
     }
 
-    private static String binaryTreepathshelperLeft(TreeNode node, StringBuilder str) {
-        if (node != null) {
-            str.append(String.valueOf(node.val));
-            str.append("-->");
-            binaryTreepathshelperLeft(node.left, str);
+    private static void  binaryTreepathshelper (TreeNode node, StringBuilder str, List<String> paths){
+        if(node == null) {
+            return;
         }
-        return str.toString();
-    }
-    private static String binaryTreepathshelperRight(TreeNode node, StringBuilder str) {
-        if (node != null) {
-            str.append(String.valueOf(node.val));
-            str.append("-->");
-            binaryTreepathshelperLeft(node.right, str);
+        int sBlength = str.length();
+        if (node.left == null && node.right == null) {
+            str.append(node.val);
+            paths.add(str.toString());
+            str.delete(sBlength,str.length());
+            return;
         }
-        return str.toString();
+        str.append(node.val);
+        str.append("->");
+        binaryTreepathshelper(node.left,str,paths);
+        binaryTreepathshelper(node.right, str, paths);
+        str.delete(sBlength, str.length());
     }
 }
 
