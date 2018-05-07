@@ -21,11 +21,13 @@ public class LeetCodeBinaryTreeProblems {
         tree2.insertInTree(0);
         tree2.insertInTree(9);
 
-        List<String> test = binaryTreePaths(tree1.root);
+        System.out.println(isBalanced(tree1.root));
+
+       /* List<String> test = binaryTreePaths(tree1.root);
 
         for (int i = 0; i < test.size(); i++) {
             System.out.print(test.get(i));
-        }
+        }*/
     }
 
     public static class TreeNode {
@@ -258,6 +260,7 @@ public class LeetCodeBinaryTreeProblems {
     }
 
     public static boolean isBalanced(TreeNode root) {
+        /*LC 110*/
         if(root == null) {
             return true;
         }
@@ -265,19 +268,21 @@ public class LeetCodeBinaryTreeProblems {
 
     }
     private static int isBalancedHelper(TreeNode node) {
-        int height = 0;
-        int left = isBalancedHelper(node.left);
-        int right = isBalancedHelper(node.right);
-        if (left > right) {
-            height = 1 + left;
+        int height;
+        if (node == null) {
+            return 0;
         } else {
-            height = 1 + right;
+            int left = isBalancedHelper(node.left);
+            int right = isBalancedHelper(node.right);
+            if (left > right) {
+                height = 1 + left;
+            } else {
+                height = 1 + right;
+            }
         }
 
         return height;
     }
-
-
 }
 
 
