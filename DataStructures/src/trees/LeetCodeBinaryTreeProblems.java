@@ -264,7 +264,7 @@ public class LeetCodeBinaryTreeProblems {
         if(root == null) {
             return true;
         }
-       return isBalancedHelper(root.left) == isBalancedHelper(root.right);
+       return  (Math.abs(isBalancedHelper(root.left) - isBalancedHelper(root.right)) < 2);
 
     }
     private static int isBalancedHelper(TreeNode node) {
