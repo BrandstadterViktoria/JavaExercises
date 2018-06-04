@@ -3,7 +3,8 @@ package trees;
 import java.util.*;
 
 public class LeetCodeBinaryTreeProblems {
-   private static boolean hasPath = false;
+    private static boolean hasPath = false;
+
     public static void main(String[] args) {
         Tree tree1 = new Tree();
         tree1.insertInTree(1);
@@ -15,21 +16,13 @@ public class LeetCodeBinaryTreeProblems {
 
         Tree tree2 = new Tree();
         tree2.insertInTree(5);
-        tree2.insertInTree(4);
-        tree2.insertInTree(8);
-        tree2.insertInTree(11);
-        tree2.insertInTree(0);
-        tree2.insertInTree(13);
-        tree2.insertInTree(4);
-        tree2.insertInTree(7);
-        tree2.insertInTree(2);
-        tree2.insertInTree(0);
-        tree2.insertInTree(0);
-        tree2.insertInTree(0);
+        tree2.insertInTree(5);
+        tree2.insertInTree(5);
+        tree2.insertInTree(5);
         tree2.insertInTree(1);
-        tree2.insertInTree(22);
+        tree2.insertInTree(5);
 
-        System.out.println(hasPathSum(tree2.root, 22));
+        System.out.println(longestUnivaluePath(tree2.root));
 
        /* List<String> test = binaryTreePaths(tree1.root);
 
@@ -297,23 +290,34 @@ public class LeetCodeBinaryTreeProblems {
         /*LC 112 Path Sum  Given a binary tree and a sum, determine if the tree has a root-to-leaf path
         such that adding up all the values along the path equals the given sum.*/
 
-         hasPathSumHelper(root, sum, 0);
+        hasPathSumHelper(root, sum, 0);
         return hasPath;
     }
 
     private static void hasPathSumHelper(TreeNode node, int sum, int subtotal) {
         if (node == null) {
-            return ;
+            return;
         }
 
-        if(node.left == null && node.right == null) {
-           hasPath = !hasPath ? (sum == (subtotal + node.val)) : hasPath;
-           return;
+        if (node.left == null && node.right == null) {
+            hasPath = hasPath || (sum == (subtotal + node.val));
+            return;
         }
         hasPathSumHelper(node.left, sum, subtotal + node.val);
         hasPathSumHelper(node.right, sum, subtotal + node.val);
-
     }
+
+    public static int longestUnivaluePath(TreeNode root) {
+        /*LC 687 Given a binary tree, find the length of the longest path where each node in the path has the same value.
+        This path may or may not pass through the root.  */
+
+        if (root == null) {
+            return 0;
+        }
+        int leftdepth = longestUnivaluePath(root.left);
+        root.left != null && root.left.val == root.val
+    }
+
 
 }
 
