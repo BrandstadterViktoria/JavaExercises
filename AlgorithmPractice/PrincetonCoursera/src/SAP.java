@@ -14,9 +14,18 @@ public class SAP {
     public int length(int v, int w) {
         if (v < 0 || v > G.V() - 1 || w < 0 || w > G.V() - 1) {
             throw new IllegalArgumentException("The given vertex is not between 0 and " + (G.V()-1));
-
-
         }
+        int length = 0;
+        BreadthFirstPaths bfsV = new BreadthFirstPaths(G,v);
+        BreadthFirstPaths bfsW = new BreadthFirstPaths(G,w);
+        while (bfsV.pathTo(rootVertex).iterator().hasNext()) {
+              length++;
+        }
+        while (bfsW.pathTo(rootVertex).iterator().hasNext()) {
+            length ++;
+        }
+
+        return length;
     }
 
     // a common ancestor of v and w that participates in a shortest ancestral path; -1 if no such path
