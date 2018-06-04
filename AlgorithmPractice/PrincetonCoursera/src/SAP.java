@@ -27,21 +27,27 @@ public class SAP {
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
     public int length(Iterable<Integer> v, Iterable<Integer> w) {
-        if (v.spliterator().getExactSizeIfKnown() == 0 || w.spliterator().getExactSizeIfKnown() == 0) {
-            throw new IllegalArgumentException("The iterable has 0 values. " );
+        if (v == null || w == null) {
+            throw new IllegalArgumentException("The iterable has 0 values. ");
         }
+
         if (v.iterator().next() == null || w.iterator().next() == null) {
-            throw new IllegalArgumentException("The iterable contains null valued vertex.")
+            throw new IllegalArgumentException("The iterable contains null valued vertex.");
+        }
+
+
+
     }
 
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
     public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
-        if (v.spliterator().getExactSizeIfKnown() == 0 || w.spliterator().getExactSizeIfKnown() == 0) {
+        if (v == null || w == null) {
             throw new IllegalArgumentException("The iterable has 0 values. " );
         }
         if (v.iterator().next() == null || w.iterator().next() == null) {
             throw new IllegalArgumentException("The iterable contains null valued vertex.");
         }
+
     }
 
 
