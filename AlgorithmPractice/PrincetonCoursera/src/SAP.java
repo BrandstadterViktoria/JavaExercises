@@ -2,10 +2,11 @@ import edu.princeton.cs.algs4.*;
 
 public class SAP {
 
-    private Digraph G;
+    private Graph G;
+    private final int rootVertex = 0;
 
     // constructor takes a digraph (not necessarily a DAG)
-    public SAP(Digraph G) {
+    public SAP(Graph G) {
         this.G = G;
     }
 
@@ -23,6 +24,19 @@ public class SAP {
         if (v < 0 || v > G.V() - 1 || w < 0 || w > G.V() - 1) {
             throw new IllegalArgumentException("The given vertex is not between 0 and " + (G.V()-1));
         }
+        int ancestor = 0;
+        BreadthFirstPaths bfsV = new BreadthFirstPaths(G,v);
+        BreadthFirstPaths bfsW = new BreadthFirstPaths(G,w);
+        for ( int vs : bfsV.pathTo(rootVertex)) {
+            for ( int vs2 : bfsW.pathTo(rootVertex)) {
+                if (vs == vs2){
+                    ancestor = vs;
+                    break;
+                }
+            }
+         }
+
+         return ancestor > 0 ? ancestor : -1;
     }
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
@@ -55,7 +69,7 @@ public class SAP {
     public static void main(String[] args) {
         In in = new In(args[0]);
         Digraph G = new Digraph(in);
-        SAP sap = new SAP(G);
+        SAP sap = new SAP(G, rootVertex);
             int v = 3;
             int w = 11;
             int ancestor = sap.ancestor(v, w);
