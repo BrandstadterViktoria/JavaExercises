@@ -3,7 +3,6 @@ import edu.princeton.cs.algs4.*;
 public class SAP {
 
     private Digraph G;
-    private final int rootVertex = 0;
 
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph G) {
@@ -37,6 +36,9 @@ public class SAP {
         int ancestor;
         BreadthFirstDirectedPaths bfsV = new BreadthFirstDirectedPaths(G, v);
         BreadthFirstDirectedPaths bfsW = new BreadthFirstDirectedPaths(G, w);
+
+        // rootVertex must be converted to mother vertex
+        int rootVertex = 0;
         for (int vs : bfsV.pathTo(rootVertex)) {
             for (int vs2 : bfsW.pathTo(rootVertex)) {
                 if (vs == vs2) {
@@ -48,18 +50,24 @@ public class SAP {
         return -1;
     }
 
-    /*// length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
+    // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
     public int length(Iterable<Integer> v, Iterable<Integer> w) {
         if (v == null || w == null) {
             throw new IllegalArgumentException("The iterable has 0 values. ");
         }
-
         if (v.iterator().next() == null || w.iterator().next() == null) {
             throw new IllegalArgumentException("The iterable contains null valued vertex.");
         }
-
-
-
+        int shortest = Integer.MAX_VALUE;
+        for (int i : v) {
+            for (int t : w) {
+                int actualLength = length(i,t);
+                if (actualLength < shortest) {
+                    shortest = actualLength;
+                }
+            }
+        }
+        return shortest;
     }
 
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
@@ -70,10 +78,21 @@ public class SAP {
         if (v.iterator().next() == null || w.iterator().next() == null) {
             throw new IllegalArgumentException("The iterable contains null valued vertex.");
         }
-
-
-
-    }*/
+        int initial;
+        int end;
+        int shortest = length(v,w);
+        for (int i : v) {
+            for (int t : w) {
+                int actual = length(i, t);
+                if ( actual == shortest) {
+                    initial = i;
+                    end = t;
+                    return ancestor(initial,end);
+                }
+            }
+        }
+        return -1;
+    }
 
 
     // do unit testing of this class
