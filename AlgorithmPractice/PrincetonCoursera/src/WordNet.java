@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 
 import java.util.Arrays;
@@ -7,16 +8,28 @@ import java.util.List;
 public class WordNet {
 
     private HashMap<Integer, List<String>> synset = new HashMap<>();
+    private Digraph wordNet;
 
         // constructor takes the name of the two input files
         public WordNet(String synsets, String hypernyms) {
-            In synsetStream = new In("synset8.txt");
+            In synsetStream = new In(synsets);
+            int id = 0;
             while (synsetStream.hasNextLine()) {
                 String line = synsetStream.readLine();
                 String [] split = line.split(",");
-                int id = Integer.valueOf(split[0]);
+                id = Integer.valueOf(split[0]);
                 String [] nouns = split[1].split("_");
                 synset.put(id, Arrays.asList(nouns));
+            }
+
+            In hypernymStream = new In(hypernyms);
+            wordNet = new Digraph(id);
+            while (hypernymStream.hasNextLine()) {
+                String line2 = hypernymStream.readLine();
+                String [] relations = line2.split(",");
+                for (String relation : relations) {
+                    wordNet.addEdge(Integer.parseInt(relations[0]),Integer.parseInt(relation));
+                }
             }
         }
 
