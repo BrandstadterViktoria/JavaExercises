@@ -8,8 +8,8 @@ import java.util.List;
 
 public class WordNet {
 
-    private HashMap<Integer, List<String>> synset = new HashMap<>();
-    List<String> iterableNouns = new ArrayList<>();
+    private HashMap<List<String>,Integer> synset = new HashMap<>();
+    private List<String> iterableNouns = new ArrayList<>();
     private Digraph wordNet;
 
         // constructor takes the name of the two input files
@@ -21,7 +21,7 @@ public class WordNet {
                 String [] split = line.split(",");
                 id = Integer.valueOf(split[0]);
                 String [] nouns = split[1].split("_");
-                synset.put(id, Arrays.asList(nouns));
+                synset.put(Arrays.asList(nouns),id);
             }
 
             In hypernymStream = new In(hypernyms);
@@ -37,7 +37,7 @@ public class WordNet {
 
         // returns all WordNet nouns
         public Iterable<String> nouns() {
-            synset.values().forEach(iterableNouns::addAll);
+            synset.keySet().forEach(iterableNouns::addAll);
             return iterableNouns;
 
         }
@@ -50,9 +50,23 @@ public class WordNet {
 
         // distance between nounA and nounB (defined below)
         public int distance(String nounA, String nounB) {
+            List<Integer> A = new ArrayList<>();
+            List<Integer> B = new ArrayList<>();
 
-
+            for (List<String> list : synset.keySet()) {
+                for (String noun: list) {
+                    if (nounA.equals(nounB)) {
+                        A.add(synset.get(list));
+                    }
+                    if (nounB.equals(noun)) {
+                        B.add(synset.get(list));
+                    }
+                }
+            }
+            SAP distanceIterables = new SAP(wordNet);
+            return distanceIterables.length(A,B);
         }
+
 
         // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
         // in a shortest ancestral path (defined below)
