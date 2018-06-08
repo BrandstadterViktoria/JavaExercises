@@ -1,15 +1,11 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class WordNet {
 
     private HashMap<List<String>, Integer> synset = new HashMap<>();
-    private List<String> iterableNouns = new ArrayList<>();
     private Digraph wordNet;
     private SAP distanceIterables;
     private List<Integer> A;
@@ -17,29 +13,34 @@ public class WordNet {
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
-        In synsetStream = new In(synsets);
-        int id = 0;
-        while (synsetStream.hasNextLine()) {
-            String line = synsetStream.readLine();
-            String[] split = line.split(",");
-            id = Integer.valueOf(split[0]);
-            String[] nouns = split[1].split("_");
-            synset.put(Arrays.asList(nouns), id);
+        if (synsets == null || hypernyms == null) {
+            throw new IllegalArgumentException("Arg is null.");
+        }
+        In synsetIn = new In(synsets);
+        int id = -1;
+        while (synsetIn.hasNextLine()) {
+            String line = synsetIn.readLine();
+            String[] idAndNouns = line.split(",");
+            synset.put(Arrays.asList(idAndNouns[1].split("_")), ++id);
         }
 
-        In hypernymStream = new In(hypernyms);
-        wordNet = new Digraph(id);
-        while (hypernymStream.hasNextLine()) {
-            String line2 = hypernymStream.readLine();
-            String[] relations = line2.split(",");
-            for (String relation : relations) {
-                wordNet.addEdge(Integer.parseInt(relations[0]), Integer.parseInt(relation));
+        In hypernymIn = new In(hypernyms);
+        wordNet = new Digraph(id +1);
+        while (hypernymIn.hasNextLine()) {
+            String line2 = hypernymIn.readLine();
+            List<Integer> relations = new ArrayList<>();
+            for (String s : line2.split(",")) {
+                relations.add(Integer.parseInt(s));
+            }
+            for (int i = 1; i < relations.size(); i++) {
+                wordNet.addEdge(relations.get(0), relations.get(i));
             }
         }
     }
 
     // returns all WordNet nouns
     public Iterable<String> nouns() {
+        List<String> iterableNouns = new ArrayList<>();
         synset.keySet().forEach(iterableNouns::addAll);
         return iterableNouns;
 
@@ -47,6 +48,8 @@ public class WordNet {
 
     // is the word a WordNet noun?
     public boolean isNoun(String word) {
+         List<String> iterableNouns = new ArrayList<>();
+         iterableNouns.addAll((Collection<? extends String>) nouns());
         return iterableNouns.contains(word);
 
     }
@@ -58,7 +61,7 @@ public class WordNet {
 
         for (List<String> list : synset.keySet()) {
             for (String noun : list) {
-                if (nounA.equals(nounB)) {
+                if (nounA.equals(noun)) {
                     A.add(synset.get(list));
                 }
                 if (nounB.equals(noun)) {
@@ -80,8 +83,10 @@ public class WordNet {
 
     // do unit testing of this class
     public static void main(String[] args) {
-
-
+        WordNet test = new WordNet("synsets15.txt","hypernyms15Tree.txt");
+        System.out.println(test.isNoun("ten"));
+        System.out.println(test.distance("ten","nine"));
+        System.out.println(test.sap("ten","nine"));
     }
 
 }
