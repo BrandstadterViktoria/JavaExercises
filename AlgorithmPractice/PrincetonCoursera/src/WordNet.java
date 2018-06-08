@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +36,9 @@ public class WordNet {
 
         // returns all WordNet nouns
         public Iterable<String> nouns() {
+            List<String> iterableNouns = new ArrayList<>();
+            synset.values().forEach(iterableNouns::addAll);
+            return iterableNouns;
 
         }
 
