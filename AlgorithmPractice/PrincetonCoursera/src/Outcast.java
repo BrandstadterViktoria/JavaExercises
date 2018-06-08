@@ -5,6 +5,7 @@ public class Outcast {
 
     //not clear: Assume that argument to outcast() contains only valid wordnet nouns (and that it contains at least two such nouns).
     private WordNet wordnet;
+
     // constructor takes a WordNet object
     public Outcast(WordNet wordnet) {
         this.wordnet = wordnet;
@@ -15,12 +16,13 @@ public class Outcast {
         String outcast = "";
         int furthest = 0;
         for (String noun : nouns) {
+            int currentDistance = 0;
             for (String noun1 : nouns) {
-                int currentDistance = wordnet.distance(noun, noun1);
-                if (currentDistance > furthest) {
-                    furthest = currentDistance;
-                    outcast = noun;
-                }
+                currentDistance += wordnet.distance(noun, noun1);
+            }
+            if (currentDistance > furthest) {
+                furthest = currentDistance;
+                outcast = noun;
             }
         }
         return outcast;
@@ -28,15 +30,12 @@ public class Outcast {
 
     // see test client below
     public static void main(String[] args) {
-            WordNet wordnet = new WordNet(args[0], args[1]);
-            Outcast outcast = new Outcast(wordnet);
-            for (int t = 2; t < args.length; t++) {
-                In in = new In("outcast5.txt");
-                String[] nouns = in.readAllStrings();
-                StdOut.println(args[t] + ": " + outcast.outcast(nouns));
+        WordNet test = new WordNet("synsets15.txt", "hypernyms15Tree.txt");
+        Outcast tester = new Outcast(test);
+        String[] t = {"two", "twelve", "three", "one"};
+        System.out.println(tester.outcast(t));
 
-            }
-        }
     }
+}
 
 
