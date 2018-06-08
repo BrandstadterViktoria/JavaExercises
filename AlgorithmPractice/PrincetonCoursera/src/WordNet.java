@@ -9,6 +9,7 @@ import java.util.List;
 public class WordNet {
 
     private HashMap<Integer, List<String>> synset = new HashMap<>();
+    List<String> iterableNouns = new ArrayList<>();
     private Digraph wordNet;
 
         // constructor takes the name of the two input files
@@ -36,7 +37,6 @@ public class WordNet {
 
         // returns all WordNet nouns
         public Iterable<String> nouns() {
-            List<String> iterableNouns = new ArrayList<>();
             synset.values().forEach(iterableNouns::addAll);
             return iterableNouns;
 
@@ -44,6 +44,7 @@ public class WordNet {
 
         // is the word a WordNet noun?
         public boolean isNoun(String word) {
+            return iterableNouns.contains(word);
 
         }
 
