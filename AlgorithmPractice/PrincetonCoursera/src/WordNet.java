@@ -1,12 +1,17 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Collection;
+
 
 public class WordNet {
 
-    private HashMap<List<String>, Integer> synset = new HashMap<>();
-    private Digraph wordNet;
+    private final HashMap<List<String>, Integer> synset = new HashMap<>();
+    private final Digraph wordNet;
     private SAP distanceIterables;
     private List<Integer> A;
     private List<Integer> B;
@@ -48,6 +53,9 @@ public class WordNet {
 
     // is the word a WordNet noun?
     public boolean isNoun(String word) {
+        if (word == null) {
+            throw new IllegalArgumentException("Arg is illegal");
+        }
          List<String> iterableNouns = new ArrayList<>();
          iterableNouns.addAll((Collection<? extends String>) nouns());
         return iterableNouns.contains(word);
@@ -56,6 +64,9 @@ public class WordNet {
 
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
+        if (nounA == null || nounB == null || !isNoun(nounA) || !isNoun(nounB)) {
+            throw new IllegalArgumentException("Arg illegal");
+        }
         A = new ArrayList<>();
         B = new ArrayList<>();
 
@@ -77,6 +88,9 @@ public class WordNet {
     // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
     // in a shortest ancestral path (defined below)
     public String sap(String nounA, String nounB) {
+        if (nounA == null || nounB == null || !isNoun(nounA) || !isNoun(nounB)) {
+            throw new IllegalArgumentException("Arg illegal");
+        }
         return String.valueOf(distanceIterables.ancestor(A, B));
 
     }

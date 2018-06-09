@@ -1,8 +1,10 @@
-import edu.princeton.cs.algs4.*;
+import edu.princeton.cs.algs4.BreadthFirstDirectedPaths;
+import edu.princeton.cs.algs4.Digraph;
 
 public class SAP {
 
-    private Digraph G;
+    private final  Digraph G;
+    private int shortest;
 
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph G) {
@@ -14,17 +16,8 @@ public class SAP {
         if (v < 0 || v > G.V() - 1 || w < 0 || w > G.V() - 1) {
             throw new IllegalArgumentException("The given vertex is not between 0 and " + (G.V() - 1));
         }
-        int ancestor = ancestor(v, w);
-        int length = 0;
-        BreadthFirstDirectedPaths bfsV = new BreadthFirstDirectedPaths(G, v);
-        BreadthFirstDirectedPaths bfsW = new BreadthFirstDirectedPaths(G, w);
-        for (int t : bfsV.pathTo(ancestor)) {
-            length++;
-        }
-        for (int t : bfsW.pathTo(ancestor)) {
-            length++;
-        }
-        return length - 2;
+        return  ancestor(v,w) == -1 ? -1 : shortest;
+
         }
 
         // a common ancestor of v and w that participates in a shortest ancestral path; -1 if no such path
@@ -33,21 +26,21 @@ public class SAP {
         if (v < 0 || v > G.V() - 1 || w < 0 || w > G.V() - 1) {
             throw new IllegalArgumentException("The given vertex is not between 0 and " + (G.V() - 1));
         }
-        int ancestor;
+        int ancestor = -1;
+        shortest = Integer.MAX_VALUE;
         BreadthFirstDirectedPaths bfsV = new BreadthFirstDirectedPaths(G, v);
         BreadthFirstDirectedPaths bfsW = new BreadthFirstDirectedPaths(G, w);
 
-        // rootVertex must be converted to mother vertex
-        int rootVertex = 0;
-        for (int vs : bfsV.pathTo(rootVertex)) {
-            for (int vs2 : bfsW.pathTo(rootVertex)) {
-                if (vs == vs2) {
-                    ancestor = vs;
-                    return ancestor;
+        for (int i = 0; i < G.V(); i++) {
+            if (bfsV.hasPathTo(i) && bfsW.hasPathTo(i)) {
+                int distance = bfsV.distTo(i) + bfsW.distTo(i);
+                if (distance < shortest) {
+                    shortest = distance;
+                    ancestor = i;
                 }
             }
         }
-        return -1;
+        return ancestor;
     }
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
@@ -58,16 +51,8 @@ public class SAP {
         if (v.iterator().next() == null || w.iterator().next() == null) {
             throw new IllegalArgumentException("The iterable contains null valued vertex.");
         }
-        int shortest = Integer.MAX_VALUE;
-        for (int i : v) {
-            for (int t : w) {
-                int actualLength = length(i,t);
-                if (actualLength < shortest) {
-                    shortest = actualLength;
-                }
-            }
-        }
-        return shortest;
+
+        return ancestor(v,w) == -1 ? -1 : shortest;
     }
 
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
@@ -78,24 +63,27 @@ public class SAP {
         if (v.iterator().next() == null || w.iterator().next() == null) {
             throw new IllegalArgumentException("The iterable contains null valued vertex.");
         }
-        int initial;
-        int end;
-        int shortest = length(v,w);
-        for (int i : v) {
-            for (int t : w) {
-                int actual = length(i, t);
-                if ( actual == shortest) {
-                    initial = i;
-                    end = t;
-                    return ancestor(initial,end);
+        int ancestor = - 1;
+        shortest = Integer.MAX_VALUE;
+        BreadthFirstDirectedPaths bfsV = new BreadthFirstDirectedPaths(G, v);
+        BreadthFirstDirectedPaths bfsW = new BreadthFirstDirectedPaths(G, w);
+
+        for (int i = 0; i < G.V(); i++) {
+            if (bfsV.hasPathTo(i) && bfsW.hasPathTo(i)) {
+                int distance = bfsV.distTo(i) + bfsW.distTo(i);
+                if (distance < shortest) {
+                    shortest = distance;
+                    ancestor = i;
                 }
             }
         }
-        return -1;
+        return ancestor;
     }
+
 
     // do unit testing of this class
     public static void main(String[] args) {
+        /*UncommentedEmptyMethodBody*/
 
         }
     }
