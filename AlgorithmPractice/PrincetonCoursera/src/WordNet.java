@@ -1,16 +1,20 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Collection;
+
 
 public class WordNet {
 
-    private final HashMap<String, Integer> synset = new HashMap<>();
-    private final HashMap<Integer,String> synsetReverse = new HashMap<>();
+    private final HashMap<List<String>, Integer> synset = new HashMap<>();
     private final Digraph wordNet;
-    private int distance;
-    private SAP sca;
+    private SAP distanceIterables;
+    private List<Integer> A;
+    private List<Integer> B;
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
@@ -22,10 +26,7 @@ public class WordNet {
         while (synsetIn.hasNextLine()) {
             String line = synsetIn.readLine();
             String[] idAndNouns = line.split(",");
-            String nounss = idAndNouns[1];
-            synset.put(nounss,++id);
-            synsetReverse.put(id, nounss);
-
+            synset.put(Arrays.asList(idAndNouns[1].split("_")), ++id);
         }
 
         In hypernymIn = new In(hypernyms);
@@ -40,13 +41,13 @@ public class WordNet {
                 wordNet.addEdge(relations.get(0), relations.get(i));
             }
         }
-        sca = new SAP(wordNet);
-
     }
 
     // returns all WordNet nouns
     public Iterable<String> nouns() {
-        return synset.keySet();
+        List<String> iterableNouns = new ArrayList<>();
+        synset.keySet().forEach(iterableNouns::addAll);
+        return iterableNouns;
 
     }
 
@@ -55,12 +56,9 @@ public class WordNet {
         if (word == null) {
             throw new IllegalArgumentException("Arg is illegal");
         }
-        for (String s : synset.keySet()) {
-            if (s.contains(word)){
-                return true;
-            }
-        }
-        return false;
+         List<String> iterableNouns = new ArrayList<>();
+         iterableNouns.addAll((Collection<? extends String>) nouns());
+        return iterableNouns.contains(word);
 
     }
 
@@ -69,9 +67,21 @@ public class WordNet {
         if (nounA == null || nounB == null || !isNoun(nounA) || !isNoun(nounB)) {
             throw new IllegalArgumentException("Arg illegal");
         }
-        sap(nounA, nounB);
-        return distance;
+        A = new ArrayList<>();
+        B = new ArrayList<>();
 
+        for (List<String> list : synset.keySet()) {
+            for (String noun : list) {
+                if (nounA.equals(noun)) {
+                    A.add(synset.get(list));
+                }
+                if (nounB.equals(noun)) {
+                    B.add(synset.get(list));
+                }
+            }
+        }
+        distanceIterables = new SAP(wordNet);
+        return distanceIterables.length(A, B);
     }
 
 
@@ -81,29 +91,16 @@ public class WordNet {
         if (nounA == null || nounB == null || !isNoun(nounA) || !isNoun(nounB)) {
             throw new IllegalArgumentException("Arg illegal");
         }
-        List <Integer> A = new ArrayList<>();
-        List <Integer> B = new ArrayList<>();
-
-        for (String k : synset.keySet()) {
-            if (k.contains(nounA)) {
-                A.add(synset.get(k));
-            }
-            if (k.contains(nounB)) {
-                B.add(synset.get(k));
-            }
-        }
-        int ancestor = sca.ancestor(A, B);
-        distance = sca.length(A,B);
-        return synsetReverse.get(ancestor);
-
+        return String.valueOf(distanceIterables.ancestor(A, B));
 
     }
 
     // do unit testing of this class
     public static void main(String[] args) {
-        WordNet test = new WordNet("synsets100-subgraph.txt", "hypernyms100-subgraph.txt");
-        System.out.println(test.distance("factor_V","prothrombin"));
-
+        WordNet test = new WordNet("synsets15.txt","hypernyms15Tree.txt");
+        System.out.println(test.isNoun("ten"));
+        System.out.println(test.distance("ten","nine"));
+        System.out.println(test.sap("ten","nine"));
     }
 
 }

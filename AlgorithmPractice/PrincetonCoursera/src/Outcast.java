@@ -28,8 +28,10 @@ public class Outcast {
 
     // see test client below
     public static void main(String[] args) {
-        /*UncommentedEmptyMethodBody*/
-
+        WordNet test = new WordNet("synsets15.txt", "hypernyms15Tree.txt");
+        Outcast tester = new Outcast(test);
+        String[] t = {"two", "twelve", "three", "one"};
+        System.out.println(tester.outcast(t));
 
     }
 }
