@@ -1,3 +1,5 @@
+package PartII_Week1_Wordnet;
+
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import java.util.ArrayList;
@@ -44,13 +46,13 @@ public class WordNet {
 
     }
 
-    // returns all WordNet nouns
+    // returns all PartII_Week1_Wordnet.WordNet nouns
     public Iterable<String> nouns() {
         return synset.keySet();
 
     }
 
-    // is the word a WordNet noun?
+    // is the word a PartII_Week1_Wordnet.WordNet noun?
     public boolean isNoun(String word) {
         if (word == null) {
             throw new IllegalArgumentException("Arg is illegal");
