@@ -1,4 +1,4 @@
-package PartI_Week4_8puzzle;
+package Part_I.PartI_Week4_8puzzle;
 
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdRandom;

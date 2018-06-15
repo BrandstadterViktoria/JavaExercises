@@ -1,4 +1,4 @@
-package PartI_Week5_KdTree;
+package Part_I.PartI_Week5_KdTree;
 
 import edu.princeton.cs.algs4.*;
 

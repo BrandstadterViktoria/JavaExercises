@@ -1,4 +1,4 @@
-package PartI_Week2_RandomizedQueuesAndDeque;
+package Part_I.PartI_Week2_RandomizedQueuesAndDeque;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

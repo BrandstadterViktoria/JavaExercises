@@ -1,4 +1,4 @@
-package PartI_Week3_CollinearPoints;
+package Part_I.PartI_Week3_CollinearPoints;
 
 import java.util.Arrays;
 
