@@ -2,24 +2,27 @@ import edu.princeton.cs.algs4.Picture;
 
 public class SeamCarver {
 
-
+    private Picture pictureCopy;
+    
     // create a seam carver object based on the given picture
     public SeamCarver(Picture picture) {
-
+        this.pictureCopy = picture;
     }
 
     // current picture
     public Picture picture() {
-
+        return pictureCopy;
     }
 
     // width of current picture
     public     int width() {
+        return pictureCopy.width();
 
     }
 
     // height of current picture
     public     int height() {
+        return pictureCopy.height();
 
     }
 
