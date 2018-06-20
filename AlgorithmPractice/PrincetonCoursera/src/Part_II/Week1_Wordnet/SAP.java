@@ -1,4 +1,4 @@
-package Part_II.PartII_Week1_Wordnet;
+package Part_II.Week1_Wordnet;
 
 import edu.princeton.cs.algs4.BreadthFirstDirectedPaths;
 import edu.princeton.cs.algs4.Digraph;
