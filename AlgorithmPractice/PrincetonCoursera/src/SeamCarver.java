@@ -44,14 +44,14 @@ public class SeamCarver {
             throw new IllegalArgumentException("column index must be between 0 and " + (width() - 1) + ": " + x);
         if (y < 0 || y >= height())
             throw new IllegalArgumentException("row index must be between 0 and " + (height() - 1) + ": " + y);
-        if (x == 0 || y == 0 || x == width() -1 || y == height() -1) {
+        if (x == 0 || y == 0 || x == width() - 1 || y == height() - 1) {
             return 1000;
         } else {
-            return Math.sqrt(yieldingX2(x, y) + yieldingY2(x, y));
+            return Math.sqrt((double) yieldingX2(x, y) + yieldingY2(x, y));
         }
     }
 
-   // sequence of indices for horizontal seam
+  /* // sequence of indices for horizontal seam
     public int[] findHorizontalSeam() {
 
     }
@@ -60,7 +60,7 @@ public class SeamCarver {
     public int[] findVerticalSeam() {
 
     }
-
+*/
     /*// remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
         if (height < 1) {
@@ -93,22 +93,30 @@ public class SeamCarver {
     }*/
 
     private int yieldingX2(int x, int y) {
-            int rgbRight = pictureCopy.getRGB(x + 1, y);
-            int rgbLeft = pictureCopy.getRGB(x - 1, y);
-            int red = (rgbRight >> 16) & 0x000000FF - (rgbLeft >> 16) & 0x000000FF;
-            int green = (rgbRight >> 8) & 0x000000FF - (rgbLeft >> 8) & 0x000000FF;
-            int blue = (rgbRight) & 0x000000FF - (rgbLeft) & 0x000000FF;
-            return red * red + green * green + blue * blue;
-        }
+        int rgbRight = pictureCopy.getRGB(x + 1, y);
+        int rgbLeft = pictureCopy.getRGB(x - 1, y);
+        int red = (rgbRight >> 16) & 0xFF;
+        int green = (rgbRight >> 8) & 0xFF;
+        int blue = (rgbRight) & 0xFF;
+        int redL = (rgbLeft >> 16) & 0xFF;
+        int greenL = (rgbLeft >> 8) & 0xFF;
+        int blueL = (rgbLeft) & 0xFF;
+        return (red - redL) * (red - redL) + (green - greenL) * (green - greenL)
+                + (blue - blueL) * (blue - blueL);
+    }
 
 
     private int yieldingY2(int x, int y) {
-        int rgbUp = pictureCopy.getRGB(x, y - 1);
         int rgbDown = pictureCopy.getRGB(x, y + 1);
-        int red = (rgbDown >> 16) & 0x000000FF - (rgbUp >> 16) & 0x000000FF;
-        int green = (rgbDown >> 8) & 0x000000FF - (rgbUp >> 8) & 0x000000FF;
-        int blue = (rgbDown) & 0x000000FF - (rgbUp) & 0x000000FF;
-        return red * red + green * green + blue * blue;
+        int rgbUp = pictureCopy.getRGB(x, y - 1);
+        int red = (rgbDown >> 16) & 0xFF;
+        int green = (rgbDown >> 8) & 0xFF;
+        int blue = (rgbDown) & 0xFF;
+        int redU = (rgbUp >> 16) & 0xFF;
+        int greenU = (rgbUp >> 8) & 0xFF;
+        int blueU = (rgbUp) & 0xFF;
+        return (red - redU) * (red - redU) + (green - greenU) * (green - greenU)
+                + (blue - blueU) * (blue - blueU);
     }
 
 
