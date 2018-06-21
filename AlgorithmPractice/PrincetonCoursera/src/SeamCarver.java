@@ -1,10 +1,8 @@
 import edu.princeton.cs.algs4.Picture;
 import edu.princeton.cs.algs4.StdOut;
-
-
 public class SeamCarver {
+
     private Picture pictureCopy;
-    //private int[][] pixelsRGB;
 
     // create a seam carver object based on the given picture
     public SeamCarver(Picture picture) {
@@ -12,11 +10,7 @@ public class SeamCarver {
             throw new IllegalArgumentException("Arg is illegal");
         }
         this.pictureCopy = new Picture(picture);
-     /*   pixelsRGB = new int[width][height];
-        for (int i = 0; i < width; i++)
-            for (int j = 0; j < height; j++)
-                pixelsRGB[i][j] = picture.getRGB(i, j);
-*/
+
     }
 
     // current picture
@@ -37,8 +31,6 @@ public class SeamCarver {
     }
 
     // energy of pixel at column x and row y
-
-    // BV*************  necessary to control it again
     public double energy(int x, int y) {
         if (x < 0 || x >= width())
             throw new IllegalArgumentException("column index must be between 0 and " + (width() - 1) + ": " + x);
@@ -51,16 +43,45 @@ public class SeamCarver {
         }
     }
 
-  /* // sequence of indices for horizontal seam
+  /*// sequence of indices for horizontal seam
     public int[] findHorizontalSeam() {
 
     }
-
+*/
     // sequence of indices for vertical seam
     public int[] findVerticalSeam() {
+        int [] [] energy = new int[height()][width()];
+        for (int row = 0; row < height(); row++) {
+            for (int col = 0; col < width(); col++) {
+                energy[row][col] = (int) energy(col, row);
+            }
+        }
+        int [] indices = new int[height()];
+        int ind = 1;
+        int currentCol = 3;
+        indices[0] = currentCol;
+        int currentRow = 0;
+        while (currentRow < height()-1) {
+            if (currentRow == height() -2) {
+                indices[ind] = currentCol;
+            } else {
+                int dist = Math.min((Math.min(energy[currentRow + 1][currentCol - 1], energy[currentRow + 1][currentCol])),
+                        energy[currentRow + 1][currentCol + 1]);
+                currentCol = dist == energy[currentRow + 1][currentCol - 1] ? currentCol - 1 :
+                        (dist == energy[currentRow + 1][currentCol] ? currentCol : currentCol + 1);
+            }
+         currentRow++;
+         indices[ind] = currentCol;
+         ind++;
+        }
 
+        for (int i = 0; i < indices.length; i++) {
+            System.out.println(indices[i]);
+        }
+
+        return indices;
     }
-*/
+
     /*// remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
         if (height < 1) {
@@ -128,10 +149,11 @@ public class SeamCarver {
 
         StdOut.printf("Printing energy calculated for each pixel.\n");
 
-        for (int row = 0; row < sc.height(); row++) {
+       /* for (int row = 0; row < sc.height(); row++) {
             for (int col = 0; col < sc.width(); col++)
                 StdOut.printf("%9.0f ", sc.energy(col, row));
             StdOut.println();
-        }
+        }*/
+       sc.findVerticalSeam();
     }
 }
