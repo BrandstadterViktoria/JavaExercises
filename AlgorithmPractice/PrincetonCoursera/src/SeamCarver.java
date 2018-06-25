@@ -57,27 +57,6 @@ public class SeamCarver {
             }
         }
         int [] indices = new int[height()];
-        int ind = 1;
-        int currentCol = 3;
-        indices[0] = currentCol;
-        int currentRow = 0;
-        while (currentRow < height()-1) {
-            if (currentRow == height() -2) {
-                indices[ind] = currentCol;
-            } else {
-                int dist = Math.min((Math.min(energy[currentRow + 1][currentCol - 1], energy[currentRow + 1][currentCol])),
-                        energy[currentRow + 1][currentCol + 1]);
-                currentCol = dist == energy[currentRow + 1][currentCol - 1] ? currentCol - 1 :
-                        (dist == energy[currentRow + 1][currentCol] ? currentCol : currentCol + 1);
-            }
-         currentRow++;
-         indices[ind] = currentCol;
-         ind++;
-        }
-
-        for (int i = 0; i < indices.length; i++) {
-            System.out.println(indices[i]);
-        }
 
         return indices;
     }
@@ -140,6 +119,10 @@ public class SeamCarver {
                 + (blue - blueU) * (blue - blueU);
     }
 
+    private boolean isValidPoint(char[][] matrix, int x, int y) {
+        return !(x < 0 || x >= matrix.length || y < 0 || y >= matrix.length) && (matrix[x][y] != '0');
+    }
+
 
     public static void main(String[] args) {
         Picture picture = new Picture(args[0]);
@@ -147,7 +130,7 @@ public class SeamCarver {
 
         SeamCarver sc = new SeamCarver(picture);
 
-        StdOut.printf("Printing energy calculated for each pixel.\n");
+       // StdOut.printf("Printing energy calculated for each pixel.\n");
 
        /* for (int row = 0; row < sc.height(); row++) {
             for (int col = 0; col < sc.width(); col++)
