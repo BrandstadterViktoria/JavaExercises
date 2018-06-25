@@ -18,6 +18,16 @@ public class SeamCarver {
         return pictureCopy;
     }
 
+    private class Node {
+        int x;
+        int y;
+
+        Node(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     // width of current picture
     public int width() {
         return pictureCopy.width();
@@ -119,7 +129,7 @@ public class SeamCarver {
                 + (blue - blueU) * (blue - blueU);
     }
 
-    private boolean isValidPoint(char[][] matrix, int x, int y) {
+    private boolean isValidNode(char[][] matrix, int x, int y) {
         return !(x < 0 || x >= matrix.length || y < 0 || y >= matrix.length) && (matrix[x][y] != '0');
     }
 
