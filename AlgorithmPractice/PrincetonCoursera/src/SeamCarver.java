@@ -57,6 +57,8 @@ public class SeamCarver {
             }
         }
         int [] indices = new int[height()];
+
+
         int ind = 1;
         int currentCol = 3;
         indices[0] = currentCol;
@@ -138,6 +140,10 @@ public class SeamCarver {
         int blueU = (rgbUp) & 0xFF;
         return (red - redU) * (red - redU) + (green - greenU) * (green - greenU)
                 + (blue - blueU) * (blue - blueU);
+    }
+
+    private boolean isValidPoint(int [][] matrix, int x, int y) {
+        return !(x < 0 || x >= matrix.length || y < 0 || y >= matrix.length) && (matrix[x][y] != '0');
     }
 
 
