@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class SeamCarver {
 
     private Picture pictureCopy;
-    private int [] [] energies;
+    private int[][] energies;
 
     // create a seam carver object based on the given picture
     public SeamCarver(Picture picture) {
@@ -54,7 +54,7 @@ public class SeamCarver {
         int[][] energy = new int[height()][width()];
         for (int row = 0; row < height(); row++) {
             for (int col = 0; col < width(); col++) {
-                energy[row][col] = energies[row] [col];
+                energy[row][col] = energies[row][col];
                 if (col == 1 && firstColSmallest > energy[row][col]) {
                     firstColSmallest = energy[row][col];
                     currentCol = col;
@@ -74,8 +74,13 @@ public class SeamCarver {
                 int dist2 = isValidPixel(energy, currentRow, currentCol + 1) ? energy[currentRow][currentCol + 1] : Integer.MAX_VALUE;
                 int dist3 = isValidPixel(energy, currentRow - 1, currentCol + 1) ? energy[currentRow - 1][currentCol + 1] : Integer.MAX_VALUE;
                 int dist = Math.min((Math.min(dist1, dist2)), dist3);
-                currentRow = dist == energy[currentRow + 1][currentCol + 1] ? currentRow + 1 :
-                        (dist == energy[currentRow][currentCol + 1] ? currentRow : currentRow - 1);
+
+                if (isValidPixel(energy, currentRow + 1, currentCol + 1) && dist == dist1) {
+                    currentRow = currentRow + 1;
+                }
+                if (isValidPixel(energy, currentRow - 1, currentCol + 1) && dist == dist2) {
+                    currentRow = currentRow - 1;
+                }
             }
             currentCol++;
             indices[ind] = currentRow;
@@ -98,7 +103,7 @@ public class SeamCarver {
         int[][] energy = new int[height()][width()];
         for (int row = 0; row < height(); row++) {
             for (int col = 0; col < width(); col++) {
-                energy[row][col] = energies [row] [col];
+                energy[row][col] = energies[row][col];
                 if (row == 1 && firstRowSmallest > energy[row][col]) {
                     firstRowSmallest = energy[row][col];
                     currentCol = col;
@@ -118,8 +123,13 @@ public class SeamCarver {
                 int dist2 = isValidPixel(energy, currentRow + 1, currentCol) ? energy[currentRow + 1][currentCol] : Integer.MAX_VALUE;
                 int dist3 = isValidPixel(energy, currentRow + 1, currentCol + 1) ? energy[currentRow + 1][currentCol + 1] : Integer.MAX_VALUE;
                 int dist = Math.min((Math.min(dist1, dist2)), dist3);
-                currentCol = dist == energy[currentRow + 1][currentCol - 1] ? currentCol - 1 :
-                        (dist == energy[currentRow + 1][currentCol] ? currentCol : currentCol + 1);
+                if (isValidPixel(energy, currentRow + 1, currentCol - 1) && dist == dist1) {
+                    currentCol = currentCol - 1;
+                }
+                if (isValidPixel(energy, currentRow + 1, currentCol + 1) && dist == dist3) {
+                    currentCol = currentCol + 1;
+                }
+
             }
             currentRow++;
             indices[ind] = currentCol;
@@ -143,10 +153,11 @@ public class SeamCarver {
         }
         for (int i = 0; i < seam.length; i++) {
             if (i > 0 && Math.abs(seam[i] - seam[i - 1]) != 1) {
-                throw new IllegalArgumentException("Given seam is doestn decrease by 1.");
+                throw new IllegalArgumentException("Given seam is doesn't decrease by 1.");
             }
             if (seam[i] < 0 || seam[i] >= pictureCopy.height()) {
                 throw new IllegalArgumentException();
+            }
         }
 
         int[][] energieRemoveH = new int[pictureCopy.height() - 1][pictureCopy.width()];
@@ -162,7 +173,7 @@ public class SeamCarver {
             }
         }
 
-            pictureCopy = removeHPicture;
+        pictureCopy = removeHPicture;
 
         for (int i = 0; i < energieRemoveH[0].length; i++) {
             if (seam[i] > 0) {
@@ -174,7 +185,7 @@ public class SeamCarver {
         energies = energieRemoveH;
     }
 
-        // remove vertical seam from current picture
+    // remove vertical seam from current picture
 
     public void removeVerticalSeam(int[] seam) {
         if (pictureCopy.width() < 1) {
@@ -189,13 +200,14 @@ public class SeamCarver {
             }
             if (seam[i] < 0 || seam[i] >= pictureCopy.width()) {
                 throw new IllegalArgumentException();
+            }
         }
 
-        int[][] energieRemoveV= new int[pictureCopy.height()][pictureCopy.width() -1];
-        Picture removeVPicture = new Picture(pictureCopy.width() -1, pictureCopy.height());
+        int[][] energieRemoveV = new int[pictureCopy.height()][pictureCopy.width() - 1];
+        Picture removeVPicture = new Picture(pictureCopy.width() - 1, pictureCopy.height());
         int index = 0;
-            for (int row = 0; row < height(); row++) {
-                for (int col = 0; col < width() -1; col++) {
+        for (int row = 0; row < height(); row++) {
+            for (int col = 0; col < width() - 1; col++) {
                 if (seam[index] == index) {
                     index++;
                 }
