@@ -54,7 +54,7 @@ public class SeamCarver {
         int[][] energy = new int[height()][width()];
         for (int row = 0; row < height(); row++) {
             for (int col = 0; col < width(); col++) {
-                energy[row][col] = (int) energy(col, row);
+                energy[row][col] = energies[row] [col];
                 if (col == 1 && firstColSmallest > energy[row][col]) {
                     firstColSmallest = energy[row][col];
                     currentCol = col;
@@ -98,7 +98,7 @@ public class SeamCarver {
         int[][] energy = new int[height()][width()];
         for (int row = 0; row < height(); row++) {
             for (int col = 0; col < width(); col++) {
-                energy[row][col] = (int) energy(col, row);
+                energy[row][col] = energies [row] [col];
                 if (row == 1 && firstRowSmallest > energy[row][col]) {
                     firstRowSmallest = energy[row][col];
                     currentCol = col;
@@ -161,7 +161,16 @@ public class SeamCarver {
         }
 
             pictureCopy = removeHPicture;
+
+        for (int i = 0; i < energieRemoveH[0].length; i++) {
+            if (seam[i] > 0) {
+                energieRemoveH[seam[i] - 1][i] = (int) energy(i, seam[i] - 1);
+            }
+            energieRemoveH[seam[i]][i] = (int) energy(i, seam[i]);
         }
+
+        energies = energieRemoveH;
+    }
 
         // remove vertical seam from current picture
 
@@ -191,6 +200,14 @@ public class SeamCarver {
             }
         }
 
+        for (int i = 0; i < energieRemoveV.length; i++) {
+            if (seam[i] > 0) {
+                energieRemoveV[i][seam[i] - 1] = (int) energy(seam[i] - 1, i);
+            }
+            energieRemoveV[i][seam[i]] = (int) energy(seam[i], i);
+        }
+
+        energies = energieRemoveV;
     }
 
     private int yieldingX2(int x, int y) {
