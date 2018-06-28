@@ -156,7 +156,7 @@ public class SeamCarver {
                     index++;
                 }
                 energieRemoveH[row][col] = energieRemoveH[index][col];
-                removeHPicture.setRGB(col, row, pictureCopy.getRGB(col, index));
+                removeHPicture.setRGB(col, row, pictureCopy.getRGB(col, index++));
             }
         }
 
@@ -175,6 +175,19 @@ public class SeamCarver {
         for (int i = 0; i < seam.length; i++) {
             if (i < 0 && seam[i] - seam[i - 1] != 1) {
                 throw new IllegalArgumentException("Given seam is doesn't decrease by 1.");
+            }
+        }
+
+        int[][] energieRemoveV= new int[pictureCopy.height()][pictureCopy.width() -1];
+        Picture removeVPicture = new Picture(pictureCopy.width() -1, pictureCopy.height());
+        int index = 0;
+            for (int row = 0; row < height(); row++) {
+                for (int col = 0; col < width() -1; col++) {
+                if (seam[index] == index) {
+                    index++;
+                }
+                energieRemoveV[row][col] = energieRemoveV[row][index];
+                removeVPicture.setRGB(col, row, pictureCopy.getRGB(index++, row));
             }
         }
 
