@@ -67,8 +67,10 @@ public class SeamCarver {
             if (currentRow == height() -2) {
                 indices[ind] = currentCol;
             } else {
-                int dist = Math.min((Math.min(energy[currentRow + 1][currentCol - 1], energy[currentRow + 1][currentCol])),
-                        energy[currentRow + 1][currentCol + 1]);
+                int dist1 = isValidPixel(energy, currentRow + 1, currentCol - 1) ?  energy[currentRow + 1][currentCol - 1] : Integer.MAX_VALUE;
+                int dist2 = isValidPixel(energy, currentRow + 1, currentCol) ? energy[currentRow + 1][currentCol] : Integer.MAX_VALUE;
+                int dist3 = isValidPixel(energy, currentRow + 1, currentCol + 1) ? energy[currentRow + 1][currentCol + 1] : Integer.MAX_VALUE;
+                int dist = Math.min((Math.min(dist1, dist2)), dist3);
                 currentCol = dist == energy[currentRow + 1][currentCol - 1] ? currentCol - 1 :
                         (dist == energy[currentRow + 1][currentCol] ? currentCol : currentCol + 1);
             }
@@ -142,7 +144,7 @@ public class SeamCarver {
                 + (blue - blueU) * (blue - blueU);
     }
 
-    private boolean isValidPoint(int [][] matrix, int x, int y) {
+    private boolean isValidPixel(int [][] matrix, int x, int y) {
         return !(x < 0 || x >= matrix.length || y < 0 || y >= matrix.length) && (matrix[x][y] != '0');
     }
 
