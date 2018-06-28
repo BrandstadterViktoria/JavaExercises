@@ -135,16 +135,18 @@ public class SeamCarver {
 
     // remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
-        if (height() < 1) {
+        if (pictureCopy.height() < 1) {
             throw new IllegalArgumentException("Impossible task picture height is is less than or equal to 1.");
         }
-        if (seam.length != height()) {
+        if (seam == null || seam.length != pictureCopy.height()) {
             throw new IllegalArgumentException("Given seam isn't in the prescribed range.");
         }
         for (int i = 0; i < seam.length; i++) {
-            if (i < 0 && seam[i] - seam[i - 1] != 1) {
+            if (i > 0 && Math.abs(seam[i] - seam[i - 1]) != 1) {
                 throw new IllegalArgumentException("Given seam is doestn decrease by 1.");
             }
+            if (seam[i] < 0 || seam[i] >= pictureCopy.height()) {
+                throw new IllegalArgumentException();
         }
 
         int[][] energieRemoveH = new int[pictureCopy.height() - 1][pictureCopy.width()];
@@ -175,16 +177,18 @@ public class SeamCarver {
         // remove vertical seam from current picture
 
     public void removeVerticalSeam(int[] seam) {
-        if (width() < 1) {
+        if (pictureCopy.width() < 1) {
             throw new IllegalArgumentException("Impossible task picture width is is less than or equal to 1.");
         }
-        if (seam.length != width()) {
+        if (seam == null || seam.length != pictureCopy.width()) {
             throw new IllegalArgumentException("Given seam isn't in the prescribed range.");
         }
         for (int i = 0; i < seam.length; i++) {
-            if (i < 0 && seam[i] - seam[i - 1] != 1) {
+            if (i > 0 && seam[i] - seam[i - 1] != 1) {
                 throw new IllegalArgumentException("Given seam is doesn't decrease by 1.");
             }
+            if (seam[i] < 0 || seam[i] >= pictureCopy.width()) {
+                throw new IllegalArgumentException();
         }
 
         int[][] energieRemoveV= new int[pictureCopy.height()][pictureCopy.width() -1];
