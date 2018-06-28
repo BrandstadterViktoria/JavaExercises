@@ -44,11 +44,50 @@ public class SeamCarver {
         }
     }
 
-    /*// sequence of indices for horizontal seam
+    // sequence of indices for horizontal seam
       public int[] findHorizontalSeam() {
+          int[] indices = new int[width()];
+          int firstColSmallest = Integer.MAX_VALUE;
+          int currentCol = 0;
+          int currentRow = 0;
+          int[][] energy = new int[height()][width()];
+          for (int row = 0; row < height(); row++) {
+              for (int col = 0; col < width(); col++) {
+                  energy[row][col] = (int) energy(col, row);
+                  if (col == 1 && firstColSmallest > energy[row][col]) {
+                      firstColSmallest = energy[row][col];
+                      currentCol = col;
+                      currentRow = row;
+                  }
+              }
+          }
 
+          int ind = 2;
+          indices[0] = currentRow ;
+          indices[1] = currentRow;
+          while (currentCol < width() - 1) {
+              if (currentCol == width() - 2) {
+                  indices[ind] = currentCol;
+              } else {
+                  int dist1 = isValidPixel(energy, currentRow + 1, currentCol + 1) ? energy[currentRow + 1][currentCol + 1] : Integer.MAX_VALUE;
+                  int dist2 = isValidPixel(energy, currentRow, currentCol + 1) ? energy[currentRow][currentCol + 1] : Integer.MAX_VALUE;
+                  int dist3 = isValidPixel(energy, currentRow - 1, currentCol + 1) ? energy[currentRow - 1][currentCol + 1] : Integer.MAX_VALUE;
+                  int dist = Math.min((Math.min(dist1, dist2)), dist3);
+                  currentRow = dist == energy[currentRow + 1][currentCol + 1] ? currentRow + 1 :
+                          (dist ==  energy[currentRow][currentCol + 1] ? currentRow : currentRow  - 1);
+              }
+              currentCol++;
+              indices[ind] = currentRow;
+              ind++;
+          }
+
+          for (int i = 0; i < indices.length; i++) {
+              System.out.println(indices[i]);
+          }
+
+          return indices;
       }
-  */
+
     // sequence of indices for vertical seam
     public int[] findVerticalSeam() {
         int[] indices = new int[height()];
@@ -169,6 +208,6 @@ public class SeamCarver {
                 StdOut.printf("%9.0f ", sc.energy(col, row));
             StdOut.println();
         }*/
-        sc.findVerticalSeam();
+        sc.findHorizontalSeam();
     }
 }
