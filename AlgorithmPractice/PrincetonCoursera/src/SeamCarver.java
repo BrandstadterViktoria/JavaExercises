@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.Picture;
 import edu.princeton.cs.algs4.StdOut;
+
 public class SeamCarver {
 
     private Picture pictureCopy;
@@ -43,40 +44,46 @@ public class SeamCarver {
         }
     }
 
-  /*// sequence of indices for horizontal seam
-    public int[] findHorizontalSeam() {
+    /*// sequence of indices for horizontal seam
+      public int[] findHorizontalSeam() {
 
-    }
-*/
+      }
+  */
     // sequence of indices for vertical seam
     public int[] findVerticalSeam() {
-        int [] [] energy = new int[height()][width()];
+        int[] indices = new int[height()];
+        int firstRowSmallest = Integer.MAX_VALUE;
+        int currentCol = 0;
+        int currentRow = 0;
+        int[][] energy = new int[height()][width()];
         for (int row = 0; row < height(); row++) {
             for (int col = 0; col < width(); col++) {
                 energy[row][col] = (int) energy(col, row);
+                if (row == 1 && firstRowSmallest > energy[row][col]) {
+                    firstRowSmallest = energy[row][col];
+                    currentCol = col;
+                    currentRow = row;
+                }
             }
         }
-        int [] indices = new int[height()];
 
-
-        int ind = 1;
-        int currentCol = 3;
+        int ind = 2;
         indices[0] = currentCol;
-        int currentRow = 0;
-        while (currentRow < height()-1) {
-            if (currentRow == height() -2) {
+        indices[1] = currentCol;
+        while (currentRow < height() - 1) {
+            if (currentRow == height() - 2) {
                 indices[ind] = currentCol;
             } else {
-                int dist1 = isValidPixel(energy, currentRow + 1, currentCol - 1) ?  energy[currentRow + 1][currentCol - 1] : Integer.MAX_VALUE;
+                int dist1 = isValidPixel(energy, currentRow + 1, currentCol - 1) ? energy[currentRow + 1][currentCol - 1] : Integer.MAX_VALUE;
                 int dist2 = isValidPixel(energy, currentRow + 1, currentCol) ? energy[currentRow + 1][currentCol] : Integer.MAX_VALUE;
                 int dist3 = isValidPixel(energy, currentRow + 1, currentCol + 1) ? energy[currentRow + 1][currentCol + 1] : Integer.MAX_VALUE;
                 int dist = Math.min((Math.min(dist1, dist2)), dist3);
                 currentCol = dist == energy[currentRow + 1][currentCol - 1] ? currentCol - 1 :
                         (dist == energy[currentRow + 1][currentCol] ? currentCol : currentCol + 1);
             }
-         currentRow++;
-         indices[ind] = currentCol;
-         ind++;
+            currentRow++;
+            indices[ind] = currentCol;
+            ind++;
         }
 
         for (int i = 0; i < indices.length; i++) {
@@ -144,7 +151,7 @@ public class SeamCarver {
                 + (blue - blueU) * (blue - blueU);
     }
 
-    private boolean isValidPixel(int [][] matrix, int x, int y) {
+    private boolean isValidPixel(int[][] matrix, int x, int y) {
         return !(x < 0 || x >= matrix.length || y < 0 || y >= matrix.length) && (matrix[x][y] != '0');
     }
 
@@ -155,13 +162,13 @@ public class SeamCarver {
 
         SeamCarver sc = new SeamCarver(picture);
 
-       // StdOut.printf("Printing energy calculated for each pixel.\n");
+        // StdOut.printf("Printing energy calculated for each pixel.\n");
 
        /* for (int row = 0; row < sc.height(); row++) {
             for (int col = 0; col < sc.width(); col++)
                 StdOut.printf("%9.0f ", sc.energy(col, row));
             StdOut.println();
         }*/
-       sc.findVerticalSeam();
+        sc.findVerticalSeam();
     }
 }
