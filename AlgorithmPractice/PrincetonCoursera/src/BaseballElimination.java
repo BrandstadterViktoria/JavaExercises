@@ -1,14 +1,15 @@
 import edu.princeton.cs.algs4.In;
+
 import java.util.HashMap;
 
 
 public class BaseballElimination {
 
-    private int [] wins;
-    private int [] losses;
-    private int [][] games;
-    private int [] left;
-    private HashMap<String,Integer> teams = new HashMap<>();
+    private int[] wins;
+    private int[] losses;
+    private int[][] games;
+    private int[] left;
+    private HashMap<String, Integer> teams = new HashMap<>();
 
     // create a baseball division from given filename in format specified below
     public BaseballElimination(String filename) {
@@ -20,15 +21,27 @@ public class BaseballElimination {
         games = new int[size][size];
         int ig = 0;
         while (read.hasNextLine()) {
-        int index = -1;
-        int il = 0;
-        String []line = read.readLine().split(" ");
-        teams.put(line[0],ig);
-        wins[++index] = Integer.valueOf(line[++il]);
-        losses[index] = Integer.valueOf(line[++il]);
-        left[index] = Integer.valueOf(line[++il]);
-            for (int i = 0; i < size; i++) {
-                games[ig][i] = Integer.valueOf(line[++il]);
+            String[] line = read.readLine().split(" ");
+            teams.put(line[0], ig);
+            int compare = 0;
+            int col = -1;
+            for (int i = 1; i < line.length; i++) {
+                if (line[i].trim().length() > 0) {
+                    if (wins[ig] == 0) {
+                        compare = i;
+                        wins[ig] = Integer.valueOf(line[i]);
+                    }
+                    if (i == compare + 1) {
+                        losses[ig] = Integer.valueOf(line[i]);
+                    }
+                    if (i == compare + 3) {
+                        left[ig] = Integer.valueOf(line[i]);
+
+                    }
+                    if (i > compare + 3) {
+                        games[ig][++col] = Integer.valueOf(line[i]);
+                    }
+                }
             }
             ig++;
         }
@@ -36,7 +49,7 @@ public class BaseballElimination {
 
     // number of teams
     public int numberOfTeams() {
-    return teams.size();
+        return teams.size();
 
     }
 
@@ -69,7 +82,7 @@ public class BaseballElimination {
         return games[teams.get(team1)][teams.get(team2)];
     }
 
-    // is given team eliminated?
+   /* // is given team eliminated?
     public boolean isEliminated(String team) {
 
 
@@ -80,6 +93,10 @@ public class BaseballElimination {
 
 
     }*/
+
+    public static void main(String[] args) {
+        BaseballElimination division = new BaseballElimination(args[0]);
+    }
 
 
 }
