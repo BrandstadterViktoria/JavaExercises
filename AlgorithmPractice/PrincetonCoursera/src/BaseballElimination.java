@@ -9,12 +9,13 @@ public class BaseballElimination {
     private int[] losses;
     private int[][] games;
     private int[] left;
+    private int size;
     private HashMap<String, Integer> teams = new HashMap<>();
 
     // create a baseball division from given filename in format specified below
     public BaseballElimination(String filename) {
         In read = new In(filename);
-        int size = Integer.valueOf(read.readLine());
+        size = Integer.valueOf(read.readLine());
         wins = new int[size];
         losses = new int[size];
         left = new int[size];
@@ -36,7 +37,6 @@ public class BaseballElimination {
                     }
                     if (i == compare + 3) {
                         left[ig] = Integer.valueOf(line[i]);
-
                     }
                     if (i > compare + 3) {
                         games[ig][++col] = Integer.valueOf(line[i]);
@@ -49,7 +49,7 @@ public class BaseballElimination {
 
     // number of teams
     public int numberOfTeams() {
-        return teams.size();
+        return size;
 
     }
 
@@ -82,12 +82,13 @@ public class BaseballElimination {
         return games[teams.get(team1)][teams.get(team2)];
     }
 
-   /* // is given team eliminated?
+   // is given team eliminated?
     public boolean isEliminated(String team) {
 
 
     }
 
+    /*
     // subset R of teams that eliminates given team; null if not eliminated
     public Iterable<String> certificateOfElimination(String team) {
 
@@ -96,7 +97,15 @@ public class BaseballElimination {
 
     public static void main(String[] args) {
         BaseballElimination division = new BaseballElimination(args[0]);
+        division.teams().forEach(System.out::println);
+        System.out.println(division.numberOfTeams());
+        System.out.println(division.losses("Atlanta"));
+        System.out.println(division.against("Atlanta","Montreal"));
+        System.out.println(division.remaining("Atlanta"));
+        System.out.println(division.wins("Atlanta"));
+
+        }
     }
 
 
-}
+
