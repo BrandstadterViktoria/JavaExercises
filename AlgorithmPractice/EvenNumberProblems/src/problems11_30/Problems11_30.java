@@ -1,9 +1,10 @@
+package problems11_30;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ProjectEulerProblems11_30 {
+public class Problems11_30 {
 
     public static void main(String[] args) {
 //        largestProductInAGrid_Problem11();
@@ -320,8 +321,19 @@ public class ProjectEulerProblems11_30 {
             counter++;
         }
         System.out.println(counter);
+    }
 }
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

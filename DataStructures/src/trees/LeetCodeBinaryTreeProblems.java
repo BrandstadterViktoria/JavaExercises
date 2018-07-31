@@ -311,12 +311,15 @@ public class LeetCodeBinaryTreeProblems {
         /*LC 687 Given a binary tree, find the length of the longest path where each node in the path has the same value.
         This path may or may not pass through the root.  */
 
+        // unfinished//
+
         if (root == null) {
             return 0;
         }
         int leftdepth = longestUnivaluePath(root.left);
         root.left != null && root.left.val == root.val
     }
+
 
 
 }

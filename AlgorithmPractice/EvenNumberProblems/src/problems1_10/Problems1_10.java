@@ -1,7 +1,9 @@
+package problems1_10;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class EvenNumberProblems {
+public class Problems1_10 {
     /*Here are small programs that solve the first 10 even numbered problems from the  Project Euler programming
     challenge at educational website*/
 
