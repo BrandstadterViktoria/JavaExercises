@@ -356,13 +356,18 @@ public class RandomLeetCodeExercises_1 {
         }
         return threeSums;
     }
-    public List<Double> averageOfLevels_LC637(TreeNode root) {
-//        Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
-        List<Double> avareges = new ArrayList<>();
-
-
+    public static int[][] transpose(int[][] A) {
+        int[][] res = new int[A[0].length][A.length];
+        for (int i = A.length - 1; i >= 0; i--) {
+            for (int j = A[0].length - 1; j >= 0; j--) {
+                res[j][i] = A[i][j];
+            }
+        }
+        return res;
 
     }
+
+
 }
 
 
