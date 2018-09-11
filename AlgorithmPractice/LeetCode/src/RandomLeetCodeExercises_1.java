@@ -11,7 +11,7 @@ public class RandomLeetCodeExercises_1 {
         int[][] numbers = {{1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}};
-        int[] numbers1 = {1, 4, 3, 2};
+        int[] numbers1 = {1403617094,-490450406,-1756388866,-967931676,1878401007,1878401007,-74743538,1403617094,-1756388866,-74743538,-490450406,-1895772685};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
 //
@@ -42,8 +42,10 @@ public class RandomLeetCodeExercises_1 {
 //        findRestaurant_LC599(l, k);
 //        threeSum(numbers);
 //        transposeLC867(numbers);
-        String s = "leetcode";
-        System.out.println(firstUniqChar(s));
+        /*String s = "leetcode";
+        System.out.println(firstUniqChar(s));*/
+        singleNumber(numbers1);
+
 
 
     }
@@ -392,6 +394,30 @@ public class RandomLeetCodeExercises_1 {
             }
         }
         return -1;
+    }
+    public static int[] singleNumber(int[] nums) {
+        int [] rs = new int[2];
+        if (nums.length == 2) {
+            return nums;
+        }
+        int index = - 1;
+        HashMap<Integer, Integer> scores = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+           if(!scores.containsKey(nums[i]) ){
+               scores.put(nums[i],1);
+            } else {
+               scores.put(nums[i], 2);
+           }
+        }
+        for (int i = 0; i < nums.length ; i++) {
+            if (scores.get(nums[i]) == 1) {
+                rs[++index] = nums[i];
+            }
+
+        }
+
+        return rs ;
+
     }
 }
 
