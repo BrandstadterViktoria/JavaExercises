@@ -8,7 +8,9 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[] numbers = {-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0};
+        int[][] numbers = {{1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}};
         int[] numbers1 = {1, 4, 3, 2};
 //        System.out.println(singleNumber_LC136(numbers));
 //        System.out.println(findDuplicates_LC442(numbers));
@@ -38,7 +40,11 @@ public class RandomLeetCodeExercises_1 {
 //        String[] l = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
         //       String[] k = {"KFC", "Shogun", "Burger King"};
 //        findRestaurant_LC599(l, k);
-        threeSum(numbers);
+//        threeSum(numbers);
+//        transposeLC867(numbers);
+        String s = "leetcode";
+        System.out.println(firstUniqChar(s));
+
 
     }
 
@@ -347,7 +353,6 @@ public class RandomLeetCodeExercises_1 {
                         stackTriplet.push(nums[k]);
 
 
-
                     }
                 }
 
@@ -356,19 +361,49 @@ public class RandomLeetCodeExercises_1 {
         }
         return threeSums;
     }
-    public static int[][] transpose(int[][] A) {
-        int[][] res = new int[A[0].length][A.length];
-        for (int i = A.length - 1; i >= 0; i--) {
-            for (int j = A[0].length - 1; j >= 0; j--) {
-                res[j][i] = A[i][j];
+
+    public static int[][] transposeLC867(int[][] A) {
+        int[][] result = new int[A[0].length][A.length];
+        for (int i = 0; i <= A.length - 1; i++) {
+            for (int j = 0; j <= A[0].length - 1; j++) {
+                result[j][i] = A[i][j];
             }
         }
-        return res;
-
+        return result;
     }
 
-
+    public static int firstUniqChar(String s) {
+        if (s.length() == 1) {
+            return 0;
+        }
+        HashMap<Character, Integer> scoreboard = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (scoreboard.containsKey(c)) {
+                scoreboard.put(c, scoreboard.get(c) + 1);
+            } else {
+                scoreboard.put(c, 1);
+            }
+        }
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (scoreboard.get(c) == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
