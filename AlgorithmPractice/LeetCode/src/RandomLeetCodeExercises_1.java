@@ -7,8 +7,7 @@ import java.util.regex.Pattern;
 public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
-
-
+        System.out.println(canConstruct("fffbfg", "effjfggbffjdgbjjhhdegh"));
 
     }
 
@@ -389,17 +388,14 @@ public class RandomLeetCodeExercises_1 {
         }
         for (int i = 0; i < a.length; i++) {
             if (magList.contains(a[i])) {
-                magList.remove(a[i]);
+               magList.remove(magList.indexOf(a[i]));
             } else {
                 return false;
             }
         }
-
         return true;
 
     }
-
-
 }
 
 

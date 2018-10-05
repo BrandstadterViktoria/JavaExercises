@@ -1,3 +1,5 @@
+package Part_II.Week3_BaseballElimination;
+
 import edu.princeton.cs.algs4.In;
 
 import java.util.HashMap;
@@ -82,12 +84,12 @@ public class BaseballElimination {
         return games[teams.get(team1)][teams.get(team2)];
     }
 
-   // is given team eliminated?
+   /*// is given team eliminated?
     public boolean isEliminated(String team) {
 
 
     }
-
+*/
     /*
     // subset R of teams that eliminates given team; null if not eliminated
     public Iterable<String> certificateOfElimination(String team) {
