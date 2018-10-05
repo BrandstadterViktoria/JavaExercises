@@ -167,6 +167,7 @@ private char[][] board;     // the m-by-n array of characters
         return board[i][j];
     }
 
+
     /**
      * Returns a string representation of the board, replacing 'Q' with "Qu".
      * @return a string representation of the board, replacing 'Q' with "Qu"
