@@ -8,44 +8,6 @@ public class RandomLeetCodeExercises_1 {
 
     public static void main(String[] args) {
 
-        int[][] numbers = {{1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}};
-        int[] numbers1 = {1403617094,-490450406,-1756388866,-967931676,1878401007,1878401007,-74743538,1403617094,-1756388866,-74743538,-490450406,-1895772685};
-//        System.out.println(singleNumber_LC136(numbers));
-//        System.out.println(findDuplicates_LC442(numbers));
-//
-//        int[] result = maxSumOfThreeSubarrays_LC689(numbers, 2);
-//        for (int i = 0; i < result.length; i++) {
-//            System.out.println(result[i]);
-//        }
-        //       System.out.println(detectCapitalUse("LeetCode"));
-        //       System.out.println(arrayPairSum(numbers1));
-        /*String [] result = findRelativeRanks_LC506(numbers);
-        for (int i = 0; i <= result.length -1 ; i++) {
-            System.out.println(result[i]);
-        }*/
-//        System.out.println( hammingDistance(1,4));
-//        System.out.println(countPrimeSetBits_762LC(10, 15));
-// System.out.println(hasAlternatingBits_693LC(6));
-// System.out.println(toHexNaturalNumbers(54734));
-// System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
-//        System.out.println(findComplement(20161211));
-//        System.out.println(addBinary("110010", "10111"));
-        //       for (int c : selfDividingNumbers_LC728(1, 22)) {
-        //         System.out.println(c);
-
-        //     System.out.println(findMaxConsecutiveOnes_LC485(numbers));
-
-//        String[] l = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
-        //       String[] k = {"KFC", "Shogun", "Burger King"};
-//        findRestaurant_LC599(l, k);
-//        threeSum(numbers);
-//        transposeLC867(numbers);
-        /*String s = "leetcode";
-        System.out.println(firstUniqChar(s));*/
-        singleNumber(numbers1);
-
 
 
     }
@@ -395,30 +357,49 @@ public class RandomLeetCodeExercises_1 {
         }
         return -1;
     }
+
     public static int[] singleNumber(int[] nums) {
-        int [] rs = new int[2];
+        int[] rs = new int[2];
         if (nums.length == 2) {
             return nums;
         }
-        int index = - 1;
+        int index = -1;
         HashMap<Integer, Integer> scores = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-           if(!scores.containsKey(nums[i]) ){
-               scores.put(nums[i],1);
+            if (!scores.containsKey(nums[i])) {
+                scores.put(nums[i], 1);
             } else {
-               scores.put(nums[i], 2);
-           }
+                scores.put(nums[i], 2);
+            }
         }
-        for (int i = 0; i < nums.length ; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (scores.get(nums[i]) == 1) {
                 rs[++index] = nums[i];
             }
-
         }
-
-        return rs ;
+        return rs;
 
     }
+
+    public static boolean canConstruct(String ransomNote, String magazine) {
+        char[] a = ransomNote.toCharArray();
+        List<Character> magList = new ArrayList<>();
+        for (int i = 0; i < magazine.toCharArray().length; i++) {
+            magList.add(magazine.toCharArray()[i]);
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (magList.contains(a[i])) {
+                magList.remove(a[i]);
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+
 }
 
 
