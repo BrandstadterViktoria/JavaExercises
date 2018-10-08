@@ -1,18 +1,22 @@
 package Part_II;
 
 import edu.princeton.cs.algs4.SET;
+import edu.princeton.cs.algs4.TrieSET;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BoggleSolver {
 
     // Initializes the data structure using the given array of strings as the dictionary.
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
-    private SET<String> dictonary = new SET<>();
+    private TrieSET dictonary = new TrieSET();
 
     public BoggleSolver(String[] dictionary) {
         for (int i = 0; i < dictionary.length; i++) {
             this.dictonary.add(dictionary[i]);
+
         }
     }
 
@@ -32,63 +36,73 @@ public class BoggleSolver {
 
     public class DFS {
 
-        private boolean[] marked;
+        private boolean[][] marked;
         private SET<String> validWords = new SET<>();
         private BoggleBoard board;
 
-        public DFS(BoggleBoard board) {
+        DFS(BoggleBoard board) {
             this.board = board;
-            marked = new boolean[board.rows() * board.cols()];
+            marked = new boolean[board.rows()][board.cols()];
             dfs();
         }
 
         private void dfs() {
             for (int i = 0; i < board.rows(); i++) {
                 for (int j = 0; j < board.cols(); j++) {
-                    singleSourceDFS(i, j);
+                    StringBuilder strb = new StringBuilder();
+                    strb.append(board.getLetter(i, j));
+                    singleSourceDFS(i, j,strb);
                 }
             }
         }
 
-        private SET<String> singleSourceDFS(int row, int col) {
-            marked
+        private SET<String> singleSourceDFS(int row, int col, StringBuilder strb) {
+            int[][] adj = adj(row, col);
+            marked[row][col] = true;
+            for (int i = 0; i < adj.length; i++) {
+                  strb.append(board.getLetter(adj [i][0],adj[i][1]));
+                  String prefix = strb.toString();
+                    if (dictonary.keysWithPrefix(prefix).iterator().hasNext()) {
+                        singleSourceDFS(adj[i][0],adj[i][1],strb);
 
+                }
 
+            }
         }
 
-        private List<int []> adj (int row, int col) {
-            validate(row,col);
-            List<int[]> adj = new ArrayList<>();
-            if (validate(row, col - 1)) {
-                adj.add(new int[] {row, col - 1});
-            }
-            if (validate(row, col + 1)){
-                adj.add(new int[] {row, col + 1});
-            }
-            if (validate(row - 1, col)) {
-                adj.add(new int[] {row - 1, col});
-            }
-            if (validate(row - 1, col - 1)) {
-                adj.add(new int[]{row - 1, col - 1});
-            }
-            if (validate(row - 1, col + 1)) {
-                adj.add(new int[]{row - 1, col + 1});
-            }
-            if (validate(row + 1, col)) {
-                adj.add(new int[]{row + 1, col});
-            }
-            if (validate(row + 1, col - 1)) {
-                adj.add(new int[]{row + 1, col - 1});
-            }
-            if (validate(row + 1, col + 1)) {
-                adj.add(new int[]{row + 1, col + 1});
-            }
 
-            return adj;
+        private int[][] adj(int row, int col) {
+            int[][] adj = new int[8][2];
+            adj[0] = new int[]{row, col - 1};
+            adj[1] = new int[]{row, col + 1};
+            adj[2] = new int[]{row - 1, col - 1};
+            adj[3] = new int[]{row - 1, col};
+            adj[4] = new int[]{row - 1, col + 1};
+            adj[5] = new int[]{row + 1, col - 1};
+            adj[6] = new int[]{row + 1, col};
+            adj[7] = new int[]{row + 1, col + 1};
+            for (int i = 0; i < adj.length; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (j % 2 == 0 && !validateR(adj[i][j])) {
+                        adj[i][j] = Integer.MAX_VALUE;
+                    }
+                    if (!(j % 2 == 0) && !validateC(adj[i][j])) {
+                        adj[i][j] = Integer.MAX_VALUE;
+                    }
+
+                }
+
+
+                return adj;
+            }
         }
 
-        private boolean validate (int row, int col) {
-            return row < 0 || row >= board.rows() || col < 0 || col >= board.cols();
+        private boolean validateR(int row) {
+            return row < 0 || row >= board.rows();
+        }
+
+        private boolean validateC(int col) {
+            return col < 0 || col >= board.cols();
         }
     }
 }
