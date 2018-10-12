@@ -1,4 +1,4 @@
-package Part_II;
+package Part_II.Week4_BoogleSolver;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;

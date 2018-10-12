@@ -1,11 +1,7 @@
-package Part_II;
+package Part_II.Week4_BoogleSolver;
 
 import edu.princeton.cs.algs4.SET;
 import edu.princeton.cs.algs4.TrieSET;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BoggleSolver {
 
@@ -43,28 +39,30 @@ public class BoggleSolver {
         DFS(BoggleBoard board) {
             this.board = board;
             marked = new boolean[board.rows()][board.cols()];
-            dfs();
-        }
-
-        private void dfs() {
             for (int i = 0; i < board.rows(); i++) {
                 for (int j = 0; j < board.cols(); j++) {
                     StringBuilder strb = new StringBuilder();
                     strb.append(board.getLetter(i, j));
-                    singleSourceDFS(i, j,strb);
+                    dfs (i, j, strb);
                 }
             }
         }
 
-        private SET<String> singleSourceDFS(int row, int col, StringBuilder strb) {
+        private SET<String> dfs (int row, int col, StringBuilder strb) {
             int[][] adj = adj(row, col);
             marked[row][col] = true;
             for (int i = 0; i < adj.length; i++) {
-                  strb.append(board.getLetter(adj [i][0],adj[i][1]));
-                  String prefix = strb.toString();
-                    if (dictonary.keysWithPrefix(prefix).iterator().hasNext()) {
-                        singleSourceDFS(adj[i][0],adj[i][1],strb);
+                strb.append(board.getLetter(adj[i][0], adj[i][1]));
+                String prefix = strb.toString();
+                if (dictonary.keysThatMatch(prefix).iterator().hasNext()) {
 
+                }
+                if (dictonary.keysWithPrefix(prefix).iterator().hasNext()) {
+                    dfs (adj[i][0], adj[i][1], strb);
+                }
+
+                else {
+                    break;
                 }
 
             }
@@ -89,12 +87,9 @@ public class BoggleSolver {
                     if (!(j % 2 == 0) && !validateC(adj[i][j])) {
                         adj[i][j] = Integer.MAX_VALUE;
                     }
-
                 }
-
-
-                return adj;
             }
+            return adj;
         }
 
         private boolean validateR(int row) {
