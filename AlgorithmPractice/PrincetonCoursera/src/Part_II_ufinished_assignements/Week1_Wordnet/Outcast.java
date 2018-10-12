@@ -1,16 +1,16 @@
-package Part_II.Week1_Wordnet;
+package Part_II_ufinished_assignements.Week1_Wordnet;
 
 public class Outcast {
 
     //not clear: Assume that argument to outcast() contains only valid wordnet nouns (and that it contains at least two such nouns).
     private WordNet wordnet;
 
-    // constructor takes a Part_II.Week1_Wordnet.WordNet object
+    // constructor takes a Part_II_ufinished_assignements.Week1_Wordnet.WordNet object
     public Outcast(WordNet wordnet) {
         this.wordnet = wordnet;
     }
 
-    // given an array of Part_II.Week1_Wordnet.WordNet nouns, return an outcast
+    // given an array of Part_II_ufinished_assignements.Week1_Wordnet.WordNet nouns, return an outcast
     public String outcast(String[] nouns) {
         String outcast = "";
         int furthest = 0;

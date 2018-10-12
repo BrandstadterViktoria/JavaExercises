@@ -1,4 +1,4 @@
-package Part_II.Week2_SeamCarving;
+package Part_II_ufinished_assignements.Week2_SeamCarving;
 
 import edu.princeton.cs.algs4.Picture;
 import edu.princeton.cs.algs4.StdOut;
